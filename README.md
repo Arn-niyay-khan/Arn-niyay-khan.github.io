@@ -1,44 +1,81 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <title>หน้าหลัก | Arn-niyay-khan</title>
+  <meta charset="UTF-8">
+  <title>รวมนามปากกา | Arn-niyay-khan</title>
   <style>
     body {
-      background-color: #f7f0ff;
+      background-color: #f3eaff;
       font-family: 'Mitr', sans-serif;
-      color: #3b2e58;
-      padding: 50px;
-      text-align: center;
+      color: #3f2a50;
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
     }
     h1 {
       color: #7b4ca0;
+      text-align: center;
       font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 30px;
+      padding: 20px;
+      background-color: #fff0ff;
+      border-left: 5px solid #a678d4;
+      border-radius: 10px;
     }
     a {
-      display: inline-block;
-      margin: 15px;
-      color: #5a3694;
-      text-decoration: none;
+      color: #6d3fb0;
+      font-size: 1.3rem;
       font-weight: bold;
+      text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
     }
+    .desc {
+      color: #5c457d;
+      font-size: 1rem;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
-  <h1>🌸 ยินดีต้อนรับสู่เว็บไซต์ Arn-niyay-khan 🌸</h1>
-  <p>รวมผลงานนิยายจากหลายนามปากกา</p>
-
-  <h2>✒️ รายชื่อนามปากกา</h2>
-  <ul style="list-style:none; padding-left:0;">
-    <li><a href="coderak/">โค้ดรัก</a></li>
-    <li><a href="lippo/">LIPPO</a></li>
-    <li><a href="wealthy/">WEALTHY</a></li>
-    <li><a href="welawadee/">เวฬาวดี</a></li>
-    <li><a href="bellwarin/">เบลวรินท์</a></li>
-    <li><a href="nichchaben">ณิชชาเบญ</a></li>
-    <li><a href="phakwara/">ภัควรา</a></li>
+  <h1>📚 รวมนามปากกาในเครือ</h1>
+  <ul>
+    <li>
+      <a href="coderak/">โค้ดรัก</a>
+      <div class="desc">นิยายวายแนวโรแมนติก ดราม่า บีบหัวใจ</div>
+    </li>
+    <li>
+      <a href="lippo/">LIPPO</a>
+      <div class="desc">นิยายวายแนวอีโรติกจัดหนัก รักเร่าร้อน เน้น NC++</div>
+    </li>
+    <li>
+      <a href="welawadee/">เวฬาวดี</a>
+      <div class="desc">นิยายวายแนว omegaverse, ท้องได้, เหนือธรรมชาติ นามปากกาน้องใหม่อีก 1 นามปากกา เดี๋ยวจะมาทยอยลงนิยายให้ได้อ่านกันนะคะ</div>
+    </li>
+    <li>
+      <a href="wealthy/">WEALTHY</a>
+      <div class="desc">นิยายชายหญิงแนวอีโรติกเข้มข้น รักรสแซ่บ NC++</div>
+    </li>
+    <li>
+      <a href="phakawara/">ภัควรา</a>
+      <div class="desc">นิยายชายหญิงแนวโรแมนซ์ รักร้อนแรงไม่เกิน 70%</div>
+    </li>
+    <li>
+      <a href="bellwarin/">เบลวรินท์</a>
+      <div class="desc">นิยายชายหญิงรักสดใส อบอุ่น ฟีลกู๊ด นามปากกาน้องใหม่จะค่อยๆ ทยอยลงนิยายให้ติดตามค่ะ</div>
+    </li>
+    <li>
+      <a href="nichchaben/">ณิชชาเบญ</a>
+      <div class="desc">นิยายยูริ ครบทุกแนว จะค่อยๆ ทยอยลงนิยายรักสไตล์หญิงหญิงให้ได้ลองชิมลางดูค่ะ</div>
+    </li>
   </ul>
 </body>
 </html>
