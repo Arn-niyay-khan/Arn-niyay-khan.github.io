@@ -35,10 +35,10 @@
     <li><a href="coderak/">โค้ดรัก</a></li>
     <li><a href="lippo/">LIPPO</a></li>
     <li><a href="wealthy/">WEALTHY</a></li>
-    <li><a href="phakwara/">ภัควรา</a></li>
     <li><a href="welawadee/">เวฬาวดี</a></li>
     <li><a href="bellwarin/">เบลวรินท์</a></li>
     <li><a href="nichchaben">ณิชชาเบญ</a></li>
+    <li><a href="phakwara/">ภัควรา</a></li>
   </ul>
 </body>
 </html>
