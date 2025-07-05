@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="th">
+<!DOCTYPE html>
+<html lang="th">
 <head>
   <meta charset="UTF-8">
   <title>กับดักหัวใจของนายตัวแสบ | โค้ดรัก</title>
@@ -11,202 +12,325 @@
       color: #432d5d;
       max-width: 768px;
       margin: auto;
-    }h1 {
-  color: #7b4ca0;
-  text-align: center;
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-}
+    }
 
-.episode-title {
-  cursor: pointer;
-  color: #6e3cab;
-  font-weight: bold;
-  font-size: 1.1rem;
-  background-color: #f6e7ff;
-  padding: 12px 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-  transition: background 0.3s ease;
-  margin-top: 20px;
-}
+    h1 {
+      color: #7b4ca0;
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
 
-.episode-content {
-  display: block;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 14px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #5b437f;
-  margin-bottom: 30px;
-}
+    .summary {
+      font-size: 1.1rem;
+      color: #6e5b84;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
 
-.thank-you {
-  text-align: center;
-  font-size: 1rem;
-  margin-top: 60px;
-  margin-bottom: 10px;
-  color: #5e407f;
-  font-style: italic;
-}
+    .summary p {
+      text-indent: 2em;
+      margin-bottom: 1em;
+      white-space: pre-wrap;
+    }
 
-.comment-box {
-  margin-top: 20px;
-  background: #f5f0ff;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
+    .episode {
+      margin-bottom: 30px;
+    }
 
-.comment-box textarea {
-  width: 100%;
-  font-family: 'Mitr', sans-serif;
-  font-size: 1rem;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  resize: vertical;
-}
+    .episode-title {
+      cursor: pointer;
+      color: #6e3cab;
+      font-weight: bold;
+      font-size: 1.1rem;
+      background-color: #f6e7ff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      transition: background 0.3s ease;
+    }
 
-.emoji-tabs {
-  margin-top: 10px;
-  text-align: center;
-}
+    .episode-title:hover {
+      background-color: #e4ccff;
+    }
 
-.emoji-tabs button {
-  font-size: 1.4rem;
-  margin: 0 6px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
+    .episode-content {
+      display: none;
+      margin-top: 12px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #5b437f;
+    }
 
-.emoji-tabs button:hover {
-  transform: scale(1.3);
-}
+    .episode-content p {
+      text-indent: 2em;
+      margin-bottom: 1em;
+      white-space: pre-wrap;
+    }
 
-.emoji-bar {
-  margin-top: 10px;
-  display: none;
-  text-align: center;
-}
+    .qr-section {
+      display: none;
+      margin-top: 15px;
+      text-align: center;
+    }
 
-.emoji-bar.active {
-  display: block;
-}
+    .qr-section img {
+      width: 180px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
 
-.emoji-bar span {
-  cursor: pointer;
-  font-size: 1.4rem;
-  margin: 0 6px;
-  transition: transform 0.2s ease;
-}
+    .qr-section p {
+      font-size: 0.95rem;
+      color: #6e5b84;
+    }
 
-.emoji-bar span:hover {
-  transform: scale(1.3);
-}
+    .unlock-button {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #b68df5, #925fdd);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
 
-.submit-button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: #a87ce6;
-  color: #fff;
-  border: none;
-  border-radius: 30px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
+    .unlock-button:hover {
+      background: linear-gradient(135deg, #925fdd, #b68df5);
+      transform: scale(1.05);
+    }
 
-.submit-button:hover {
-  background-color: #8f63d2;
-}
+    .thank-you {
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 60px;
+      margin-bottom: 10px;
+      color: #5e407f;
+      font-style: italic;
+    }
 
-.comment-list {
-  margin-top: 20px;
-}
+    .comment-box {
+      margin-top: 40px;
+      background: #f5f0ff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
 
-.comment {
-  background: #fff;
-  border-radius: 10px;
-  padding: 12px;
-  margin-bottom: 10px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-}
+    .comment-box textarea {
+      width: 100%;
+      font-family: 'Mitr', sans-serif;
+      font-size: 1rem;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      resize: vertical;
+    }
 
+    .emoji-bar {
+      margin-top: 10px;
+    }
+
+    .emoji-bar span {
+      cursor: pointer;
+      font-size: 1.4rem;
+      margin-right: 10px;
+      transition: transform 0.2s ease;
+    }
+
+    .emoji-bar span:hover {
+      transform: scale(1.3);
+    }
+
+    .submit-button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #a87ce6;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background-color: #8f63d2;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #c79df4, #a57be7);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 4px 12px rgba(167, 125, 221, 0.4);
+      transition: all 0.3s ease;
+      margin-top: 30px;
+    }
+
+    .back-button:hover {
+      background: linear-gradient(135deg, #a57be7, #c79df4);
+      box-shadow: 0 6px 16px rgba(135, 95, 190, 0.5);
+      transform: scale(1.05);
+    }
+
+    .back-container {
+      text-align: center;
+    }
   </style>
 </head>
-<body>  <h1>📘 กับดักหัวใจของนายตัวแสบ</h1>  <div class="episode-title">🔒 ตอนที่ 10: รอยแผลในใจ</div>
-  <div class="episode-content">
-    ตอนนี้ถูกล็อกไว้ กรุณาชำระเงินก่อนอ่าน
-  </div>  <!-- กล่องคอมเมนต์ -->  <div class="comment-box">
+<body>
+
+  <h1>📘 กับดักหัวใจของนายตัวแสบ</h1>
+
+  <div class="summary" data-raw-text="true">
+เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว
+
+ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว...
+  </div>
+
+  <!-- ตอนฟรี -->
+  <div class="episode">
+    <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
+    <div class="episode-content" id="ep1" data-raw-text="true">
+นายจะมานั่งตรงนี้ไม่ได้!
+
+ทำไมล่ะครับครู... ผมนั่งใกล้ครูไม่ได้เหรอ?
+
+เสียงของเด็กชายคนนั้นแฝงไว้ด้วยแววขบขันและกล้าท้าทาย ครูหนุ่มนิ่งอึ้งไปชั่วครู่ ก่อนจะพยายามเก็บสีหน้าให้เรียบเฉย
+    </div>
+  </div>
+
+  <!-- ตอนล็อก -->
+  <div class="episode">
+    <div class="episode-title" onclick="handleLockedEpisode('ep2')">🔒 ตอนที่ 10: รอยแผลในใจ</div>
+    <div class="episode-content" id="ep2" data-raw-text="true">
+ตอนนี้ถูกล็อกไว้ กรุณาชำระเงินก่อนอ่าน
+
+📌 สแกนจ่ายผ่าน QR ด้านล่าง แล้วกดปุ่มด้านล่างเพื่อปลดล็อก
+<div class="qr-section" id="qr-ep2">
+  <img src="../img/qr-sample.jpg" alt="QR Code">
+  <br>
+  <button class="unlock-button" onclick="unlockEpisode('ep2')">ฉันชำระเงินแล้ว</button>
+</div>
+    </div>
+  </div>
+
+  <!-- กล่องคอมเมนต์หลังตอนล็อก -->
+  <!-- กล่องคอมเมนต์ -->
+  <div class="comment-box">
     <h3>💬 แสดงความคิดเห็น</h3>
-    <textarea id="comment-input" placeholder="แสดงความคิดเห็นที่นี่..."></textarea><div class="emoji-tabs">
-  <button onclick="switchEmojiTab('love')">💖</button>
-  <button onclick="switchEmojiTab('sad')">😭</button>
-  <button onclick="switchEmojiTab('hot')">🔥</button>
-  <button onclick="switchEmojiTab('cats')">🐱</button>
-</div>
+    <textarea id="comment-input" placeholder="แสดงความคิดเห็นที่นี่..."></textarea>
 
-<div class="emoji-bar active" id="emoji-love">
-  <span onclick="appendEmoji(this)">😍</span>
-  <span onclick="appendEmoji(this)">😘</span>
-  <span onclick="appendEmoji(this)">💗</span>
-</div>
-<div class="emoji-bar" id="emoji-sad">
-  <span onclick="appendEmoji(this)">😭</span>
-  <span onclick="appendEmoji(this)">😢</span>
-  <span onclick="appendEmoji(this)">😞</span>
-</div>
-<div class="emoji-bar" id="emoji-hot">
-  <span onclick="appendEmoji(this)">🔥</span>
-  <span onclick="appendEmoji(this)">💥</span>
-  <span onclick="appendEmoji(this)">🌶️</span>
-</div>
-<div class="emoji-bar" id="emoji-cats">
-  <span onclick="appendEmoji(this)">😺</span>
-  <span onclick="appendEmoji(this)">😸</span>
-  <span onclick="appendEmoji(this)">😹</span>
-  <span onclick="appendEmoji(this)">😻</span>
-  <span onclick="appendEmoji(this)">😼</span>
-  <span onclick="appendEmoji(this)">😽</span>
-  <span onclick="appendEmoji(this)">🙀</span>
-  <span onclick="appendEmoji(this)">😿</span>
-  <span onclick="appendEmoji(this)">😾</span>
-</div>
+    <div class="emoji-tabs">
+      <button onclick="switchEmojiTab('love')">💖</button>
+      <button onclick="switchEmojiTab('sad')">😭</button>
+      <button onclick="switchEmojiTab('hot')">🔥</button>
+      <button onclick="switchEmojiTab('cats')">🐱</button>
+    </div>
 
-<button class="submit-button" onclick="submitComment()">ส่งความคิดเห็น</button>
+    <div class="emoji-bar active" id="emoji-love">
+      <span onclick="appendEmoji(this)">😍</span>
+      <span onclick="appendEmoji(this)">😘</span>
+      <span onclick="appendEmoji(this)">💗</span>
+    </div>
+    <div class="emoji-bar" id="emoji-sad">
+      <span onclick="appendEmoji(this)">😭</span>
+      <span onclick="appendEmoji(this)">😢</span>
+      <span onclick="appendEmoji(this)">😞</span>
+    </div>
+    <div class="emoji-bar" id="emoji-hot">
+      <span onclick="appendEmoji(this)">🔥</span>
+      <span onclick="appendEmoji(this)">💥</span>
+      <span onclick="appendEmoji(this)">🌶️</span>
+    </div>
+    <div class="emoji-bar" id="emoji-cats">
+      <span onclick="appendEmoji(this)">😺</span>
+      <span onclick="appendEmoji(this)">😸</span>
+      <span onclick="appendEmoji(this)">😹</span>
+      <span onclick="appendEmoji(this)">😻</span>
+      <span onclick="appendEmoji(this)">😼</span>
+      <span onclick="appendEmoji(this)">😽</span>
+      <span onclick="appendEmoji(this)">🙀</span>
+      <span onclick="appendEmoji(this)">😿</span>
+      <span onclick="appendEmoji(this)">😾</span>
+    </div>
 
-  </div>  <!-- แสดงคอมเมนต์ที่โพสต์แล้ว -->  <div class="comment-list" id="comment-list"></div>  <div class="thank-you">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยายนะคะ ด้วยรักจากใจ 💜</div>  <script>
+    <button class="submit-button" onclick="submitComment()">ส่งความคิดเห็น</button>
+  </div>
+
+  <!-- แสดงคอมเมนต์ที่โพสต์แล้ว -->
+  <div class="comment-list" id="comment-list"></div>
+
+  <!-- ข้อความขอบคุณ -->
+  <div class="thank-you">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยายนะคะ ด้วยรักจากใจ 💜</div>
+
+  <!-- ปุ่มย้อนกลับ -->
+  <div class="back-container">
+    <a href="/coderak/" class="back-button">← ย้อนกลับไปหน้านามปากกา โค้ดรัก</a>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('[data-raw-text="true"]').forEach(box => {
+        const raw = box.textContent.trim();
+        const paragraphs = raw.split(/\n\s*\n/);
+        box.innerHTML = '';
+        paragraphs.forEach(para => {
+          const p = document.createElement('p');
+          p.textContent = para.trim();
+          box.appendChild(p);
+        });
+      });
+    });
+
+    function toggleEpisode(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function handleLockedEpisode(id) {
+      const content = document.getElementById(id);
+      const qr = document.getElementById('qr-' + id);
+
+      if (localStorage.getItem('unlocked_' + id)) {
+        const raw = `"ผมเคยเจ็บมาก่อน... แล้วครูจะทนรักผมได้เหรอ?"\n\nครูนิ่งไป ก่อนจะเอื้อมมือมากุมมือเขาไว้แน่น...`;
+        const paragraphs = raw.split(/\n\s*\n/);
+        content.innerHTML = '';
+        paragraphs.forEach(para => {
+          const p = document.createElement('p');
+          p.textContent = para.trim();
+          content.appendChild(p);
+        });
+        content.style.display = 'block';
+      } else {
+        content.style.display = 'block';
+        qr.style.display = 'block';
+      }
+    }
+
+    function unlockEpisode(id) {
+      localStorage.setItem('unlocked_' + id, true);
+      alert("ปลดล็อกสำเร็จ! ลองกดอีกครั้งเพื่ออ่านตอนนี้");
+    }
+
     function appendEmoji(el) {
-      const textarea = document.getElementById('comment-input');
+      const textarea = document.querySelector('.comment-box textarea');
       textarea.value += el.textContent;
       textarea.focus();
     }
+  </script>
 
-    function switchEmojiTab(category) {
-      const tabs = ['love', 'sad', 'hot', 'cats'];
-      tabs.forEach(tab => {
-        document.getElementById('emoji-' + tab).classList.remove('active');
-      });
-      document.getElementById('emoji-' + category).classList.add('active');
-    }
-
-    function submitComment() {
-      const input = document.getElementById('comment-input');
-      const commentText = input.value.trim();
-      if (commentText !== '') {
-        const list = document.getElementById('comment-list');
-        const div = document.createElement('div');
-        div.className = 'comment';
-        div.textContent = commentText;
-        list.appendChild(div);
-        input.value = '';
-        alert('ความคิดเห็นของคุณถูกส่งแล้ว ขอบคุณค่ะ!');
-      }
-    }
-  </script></body>
+</body>
 </html>
