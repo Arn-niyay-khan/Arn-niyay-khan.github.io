@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
@@ -36,7 +35,7 @@
 
     h1 {
       color: #7c4caf;
-      font-size: 2.4rem; /* ลดลง ~15% */
+      font-size: 2.0rem; /* ลดลง ~25% */
       margin-bottom: 40px;
       animation: pulse 3s ease-in-out infinite;
     }
