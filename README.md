@@ -15,9 +15,28 @@
       text-align: center;
     }
 
+    .site-button {
+      display: inline-block;
+      padding: 12px 28px;
+      margin-bottom: 30px;
+      background-color: #f6d8ff;
+      color: #6d3fb0;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 999px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      text-decoration: none;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .site-button:hover {
+      background-color: #e8c2ff;
+      transform: scale(1.05);
+    }
+
     h1 {
       color: #7c4caf;
-      font-size: 2.8rem;
+      font-size: 2.4rem; /* ลดลง ~15% */
       margin-bottom: 40px;
       animation: pulse 3s ease-in-out infinite;
     }
@@ -107,7 +126,10 @@
 </head>
 <body>
 
+  <a href="#" class="site-button">✨ Arn-niyay-khan ✨</a>
+
   <h1>🌟 รวมนามปากกาในเครือ Arn-niyay-khan 🌟</h1>
+
   <ul>
     <li>
       <a href="coderak/">📘 โค้ดรัก</a>
