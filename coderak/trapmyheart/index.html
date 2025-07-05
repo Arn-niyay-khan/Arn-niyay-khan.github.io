@@ -18,7 +18,14 @@
       color: #7b4ca0;
       text-align: center;
       font-size: 2.2rem;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
+    }
+
+    .summary {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #6e5b84;
+      margin-bottom: 40px;
     }
 
     .episode {
@@ -49,8 +56,14 @@
       border-radius: 14px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
       font-size: 1rem;
-      line-height: 1.6;
+      line-height: 1.8;
       color: #5b437f;
+    }
+
+    .episode-content p {
+      text-indent: 2em;
+      margin-bottom: 1em;
+      white-space: pre-wrap;
     }
 
     .qr-section {
@@ -116,27 +129,34 @@
 <body>
 
   <h1>📘 กับดักหัวใจของนายตัวแสบ</h1>
+  <div class="summary">
+    เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว...
+  </div>
 
   <!-- ตอนที่อ่านฟรี -->
   <div class="episode">
     <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
-    <div class="episode-content" id="ep1">
-      "นายจะมานั่งตรงนี้ไม่ได้!"<br>
-      "ทำไมล่ะครับครู... ผมนั่งใกล้ครูไม่ได้เหรอ?"
+    <div class="episode-content" id="ep1" data-raw-text="true">
+นายจะมานั่งตรงนี้ไม่ได้!
+
+ทำไมล่ะครับครู... ผมนั่งใกล้ครูไม่ได้เหรอ?
+
+เสียงของเด็กชายคนนั้นแฝงไว้ด้วยแววขบขันและกล้าท้าทาย ครูหนุ่มนิ่งอึ้งไปชั่วครู่ ก่อนจะพยายามเก็บสีหน้าให้เรียบเฉย
     </div>
   </div>
 
   <!-- ตอนที่ล็อก -->
   <div class="episode">
     <div class="episode-title" onclick="handleLockedEpisode('ep2')">🔒 ตอนที่ 10: รอยแผลในใจ</div>
-    <div class="episode-content" id="ep2">
-      <p>ตอนนี้ถูกล็อกไว้ กรุณาชำระเงินก่อนอ่าน</p>
-      <div class="qr-section" id="qr-ep2">
-        <p>📌 สแกนจ่ายผ่าน QR ด้านล่าง แล้วกดปุ่มด้านล่างเพื่อปลดล็อก</p>
-        <img src="../img/qr-sample.jpg" alt="QR Code">
-        <br>
-        <button class="unlock-button" onclick="unlockEpisode('ep2')">ฉันชำระเงินแล้ว</button>
-      </div>
+    <div class="episode-content" id="ep2" data-raw-text="true">
+ตอนนี้ถูกล็อกไว้ กรุณาชำระเงินก่อนอ่าน
+
+📌 สแกนจ่ายผ่าน QR ด้านล่าง แล้วกดปุ่มด้านล่างเพื่อปลดล็อก
+<div class="qr-section" id="qr-ep2">
+  <img src="../img/qr-sample.jpg" alt="QR Code">
+  <br>
+  <button class="unlock-button" onclick="unlockEpisode('ep2')">ฉันชำระเงินแล้ว</button>
+</div>
     </div>
   </div>
 
@@ -145,6 +165,20 @@
   </div>
 
   <script>
+    // Auto format ย่อหน้า
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('[data-raw-text="true"]').forEach(box => {
+        const raw = box.textContent.trim();
+        const paragraphs = raw.split(/\n\s*\n/); // เว้นบรรทัด = ย่อหน้าใหม่
+        box.innerHTML = '';
+        paragraphs.forEach(para => {
+          const p = document.createElement('p');
+          p.textContent = para.trim();
+          box.appendChild(p);
+        });
+      });
+    });
+
     function toggleEpisode(id) {
       const el = document.getElementById(id);
       el.style.display = el.style.display === 'block' ? 'none' : 'block';
@@ -155,7 +189,14 @@
       const qr = document.getElementById('qr-' + id);
 
       if (localStorage.getItem('unlocked_' + id)) {
-        content.innerHTML = `"ผมเคยเจ็บมาก่อน... แล้วครูจะทนรักผมได้เหรอ?"<br>ครูนิ่งไป ก่อนจะเอื้อมมือมากุมมือเขาไว้แน่น...`;
+        const raw = `"ผมเคยเจ็บมาก่อน... แล้วครูจะทนรักผมได้เหรอ?"\n\nครูนิ่งไป ก่อนจะเอื้อมมือมากุมมือเขาไว้แน่น...`;
+        const paragraphs = raw.split(/\n\s*\n/);
+        content.innerHTML = '';
+        paragraphs.forEach(para => {
+          const p = document.createElement('p');
+          p.textContent = para.trim();
+          content.appendChild(p);
+        });
         content.style.display = 'block';
       } else {
         content.style.display = 'block';
