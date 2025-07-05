@@ -125,8 +125,6 @@
 </head>
 <body>
 
-  <a href="#" class="site-button">✨ Arn-niyay-khan ✨</a>
-
   <h1>🌟 รวมนามปากกาในเครือ Arn-niyay-khan 🌟</h1>
 
   <ul>
