@@ -229,16 +229,45 @@
 
   <!-- กล่องคอมเมนต์หลังตอนล็อก -->
   <div class="comment-box">
-    <h3>💬 แสดงความคิดเห็น</h3>
-    <textarea placeholder="แสดงความคิดเห็นที่นี่..." rows="4"></textarea>
-    <div class="emoji-bar">
-      <span onclick="appendEmoji(this)">😍</span>
-      <span onclick="appendEmoji(this)">😭</span>
-      <span onclick="appendEmoji(this)">🔥</span>
-    </div>
-    <button class="submit-button" onclick="alert('ความคิดเห็นของคุณถูกส่งแล้ว ขอบคุณค่ะ!')">ส่งความคิดเห็น</button>
+  <h3>💬 แสดงความคิดเห็น</h3>
+  <textarea id="comment-input" placeholder="แสดงความคิดเห็นที่นี่..." rows="4"></textarea>
+
+  <div class="emoji-tabs">
+    <button onclick="switchEmojiTab('love')">💖</button>
+    <button onclick="switchEmojiTab('sad')">😭</button>
+    <button onclick="switchEmojiTab('hot')">🔥</button>
+    <button onclick="switchEmojiTab('cats')">🐱</button>
   </div>
 
+  <div class="emoji-bar" id="emoji-love">
+    <span onclick="appendEmoji(this)">😍</span>
+    <span onclick="appendEmoji(this)">😘</span>
+    <span onclick="appendEmoji(this)">💗</span>
+  </div>
+  <div class="emoji-bar" id="emoji-sad" style="display:none;">
+    <span onclick="appendEmoji(this)">😭</span>
+    <span onclick="appendEmoji(this)">😢</span>
+    <span onclick="appendEmoji(this)">😞</span>
+  </div>
+  <div class="emoji-bar" id="emoji-hot" style="display:none;">
+    <span onclick="appendEmoji(this)">🔥</span>
+    <span onclick="appendEmoji(this)">💥</span>
+    <span onclick="appendEmoji(this)">🌶️</span>
+  </div>
+  <div class="emoji-bar" id="emoji-cats" style="display:none;">
+    <span onclick="appendEmoji(this)">😺</span>
+    <span onclick="appendEmoji(this)">😸</span>
+    <span onclick="appendEmoji(this)">😹</span>
+    <span onclick="appendEmoji(this)">😻</span>
+    <span onclick="appendEmoji(this)">😼</span>
+    <span onclick="appendEmoji(this)">😽</span>
+    <span onclick="appendEmoji(this)">🙀</span>
+    <span onclick="appendEmoji(this)">😿</span>
+    <span onclick="appendEmoji(this)">😾</span>
+  </div>
+
+  <button class="submit-button" onclick="alert('ความคิดเห็นของคุณถูกส่งแล้ว ขอบคุณค่ะ!')">ส่งความคิดเห็น</button>
+</div>
   <!-- ข้อความขอบคุณ -->
   <div class="thank-you">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยายนะคะ ด้วยรักจากใจ 💜</div>
 
