@@ -3,18 +3,119 @@
 <head>
   <meta charset="UTF-8">
   <title>กับดักหัวใจของนายตัวแสบ | โค้ดรัก</title>
+  <link href="https://fonts.googleapis.com/css2?family=Mitr&display=swap" rel="stylesheet">
   <style>
-    body { background-color: #f7f0ff; font-family: sans-serif; padding: 30px; color: #432d5d; }
-    .episode-title { cursor: pointer; color: #6e3cab; margin: 10px 0; }
-    .episode-content { display: none; margin: 10px 20px; background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
-    .qr-section { display: none; margin: 15px 0; text-align: center; }
-    .qr-section img { width: 200px; }
-    button { padding: 8px 14px; border: none; background: #6e3cab; color: #fff; border-radius: 5px; margin-top: 10px; cursor: pointer; }
+    body {
+      background: linear-gradient(145deg, #fdf5ff, #f0f8ff);
+      font-family: 'Mitr', sans-serif;
+      padding: 40px;
+      color: #432d5d;
+      max-width: 768px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #7b4ca0;
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+    }
+
+    .episode {
+      margin-bottom: 30px;
+    }
+
+    .episode-title {
+      cursor: pointer;
+      color: #6e3cab;
+      font-weight: bold;
+      font-size: 1.1rem;
+      background-color: #f6e7ff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      transition: background 0.3s ease;
+    }
+
+    .episode-title:hover {
+      background-color: #e4ccff;
+    }
+
+    .episode-content {
+      display: none;
+      margin-top: 12px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #5b437f;
+    }
+
+    .qr-section {
+      display: none;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .qr-section img {
+      width: 180px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .qr-section p {
+      font-size: 0.95rem;
+      color: #6e5b84;
+    }
+
+    .unlock-button {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #b68df5, #925fdd);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .unlock-button:hover {
+      background: linear-gradient(135deg, #925fdd, #b68df5);
+      transform: scale(1.05);
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #c79df4, #a57be7);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 4px 12px rgba(167, 125, 221, 0.4);
+      transition: all 0.3s ease;
+      margin-top: 50px;
+    }
+
+    .back-button:hover {
+      background: linear-gradient(135deg, #a57be7, #c79df4);
+      box-shadow: 0 6px 16px rgba(135, 95, 190, 0.5);
+      transform: scale(1.05);
+    }
+
+    .back-container {
+      text-align: center;
+    }
   </style>
 </head>
 <body>
 
-  <h1>กับดักหัวใจของนายตัวแสบ</h1>
+  <h1>📘 กับดักหัวใจของนายตัวแสบ</h1>
 
   <!-- ตอนที่อ่านฟรี -->
   <div class="episode">
@@ -34,73 +135,39 @@
         <p>📌 สแกนจ่ายผ่าน QR ด้านล่าง แล้วกดปุ่มด้านล่างเพื่อปลดล็อก</p>
         <img src="../img/qr-sample.jpg" alt="QR Code">
         <br>
-        <button onclick="unlockEpisode('ep2')">ฉันชำระเงินแล้ว</button>
+        <button class="unlock-button" onclick="unlockEpisode('ep2')">ฉันชำระเงินแล้ว</button>
       </div>
     </div>
   </div>
 
-<script>
-  // ฟังก์ชันเปิด/ปิดตอนธรรมดา
-  function toggleEpisode(id) {
-    const el = document.getElementById(id);
-    el.style.display = el.style.display === 'block' ? 'none' : 'block';
-  }
+  <div class="back-container">
+    <a href="/coderak/" class="back-button">← ย้อนกลับไปหน้านามปากกา โค้ดรัก</a>
+  </div>
 
-  // ฟังก์ชันจัดการตอนที่ล็อก
-  function handleLockedEpisode(id) {
-    const content = document.getElementById(id);
-    const qr = document.getElementById('qr-' + id);
-
-    if (localStorage.getItem('unlocked_' + id)) {
-      // ถ้าจ่ายแล้ว ➜ แสดงเนื้อหาเลย
-      content.innerHTML = `"ผมเคยเจ็บมาก่อน... แล้วครูจะทนรักผมได้เหรอ?"<br>ครูนิ่งไป ก่อนจะเอื้อมมือมากุมมือเขาไว้แน่น...`;
-      content.style.display = 'block';
-    } else {
-      // ถ้ายัง ➜ แสดง QR code
-      content.style.display = 'block';
-      qr.style.display = 'block';
+  <script>
+    function toggleEpisode(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === 'block' ? 'none' : 'block';
     }
-  }
 
-  // ฟังก์ชันจำว่าได้ปลดล็อกแล้ว (เมื่อกดปุ่ม)
-  function unlockEpisode(id) {
-    localStorage.setItem('unlocked_' + id, true);
-    alert("ปลดล็อกสำเร็จ! ลองกดอีกครั้งเพื่ออ่านตอนนี้");
-  }
+    function handleLockedEpisode(id) {
+      const content = document.getElementById(id);
+      const qr = document.getElementById('qr-' + id);
 
-</script>
-  
-<style>
-  .back-button {
-    display: inline-block;
-    padding: 12px 28px;
-    background: linear-gradient(135deg, #c79df4, #a57be7);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: bold;
-    font-size: 16px;
-    box-shadow: 0 4px 12px rgba(167, 125, 221, 0.4);
-    transition: all 0.3s ease;
-  }
+      if (localStorage.getItem('unlocked_' + id)) {
+        content.innerHTML = `"ผมเคยเจ็บมาก่อน... แล้วครูจะทนรักผมได้เหรอ?"<br>ครูนิ่งไป ก่อนจะเอื้อมมือมากุมมือเขาไว้แน่น...`;
+        content.style.display = 'block';
+      } else {
+        content.style.display = 'block';
+        qr.style.display = 'block';
+      }
+    }
 
-  .back-button:hover {
-    background: linear-gradient(135deg, #a57be7, #c79df4);
-    box-shadow: 0 6px 16px rgba(135, 95, 190, 0.5);
-    transform: scale(1.05);
-  }
+    function unlockEpisode(id) {
+      localStorage.setItem('unlocked_' + id, true);
+      alert("ปลดล็อกสำเร็จ! ลองกดอีกครั้งเพื่ออ่านตอนนี้");
+    }
+  </script>
 
-  .back-container {
-    text-align: center;
-    margin-top: 50px;
-  }
-</style>
-
-<div class="back-container">
-  <a href="/coderak/" class="back-button">
-    ← ย้อนกลับไปหน้านามปากกา โค้ดรัก
-  </a>
-</div>
-  
 </body>
 </html>
