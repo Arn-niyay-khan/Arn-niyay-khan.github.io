@@ -1,63 +1,158 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
   <meta charset="UTF-8">
   <title>LIPPO | Arn-niyay-khan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Mitr&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #f3eaff;
+      background: linear-gradient(145deg, #fdf5ff, #f0f8ff);
       font-family: 'Mitr', sans-serif;
-      color: #3f2a50;
+      color: #432d5d;
       padding: 40px;
-      max-width: 800px;
+      max-width: 1024px;
       margin: auto;
-    }
-    h1 {
-      color: #7b4ca0;
       text-align: center;
-      font-size: 2.5rem;
     }
-    p {
-      text-align: center;
-      font-size: 1.1rem;
-    }
-    h2 {
-      color: #5d3a8a;
-      margin-top: 40px;
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    li {
-      margin: 10px 0;
-    }
-    a {
+
+    .site-button {
+      display: inline-block;
+      padding: 12px 28px;
+      margin-bottom: 30px;
+      background-color: #f6d8ff;
       color: #6d3fb0;
-      text-decoration: none;
+      font-size: 1.2rem;
       font-weight: bold;
+      border-radius: 999px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      text-decoration: none;
+      transition: transform 0.3s ease, background-color 0.3s ease;
     }
-    a:hover {
-      text-decoration: underline;
+
+    .site-button:hover {
+      background-color: #e8c2ff;
+      transform: scale(1.05);
     }
-    .back-link {
+
+    h1 {
+      font-size: 2.2rem;
+      color: #7b4ca0;
+      margin-bottom: 10px;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    p {
+      color: #6e5b84;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      color: #5d3a8a;
       margin-top: 50px;
-      display: block;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #d4b3ff;
+      padding-bottom: 5px;
+    }
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    .book {
+      background-color: #fff7ff;
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
       text-align: center;
-      color: #555;
+      transition: transform 0.3s ease;
+    }
+
+    .book:hover {
+      transform: scale(1.03);
+    }
+
+    .book img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .book-title {
+      margin-top: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #6b3fa0;
+    }
+
+    .book-desc {
+      font-size: 0.9rem;
+      color: #6e5b84;
+      margin-top: 4px;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #c79df4, #a57be7);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 4px 12px rgba(167, 125, 221, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: linear-gradient(135deg, #a57be7, #c79df4);
+      box-shadow: 0 6px 16px rgba(135, 95, 190, 0.5);
+      transform: scale(1.05);
+    }
+
+    .back-container {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
     }
   </style>
 </head>
 <body>
+
+  <a href="/" class="site-button">✨ Arn-niyay-khan ✨</a>
+
   <h1>📖 นามปากกา: LIPPO</h1>
   <p>นิยายวายแนวแฟนตาซี โลกคู่ขนาน และเหนือธรรมชาติ 🪄</p>
 
-  <h2>📚 ผลงานนิยาย</h2>
-  <ul>
-    <li><a href="#">เรื่องที่ 1: คำสาปแห่งวิหารต้องห้าม</a></li>
-    <li><a href="#">เรื่องที่ 2: สัมผัสเงาเธอในวันหิมะตก</a></li>
-  </ul>
+  <div class="section-title">📚 ผลงานนิยาย</div>
+  <div class="book-grid">
+    <div class="book">
+      <a href="#">
+        <img src="img/lippo1.jpg" alt="คำสาปแห่งวิหารต้องห้าม">
+        <div class="book-title">คำสาปแห่งวิหารต้องห้าม</div>
+      </a>
+      <div class="book-desc">คำโปรยจะมาใส่ภายหลังค่ะ</div>
+    </div>
+    <div class="book">
+      <a href="#">
+        <img src="img/lippo2.jpg" alt="สัมผัสเงาเธอในวันหิมะตก">
+        <div class="book-title">สัมผัสเงาเธอในวันหิมะตก</div>
+      </a>
+      <div class="book-desc">คำโปรยจะมาใส่ภายหลังค่ะ</div>
+    </div>
+  </div>
 
-  <a class="back-link" href="/">← กลับหน้าแรก</a>
+  <div class="back-container">
+    <a href="../index.html" class="back-button">← กลับหน้าแรก</a>
+  </div>
+
 </body>
 </html>
