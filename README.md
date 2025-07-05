@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
@@ -11,11 +12,11 @@
       padding: 40px;
       max-width: 1024px;
       margin: auto;
+      text-align: center;
     }
 
     h1 {
       color: #7c4caf;
-      text-align: center;
       font-size: 2.8rem;
       margin-bottom: 40px;
       animation: pulse 3s ease-in-out infinite;
@@ -24,8 +25,9 @@
     ul {
       list-style: none;
       padding-left: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 25px;
     }
 
@@ -37,6 +39,8 @@
       transition: all 0.3s ease;
       box-shadow: 0 4px 12px rgba(0,0,0,0.06);
       position: relative;
+      width: 280px;
+      text-align: left;
     }
 
     li:hover {
@@ -84,7 +88,6 @@
     }
 
     .footer {
-      text-align: center;
       margin-top: 60px;
       font-size: 0.95rem;
       color: #8b78a7;
