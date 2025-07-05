@@ -224,22 +224,25 @@
   <br>
   <button class="unlock-button" onclick="unlockEpisode('ep2')">ฉันชำระเงินแล้ว</button>
 </div>
-
-<div class="comment-box">
-  <h3>💬 แสดงความคิดเห็น</h3>
-  <textarea placeholder="แสดงความคิดเห็นที่นี่..." rows="4"></textarea>
-  <div class="emoji-bar">
-    <span>😍</span>
-    <span>😭</span>
-    <span>🔥</span>
-  </div>
-  <button class="submit-button">ส่งความคิดเห็น</button>
-</div>
     </div>
   </div>
 
+  <!-- กล่องคอมเมนต์หลังตอนล็อก -->
+  <div class="comment-box">
+    <h3>💬 แสดงความคิดเห็น</h3>
+    <textarea placeholder="แสดงความคิดเห็นที่นี่..." rows="4"></textarea>
+    <div class="emoji-bar">
+      <span onclick="appendEmoji(this)">😍</span>
+      <span onclick="appendEmoji(this)">😭</span>
+      <span onclick="appendEmoji(this)">🔥</span>
+    </div>
+    <button class="submit-button" onclick="alert('ความคิดเห็นของคุณถูกส่งแล้ว ขอบคุณค่ะ!')">ส่งความคิดเห็น</button>
+  </div>
+
+  <!-- ข้อความขอบคุณ -->
   <div class="thank-you">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยายนะคะ ด้วยรักจากใจ 💜</div>
 
+  <!-- ปุ่มย้อนกลับ -->
   <div class="back-container">
     <a href="/coderak/" class="back-button">← ย้อนกลับไปหน้านามปากกา โค้ดรัก</a>
   </div>
@@ -286,6 +289,12 @@
     function unlockEpisode(id) {
       localStorage.setItem('unlocked_' + id, true);
       alert("ปลดล็อกสำเร็จ! ลองกดอีกครั้งเพื่ออ่านตอนนี้");
+    }
+
+    function appendEmoji(el) {
+      const textarea = document.querySelector('.comment-box textarea');
+      textarea.value += el.textContent;
+      textarea.focus();
     }
   </script>
 
