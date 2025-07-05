@@ -107,6 +107,64 @@
       transform: scale(1.05);
     }
 
+    .thank-you {
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 60px;
+      margin-bottom: 10px;
+      color: #5e407f;
+      font-style: italic;
+    }
+
+    .comment-box {
+      margin-top: 40px;
+      background: #f5f0ff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .comment-box textarea {
+      width: 100%;
+      font-family: 'Mitr', sans-serif;
+      font-size: 1rem;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      resize: vertical;
+    }
+
+    .emoji-bar {
+      margin-top: 10px;
+    }
+
+    .emoji-bar span {
+      cursor: pointer;
+      font-size: 1.4rem;
+      margin-right: 10px;
+      transition: transform 0.2s ease;
+    }
+
+    .emoji-bar span:hover {
+      transform: scale(1.3);
+    }
+
+    .submit-button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #a87ce6;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background-color: #8f63d2;
+    }
+
     .back-button {
       display: inline-block;
       padding: 12px 28px;
@@ -118,7 +176,7 @@
       font-size: 16px;
       box-shadow: 0 4px 12px rgba(167, 125, 221, 0.4);
       transition: all 0.3s ease;
-      margin-top: 50px;
+      margin-top: 30px;
     }
 
     .back-button:hover {
@@ -142,7 +200,7 @@
 ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว...
   </div>
 
-  <!-- ตอนที่อ่านฟรี -->
+  <!-- ตอนฟรี -->
   <div class="episode">
     <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
     <div class="episode-content" id="ep1" data-raw-text="true">
@@ -154,7 +212,7 @@
     </div>
   </div>
 
-  <!-- ตอนที่ล็อก -->
+  <!-- ตอนล็อก -->
   <div class="episode">
     <div class="episode-title" onclick="handleLockedEpisode('ep2')">🔒 ตอนที่ 10: รอยแผลในใจ</div>
     <div class="episode-content" id="ep2" data-raw-text="true">
@@ -166,19 +224,31 @@
   <br>
   <button class="unlock-button" onclick="unlockEpisode('ep2')">ฉันชำระเงินแล้ว</button>
 </div>
+
+<div class="comment-box">
+  <h3>💬 แสดงความคิดเห็น</h3>
+  <textarea placeholder="แสดงความคิดเห็นที่นี่..." rows="4"></textarea>
+  <div class="emoji-bar">
+    <span>😍</span>
+    <span>😭</span>
+    <span>🔥</span>
+  </div>
+  <button class="submit-button">ส่งความคิดเห็น</button>
+</div>
     </div>
   </div>
+
+  <div class="thank-you">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยายนะคะ ด้วยรักจากใจ 💜</div>
 
   <div class="back-container">
     <a href="/coderak/" class="back-button">← ย้อนกลับไปหน้านามปากกา โค้ดรัก</a>
   </div>
 
   <script>
-    // Auto format ย่อหน้าในเนื้อหาและเรื่องย่อ
     document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll('[data-raw-text="true"]').forEach(box => {
         const raw = box.textContent.trim();
-        const paragraphs = raw.split(/\n\s*\n/); // เว้นบรรทัด = ย่อหน้าใหม่
+        const paragraphs = raw.split(/\n\s*\n/);
         box.innerHTML = '';
         paragraphs.forEach(para => {
           const p = document.createElement('p');
