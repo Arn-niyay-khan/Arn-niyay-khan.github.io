@@ -48,6 +48,9 @@ h1 {
 
 .summary, .text-content {
   white-space: pre-wrap;
+  text-indent: 4em;
+  text-align: justify;
+  
   font-size: 0.9rem;
   line-height: 1.9;
   color: #5e437f;
@@ -271,5 +274,14 @@ h1 {
         textarea.focus();
       }
     }
+    <script>
+  document.querySelectorAll('.text-content, .summary').forEach(function(block) {
+    let original = block.innerText.trim();
+    let paragraphs = original.split(/\n\s*\n/); // แยกย่อหน้าเมื่อมีการเว้นบรรทัด
+
+    let html = paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
+    block.innerHTML = html;
+  });
+</script>
   </script></body>
 </html>
