@@ -20,6 +20,13 @@
       user-select: none;         /* Standard */
     }
 
+    /* เพิ่ม wrapper เพื่อควบคุมการจัดแนวเนื้อหาหลัก */
+    .content-wrapper {
+      text-align: left; /* **บังคับให้เนื้อหาภายใน Wrapper ชิดซ้าย** */
+      margin: 0 auto; /* ทำให้ Wrapper อยู่ตรงกลาง */
+      max-width: 900px; /* อาจจะปรับให้เล็กกว่า max-width ของ body เล็กน้อย */
+    }
+
     .site-button {
       display: inline-block;
       padding: 12px 28px;
@@ -32,12 +39,11 @@
       border-radius: 999px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
       text-decoration: none;
-      transition: transform 0.3s ease, background-color 0.3s ease;
+      transition: transform 0 3s ease, background-color 0 3s ease;
     }
 
     .site-button:hover {
       background-color: #e8c2ff;
-      text-align: center;
       transform: scale(1.05);
     }
 
@@ -54,13 +60,13 @@
       margin-bottom: 40px;
       line-height: 1.8;
       position: relative; /* สำหรับ watermark */
-      text-align: left !important; /* **แก้ไขตรงนี้! บังคับให้ชิดซ้าย** */
+      /* text-align: left !important;  เอาออก เพราะจะให้ parent .content-wrapper จัดการแทน */
     }
 
     .summary p {
       text-indent: 1.3em;
       margin-bottom: 1em;
-      text-align: left !important; /* **แก้ไขตรงนี้! บังคับให้ชิดซ้าย** */
+      /* text-align: left !important;  เอาออก เพราะจะให้ parent .content-wrapper จัดการแทน */
     }
 
     .episode {
@@ -94,7 +100,7 @@
       font-size: 1rem;
       line-height: 1.8;
       color: #5b437f;
-      text-align: left !important; /* **แก้ไขตรงนี้! บังคับให้ชิดซ้าย** */
+      /* text-align: left !important;  เอาออก เพราะจะให้ parent .content-wrapper จัดการแทน */
       position: relative; /* สำหรับ watermark */
       overflow: hidden; /* เพื่อให้ watermark ไม่ล้นออกไป */
     }
@@ -102,7 +108,7 @@
     .episode-content p {
       text-indent: 1.3em;
       margin-bottom: 1em;
-      text-align: left !important; /* **แก้ไขตรงนี้! บังคับให้ชิดซ้าย** */
+      /* text-align: left !important;  เอาออก เพราะจะให้ parent .content-wrapper จัดการแทน */
     }
 
     /* สไตล์สำหรับ Watermark */
@@ -153,7 +159,7 @@
       font-size: 1rem;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
       cursor: pointer;
-      transition: transform 0.3s ease, background 0.3s ease;
+      transition: transform 0 3s ease, background 0 3s ease;
     }
 
     .unlock-button:hover {
@@ -212,7 +218,7 @@
       border-radius: 30px;
       font-size: 1rem; /* ปรับขนาดฟอนต์ให้เหมาะสม */
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background 0 3s ease;
     }
 
     .submit-button:hover {
@@ -229,7 +235,7 @@
       font-weight: bold;
       font-size: 1.6rem;
       box-shadow: 0 4px 12px rgba(167, 125, 221, 0.4);
-      transition: all 0.3s ease;
+      transition: all 0 3s ease;
       margin-top: 30px;
     }
 
@@ -250,15 +256,16 @@
 
   <h1>📘 กับดักหัวใจของนายตัวแสบ</h1>
 
-  <div class="summary" data-raw-text="true">
+  <div class="content-wrapper">
+    <div class="summary" data-raw-text="true">
 เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว
 
 ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว...
-  </div>
+    </div>
 
-  <div class="episode">
-    <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
-    <div class="episode-content" id="ep1" data-raw-text="true">
+    <div class="episode">
+      <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
+      <div class="episode-content" id="ep1" data-raw-text="true">
 นายจะมานั่งตรงนี้ไม่ได้!
 
 ทำไมล่ะครับครู... ผมนั่งใกล้ครูไม่ได้เหรอ?
@@ -271,12 +278,12 @@
 "ผมเคยบอกแล้วใช่ไหมว่าผมจะกลับมาทวงคืนทุกอย่างที่เป็นของผม!"
 
 คำพูดนั้นสะท้อนก้องในโสตประสาทของเธอ เธอรู้ดีว่าไม่มีทางหนีพ้นจากเงื้อมมือของเขาได้อีกต่อไป
+      </div>
     </div>
-  </div>
 
-  <div class="episode">
-    <div class="episode-title" onclick="handleLockedEpisode('ep2')">🔒 ตอนที่ 10: รอยแผลในใจ</div>
-    <div class="episode-content" id="ep2" data-raw-text="true">
+    <div class="episode">
+      <div class="episode-title" onclick="handleLockedEpisode('ep2')">🔒 ตอนที่ 10: รอยแผลในใจ</div>
+      <div class="episode-content" id="ep2" data-raw-text="true">
 ตอนนี้ถูกล็อกไว้ กรุณาชำระเงินก่อนอ่าน
 
 📌 สแกนจ่ายผ่าน QR ด้านล่าง แล้วกดปุ่มด้านล่างเพื่อปลดล็อก
@@ -285,10 +292,9 @@
   <br>
   <button class="unlock-button" onclick="unlockEpisode('ep2')">ฉันชำระเงินแล้ว</button>
 </div>
+      </div>
     </div>
-  </div>
-
-  <div class="comment-box">
+  </div> <div class="comment-box">
     <h3>💬 แสดงความคิดเห็น</h3>
     <textarea placeholder="แสดงความคิดเห็นที่นี่..." rows="4"></textarea>
     <div class="emoji-bar">
@@ -323,6 +329,7 @@
       watermarkDiv.className = 'watermark';
       element.appendChild(watermarkDiv);
 
+      // สร้างและเพิ่ม p tag สำหรับแต่ละย่อหน้า
       paragraphs.forEach(paraText => {
         const trimmedPara = paraText.trim();
         if (trimmedPara) { // เช็คว่าไม่ใช่ย่อหน้าว่างเปล่า
@@ -331,6 +338,8 @@
           element.appendChild(p);
         }
       });
+      console.log(`Auto-paragraphing complete for element: ${element.id || element.className}`);
+      console.log("Current HTML after autoParagraph:", element.innerHTML); // ตรวจสอบ HTML ที่ถูกสร้างขึ้น
     }
 
     document.addEventListener("DOMContentLoaded", () => {
