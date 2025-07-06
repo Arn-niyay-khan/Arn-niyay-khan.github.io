@@ -247,7 +247,14 @@ h1 {
 </div>
       </div>
     </div>
-  </div>  <div class="comment-box">
+  </div>  
+
+    <div style="text-align:center; margin: 30px 0;">
+  <p style="font-size: 0.95rem;">ต้องการปลดล็อกทุกตอนในครั้งเดียว?</p>
+  <button class="unlock-button" onclick="unlockAllEpisodes()">💸 ฉันชำระเงินแบบรวมแล้ว</button>
+</div>
+    
+    <div class="comment-box">
     <h3>💬 แสดงความคิดเห็น</h3>
     <textarea placeholder="แสดงความคิดเห็นที่นี่..." rows="4"></textarea>
     <div class="emoji-bar">
@@ -263,18 +270,33 @@ h1 {
   </div>  <script>
   function toggleEpisode(id) {
     const el = document.getElementById(id);
-    if (el) {
-      el.style.display = el.style.display === 'none' ? 'block' : 'none';
+
+    // ตรวจว่าเคยปลดล็อกหรือไม่
+    const isUnlocked = localStorage.getItem("unlocked_" + id) || localStorage.getItem("unlocked_all");
+
+    if (!isUnlocked && id !== "ep1") {
+      alert("ตอนนี้ยังไม่ถูกปลดล็อก กรุณาชำระเงิน");
+      const qr = document.getElementById("qr-" + id);
+      if (qr) qr.style.display = 'block'; // แสดง QR
+      return;
     }
+
+    // toggle แสดงเนื้อหา
+    if (el) el.style.display = el.style.display === "none" ? "block" : "none";
   }
 
   function unlockEpisode(id) {
-    localStorage.setItem('unlocked_' + id, true);
-    alert("ปลดล็อกสำเร็จ! กรุณากดชื่อตอนอีกครั้งเพื่ออ่าน");
+    localStorage.setItem("unlocked_" + id, true);
+    alert("ปลดล็อกตอนสำเร็จ! กรุณาคลิกชื่อตอนเพื่ออ่าน");
+  }
+
+  function unlockAllEpisodes() {
+    localStorage.setItem("unlocked_all", true);
+    alert("ปลดล็อกทุกตอนแล้ว! ลองเปิดตอนที่ล็อกดูอีกครั้ง");
   }
 
   function appendEmoji(el) {
-    const textarea = document.querySelector('.comment-box textarea');
+    const textarea = document.querySelector(".comment-box textarea");
     if (textarea) {
       textarea.value += el.textContent;
       textarea.focus();
@@ -282,11 +304,14 @@ h1 {
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll('.text-content, .summary').forEach(function (block) {
-      const raw = block.dataset.content || block.innerText || '';
+    document.querySelectorAll(".text-content, .summary").forEach(function (block) {
+      const raw = block.dataset.content || block.innerText || "";
       const paragraphs = raw.trim().split(/\n\s*\n|\n+/);
-      block.innerHTML = paragraphs.map(p => `<p style="text-indent: 2em; margin-bottom: 1em;">${p.trim()}</p>`).join('');
+      block.innerHTML = paragraphs.map(p => `<p style="text-indent: 2em; margin-bottom: 1em;">${p.trim()}</p>`).join("");
     });
+
+    // ซ่อน QR ทุกตอน (กันกรณี reload แล้วค้าง)
+    document.querySelectorAll(".qr-section").forEach(qr => qr.style.display = "none");
   });
 </script>
 
