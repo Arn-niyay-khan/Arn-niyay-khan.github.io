@@ -12,19 +12,18 @@
       padding: 40px;
       max-width: 1024px;
       margin: auto;
-      text-align: center; /* ตรงนี้กำหนดให้องค์ประกอบหลักอยู่ตรงกลาง */
-      /* ป้องกันการเลือกข้อความและคลิกขวา - ควรทำงานเมื่อ JS ทำงาน */
-      -webkit-user-select: none; /* Safari */
-      -moz-user-select: none;    /* Firefox */
-      -ms-user-select: none;     /* IE 10+ */
-      user-select: none;         /* Standard */
+      text-align: center;
+      /* ป้องกันการเลือกข้อความและคลิกขวา */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
-    /* เพิ่ม wrapper เพื่อควบคุมการจัดแนวเนื้อหาหลัก */
     .content-wrapper {
-      text-align: left; /* **บังคับให้เนื้อหาภายใน Wrapper ชิดซ้าย** */
+      text-align: left; /* บังคับให้เนื้อหาภายใน Wrapper ชิดซ้าย */
       margin: 0 auto; /* ทำให้ Wrapper อยู่ตรงกลาง */
-      max-width: 900px; /* อาจจะปรับให้เล็กกว่า max-width ของ body เล็กน้อย */
+      max-width: 900px;
     }
 
     .site-button {
@@ -39,7 +38,7 @@
       border-radius: 999px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
       text-decoration: none;
-      transition: transform 0 3s ease, background-color 0 3s ease;
+      transition: transform 0.3s ease, background-color 0.3s ease;
     }
 
     .site-button:hover {
@@ -59,10 +58,9 @@
       color: #6e5b84;
       margin-bottom: 40px;
       line-height: 1.8;
-      position: relative; /* สำหรับ watermark */
+      position: relative;
     }
 
-    /* ปรับ text-indent สำหรับย่อหน้าใน summary */
     .summary p {
       text-indent: 4em; /* **ปรับค่าตรงนี้ให้เยื้องลึกขึ้น** */
       margin-bottom: 1em;
@@ -82,7 +80,7 @@
       border-radius: 12px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.06);
       transition: background 0.3s ease;
-      text-align: center; /* หัวข้อตอนยังคงอยู่กลาง */
+      text-align: center;
     }
 
     .episode-title:hover {
@@ -99,36 +97,32 @@
       font-size: 1rem;
       line-height: 1.8;
       color: #5b437f;
-      position: relative; /* สำหรับ watermark */
-      overflow: hidden; /* เพื่อให้ watermark ไม่ล้นออกไป */
+      position: relative;
+      overflow: hidden;
     }
 
-    /* ปรับ text-indent สำหรับย่อหน้าใน episode-content */
     .episode-content p {
       text-indent: 4em; /* **ปรับค่าตรงนี้ให้เยื้องลึกขึ้น** */
       margin-bottom: 1em;
     }
 
-    /* สไตล์สำหรับ Watermark */
     .watermark {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none; /* ทำให้คลิกผ่านได้ */
+      pointer-events: none;
       background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><text x="10" y="100" font-family="Mitr" font-size="20" fill="rgba(0,0,0,0.05)" transform="rotate(-30 100 100)">Arn-niyay-khan</text></svg>');
       background-repeat: repeat;
-      z-index: 1; /* ให้อยู่เหนือเนื้อหาเล็กน้อย */
-      opacity: 0.8; /* เพื่อไม่ให้บังเนื้อหามากเกินไป */
+      z-index: 1;
+      opacity: 0.8;
     }
 
-    /* ให้เนื้อหาอยู่บน watermark */
     .episode-content > *, .summary > * {
         position: relative;
         z-index: 2;
     }
-
 
     .qr-section {
       display: none;
@@ -157,7 +151,7 @@
       font-size: 1rem;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
       cursor: pointer;
-      transition: transform 0 3s ease, background 0 3s ease;
+      transition: transform 0.3s ease, background 0.3s ease;
     }
 
     .unlock-button:hover {
@@ -214,9 +208,9 @@
       color: #fff;
       border: none;
       border-radius: 30px;
-      font-size: 1rem; /* ปรับขนาดฟอนต์ให้เหมาะสม */
+      font-size: 1rem;
       cursor: pointer;
-      transition: background 0 3s ease;
+      transition: background 0.3s ease;
     }
 
     .submit-button:hover {
@@ -233,7 +227,7 @@
       font-weight: bold;
       font-size: 1.6rem;
       box-shadow: 0 4px 12px rgba(167, 125, 221, 0.4);
-      transition: all 0 3s ease;
+      transition: all 0.3s ease;
       margin-top: 30px;
     }
 
@@ -303,7 +297,7 @@
     <button class="submit-button" onclick="alert('ความคิดเห็นของคุณถูกส่งแล้ว ขอบคุณค่ะ!')">ส่งความคิดเห็น</button>
   </div>
 
-  <div class="thank-you">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยายนะคะ ด้วยรักจากใจ 💜</div>
+  <div class="thank-ou">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยายนะคะ ด้วยรักจากใจ 💜</div>
 
   <div class="back-container">
     <a href="/coderak/" class="back-button">← ย้อนกลับไปหน้านามปากกา โค้ดรัก</a>
