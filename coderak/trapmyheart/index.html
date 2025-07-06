@@ -13,6 +13,11 @@
       max-width: 1024px;
       margin: auto;
       text-align: center;
+      /* ป้องกันการเลือกข้อความและคลิกขวา */
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE 10+ */
+      user-select: none;         /* Standard */
     }
 
     .site-button {
@@ -35,7 +40,7 @@
       text-align: center;
       transform: scale(1.05);
     }
-    
+
     h1 {
       color: #7b4ca0;
       text-align: center;
@@ -48,12 +53,13 @@
       color: #6e5b84;
       margin-bottom: 40px;
       line-height: 1.8;
+      position: relative; /* สำหรับ watermark */
     }
 
     .summary p {
       text-indent: 1.3em;
       margin-bottom: 1em;
-      white-space: pre-wrap;
+      /* white-space: pre-wrap;  อันนี้จะถูกจัดการด้วย JS */
     }
 
     .episode {
@@ -86,13 +92,39 @@
       font-size: 1rem;
       line-height: 1.8;
       color: #5b437f;
+      text-align: left; /* ให้เนื้อหาจัดชิดซ้าย */
+      position: relative; /* สำหรับ watermark */
+      overflow: hidden; /* เพื่อให้ watermark ไม่ล้นออกไป */
     }
 
     .episode-content p {
       text-indent: 1.3em;
       margin-bottom: 1em;
-      white-space: pre-wrap;
+      /* white-space: pre-wrap;  อันนี้จะถูกจัดการด้วย JS */
     }
+
+    /* สไตล์สำหรับ Watermark */
+    .watermark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* ทำให้คลิกผ่านได้ */
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><text x="10" y="100" font-family="Mitr" font-size="20" fill="rgba(0,0,0,0.05)" transform="rotate(-30 100 100)">Arn-niyay-khan</text></svg>');
+      background-repeat: repeat;
+      z-index: 1; /* ให้อยู่เหนือเนื้อหาเล็กน้อย */
+      opacity: 0.8; /* เพื่อไม่ให้บังเนื้อหามากเกินไป */
+    }
+
+    .episode-content .watermark, .summary .watermark {
+        z-index: 1;
+    }
+    .episode-content > *, .summary > * {
+        position: relative;
+        z-index: 2; /* ให้เนื้อหาอยู่บน watermark */
+    }
+
 
     .qr-section {
       display: none;
@@ -178,7 +210,7 @@
       color: #fff;
       border: none;
       border-radius: 30px;
-      font-size: 2rem;
+      font-size: 1rem; /* ปรับขนาดฟอนต์ให้เหมาะสม */
       cursor: pointer;
       transition: background 0.3s ease;
     }
@@ -202,7 +234,7 @@
     }
 
     .back-button:hover {
-      background: linear-gradient(135deg, #a57be7, #c79df4);
+      background: linear-gradient(135deg, #a577e7, #c79df4);
       box-shadow: 0 6px 16px rgba(135, 95, 190, 0.5);
       transform: scale(1.05);
     }
@@ -213,9 +245,9 @@
   </style>
 </head>
 <body>
-  
+
   <a href="/" class="site-button">✨ Arn-niyay-khan ✨</a>
-  
+
   <h1>📘 กับดักหัวใจของนายตัวแสบ</h1>
 
   <div class="summary" data-raw-text="true">
@@ -224,7 +256,6 @@
 ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว...
   </div>
 
-  <!-- ตอนฟรี -->
   <div class="episode">
     <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
     <div class="episode-content" id="ep1" data-raw-text="true">
@@ -233,10 +264,16 @@
 ทำไมล่ะครับครู... ผมนั่งใกล้ครูไม่ได้เหรอ?
 
 เสียงของเด็กชายคนนั้นแฝงไว้ด้วยแววขบขันและกล้าท้าทาย ครูหนุ่มนิ่งอึ้งไปชั่วครู่ ก่อนจะพยายามเก็บสีหน้าให้เรียบเฉย
+
+เขากลับมาอีกครั้ง... หลังจากที่หายหน้าไปนานหลายปี และดูเหมือนว่าครั้งนี้จะไม่ได้มาดีอย่างที่คิด
+เพราะสายตาที่เขามองมานั้นเต็มไปด้วยความอาฆาตแค้นราวกับจะกลืนกินทุกสิ่ง
+
+"ผมเคยบอกแล้วใช่ไหมว่าผมจะกลับมาทวงคืนทุกอย่างที่เป็นของผม!"
+
+คำพูดนั้นสะท้อนก้องในโสตประสาทของเธอ เธอรู้ดีว่าไม่มีทางหนีพ้นจากเงื้อมมือของเขาได้อีกต่อไป
     </div>
   </div>
 
-  <!-- ตอนล็อก -->
   <div class="episode">
     <div class="episode-title" onclick="handleLockedEpisode('ep2')">🔒 ตอนที่ 10: รอยแผลในใจ</div>
     <div class="episode-content" id="ep2" data-raw-text="true">
@@ -251,7 +288,6 @@
     </div>
   </div>
 
-  <!-- กล่องคอมเมนต์หลังตอนล็อก -->
   <div class="comment-box">
     <h3>💬 แสดงความคิดเห็น</h3>
     <textarea placeholder="แสดงความคิดเห็นที่นี่..." rows="4"></textarea>
@@ -263,62 +299,107 @@
     <button class="submit-button" onclick="alert('ความคิดเห็นของคุณถูกส่งแล้ว ขอบคุณค่ะ!')">ส่งความคิดเห็น</button>
   </div>
 
-  <!-- ข้อความขอบคุณ -->
   <div class="thank-you">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยายนะคะ ด้วยรักจากใจ 💜</div>
 
-  <!-- ปุ่มย้อนกลับ -->
   <div class="back-container">
     <a href="/coderak/" class="back-button">← ย้อนกลับไปหน้านามปากกา โค้ดรัก</a>
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('[data-raw-text="true"]').forEach(box => {
-        const raw = box.textContent.trim();
-        const paragraphs = raw.split(/\n\s*\n/);
-        box.innerHTML = '';
-        paragraphs.forEach(para => {
+    // ฟังก์ชันสำหรับจัดย่อหน้าอัตโนมัติ
+    function autoParagraph(element) {
+      if (!element) return;
+      const rawText = element.textContent.trim();
+      // แบ่งข้อความตามบรรทัดว่าง 2 บรรทัดขึ้นไป หรือบรรทัดว่างเดี่ยวก็ได้
+      const paragraphs = rawText.split(/\n\s*\n|\n/);
+      element.innerHTML = ''; // ล้างเนื้อหาเดิม
+
+      // เพิ่ม Watermark ลงไปใน element ที่มีเนื้อหา
+      const watermarkDiv = document.createElement('div');
+      watermarkDiv.className = 'watermark';
+      element.appendChild(watermarkDiv);
+
+      paragraphs.forEach(paraText => {
+        const trimmedPara = paraText.trim();
+        if (trimmedPara) { // เช็คว่าไม่ใช่ย่อหน้าว่างเปล่า
           const p = document.createElement('p');
-          p.textContent = para.trim();
-          box.appendChild(p);
-        });
+          p.textContent = trimmedPara;
+          element.appendChild(p);
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // จัดการย่อหน้าสำหรับ summary และ episode-content เมื่อโหลดหน้า
+      document.querySelectorAll('.summary[data-raw-text="true"]').forEach(box => {
+        autoParagraph(box);
+      });
+      document.querySelectorAll('.episode-content[data-raw-text="true"]').forEach(box => {
+        // เก็บเนื้อหาดิบไว้ใน data attribute
+        box.setAttribute('data-original-content', box.textContent.trim());
+        autoParagraph(box);
+      });
+
+      // ป้องกันการคลิกขวา
+      document.addEventListener('contextmenu', event => event.preventDefault());
+
+      // พยายามป้องกัน PrtScn (F12 และ DevTools ก็ยังเป็นไปได้)
+      document.addEventListener('keyup', (e) => {
+        if (e.key === 'PrintScreen') {
+          // แจ้งเตือนผู้ใช้ (ทางเลือก)
+          // alert('ไม่อนุญาตให้แคปหน้าจอ');
+          // หรืออาจจะแสดงข้อความทับหน้าจอชั่วคราว
+        }
       });
     });
 
     function toggleEpisode(id) {
       const el = document.getElementById(id);
-      el.style.display = el.style.display === 'block' ? 'none' : 'block';
+      if (el) {
+        el.style.display = el.style.display === 'block' ? 'none' : 'block';
+      }
     }
 
     function handleLockedEpisode(id) {
-      const content = document.getElementById(id);
-      const qr = document.getElementById('qr-' + id);
+      const contentEl = document.getElementById(id);
+      const qrSectionEl = document.getElementById('qr-' + id);
 
+      if (!contentEl) return; // ป้องกันข้อผิดพลาดหากไม่พบ element
+
+      // ตรวจสอบว่าปลดล็อกแล้วหรือไม่
       if (localStorage.getItem('unlocked_' + id)) {
-        const raw = `"ผมเคยเจ็บมาก่อน... แล้วครูจะทนรักผมได้เหรอ?"\n\nครูนิ่งไป ก่อนจะเอื้อมมือมากุมมือเขาไว้แน่น...`;
-        const paragraphs = raw.split(/\n\s*\n/);
-        content.innerHTML = '';
-        paragraphs.forEach(para => {
-          const p = document.createElement('p');
-          p.textContent = para.trim();
-          content.appendChild(p);
-        });
-        content.style.display = 'block';
+        // ถ้าปลดล็อกแล้ว ให้นำเนื้อหาดิบที่เก็บไว้มาจัดย่อหน้า
+        const originalContent = contentEl.getAttribute('data-original-content');
+        if (originalContent) {
+          contentEl.textContent = originalContent; // ใส่เนื้อหาดิบกลับเข้าไป
+          autoParagraph(contentEl); // จัดย่อหน้าใหม่
+        }
+        if (qrSectionEl) {
+            qrSectionEl.style.display = 'none'; // ซ่อน QR code
+        }
+        contentEl.style.display = 'block'; // แสดงเนื้อหา
       } else {
-        content.style.display = 'block';
-        qr.style.display = 'block';
+        // ถ้ายังไม่ปลดล็อก
+        if (qrSectionEl) {
+            qrSectionEl.style.display = 'block'; // แสดง QR code
+        }
+        contentEl.style.display = 'block'; // แสดงเนื้อหาที่ถูกล็อก
       }
     }
 
     function unlockEpisode(id) {
       localStorage.setItem('unlocked_' + id, true);
-      alert("ปลดล็อกสำเร็จ! ลองกดอีกครั้งเพื่ออ่านตอนนี้");
+      alert("ปลดล็อกสำเร็จ! กรุณากดชื่อตอนนี้อีกครั้งเพื่ออ่านเนื้อหาเต็ม");
+      // เรียก handleLockedEpisode อีกครั้งเพื่อแสดงเนื้อหาที่จัดย่อหน้าแล้ว
+      handleLockedEpisode(id);
     }
 
     function appendEmoji(el) {
       const textarea = document.querySelector('.comment-box textarea');
-      textarea.value += el.textContent;
-      textarea.focus();
+      if (textarea) {
+        textarea.value += el.textContent;
+        textarea.focus();
+      }
     }
   </script>
 <div class="footer">
