@@ -41,7 +41,7 @@
 
 h1 {
   color: #7b4ca0;
-  text-align: center;
+  text-align: left;
   font-size: 1rem;
   margin-bottom: 10px;
 }
@@ -74,7 +74,7 @@ h1 {
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
   transition: background 0.3s ease;
-  text-align: center;
+  text-align: left;
 }
 
 .episode-title:hover {
@@ -215,7 +215,7 @@ h1 {
 
 <div class="episode">
   <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
-  <div class="text-content" id="ep1" style="display: none;">
+  <div class="text-content" id="ep1" style="display: block;">
 
 นายจะมานั่งตรงนี้ไม่ได้!
 
@@ -256,7 +256,7 @@ h1 {
   </div>  <script>
     function toggleEpisode(id) {
       const el = document.getElementById(id);
-      if (el) el.style.display = el.style.display === 'block' ? 'none' : 'block';
+      if (el) el.style.display = el.style.display === 'block' ? 'block' : 'block';
     }
 
     function unlockEpisode(id) {
