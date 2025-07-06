@@ -274,13 +274,11 @@ h1 {
       }
     }
     <script>
-  document.querySelectorAll('.text-content, .summary').forEach(function(block) {
-    let original = block.innerText.trim();
-    let paragraphs = original.split(/\n\s*\n/); // แยกย่อหน้าเมื่อมีการเว้นบรรทัด
-
-    let html = paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
-    block.innerHTML = html;
-  });
-</script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('.text-content, .summary').forEach(function (block) {
+      const raw = block.innerText.trim();
+      const paragraphs = raw.split(/\n\s*\n|\n+/); // เว้นบรรทัดหรือขึ้นบรรทัดใหม่
+      block.innerHTML = paragraphs.map(p => `<p style="text-indent: 2em; margin-bottom: 1em;">${p.trim()}</p>`).join('');
+    });
   </script></body>
 </html>
