@@ -49,12 +49,12 @@
     h1 {
       color: #7b4ca0;
       text-align: center;
-      font-size: 1rem;
+      font-size: 1.7rem; /* เดิม 2.0rem, ลดลง 15% (2.0 * 0.85) = 1.7rem */
       margin-bottom: 10px;
     }
 
     .summary {
-      font-size: 0.81rem;
+      font-size: 0.95rem; /* เดิม 1.0rem (ในโค้ดเก่า), ลดลง 15% จาก 1.1rem (ซึ่งเป็นขนาดปกติที่สวยงาม) -> 1.1 * 0.85 = 0.935rem ให้เป็น 0.95rem เพื่อให้อ่านง่ายขึ้น */
       color: #6e5b84;
       margin-bottom: 40px;
       line-height: 1.8;
@@ -62,7 +62,7 @@
     }
 
     .summary p {
-      text-indent: 4em; /* **ปรับค่าตรงนี้ให้เยื้องลึกขึ้น** */
+      text-indent: 4em;
       margin-bottom: 1em;
     }
 
@@ -74,7 +74,7 @@
       cursor: pointer;
       color: #6e3cab;
       font-weight: bold;
-      font-size: 1rem;
+      font-size: 1.0rem; /* เดิม 1.1rem, ลดลง 15% (1.1 * 0.85 = 0.935), ปัดขึ้นเป็น 1.0rem เพื่อให้อ่านง่าย */
       background-color: #f6e7ff;
       padding: 12px 20px;
       border-radius: 12px;
@@ -94,7 +94,7 @@
       padding: 20px;
       border-radius: 14px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      font-size: 0.81rem;
+      font-size: 0.95rem; /* เดิม 1.0rem (ในโค้ดเก่า), ลดลง 15% จาก 1.1rem -> 0.935rem ให้เป็น 0.95rem เพื่อให้อ่านง่ายขึ้น */
       line-height: 1.8;
       color: #5b437f;
       position: relative;
@@ -102,7 +102,7 @@
     }
 
     .episode-content p {
-      text-indent: 4em; /* **ปรับค่าตรงนี้ให้เยื้องลึกขึ้น** */
+      text-indent: 4em;
       margin-bottom: 1em;
     }
 
@@ -125,9 +125,11 @@
     }
 
     .qr-section {
-      display: none;
+      display: none; /* เริ่มต้นซ่อนไว้ */
       margin-top: 15px;
       text-align: center;
+      /* เพิ่ม padding หรือ margin เพื่อให้ QR code อยู่ตรงกลางของ content box ได้ดีขึ้น */
+      padding: 20px 0;
     }
 
     .qr-section img {
@@ -148,7 +150,7 @@
       border: none;
       border-radius: 30px;
       font-weight: bold;
-      font-size: 0.5rem;
+      font-size: 1rem;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
       cursor: pointer;
       transition: transform 0.3s ease, background 0.3s ease;
@@ -161,7 +163,7 @@
 
     .thank-you {
       text-align: center;
-      font-size: 1rem;
+      font-size: 0.95rem; /* เดิม 1rem, ลดลง 15% (1 * 0.85) = 0.85rem. ปรับเป็น 0.95rem ให้อ่านง่ายขึ้น */
       margin-top: 60px;
       margin-bottom: 10px;
       color: #5e407f;
@@ -179,7 +181,7 @@
     .comment-box textarea {
       width: 100%;
       font-family: 'Mitr', sans-serif;
-      font-size: 0.81rem;
+      font-size: 0.95rem; /* เดิม 1rem, ลดลง 15% (1 * 0.85) = 0.85rem. ปรับเป็น 0.95rem */
       padding: 12px;
       border: 1px solid #ccc;
       border-radius: 10px;
@@ -192,7 +194,7 @@
 
     .emoji-bar span {
       cursor: pointer;
-      font-size: 0.81rem;
+      font-size: 1.19rem; /* เดิม 1.4rem, ลดลง 15% (1.4 * 0.85) = 1.19rem. ยังคงค่าเดิมตามที่เคยปรับ */
       margin-right: 10px;
       transition: transform 0.2s ease;
     }
@@ -203,12 +205,12 @@
 
     .submit-button {
       margin-top: 15px;
-      padding: 10px 20px;
+      padding: 12.5px 25px; /* เดิม 10px 20px, เพิ่มขึ้น 25% เพื่อให้ใหญ่ขึ้นชัดเจน */
       background-color: #a87ce6;
       color: #fff;
       border: none;
       border-radius: 30px;
-      font-size: 0.89rem;
+      font-size: 1.25rem; /* เดิม 1rem, เพิ่มขึ้น 25% (1 * 1.25) = 1.25rem */
       cursor: pointer;
       transition: background 0.3s ease;
     }
@@ -225,7 +227,7 @@
       text-decoration: none;
       border-radius: 30px;
       font-weight: bold;
-      font-size: 1.6rem;
+      font-size: 1.6rem; /* คงเดิม */
       box-shadow: 0 4px 12px rgba(167, 125, 221, 0.4);
       transition: all 0.3s ease;
       margin-top: 30px;
@@ -286,7 +288,9 @@
 </div>
       </div>
     </div>
-  </div> <div class="comment-box">
+  </div> 
+  
+  <div class="comment-box">
     <h3>💬 แสดงความคิดเห็น</h3>
     <textarea placeholder="แสดงความคิดเห็นที่นี่..." rows="4"></textarea>
     <div class="emoji-bar">
@@ -297,7 +301,7 @@
     <button class="submit-button" onclick="alert('ความคิดเห็นของคุณถูกส่งแล้ว ขอบคุณค่ะ!')">ส่งความคิดเห็น</button>
   </div>
 
-  <div class="thank-ou">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยายนะคะ ด้วยรักจากใจ 💜</div>
+  <div class="thank-you">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยายนะคะ ด้วยรักจากใจ 💜</div>
 
   <div class="back-container">
     <a href="/coderak/" class="back-button">← ย้อนกลับไปหน้านามปากกา โค้ดรัก</a>
@@ -380,7 +384,7 @@
 
     function handleLockedEpisode(id) {
       const contentEl = document.getElementById(id);
-      const qrSectionEl = document.getElementById('qr-' + id);
+      const qrSectionEl = contentEl.querySelector('.qr-section'); // เปลี่ยนมาค้นหาภายใน contentEl
 
       if (!contentEl) {
           console.warn('Content element for locked episode not found:', id);
@@ -392,30 +396,44 @@
       // ตรวจสอบว่าปลดล็อกแล้วหรือไม่
       if (localStorage.getItem('unlocked_' + id)) {
         console.log("Episode is unlocked.");
-        // ถ้าปลดล็อกแล้ว ให้นำเนื้อหาดิบที่เก็บไว้มาจัดย่อหน้า
         const originalContent = contentEl.getAttribute('data-original-content');
         if (originalContent) {
-          contentEl.textContent = originalContent; // ใส่เนื้อหาดิบกลับเข้าไป
-          autoParagraph(contentEl); // จัดย่อหน้าใหม่
+          contentEl.innerHTML = ''; // ล้างเนื้อหาเดิมทั้งหมด
+          const watermarkDiv = document.createElement('div');
+          watermarkDiv.className = 'watermark';
+          contentEl.appendChild(watermarkDiv); // เพิ่ม watermark
+          
+          const paragraphs = originalContent.split(/\n(?:\s*\n)+|\n+/);
+          paragraphs.forEach(paraText => {
+            const trimmedPara = paraText.trim();
+            if (trimmedPara) {
+              const p = document.createElement('p');
+              p.textContent = trimmedPara;
+              contentEl.appendChild(p);
+            }
+          });
         }
         if (qrSectionEl) {
-            qrSectionEl.style.display = 'none'; // ซ่อน QR code
+            qrSectionEl.style.display = 'none';
         }
-        contentEl.style.display = 'block'; // แสดงเนื้อหา
+        contentEl.style.display = 'block';
       } else {
         console.log("Episode is locked. Displaying QR section.");
-        // ถ้ายังไม่ปลดล็อก
         // ดึงเนื้อหาดิบ (ซึ่งเป็นข้อความล็อก) มาแสดง
-        const lockedText = `ตอนนี้ถูกล็อกไว้ กรุณาชำระเงินก่อนอ่าน
-
-📌 สแกนจ่ายผ่าน QR ด้านล่าง แล้วกดปุ่มด้านล่างเพื่อปลดล็อก`;
-        contentEl.textContent = lockedText; // ใส่เนื้อหาข้อความล็อก
-        autoParagraph(contentEl); // จัดย่อหน้าข้อความล็อก
-
-        if (qrSectionEl) {
-            qrSectionEl.style.display = 'block'; // แสดง QR code
-        }
-        contentEl.style.display = 'block'; // แสดงเนื้อหาที่ถูกล็อก
+        const lockedTextHTML = `
+        <div class="watermark"></div> <p>ตอนนี้ถูกล็อกไว้ กรุณาชำระเงินก่อนอ่าน</p>
+        <p>📌 สแกนจ่ายผ่าน QR ด้านล่าง แล้วกดปุ่มด้านล่างเพื่อปลดล็อก</p>
+        <div class="qr-section" id="qr-${id}">
+          <img src="../img/qr-sample.jpg" alt="QR Code">
+          <br>
+          <button class="unlock-button" onclick="unlockEpisode('${id}')">ฉันชำระเงินแล้ว</button>
+        </div>`;
+        
+        contentEl.innerHTML = lockedTextHTML; // แทนที่ด้วย HTML ข้อความล็อก
+        
+        // ไม่ต้อง autoParagraph ตรงนี้เพราะเราใส่ p และ div ให้แล้ว
+        
+        contentEl.style.display = 'block';
       }
     }
 
@@ -423,8 +441,6 @@
       localStorage.setItem('unlocked_' + id, true);
       alert("ปลดล็อกสำเร็จ! กรุณากดชื่อตอนนี้อีกครั้งเพื่ออ่านเนื้อหาเต็ม");
       console.log("Episode unlocked in localStorage:", id);
-      // ไม่ต้องเรียก handleLockedEpisode ตรงนี้ เพราะจะให้ผู้ใช้กดซ้ำ
-      // handleLockedEpisode(id);
     }
 
     function appendEmoji(el) {
