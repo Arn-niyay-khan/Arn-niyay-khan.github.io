@@ -144,7 +144,7 @@
       border: none;
       border-radius: 30px;
       font-weight: bold;
-      font-size: 0.5rem;
+      font-size: 0.75rem;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
       cursor: pointer;
       transition: transform 0.3s ease, background 0.3s ease;
@@ -247,19 +247,21 @@
 </head>
 <body>
 
-  <a href="/" class="site-button">✨ Arn-niyay-khan ✨</a>
-  <h1>📘 กับดักหัวใจของนายตัวแสบ</h1>
+<a href="/" class="site-button">✨ Arn-niyay-khan ✨</a>
+<h1>📘 กับดักหัวใจของนายตัวแสบ</h1>
 
-  <div class="content-wrapper">
-    <div class="summary" data-raw-text="true">
+<div class="content-wrapper">
+
+  <div class="summary" data-raw-text="true">
 เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว
 
 ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว...
-    </div>
+  </div>
 
-    <div class="episode">
-      <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
-      <div class="episode-content" id="ep1" data-raw-text="false">
+  <!-- ตอนฟรี -->
+  <div class="episode">
+    <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
+    <div class="episode-content" id="ep1" data-raw-text="true">
 นายจะมานั่งตรงนี้ไม่ได้!
 
 ทำไมล่ะครับครู... ผมนั่งใกล้ครูไม่ได้เหรอ?
@@ -267,112 +269,111 @@
 เสียงของเด็กชายคนนั้นแฝงไว้ด้วยแววขบขันและกล้าท้าทาย ครูหนุ่มนิ่งอึ้งไปชั่วครู่ ก่อนจะพยายามเก็บสีหน้าให้เรียบเฉย
 
 เขากลับมาอีกครั้ง... หลังจากที่หายหน้าไปนานหลายปี และดูเหมือนว่าครั้งนี้จะไม่ได้มาดีอย่างที่คิด
-      </div>
     </div>
+  </div>
 
-    <div class="episode">
-      <div class="episode-title" onclick="handleLockedEpisode('ep2')">🔒 ตอนที่ 2: รอยแผลในใจ</div>
-      <div class="episode-content" id="ep2" data-raw-text="true">
+  <!-- ตอนล็อก -->
+  <div class="episode">
+    <div class="episode-title" onclick="handleLockedEpisode('ep2')">🔒 ตอนที่ 2: รอยแผลในใจ</div>
+    <div class="episode-content" id="ep2" data-raw-text="true" data-original-content="ตอนนี้ถูกล็อกไว้ กรุณาชำระเงินก่อนอ่าน">
 ตอนนี้ถูกล็อกไว้ กรุณาชำระเงินก่อนอ่าน
 
 📌 สแกนจ่ายผ่าน QR ด้านล่าง แล้วกดปุ่มด้านล่างเพื่อปลดล็อก
+
 <div class="qr-section" id="qr-ep2">
-  <img src="../img/qr-sample.jpg" alt="QR Code">
+  <img src="https://via.placeholder.com/180x180.png?text=QR+CODE" alt="QR Code">
   <br>
   <button class="unlock-button" onclick="unlockEpisode('ep2')">ฉันชำระเงินแล้ว</button>
 </div>
-      </div>
     </div>
   </div>
 
-  <div class="comment-box">
-    <h3>💬 แสดงความคิดเห็น</h3>
-    <textarea placeholder="แสดงความคิดเห็นที่นี่..." rows="4"></textarea>
-    <div class="emoji-bar">
-      <span onclick="appendEmoji(this)">😍</span>
-      <span onclick="appendEmoji(this)">😭</span>
-      <span onclick="appendEmoji(this)">🔥</span>
-    </div>
-    <button class="submit-button" onclick="alert('ความคิดเห็นของคุณถูกส่งแล้ว ขอบคุณค่ะ!')">ส่งความคิดเห็น</button>
+</div>
+
+<div class="comment-box">
+  <h3>💬 แสดงความคิดเห็น</h3>
+  <textarea placeholder="แสดงความคิดเห็นที่นี่..." rows="4"></textarea>
+  <div class="emoji-bar">
+    <span onclick="appendEmoji(this)">😍</span>
+    <span onclick="appendEmoji(this)">😭</span>
+    <span onclick="appendEmoji(this)">🔥</span>
   </div>
+  <button class="submit-button" onclick="alert('ความคิดเห็นของคุณถูกส่งแล้ว ขอบคุณค่ะ!')">ส่งความคิดเห็น</button>
+</div>
 
-  <div class="thank-you">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยายนะคะ ด้วยรักจากใจ 💜</div>
+<div class="thank-you">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยายนะคะ ด้วยรักจากใจ 💜</div>
 
-  <div class="back-container">
-    <a href="/coderak/" class="back-button">← ย้อนกลับไปหน้านามปากกา โค้ดรัก</a>
-  </div>
+<div class="back-container">
+  <a href="/coderak/" class="back-button">← ย้อนกลับไปหน้านามปากกา โค้ดรัก</a>
+</div>
 
-  <div class="footer">
-    © 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨
-  </div>
+<div class="footer">
+  © 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨
+</div>
 
-  <script>
-    function autoParagraph(element) {
-      if (!element) return;
-      const rawText = element.textContent.trim();
-      const paragraphs = rawText.split(/\n(?:\s*\n)+|\n+/);
-      element.innerHTML = '';
-      const watermarkDiv = document.createElement('div');
-      watermarkDiv.className = 'watermark';
-      element.appendChild(watermarkDiv);
-      paragraphs.forEach(paraText => {
-        const trimmed = paraText.trim();
-        if (trimmed) {
-          const p = document.createElement('p');
-          p.textContent = trimmed;
-          element.appendChild(p);
-        }
-      });
+<script>
+function autoParagraph(element) {
+  if (!element) return;
+  const rawText = element.textContent.trim();
+  const paragraphs = rawText.split(/\n(?:\s*\n)+|\n+/);
+  element.innerHTML = '';
+  const watermarkDiv = document.createElement('div');
+  watermarkDiv.className = 'watermark';
+  element.appendChild(watermarkDiv);
+  paragraphs.forEach(paraText => {
+    const trimmed = paraText.trim();
+    if (trimmed) {
+      const p = document.createElement('p');
+      p.textContent = trimmed;
+      element.appendChild(p);
     }
+  });
+}
 
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('.summary[data-raw-text="true"]').forEach(el => autoParagraph(el));
-      document.querySelectorAll('.episode-content[data-raw-text="true"]').forEach(el => {
-        el.setAttribute('data-original-content', el.textContent.trim());
-        autoParagraph(el);
-      });
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.summary[data-raw-text="true"]').forEach(el => autoParagraph(el));
+  document.querySelectorAll('.episode-content[data-raw-text="true"]').forEach(el => {
+    el.setAttribute('data-original-content', el.textContent.trim());
+    autoParagraph(el);
+  });
+  document.addEventListener('contextmenu', e => e.preventDefault());
+});
 
-      document.addEventListener('contextmenu', e => e.preventDefault());
-    });
+function toggleEpisode(id) {
+  const el = document.getElementById(id);
+  if (el) el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
 
-    function toggleEpisode(id) {
-      const el = document.getElementById(id);
-      if (el) el.style.display = el.style.display === 'block' ? 'none' : 'block';
+function handleLockedEpisode(id) {
+  const el = document.getElementById(id);
+  const qr = document.getElementById('qr-' + id);
+  if (localStorage.getItem('unlocked_' + id)) {
+    const content = el.getAttribute('data-original-content');
+    if (content) {
+      el.textContent = content;
+      autoParagraph(el);
+      if (qr) qr.style.display = 'none';
     }
+    el.style.display = 'block';
+  } else {
+    if (qr) qr.style.display = 'block';
+    el.style.display = 'block';
+  }
+}
 
-    function handleLockedEpisode(id) {
-      const el = document.getElementById(id);
-      const qr = document.getElementById('qr-' + id);
-      if (localStorage.getItem('unlocked_' + id)) {
-        const content = el.getAttribute('data-original-content');
-        if (content) {
-          el.textContent = content;
-          autoParagraph(el);
-        }
-        if (qr) qr.style.display = 'none';
-        el.style.display = 'block';
-      } else {
-        el.textContent = `ตอนนี้ถูกล็อกไว้ กรุณาชำระเงินก่อนอ่าน
+function unlockEpisode(id) {
+  localStorage.setItem('unlocked_' + id, true);
+  alert("ปลดล็อกสำเร็จ! กรุณากดชื่อตอนอีกครั้งเพื่ออ่าน");
+}
 
-📌 สแกนจ่ายผ่าน QR ด้านล่าง แล้วกดปุ่มด้านล่างเพื่อปลดล็อก`;
-        autoParagraph(el);
-        if (qr) qr.style.display = 'block';
-        el.style.display = 'block';
-      }
-    }
+function appendEmoji(el) {
+  const textarea = document.querySelector('.comment-box textarea');
+  if (textarea) {
+    textarea.value += el.textContent;
+    textarea.focus();
+  }
+}
+</script>
 
-    function unlockEpisode(id) {
-      localStorage.setItem('unlocked_' + id, true);
-      alert("ปลดล็อกสำเร็จ! กรุณากดชื่อตอนอีกครั้งเพื่ออ่าน");
-    }
-
-    function appendEmoji(el) {
-      const textarea = document.querySelector('.comment-box textarea');
-      if (textarea) {
-        textarea.value += el.textContent;
-        textarea.focus();
-      }
-    }
-  </script>
 </body>
 </html>
