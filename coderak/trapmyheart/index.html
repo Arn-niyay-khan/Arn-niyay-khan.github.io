@@ -28,13 +28,11 @@
       margin-bottom: 30px;
       background-color: #f6d8ff;
       color: #6d3fb0;
-      text-align: center;
       font-size: 2.2rem;
       font-weight: bold;
       border-radius: 999px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
       text-decoration: none;
-      transition: transform 0.3s ease, background-color 0.3s ease;
+      transition: transform 0.3s ease;
     }
 
     .site-button:hover {
@@ -49,17 +47,25 @@
       margin-bottom: 10px;
     }
 
-    .summary {
-      font-size: 0.81rem;
-      color: #6e5b84;
-      margin-bottom: 40px;
-      line-height: 1.8;
+    .summary,
+    .episode-content {
+      font-size: 0.85rem;
+      color: #5e437f;
+      line-height: 1.9;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.03);
+      margin-top: 10px;
       position: relative;
     }
 
-    .summary p {
-      text-indent: 4em;
+    .summary p,
+    .episode-content p {
+      text-indent: 2em;
       margin-bottom: 1em;
+      position: relative;
+      z-index: 2;
     }
 
     .episode {
@@ -68,133 +74,74 @@
 
     .episode-title {
       cursor: pointer;
-      color: #6e3cab;
       font-weight: bold;
       font-size: 1rem;
       background-color: #f6e7ff;
       padding: 12px 20px;
       border-radius: 12px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-      transition: background 0.3s ease;
       text-align: center;
+      color: #6e3cab;
     }
 
     .episode-title:hover {
       background-color: #e4ccff;
     }
 
-    .episode-content {
-      display: none;
-      margin-top: 12px;
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 14px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      font-size: 0.81rem;
-      line-height: 1.8;
-      color: #5b437f;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .episode-content p {
-      text-indent: 4em;
-      margin-bottom: 1em;
-    }
-
     .watermark {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><text x="10" y="100" font-family="Mitr" font-size="20" fill="rgba(0,0,0,0.05)" transform="rotate(-30 100 100)">Arn-niyay-khan</text></svg>');
       background-repeat: repeat;
+      opacity: 0.7;
+      pointer-events: none;
       z-index: 1;
-      opacity: 0.8;
-    }
-
-    .episode-content > *, .summary > * {
-      position: relative;
-      z-index: 2;
     }
 
     .qr-section {
-      display: none;
       margin-top: 15px;
+      display: none;
       text-align: center;
     }
 
     .qr-section img {
       width: 180px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-
-    .qr-section p {
-      font-size: 0.95rem;
-      color: #6e5b84;
+      border-radius: 8px;
     }
 
     .unlock-button {
-      padding: 10px 20px;
+      margin-top: 12px;
+      padding: 8px 16px;
       background: linear-gradient(135deg, #b68df5, #925fdd);
       color: #fff;
       border: none;
       border-radius: 30px;
-      font-weight: bold;
       font-size: 0.75rem;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      font-weight: bold;
       cursor: pointer;
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
-
-    .unlock-button:hover {
-      background: linear-gradient(135deg, #925fdd, #b68df5);
-      transform: scale(1.05);
-    }
-
-    .thank-you {
-      text-align: center;
-      font-size: 1rem;
-      margin-top: 60px;
-      margin-bottom: 10px;
-      color: #5e407f;
-      font-style: italic;
     }
 
     .comment-box {
-      margin-top: 40px;
       background: #f5f0ff;
       padding: 20px;
       border-radius: 16px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin-top: 40px;
     }
 
     .comment-box textarea {
       width: 100%;
       font-family: 'Mitr', sans-serif;
-      font-size: 0.81rem;
-      padding: 12px;
+      font-size: 0.9rem;
+      padding: 10px;
       border: 1px solid #ccc;
       border-radius: 10px;
-      resize: vertical;
-    }
-
-    .emoji-bar {
-      margin-top: 10px;
     }
 
     .emoji-bar span {
       cursor: pointer;
-      font-size: 0.81rem;
-      margin-right: 10px;
-      transition: transform 0.2s ease;
-    }
-
-    .emoji-bar span:hover {
-      transform: scale(1.3);
+      font-size: 1.1rem;
+      margin: 0 5px;
     }
 
     .submit-button {
@@ -206,62 +153,48 @@
       border-radius: 30px;
       font-size: 0.89rem;
       cursor: pointer;
-      transition: background 0.3s ease;
     }
 
-    .submit-button:hover {
-      background-color: #8f63d2;
+    .thank-you, .footer {
+      text-align: center;
+      font-size: 0.85rem;
+      margin-top: 40px;
+      color: #866b9d;
     }
 
     .back-button {
       display: inline-block;
-      padding: 12px 28px;
+      margin-top: 20px;
+      padding: 10px 24px;
       background: linear-gradient(135deg, #c79df4, #a57be7);
       color: #fff;
-      text-decoration: none;
       border-radius: 30px;
       font-weight: bold;
-      font-size: 1.6rem;
-      box-shadow: 0 4px 12px rgba(167, 125, 221, 0.4);
-      transition: all 0.3s ease;
-      margin-top: 30px;
+      text-decoration: none;
     }
 
     .back-button:hover {
       background: linear-gradient(135deg, #a577e7, #c79df4);
-      box-shadow: 0 6px 16px rgba(135, 95, 190, 0.5);
-      transform: scale(1.05);
-    }
-
-    .back-container {
-      text-align: center;
-    }
-
-    .footer {
-      margin-top: 60px;
-      font-size: 0.8rem;
-      color: #9a7fb5;
-      text-align: center;
     }
   </style>
 </head>
 <body>
 
-<a href="/" class="site-button">✨ Arn-niyay-khan ✨</a>
-<h1>📘 กับดักหัวใจของนายตัวแสบ</h1>
+  <a href="/" class="site-button">✨ Arn-niyay-khan ✨</a>
+  <h1>📘 กับดักหัวใจของนายตัวแสบ</h1>
 
-<div class="content-wrapper">
+  <div class="content-wrapper">
 
-  <div class="summary" data-raw-text="true">
+    <div class="summary" data-paragraph>
 เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว
 
 ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว...
-  </div>
+    </div>
 
-  <!-- ตอนฟรี -->
-  <div class="episode">
-    <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
-    <div class="episode-content" id="ep1" data-raw-text="true">
+    <!-- ตอนที่ 1 -->
+    <div class="episode">
+      <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
+      <div class="episode-content" id="ep1" data-paragraph>
 นายจะมานั่งตรงนี้ไม่ได้!
 
 ทำไมล่ะครับครู... ผมนั่งใกล้ครูไม่ได้เหรอ?
@@ -269,13 +202,13 @@
 เสียงของเด็กชายคนนั้นแฝงไว้ด้วยแววขบขันและกล้าท้าทาย ครูหนุ่มนิ่งอึ้งไปชั่วครู่ ก่อนจะพยายามเก็บสีหน้าให้เรียบเฉย
 
 เขากลับมาอีกครั้ง... หลังจากที่หายหน้าไปนานหลายปี และดูเหมือนว่าครั้งนี้จะไม่ได้มาดีอย่างที่คิด
+      </div>
     </div>
-  </div>
 
-  <!-- ตอนล็อก -->
-  <div class="episode">
-    <div class="episode-title" onclick="handleLockedEpisode('ep2')">🔒 ตอนที่ 2: รอยแผลในใจ</div>
-    <div class="episode-content" id="ep2" data-raw-text="true" data-original-content="ตอนนี้ถูกล็อกไว้ กรุณาชำระเงินก่อนอ่าน">
+    <!-- ตอนที่ 2 (ล็อก) -->
+    <div class="episode">
+      <div class="episode-title" onclick="handleLockedEpisode('ep2')">🔒 ตอนที่ 2: รอยแผลในใจ</div>
+      <div class="episode-content" id="ep2" data-paragraph>
 ตอนนี้ถูกล็อกไว้ กรุณาชำระเงินก่อนอ่าน
 
 📌 สแกนจ่ายผ่าน QR ด้านล่าง แล้วกดปุ่มด้านล่างเพื่อปลดล็อก
@@ -285,95 +218,81 @@
   <br>
   <button class="unlock-button" onclick="unlockEpisode('ep2')">ฉันชำระเงินแล้ว</button>
 </div>
+      </div>
     </div>
+
   </div>
 
-</div>
-
-<div class="comment-box">
-  <h3>💬 แสดงความคิดเห็น</h3>
-  <textarea placeholder="แสดงความคิดเห็นที่นี่..." rows="4"></textarea>
-  <div class="emoji-bar">
-    <span onclick="appendEmoji(this)">😍</span>
-    <span onclick="appendEmoji(this)">😭</span>
-    <span onclick="appendEmoji(this)">🔥</span>
+  <!-- คอมเมนต์ -->
+  <div class="comment-box">
+    <h3>💬 แสดงความคิดเห็น</h3>
+    <textarea placeholder="แสดงความคิดเห็นที่นี่..." rows="4"></textarea>
+    <div class="emoji-bar">
+      <span onclick="appendEmoji(this)">😍</span>
+      <span onclick="appendEmoji(this)">😭</span>
+      <span onclick="appendEmoji(this)">🔥</span>
+    </div>
+    <button class="submit-button" onclick="alert('ส่งความคิดเห็นแล้วค่ะ!')">ส่งความคิดเห็น</button>
   </div>
-  <button class="submit-button" onclick="alert('ความคิดเห็นของคุณถูกส่งแล้ว ขอบคุณค่ะ!')">ส่งความคิดเห็น</button>
-</div>
 
-<div class="thank-you">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยายนะคะ ด้วยรักจากใจ 💜</div>
+  <div class="thank-you">💜 ขอบคุณที่ติดตามนิยายของโค้ดรัก 💜</div>
 
-<div class="back-container">
-  <a href="/coderak/" class="back-button">← ย้อนกลับไปหน้านามปากกา โค้ดรัก</a>
-</div>
+  <div class="back-container">
+    <a href="/coderak/" class="back-button">← กลับสู่นามปากกา โค้ดรัก</a>
+  </div>
 
-<div class="footer">
-  © 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨
-</div>
+  <div class="footer">
+    © 2025 Arn-niyay-khan | รวมพอร์ตนิยายคุณภาพจากนักเขียนหลายแนว
+  </div>
 
-<script>
-function autoParagraph(element) {
-  if (!element) return;
-  const rawText = element.textContent.trim();
-  const paragraphs = rawText.split(/\n(?:\s*\n)+|\n+/);
-  element.innerHTML = '';
-  const watermarkDiv = document.createElement('div');
-  watermarkDiv.className = 'watermark';
-  element.appendChild(watermarkDiv);
-  paragraphs.forEach(paraText => {
-    const trimmed = paraText.trim();
-    if (trimmed) {
-      const p = document.createElement('p');
-      p.textContent = trimmed;
-      element.appendChild(p);
+  <script>
+    function formatParagraphs(el) {
+      if (!el) return;
+      const raw = el.textContent.trim();
+      const paras = raw.split(/\n{2,}|\r?\n/); // รองรับทั้งเว้นบรรทัดและบรรทัดเดียว
+      el.innerHTML = '<div class="watermark"></div>';
+      paras.forEach(p => {
+        if (p.trim()) {
+          const tag = document.createElement('p');
+          tag.textContent = p.trim();
+          el.appendChild(tag);
+        }
+      });
     }
-  });
-}
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('.summary[data-raw-text="true"]').forEach(el => autoParagraph(el));
-  document.querySelectorAll('.episode-content[data-raw-text="true"]').forEach(el => {
-    el.setAttribute('data-original-content', el.textContent.trim());
-    autoParagraph(el);
-  });
-  document.addEventListener('contextmenu', e => e.preventDefault());
-});
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('[data-paragraph]').forEach(el => formatParagraphs(el));
+    });
 
-function toggleEpisode(id) {
-  const el = document.getElementById(id);
-  if (el) el.style.display = el.style.display === 'block' ? 'none' : 'block';
-}
-
-function handleLockedEpisode(id) {
-  const el = document.getElementById(id);
-  const qr = document.getElementById('qr-' + id);
-  if (localStorage.getItem('unlocked_' + id)) {
-    const content = el.getAttribute('data-original-content');
-    if (content) {
-      el.textContent = content;
-      autoParagraph(el);
-      if (qr) qr.style.display = 'none';
+    function toggleEpisode(id) {
+      const el = document.getElementById(id);
+      if (el) el.style.display = el.style.display === 'block' ? 'none' : 'block';
     }
-    el.style.display = 'block';
-  } else {
-    if (qr) qr.style.display = 'block';
-    el.style.display = 'block';
-  }
-}
 
-function unlockEpisode(id) {
-  localStorage.setItem('unlocked_' + id, true);
-  alert("ปลดล็อกสำเร็จ! กรุณากดชื่อตอนอีกครั้งเพื่ออ่าน");
-}
+    function handleLockedEpisode(id) {
+      const el = document.getElementById(id);
+      const qr = document.getElementById('qr-' + id);
+      if (localStorage.getItem('unlocked_' + id)) {
+        if (qr) qr.style.display = 'none';
+      } else {
+        if (qr) qr.style.display = 'block';
+      }
+      el.style.display = 'block';
+    }
 
-function appendEmoji(el) {
-  const textarea = document.querySelector('.comment-box textarea');
-  if (textarea) {
-    textarea.value += el.textContent;
-    textarea.focus();
-  }
-}
-</script>
+    function unlockEpisode(id) {
+      localStorage.setItem('unlocked_' + id, true);
+      alert("ปลดล็อกสำเร็จ! กรุณากดชื่อตอนอีกครั้งเพื่ออ่าน");
+    }
+
+    function appendEmoji(el) {
+      const textarea = document.querySelector('.comment-box textarea');
+      if (textarea) {
+        textarea.value += el.textContent;
+        textarea.focus();
+      }
+    }
+  </script>
 
 </body>
 </html>
