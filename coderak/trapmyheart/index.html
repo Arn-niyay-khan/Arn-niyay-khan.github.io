@@ -283,7 +283,8 @@ h1 {
       const paragraphs = raw.split(/\n\s*\n|\n+/); // เว้นบรรทัดหรือขึ้นบรรทัดใหม่
       block.innerHTML = paragraphs.map(p => `<p style="text-indent: 2em; margin-bottom: 1em;">${p.trim()}</p>`).join('');
     });
-  </script>
+  });
+</script>
 
 </body>
 </html>
