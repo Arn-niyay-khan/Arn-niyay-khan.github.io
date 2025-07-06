@@ -315,8 +315,16 @@ h1 {
       block.innerHTML = paragraphs.map(p => `<p style="text-indent: 2em; margin-bottom: 1em;">${p.trim()}</p>`).join("");
     });
 
-    // ซ่อน QR ทุกตอน (กันกรณี reload แล้วค้าง)
-    document.querySelectorAll(".qr-section").forEach(qr => qr.style.display = "none");
+    // ซ่อน QR ทั้งหมด **ยกเว้น** ตัวที่ควรแสดงอยู่ (ตอนที่คลิกไปแล้ว)
+    document.querySelectorAll(".qr-section").forEach(qr => {
+      const parent = qr.closest(".text-content");
+      const isUnlocked = localStorage.getItem("unlocked_" + parent?.id) || localStorage.getItem("unlocked_all");
+      if (!isUnlocked) qr.style.display = "none";
+    });
+
+    // ซ่อน QR รวมตอนโหลดหน้า
+    const qrAll = document.getElementById("qr-all-wrapper");
+    if (qrAll) qrAll.style.display = "none";
   });
 
   function showUnlockAllQR() {
