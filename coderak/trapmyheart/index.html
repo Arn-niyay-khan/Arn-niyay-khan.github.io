@@ -12,8 +12,8 @@
       padding: 40px;
       max-width: 1024px;
       margin: auto;
-      text-align: center;
-      /* ป้องกันการเลือกข้อความและคลิกขวา */
+      text-align: center; /* ตรงนี้กำหนดให้องค์ประกอบหลักอยู่ตรงกลาง */
+      /* ป้องกันการเลือกข้อความและคลิกขวา - ควรทำงานเมื่อ JS ทำงาน */
       -webkit-user-select: none; /* Safari */
       -moz-user-select: none;    /* Firefox */
       -ms-user-select: none;     /* IE 10+ */
@@ -54,12 +54,12 @@
       margin-bottom: 40px;
       line-height: 1.8;
       position: relative; /* สำหรับ watermark */
+      text-align: left; /* **แก้ไขตรงนี้! ให้เนื้อหาเรื่องย่อชิดซ้าย** */
     }
 
     .summary p {
       text-indent: 1.3em;
       margin-bottom: 1em;
-      /* white-space: pre-wrap;  อันนี้จะถูกจัดการด้วย JS */
     }
 
     .episode {
@@ -76,6 +76,7 @@
       border-radius: 12px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.06);
       transition: background 0.3s ease;
+      text-align: center; /* หัวข้อตอนยังคงอยู่กลาง */
     }
 
     .episode-title:hover {
@@ -92,7 +93,7 @@
       font-size: 1rem;
       line-height: 1.8;
       color: #5b437f;
-      text-align: left; /* ให้เนื้อหาจัดชิดซ้าย */
+      text-align: left; /* **แก้ไขตรงนี้! ให้เนื้อหานิยายชิดซ้าย** */
       position: relative; /* สำหรับ watermark */
       overflow: hidden; /* เพื่อให้ watermark ไม่ล้นออกไป */
     }
@@ -100,7 +101,6 @@
     .episode-content p {
       text-indent: 1.3em;
       margin-bottom: 1em;
-      /* white-space: pre-wrap;  อันนี้จะถูกจัดการด้วย JS */
     }
 
     /* สไตล์สำหรับ Watermark */
@@ -117,12 +117,10 @@
       opacity: 0.8; /* เพื่อไม่ให้บังเนื้อหามากเกินไป */
     }
 
-    .episode-content .watermark, .summary .watermark {
-        z-index: 1;
-    }
+    /* ให้เนื้อหาอยู่บน watermark */
     .episode-content > *, .summary > * {
         position: relative;
-        z-index: 2; /* ให้เนื้อหาอยู่บน watermark */
+        z-index: 2;
     }
 
 
@@ -308,10 +306,14 @@
   <script>
     // ฟังก์ชันสำหรับจัดย่อหน้าอัตโนมัติ
     function autoParagraph(element) {
-      if (!element) return;
+      if (!element) {
+          console.warn('Element for autoParagraph not found.');
+          return;
+      }
       const rawText = element.textContent.trim();
       // แบ่งข้อความตามบรรทัดว่าง 2 บรรทัดขึ้นไป หรือบรรทัดว่างเดี่ยวก็ได้
-      const paragraphs = rawText.split(/\n\s*\n|\n/);
+      // ใช้ regex ที่ซับซ้อนขึ้นเพื่อรองรับการเว้นวรรคและบรรทัดว่างอย่างยืดหยุ่น
+      const paragraphs = rawText.split(/\n(?:\s*\n)+|\n+/);
       element.innerHTML = ''; // ล้างเนื้อหาเดิม
 
       // เพิ่ม Watermark ลงไปใน element ที่มีเนื้อหา
@@ -330,32 +332,45 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
+      console.log("DOM fully loaded and parsed.");
+
       // จัดการย่อหน้าสำหรับ summary และ episode-content เมื่อโหลดหน้า
       document.querySelectorAll('.summary[data-raw-text="true"]').forEach(box => {
+        console.log("Processing summary box:", box);
         autoParagraph(box);
       });
       document.querySelectorAll('.episode-content[data-raw-text="true"]').forEach(box => {
-        // เก็บเนื้อหาดิบไว้ใน data attribute
+        console.log("Processing episode content box:", box);
+        // เก็บเนื้อหาดิบไว้ใน data attribute ก่อนที่จะประมวลผล
         box.setAttribute('data-original-content', box.textContent.trim());
         autoParagraph(box);
       });
 
       // ป้องกันการคลิกขวา
-      document.addEventListener('contextmenu', event => event.preventDefault());
+      document.addEventListener('contextmenu', event => {
+        console.log("Right click prevented.");
+        event.preventDefault();
+      });
 
       // พยายามป้องกัน PrtScn (F12 และ DevTools ก็ยังเป็นไปได้)
       document.addEventListener('keyup', (e) => {
         if (e.key === 'PrintScreen') {
-          // แจ้งเตือนผู้ใช้ (ทางเลือก)
+          console.log("Print Screen attempted.");
+          // สามารถเพิ่ม alert หรือแสดง overlay ชั่วคราวได้
           // alert('ไม่อนุญาตให้แคปหน้าจอ');
-          // หรืออาจจะแสดงข้อความทับหน้าจอชั่วคราว
         }
       });
+      // ป้องกันการเลือกข้อความบน body
+      document.body.style.userSelect = 'none';
+      document.body.style.webkitUserSelect = 'none';
+      document.body.style.mozUserSelect = 'none';
+      document.body.style.msUserSelect = 'none';
     });
 
     function toggleEpisode(id) {
       const el = document.getElementById(id);
       if (el) {
+        console.log("Toggling episode:", id);
         el.style.display = el.style.display === 'block' ? 'none' : 'block';
       }
     }
@@ -364,10 +379,16 @@
       const contentEl = document.getElementById(id);
       const qrSectionEl = document.getElementById('qr-' + id);
 
-      if (!contentEl) return; // ป้องกันข้อผิดพลาดหากไม่พบ element
+      if (!contentEl) {
+          console.warn('Content element for locked episode not found:', id);
+          return;
+      }
+
+      console.log("Handling locked episode:", id);
 
       // ตรวจสอบว่าปลดล็อกแล้วหรือไม่
       if (localStorage.getItem('unlocked_' + id)) {
+        console.log("Episode is unlocked.");
         // ถ้าปลดล็อกแล้ว ให้นำเนื้อหาดิบที่เก็บไว้มาจัดย่อหน้า
         const originalContent = contentEl.getAttribute('data-original-content');
         if (originalContent) {
@@ -379,7 +400,15 @@
         }
         contentEl.style.display = 'block'; // แสดงเนื้อหา
       } else {
+        console.log("Episode is locked. Displaying QR section.");
         // ถ้ายังไม่ปลดล็อก
+        // ดึงเนื้อหาดิบ (ซึ่งเป็นข้อความล็อก) มาแสดง
+        const lockedText = `ตอนนี้ถูกล็อกไว้ กรุณาชำระเงินก่อนอ่าน
+
+📌 สแกนจ่ายผ่าน QR ด้านล่าง แล้วกดปุ่มด้านล่างเพื่อปลดล็อก`;
+        contentEl.textContent = lockedText; // ใส่เนื้อหาข้อความล็อก
+        autoParagraph(contentEl); // จัดย่อหน้าข้อความล็อก
+
         if (qrSectionEl) {
             qrSectionEl.style.display = 'block'; // แสดง QR code
         }
@@ -390,8 +419,9 @@
     function unlockEpisode(id) {
       localStorage.setItem('unlocked_' + id, true);
       alert("ปลดล็อกสำเร็จ! กรุณากดชื่อตอนนี้อีกครั้งเพื่ออ่านเนื้อหาเต็ม");
-      // เรียก handleLockedEpisode อีกครั้งเพื่อแสดงเนื้อหาที่จัดย่อหน้าแล้ว
-      handleLockedEpisode(id);
+      console.log("Episode unlocked in localStorage:", id);
+      // ไม่ต้องเรียก handleLockedEpisode ตรงนี้ เพราะจะให้ผู้ใช้กดซ้ำ
+      // handleLockedEpisode(id);
     }
 
     function appendEmoji(el) {
@@ -399,6 +429,7 @@
       if (textarea) {
         textarea.value += el.textContent;
         textarea.focus();
+        console.log("Emoji appended.");
       }
     }
   </script>
