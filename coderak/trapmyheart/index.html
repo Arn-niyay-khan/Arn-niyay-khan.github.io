@@ -5,6 +5,56 @@
   <title>กับดักหัวใจของนายตัวแสบ | โค้ดรัก</title>
   <link href="https://fonts.googleapis.com/css2?family=Mitr&display=swap" rel="stylesheet">
   <style>
+    /* เพิ่ม CSS สำหรับข้อความตัวจับเวลา */
+.countdown-timer {
+  font-size: 1rem;
+  color: #a050d0;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+/* ซ่อนปุ่มปลดล็อกเริ่มต้น จนกว่าจะครบเวลา */
+.unlock-button-timed {
+  display: none;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #b68df5, #925fdd);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.unlock-button-timed:hover {
+  background: linear-gradient(135deg, #925fdd, #b68df5);
+  transform: scale(1.05);
+}
+
+/* สไตล์สำหรับปุ่ม 'อ่านเนื้อหา' หลังจากปลดล็อก */
+.read-content-button {
+  display: none; /* ซ่อนไว้ก่อน */
+  margin-top: 20px;
+  padding: 12px 25px;
+  background-color: #6d3fb0;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.read-content-button:hover {
+  background-color: #5a2e99;
+  transform: scale(1.05);
+}
+
     body {
       background: linear-gradient(145deg, #fdf5ff, #f0f8ff);
       font-family: 'Mitr', sans-serif;
@@ -337,6 +387,152 @@
       console.log(`Auto-paragraphing complete for element: ${element.id || element.className}`);
       console.log("Current HTML after autoParagraph:", element.innerHTML); // ตรวจสอบ HTML ที่ถูกสร้างขึ้น
     }
+    
+// ตัวแปรสำหรับเก็บ timer
+let countdownInterval;
+
+function handleLockedEpisode(id) {
+  const contentEl = document.getElementById(id);
+  if (!contentEl) {
+      console.warn('Content element for locked episode not found:', id);
+      return;
+  }
+
+  console.log("Handling locked episode:", id);
+
+  // ตรวจสอบว่าปลดล็อกแล้วหรือไม่
+  if (localStorage.getItem('unlocked_' + id)) {
+    console.log("Episode is unlocked.");
+    const originalContent = contentEl.getAttribute('data-original-content');
+    if (originalContent) {
+      contentEl.innerHTML = ''; // ล้างเนื้อหาเดิมทั้งหมด
+      const watermarkDiv = document.createElement('div');
+      watermarkDiv.className = 'watermark';
+      contentEl.appendChild(watermarkDiv); // เพิ่ม watermark
+      
+      const paragraphs = originalContent.split(/\n(?:\s*\n)+|\n+/);
+      paragraphs.forEach(paraText => {
+        const trimmedPara = paraText.trim();
+        if (trimmedPara) {
+          const p = document.createElement('p');
+          p.textContent = trimmedPara;
+          contentEl.appendChild(p);
+        }
+      });
+    }
+    contentEl.style.display = 'block'; // แสดงเนื้อหาที่ปลดล็อกแล้ว
+    // ตรวจสอบว่ามีปุ่ม 'อ่านเนื้อหา' ที่ควรซ่อนอยู่หรือไม่
+    const readBtn = contentEl.querySelector('.read-content-button');
+    if (readBtn) {
+      readBtn.style.display = 'none'; // ซ่อนปุ่มอ่านเนื้อหาถ้ามันแสดงอยู่
+    }
+
+  } else {
+    // ถ้ายังไม่ปลดล็อก: แสดง QR Code และเริ่มนับถอยหลัง
+    console.log("Episode is locked. Displaying QR section and starting countdown.");
+    
+    // สร้าง HTML สำหรับตอนที่ล็อก พร้อม QR Code และตัวจับเวลา
+    const lockedContentHTML = `
+      <div class="watermark"></div>
+      <p>ตอนนี้ถูกล็อกไว้ กรุณาชำระเงินก่อนอ่าน</p>
+      <p>📌 สแกนจ่ายผ่าน QR ด้านล่าง</p>
+      <div class="qr-section">
+        <img src="../img/qr-sample.jpg" alt="QR Code">
+        <div class="countdown-timer" id="countdown-${id}">เหลือเวลา 25 วินาที</div>
+        <button class="unlock-button-timed" id="unlock-btn-${id}" onclick="markAsPaid('${id}')">ฉันชำระเงินแล้ว</button>
+        <button class="read-content-button" id="read-btn-${id}" onclick="readLockedContent('${id}')">กรุณากดตอนที่ล็อคอีกครั้งเพื่ออ่านเนื้อหา</button>
+      </div>
+    `;
+    
+    contentEl.innerHTML = lockedContentHTML; // ใส่ HTML เข้าไปใน episode-content
+    contentEl.style.display = 'block'; // ให้แสดงผล
+
+    // เริ่มตัวจับเวลา
+    startCountdown(id, 25); 
+  }
+}
+
+// ฟังก์ชันนับถอยหลัง
+function startCountdown(id, seconds) {
+    const countdownEl = document.getElementById(`countdown-${id}`);
+    const unlockBtn = document.getElementById(`unlock-btn-${id}`);
+    
+    // เคลียร์ timer เก่าถ้ามี
+    if (countdownInterval) {
+        clearInterval(countdownInterval);
+    }
+
+    let timeLeft = seconds;
+    countdownEl.textContent = `เหลือเวลา ${timeLeft} วินาที`;
+    unlockBtn.style.display = 'none'; // ซ่อนปุ่มไว้ก่อน
+
+    countdownInterval = setInterval(() => {
+        timeLeft--;
+        countdownEl.textContent = `เหลือเวลา ${timeLeft} วินาที`;
+
+        if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+            countdownEl.textContent = "ครบกำหนดชำระเงินแล้ว";
+            unlockBtn.style.display = 'block'; // แสดงปุ่ม "ฉันชำระเงินแล้ว"
+        }
+    }, 1000); // นับทุก 1 วินาที
+}
+
+// ฟังก์ชันเมื่อผู้ใช้กด "ฉันชำระเงินแล้ว" (หลังครบเวลา)
+function markAsPaid(id) {
+    localStorage.setItem('unlocked_' + id, 'pending_read'); // ตั้งสถานะเป็นรออ่าน
+    const unlockBtn = document.getElementById(`unlock-btn-${id}`);
+    const readBtn = document.getElementById(`read-btn-${id}`);
+    const countdownEl = document.getElementById(`countdown-${id}`);
+
+    if (unlockBtn) unlockBtn.style.display = 'none'; // ซ่อนปุ่มชำระเงิน
+    if (countdownEl) countdownEl.style.display = 'none'; // ซ่อนตัวจับเวลา
+    if (readBtn) readBtn.style.display = 'block'; // แสดงปุ่ม "กรุณากดตอนที่ล็อคอีกครั้ง"
+
+    alert("ระบบรับทราบการชำระเงินของคุณแล้ว! กรุณากดปุ่มด้านล่างเพื่อดำเนินการต่อ");
+}
+
+// ฟังก์ชันเมื่อผู้ใช้กด "กรุณากดตอนที่ล็อคอีกครั้ง"
+function readLockedContent(id) {
+    // เปลี่ยนสถานะใน localStorage เป็น unlocked จริงๆ
+    localStorage.setItem('unlocked_' + id, true); 
+    // เรียก handleLockedEpisode อีกครั้ง เพื่อโหลดเนื้อหาจริง
+    handleLockedEpisode(id);
+    alert("คุณสามารถอ่านเนื้อหานี้ได้แล้ว!");
+}
+
+// **ฟังก์ชัน toggleEpisode (ควรจะยังคงอยู่และเรียก handleLockedEpisode):**
+function toggleEpisode(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    console.log("Toggling episode:", id);
+    // ถ้าเป็นตอนที่ล็อกอยู่ (หรือมี 'unlocked_' + id เป็น null/undefined) ให้เรียก handleLockedEpisode
+    if (!localStorage.getItem('unlocked_' + id) || localStorage.getItem('unlocked_' + id) === 'pending_read') {
+        handleLockedEpisode(id);
+    } else {
+        // ถ้าเป็นตอนที่ไม่ล็อก หรือปลดล็อกแล้ว (unlocked_id เป็น true) ให้สลับการแสดงผลปกติ
+        el.style.display = el.style.display === 'block' ? 'none' : 'block';
+        // ตรวจสอบและจัดย่อหน้าอีกครั้งเมื่อแสดงเนื้อหา
+        if (el.style.display === 'block' && el.getAttribute('data-raw-text') === 'true') {
+            const originalContent = el.getAttribute('data-original-content');
+            if (originalContent && el.innerHTML.indexOf('watermark') === -1) { // ตรวจสอบว่าไม่มี watermark อยู่แล้ว
+                el.innerHTML = ''; // Clear existing content to re-render
+                const watermarkDiv = document.createElement('div');
+                watermarkDiv.className = 'watermark';
+                el.appendChild(watermarkDiv);
+                originalContent.split(/\n(?:\s*\n)+|\n+/).forEach(paraText => {
+                    const trimmedPara = paraText.trim();
+                    if (trimmedPara) {
+                        const p = document.createElement('p');
+                        p.textContent = trimmedPara;
+                        el.appendChild(p);
+                    }
+                });
+            }
+        }
+    }
+  }
+}
 
     document.addEventListener("DOMContentLoaded", () => {
       console.log("DOM fully loaded and parsed.");
