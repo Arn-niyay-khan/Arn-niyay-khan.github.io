@@ -226,8 +226,8 @@ h1 {
 เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว ความรักในรั้วโรงเรียน
 จึงไม่ได้หวานอย่างเดียว...
 "></div>
-
-  <div class="action-section">
+  
+    <div class="action-section">
   <div class="action-box">
     <p>🔓 ปลดล็อกตอนเดียว</p>
     <button class="unlock-button" onclick="unlockAllEpisodes()">ปลดล็อกตอนเดีบง (2 เหรียญ)</button>
@@ -237,13 +237,14 @@ h1 {
     <p>🔓 ปลดล็อกทุกตอนในครั้งเดียว</p>
     <button class="unlock-button" onclick="unlockAllEpisodes()">ปลดล็อกทุกตอน (4 เหรียญ)</button>
   </div>
-  <div class="action-box">
+  
+    <div class="action-box">
     <p>📘 ซื้อ PDF + ตอนพิเศษสุดฟินมากกว่า 1 ตอน</p>
     <button class="unlock-button" onclick="buyPdfAll(19, 'link-to-your-pdf.pdf')">ซื้อ PDF ทั้งเรื่อง (19 เหรียญ)</button>
   </div>
 </div>
 
-<div class="episode">
+      <div class="episode">
   <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
   <div class="text-content" id="ep1" style="display: none;" data-content="
 นายจะมานั่งตรงนี้ไม่ได้!
@@ -259,7 +260,7 @@ h1 {
 "></div>
 </div>
 
-<div class="episode">
+      <div class="episode">
   <div class="episode-title" onclick="toggleEpisode('ep2')">🔒 ตอนที่ 2: รอยแผลในใจ</div>
   <div class="text-content" id="ep2" style="display: none;" data-content="
 เสียงฝนตกกระทบหน้าต่างห้องเรียนที่เงียบสงัด
@@ -268,7 +269,8 @@ h1 {
 
 สิ่งที่เกิดขึ้นในอดีต... ยังฝังลึกอยู่ในหัวใจ
 "></div>
-</div>
+
+      </div>
 </div> <!-- กล่องยืนยันการใช้เหรียญ -->
 <div id="confirmModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:9999;">
   <div style="background:#fff; max-width:400px; margin:15% auto; padding:30px; border-radius:12px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2); font-family:'Mitr', sans-serif;">
