@@ -67,6 +67,30 @@ h1 {
   margin-bottom: 30px;
 }
 
+.action-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 50px 0;
+  flex-wrap: wrap;
+}
+
+.action-box {
+  flex: 1;
+  min-width: 300px;
+  background-color: #f6e7ff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.action-box p {
+  font-size: 0.9rem;
+  color: #6e3cab;
+  margin-bottom: 10px;
+}
+    
 .episode {
   margin-bottom: 30px;
 }
@@ -205,14 +229,16 @@ h1 {
 จึงไม่ได้หวานอย่างเดียว...
 "></div>
 
-<div style="text-align: left; margin: 90px 0;">
-  <p style="font-size: 0.85rem;">ต้องการปลดล็อกทุกตอนในครั้งเดียว?</p>
-  <button class="unlock-button" onclick="unlockAllEpisodes()">🔓 ปลดล็อกทุกตอน (6 เหรียญ)</button>
+<div class="action-section">
+  <div class="action-box">
+    <p>🔓 ปลดล็อกทุกตอนในครั้งเดียว</p>
+    <button class="unlock-button" onclick="unlockAllEpisodes()">ปลดล็อกทุกตอน (6 เหรียญ)</button>
+  </div>
+  <div class="action-box">
+    <p>📘 ซื้อ PDF + ตอนพิเศษสุดฟินมากกว่า 1 ตอน</p>
+    <button class="unlock-button" onclick="buyPdfAll(19, 'link-to-your-pdf.pdf')">ซื้อ PDF ทั้งเรื่อง (19 เหรียญ)</button>
+  </div>
 </div>
-<div style="text-align: left; margin: 90px 0;">
-  <p style="font-size: 0.85rem; color: #6e3cab;">📘 ซื้อเรื่องอ่านในรูปแบบ PDF + ตอนพิเศษสุดฟินมากกว่า 1 ตอน</p>
-  <button class="unlock-button" onclick="buyPdfAll(19, 'link-to-your-pdf.pdf')">📥 ซื้อ PDF ทั้งเรื่อง (19 เหรียญ)</button>
-
 
 <div class="episode">
   <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
@@ -232,7 +258,10 @@ h1 {
 
 <div class="episode">
   <div class="episode-title" onclick="toggleEpisode('ep2')">🔒 ตอนที่ 2: รอยแผลในใจ</div>
-  <div class="text-content" id="ep2" style="display: none;"
+  <div class="text-content" id="ep2" style="display: none;" data-content="">
+  <!-- ใส่เนื้อหาของตอนที่ 2 ตรงนี้ หรือปล่อยว่างไว้ก็ได้ -->
+  </div>
+</div>
     
 <div class="comment-box">
     <h3>💬 แสดงความคิดเห็น</h3>
