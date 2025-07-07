@@ -281,7 +281,16 @@ h1 {
     <a href="/coderak/" class="back-button">← ย้อนกลับไปหน้านามปากกา โค้ดรัก</a>
   </div>  <div class="footer">
     © 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨
-  </div> <script>
+  </div> <!-- กล่องยืนยันการใช้เหรียญ -->
+<div id="confirmModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:9999;">
+  <div style="background:#fff; max-width:400px; margin:15% auto; padding:30px; border-radius:12px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2); font-family:'Mitr', sans-serif;">
+    <p style="font-size:1.1rem; color:#6e3cab;">ตอนนี้ต้องใช้ 2 เหรียญ<br>คุณต้องการใช้เพื่ออ่านเนื้อหาต่อหรือไม่?</p>
+    <div style="margin-top:20px;">
+      <button onclick="cancelUnlock()" style="margin-right:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold;">ยกเลิก</button>
+      <button onclick="confirmUnlock()" style="padding:10px 20px; border:none; border-radius:30px; background:#a87ce6; color:#fff; font-weight:bold;">ตกลง</button>
+    </div>
+  </div>
+</div> <script>
    // ✅ จัดการเหรียญ
     function getCoins() {
       return parseInt(localStorage.getItem("user_coins") || "0");
@@ -316,37 +325,54 @@ h1 {
     }
 
     // ✅ Toggle ตอนต่าง ๆ
-    function toggleEpisode(id) {
+  function toggleEpisode(id) {
+  let pendingUnlockId = null;
+
+function toggleEpisode(id) {
   const el = document.getElementById(id);
   if (!el) return;
 
   const isUnlocked = localStorage.getItem("unlocked_" + id) === "true" || localStorage.getItem("unlocked_all") === "true";
 
-  // 📖 ตอนที่ 1: ฟรี
   if (id === "ep1") {
     if (el.innerHTML.trim() === "") renderEpisodeContent(el);
     el.style.display = el.style.display === "none" ? "block" : "none";
     return;
   }
 
-  // 🔒 ตอนที่ล็อก
   if (!isUnlocked) {
-    if (confirm("ตอนนี้ต้องใช้ 2 เหรียญ ต้องการจะใช้เพื่ออ่านเนื้อหาต่อไหม")) {
-      if (deductCoins(2)) {
-        localStorage.setItem("unlocked_" + id, "true");
-        alert("✅ ปลดล็อกตอนสำเร็จ! ตอนนี้คุณสามารถอ่านตอนนี้ได้แล้วค่ะ");
-        renderEpisodeContent(el);
-        el.style.display = "block";
-      }
-    }
+    // แสดงกล่อง modal
+    pendingUnlockId = id;
+    document.getElementById("confirmModal").style.display = "block";
     return;
   }
 
-  // ✅ ปลดล็อกแล้ว
   if (el.innerHTML.trim() === "") renderEpisodeContent(el);
   el.style.display = el.style.display === "none" ? "block" : "none";
 }
 
+function cancelUnlock() {
+  document.getElementById("confirmModal").style.display = "none";
+  pendingUnlockId = null;
+}
+
+function confirmUnlock() {
+  if (!pendingUnlockId) return;
+
+  const el = document.getElementById(pendingUnlockId);
+  if (!el) return;
+
+  if (deductCoins(2)) {
+    localStorage.setItem("unlocked_" + pendingUnlockId, "true");
+    alert("✅ ปลดล็อกตอนสำเร็จ! ตอนนี้คุณสามารถอ่านตอนนี้ได้แล้วค่ะ");
+    renderEpisodeContent(el);
+    el.style.display = "block";
+  }
+
+  document.getElementById("confirmModal").style.display = "none";
+  pendingUnlockId = null;
+}
+    
     // ✅ ปลดล็อกทั้งหมด
     function unlockAllEpisodes() {
       if (confirm("ปลดล็อกทุกตอนต้องใช้ 6 เหรียญ ต้องการใช้เลยไหม?")) {
