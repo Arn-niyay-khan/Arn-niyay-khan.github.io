@@ -39,6 +39,11 @@
   transform: scale(1.05);
 }
 
+    <!-- ✅ แสดงจำนวนเหรียญของผู้ใช้ -->
+<div style="text-align: right; margin-bottom: 20px; font-size: 0.9rem; color: #6e3cab;">
+  💰 เหรียญของคุณ: <span id="coin-count">0</span> เหรียญ
+</div>
+    
 h1 {
   color: #7b4ca0;
   text-align: left;
@@ -253,6 +258,7 @@ h1 {
   </div>  <div class="thank-you">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยาย ด้วยรักจากใจ 💜</div>  <div style="text-align: center; margin: 40px 0;">
   <p style="font-size: 0.95rem; color: #6e3cab;">📘 ซื้อเรื่องอ่านในรูปแบบ PDF + ตอนพิเศษสุดฟินมากกว่า 1 ตอน</p>
   <button class="unlock-button" onclick="buyPdfAll(19, 'link-to-your-pdf.pdf')">📥 ซื้อ PDF ทั้งเรื่อง (19 เหรียญ)</button>
+  <button class="unlock-button" onclick="unlockAllEpisodes()">🔓 ปลดล็อกทุกตอน (6 เหรียญ)</button>
   </div> <div class="back-container">
     <a href="/coderak/" class="back-button">← ย้อนกลับไปหน้านามปากกา โค้ดรัก</a>
   </div>  <div class="footer">
@@ -331,6 +337,36 @@ document.addEventListener("DOMContentLoaded", function () {
     block.innerHTML = paragraphs.map(p => `<p style="text-indent: 2em; margin-bottom: 1em;">${p.trim()}</p>`).join("");
   });
 });
+
+    // ✅ ฟังก์ชันแสดงเหรียญบนหน้าจอ
+function updateCoinDisplay() {
+  const coinEl = document.getElementById("coin-count");
+  if (coinEl) coinEl.textContent = getCoins();
+}
+
+// ✅ แก้ไขฟังก์ชัน setCoins และ deductCoins
+function setCoins(value) {
+  localStorage.setItem("user_coins", value);
+  updateCoinDisplay();
+}
+
+function deductCoins(amount) {
+  const current = getCoins();
+  if (current < amount) {
+    alert(`เหรียญไม่พอค่ะ เหลือ ${current} เหรียญ ต้องใช้ ${amount} เหรียญ`);
+    return false;
+  }
+  setCoins(current - amount);
+  return true;
+}
+
+// ✅ เพิ่ม: เริ่มต้นเหรียญหากยังไม่มี
+if (!localStorage.getItem("user_coins")) {
+  setCoins(20); // เริ่มต้นให้ 20 เหรียญ
+}
+
+// ✅ แสดงเหรียญทันทีตอนโหลด
+updateCoinDisplay();
 </script>
 
 </body>
