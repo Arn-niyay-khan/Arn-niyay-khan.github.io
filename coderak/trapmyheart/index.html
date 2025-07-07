@@ -214,6 +214,59 @@ h1 {
   text-align: center;
 }
 
+  .cover-summary-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.novel-cover {
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.novel-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.novel-title {
+  font-size: 1.6rem;
+  color: #6e3cab;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.novel-summary {
+  font-size: 1rem;
+  color: #5e437f;
+  line-height: 1.7;
+}
+
+/* ✅ Responsive สำหรับหน้าจอแคบ */
+@media screen and (max-width: 600px) {
+  .cover-summary-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .novel-title {
+    font-size: 1.3rem;
+  }
+
+  .novel-summary {
+    font-size: 0.95rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -221,11 +274,17 @@ h1 {
 <div style="text-align: right; margin-bottom: 20px; font-size: 0.66rem; color: #6e3cab;">
     💰 เหรียญของคุณ: <span id="coin-count">0</span> เหรียญ
   </div>
-  <h1>📘 กับดักหัวใจของนายตัวแสบ</h1>  <div class="content-wrapper">
-    <div class="summary" data-content="
-เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว ความรักในรั้วโรงเรียน
-จึงไม่ได้หวานอย่างเดียว...
-"></div>
+  
+  <div class="cover-summary-row">
+  <img src="link-to-your-cover.jpg" alt="หน้าปกนิยาย" class="novel-cover">
+  <div class="novel-info">
+    <h2 class="novel-title">📘 กับดักหัวใจของนายตัวแสบ</h2>
+    <p class="novel-summary">
+      เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว<br>
+      ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว...
+    </p>
+  </div>
+</div>
   
    <div class="action-section">
   <div class="action-box">
