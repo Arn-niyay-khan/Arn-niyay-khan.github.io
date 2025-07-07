@@ -282,107 +282,107 @@ h1 {
   </div>  <div class="footer">
     © 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨
   </div> <script>
-// 👉 สร้างระบบจัดการเหรียญ
-function getCoins() {
-  return parseInt(localStorage.getItem("user_coins") || "0");
-}
-
-function setCoins(value) {
-  localStorage.setItem("user_coins", value);
-}
-
-function deductCoins(amount) {
-  const current = getCoins();
-  if (current < amount) {
-    alert(`เหรียญไม่พอค่ะ เหลือ ${current} เหรียญ ต้องใช้ ${amount} เหรียญ`);
-    return false;
-  }
-  setCoins(current - amount);
-  return true;
-}
-
-  // 📌 ฟังก์ชันสำหรับแปลง data-content เป็นย่อหน้า
-function renderEpisodeContent(block) {
-  const raw = block.dataset.content || "";
-  const paragraphs = raw.trim().split(/\n\s*\n|\n+/);
-  block.innerHTML = paragraphs.map(p => `<p style="text-indent: 2em; margin-bottom: 1em;">${p.trim()}</p>`).join("");
-}
-
-// 📌 แสดงเนื้อหาที่ควรแสดงตอนโหลด (เช่น summary หรือตอนฟรีที่เปิดทันที)
-document.addEventListener("DOMContentLoaded", function () {
-  const summary = document.querySelector(".summary");
-  if (summary) renderEpisodeContent(summary);
-});
-    
-ส่วนโค้ดนี้วางทับท๊อคกี้เลยใช่ไหม
-
-
-function unlockAllEpisodes() {
-  if (confirm("ปลดล็อกทุกตอนต้องใช้ 6 เหรียญ ต้องการใช้เลยไหม?")) {
-    if (deductCoins(6)) {
-      localStorage.setItem("unlocked_all", true);
-      alert("✅ ปลดล็อกทุกตอนเรียบร้อยค่ะ!");
-      document.querySelectorAll(".text-content").forEach(el => el.style.display = "block");
+   // ✅ จัดการเหรียญ
+    function getCoins() {
+      return parseInt(localStorage.getItem("user_coins") || "0");
     }
-  }
-}
 
-function buyPdfAll(cost, link) {
-  if (confirm(`ซื้อเรื่องอ่าน PDF + ตอนพิเศษ ใช้ ${cost} เหรียญ ต้องการซื้อไหม?`)) {
-    if (deductCoins(cost)) {
-      alert("✅ ขอบคุณที่สนับสนุนค่ะ! ระบบจะพาไปดาวน์โหลด PDF");
-      window.location.href = link;
+    function setCoins(value) {
+      localStorage.setItem("user_coins", value);
+      updateCoinDisplay();
     }
-  }
-}
 
-// 📌 แสดงเนื้อหาสวยงาม
-function appendEmoji(el) {
-  const textarea = document.querySelector(".comment-box textarea");
-  if (textarea) {
-    textarea.value += el.textContent;
-    textarea.focus();
-  }
-}
+    function deductCoins(amount) {
+      const current = getCoins();
+      if (current < amount) {
+        alert(`เหรียญไม่พอค่ะ เหลือ ${current} เหรียญ ต้องใช้ ${amount} เหรียญ`);
+        return false;
+      }
+      setCoins(current - amount);
+      return true;
+    }
 
-// 📌 จัดเนื้อหาเป็นย่อหน้า
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".text-content, .summary").forEach(function (block) {
-    const raw = block.dataset.content || block.innerText || "";
-    const paragraphs = raw.trim().split(/\n\s*\n|\n+/);
-    block.innerHTML = paragraphs.map(p => `<p style="text-indent: 2em; margin-bottom: 1em;">${p.trim()}</p>`).join("");
-  });
-});
+    // ✅ อัปเดตเหรียญบนจอ
+    function updateCoinDisplay() {
+      const coinEl = document.getElementById("coin-count");
+      if (coinEl) coinEl.textContent = getCoins();
+    }
 
-    // ✅ ฟังก์ชันแสดงเหรียญบนหน้าจอ
-function updateCoinDisplay() {
-  const coinEl = document.getElementById("coin-count");
-  if (coinEl) coinEl.textContent = getCoins();
-}
+    // ✅ แปลงเนื้อหา
+    function renderEpisodeContent(block) {
+      const raw = block.dataset.content || "";
+      const paragraphs = raw.trim().split(/\n\s*\n|\n+/);
+      block.innerHTML = paragraphs.map(p => `<p style="text-indent: 2em; margin-bottom: 1em;">${p.trim()}</p>`).join("");
+    }
 
-// ✅ แก้ไขฟังก์ชัน setCoins และ deductCoins
-function setCoins(value) {
-  localStorage.setItem("user_coins", value);
-  updateCoinDisplay();
-}
+    // ✅ Toggle ตอนต่าง ๆ
+    function toggleEpisode(id) {
+      const el = document.getElementById(id);
+      const isUnlocked = localStorage.getItem("unlocked_" + id) || localStorage.getItem("unlocked_all");
 
-function deductCoins(amount) {
-  const current = getCoins();
-  if (current < amount) {
-    alert(`เหรียญไม่พอค่ะ เหลือ ${current} เหรียญ ต้องใช้ ${amount} เหรียญ`);
-    return false;
-  }
-  setCoins(current - amount);
-  return true;
-}
+      if (!el) return;
 
-// ✅ เพิ่ม: เริ่มต้นเหรียญหากยังไม่มี
-if (!localStorage.getItem("user_coins")) {
-  setCoins(20); // เริ่มต้นให้ 20 เหรียญ
-}
+      if (id === "ep1") {
+        if (el.innerHTML.trim() === "") renderEpisodeContent(el);
+        el.style.display = el.style.display === "none" ? "block" : "none";
+        return;
+      }
 
-// ✅ แสดงเหรียญทันทีตอนโหลด
-updateCoinDisplay();
+      if (!isUnlocked) {
+        if (confirm("🔒 ตอนนี้ถูกล็อก ต้องใช้ 2 เหรียญเพื่ออ่านตอนนี้\nคุณต้องการใช้เหรียญเพื่อปลดล็อกหรือไม่?")) {
+          if (deductCoins(2)) {
+            localStorage.setItem("unlocked_" + id, true);
+            alert("✅ ปลดล็อกตอนสำเร็จ! ตอนนี้คุณสามารถอ่านตอนนี้ได้แล้วค่ะ");
+            renderEpisodeContent(el);
+            el.style.display = "block";
+          }
+        }
+        return;
+      }
+
+      if (el.innerHTML.trim() === "") renderEpisodeContent(el);
+      el.style.display = el.style.display === "none" ? "block" : "none";
+    }
+
+    // ✅ ปลดล็อกทั้งหมด
+    function unlockAllEpisodes() {
+      if (confirm("ปลดล็อกทุกตอนต้องใช้ 6 เหรียญ ต้องการใช้เลยไหม?")) {
+        if (deductCoins(6)) {
+          localStorage.setItem("unlocked_all", true);
+          alert("✅ ปลดล็อกทุกตอนเรียบร้อยค่ะ!");
+        }
+      }
+    }
+
+    function buyPdfAll(cost, link) {
+      if (confirm(`ซื้อเรื่องอ่าน PDF + ตอนพิเศษ ใช้ ${cost} เหรียญ ต้องการซื้อไหม?`)) {
+        if (deductCoins(cost)) {
+          alert("✅ ขอบคุณที่สนับสนุนค่ะ! ระบบจะพาไปดาวน์โหลด PDF");
+          window.location.href = link;
+        }
+      }
+    }
+
+    function appendEmoji(el) {
+      const textarea = document.querySelector(".comment-box textarea");
+      if (textarea) {
+        textarea.value += el.textContent;
+        textarea.focus();
+      }
+    }
+
+    // ✅ โหลดเมื่อเริ่มต้น
+    document.addEventListener("DOMContentLoaded", function () {
+      const summary = document.querySelector(".summary");
+      if (summary) renderEpisodeContent(summary);
+
+      // ให้แน่ใจว่ามีเหรียญตั้งต้นเสมอ
+      if (!localStorage.getItem("user_coins")) {
+        setCoins(20);
+      }
+
+      updateCoinDisplay();
+    });
 </script>
 
 </body>
