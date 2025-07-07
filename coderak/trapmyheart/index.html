@@ -291,125 +291,119 @@ h1 {
     </div>
   </div>
 </div> <script>
-   // ✅ จัดการเหรียญ
-    function getCoins() {
-      return parseInt(localStorage.getItem("user_coins") || "0");
-    }
-
-    function setCoins(value) {
-      localStorage.setItem("user_coins", value);
-      updateCoinDisplay();
-    }
-
-    function deductCoins(amount) {
-      const current = getCoins();
-      if (current < amount) {
-        alert(`เหรียญไม่พอค่ะ เหลือ ${current} เหรียญ ต้องใช้ ${amount} เหรียญ`);
-        return false;
-      }
-      setCoins(current - amount);
-      return true;
-    }
-
-    // ✅ อัปเดตเหรียญบนจอ
-    function updateCoinDisplay() {
-      const coinEl = document.getElementById("coin-count");
-      if (coinEl) coinEl.textContent = getCoins();
-    }
-
-    // ✅ แปลงเนื้อหา
-    function renderEpisodeContent(block) {
-      const raw = block.dataset.content || "";
-      const paragraphs = raw.trim().split(/\n\s*\n|\n+/);
-      block.innerHTML = paragraphs.map(p => `<p style="text-indent: 2em; margin-bottom: 1em;">${p.trim()}</p>`).join("");
-    }
-
-    // ✅ Toggle ตอนต่าง ๆ
+  // ✅ ตั้งตัวแปร global
   let pendingUnlockId = null;
 
-function toggleEpisode(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
+  function getCoins() {
+    return parseInt(localStorage.getItem("user_coins") || "0");
+  }
 
-  const isUnlocked = localStorage.getItem("unlocked_" + id) === "true" || localStorage.getItem("unlocked_all") === "true";
+  function setCoins(value) {
+    localStorage.setItem("user_coins", value);
+    updateCoinDisplay();
+  }
 
-  if (id === "ep1") {
+  function deductCoins(amount) {
+    const current = getCoins();
+    if (current < amount) {
+      alert(`เหรียญไม่พอค่ะ เหลือ ${current} เหรียญ ต้องใช้ ${amount} เหรียญ`);
+      return false;
+    }
+    setCoins(current - amount);
+    return true;
+  }
+
+  function updateCoinDisplay() {
+    const coinEl = document.getElementById("coin-count");
+    if (coinEl) coinEl.textContent = getCoins();
+  }
+
+  function renderEpisodeContent(block) {
+    const raw = block.dataset.content || "";
+    const paragraphs = raw.trim().split(/\n\s*\n|\n+/);
+    block.innerHTML = paragraphs.map(p => `<p style="text-indent: 2em; margin-bottom: 1em;">${p.trim()}</p>`).join("");
+  }
+
+  function toggleEpisode(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const isUnlocked = localStorage.getItem("unlocked_" + id) === "true" || localStorage.getItem("unlocked_all") === "true";
+
+    if (id === "ep1") {
+      if (el.innerHTML.trim() === "") renderEpisodeContent(el);
+      el.style.display = el.style.display === "none" ? "block" : "none";
+      return;
+    }
+
+    if (!isUnlocked) {
+      pendingUnlockId = id;
+      document.getElementById("confirmModal").style.display = "block";
+      return;
+    }
+
     if (el.innerHTML.trim() === "") renderEpisodeContent(el);
     el.style.display = el.style.display === "none" ? "block" : "none";
-    return;
   }
 
-  if (!isUnlocked) {
-    pendingUnlockId = id;
-    document.getElementById("confirmModal").style.display = "block";
-    return;
+  function cancelUnlock() {
+    document.getElementById("confirmModal").style.display = "none";
+    pendingUnlockId = null;
   }
 
-  if (el.innerHTML.trim() === "") renderEpisodeContent(el);
-  el.style.display = el.style.display === "none" ? "block" : "none";
-}
+  function confirmUnlock() {
+    if (!pendingUnlockId) return;
 
-function cancelUnlock() {
-  document.getElementById("confirmModal").style.display = "none";
-  pendingUnlockId = null;
-}
+    const el = document.getElementById(pendingUnlockId);
+    if (!el) return;
 
-function confirmUnlock() {
-  if (!pendingUnlockId) return;
+    if (deductCoins(2)) {
+      localStorage.setItem("unlocked_" + pendingUnlockId, "true");
+      alert("✅ ปลดล็อกตอนสำเร็จ! ตอนนี้คุณสามารถอ่านตอนนี้ได้แล้วค่ะ");
+      renderEpisodeContent(el);
+      el.style.display = "block";
+    }
 
-  const el = document.getElementById(pendingUnlockId);
-  if (!el) return;
-
-  if (deductCoins(2)) {
-    localStorage.setItem("unlocked_" + pendingUnlockId, "true");
-    alert("✅ ปลดล็อกตอนสำเร็จ! ตอนนี้คุณสามารถอ่านตอนนี้ได้แล้วค่ะ");
-    renderEpisodeContent(el);
-    el.style.display = "block";
+    document.getElementById("confirmModal").style.display = "none";
+    pendingUnlockId = null;
   }
 
-  document.getElementById("confirmModal").style.display = "none";
-  pendingUnlockId = null;
-}
-    
-    // ✅ ปลดล็อกทั้งหมด
-    function unlockAllEpisodes() {
-      if (confirm("ปลดล็อกทุกตอนต้องใช้ 6 เหรียญ ต้องการใช้เลยไหม?")) {
-        if (deductCoins(6)) {
-          localStorage.setItem("unlocked_all", true);
-          alert("✅ ปลดล็อกทุกตอนเรียบร้อยค่ะ!");
-        }
+  function unlockAllEpisodes() {
+    if (confirm("ปลดล็อกทุกตอนต้องใช้ 6 เหรียญ ต้องการใช้เลยไหม?")) {
+      if (deductCoins(6)) {
+        localStorage.setItem("unlocked_all", true);
+        alert("✅ ปลดล็อกทุกตอนเรียบร้อยค่ะ!");
       }
     }
+  }
 
-    function buyPdfAll(cost, link) {
-      if (confirm(`ซื้อเรื่องอ่าน PDF + ตอนพิเศษ ใช้ ${cost} เหรียญ ต้องการซื้อไหม?`)) {
-        if (deductCoins(cost)) {
-          alert("✅ ขอบคุณที่สนับสนุนค่ะ! ระบบจะพาไปดาวน์โหลด PDF");
-          window.location.href = link;
-        }
+  function buyPdfAll(cost, link) {
+    if (confirm(`ซื้อเรื่องอ่าน PDF + ตอนพิเศษ ใช้ ${cost} เหรียญ ต้องการซื้อไหม?`)) {
+      if (deductCoins(cost)) {
+        alert("✅ ขอบคุณที่สนับสนุนค่ะ! ระบบจะพาไปดาวน์โหลด PDF");
+        window.location.href = link;
       }
     }
+  }
 
-    function appendEmoji(el) {
-      const textarea = document.querySelector(".comment-box textarea");
-      if (textarea) {
-        textarea.value += el.textContent;
-        textarea.focus();
-      }
+  function appendEmoji(el) {
+    const textarea = document.querySelector(".comment-box textarea");
+    if (textarea) {
+      textarea.value += el.textContent;
+      textarea.focus();
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const summary = document.querySelector(".summary");
+    if (summary) renderEpisodeContent(summary);
+
+    if (!localStorage.getItem("user_coins")) {
+      setCoins(20);
     }
 
-    // ✅ โหลดเมื่อเริ่มต้น
-    document.addEventListener("DOMContentLoaded", function () {
-      const summary = document.querySelector(".summary");
-      if (summary) renderEpisodeContent(summary);
-
-      // ให้แน่ใจว่ามีเหรียญตั้งต้นเสมอ
-      if (!localStorage.getItem("user_coins")) {
-        setCoins(20);
-      }
-
-      updateCoinDisplay();
-    });
+    updateCoinDisplay();
+  });
 </script>
 
 </body>
