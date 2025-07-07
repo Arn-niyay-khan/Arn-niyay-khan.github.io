@@ -301,33 +301,21 @@ function deductCoins(amount) {
   return true;
 }
 
-function toggleEpisode(id) {
-  const el = document.getElementById(id);
-  const isUnlocked = localStorage.getItem("unlocked_" + id) || localStorage.getItem("unlocked_all");
-
-  if (!el) return;
-
-  // ถ้าเป็นตอนที่ 1 (ฟรี) ให้แค่ toggle ได้เลย
-  if (id === "ep1") {
-    el.style.display = el.style.display === "none" ? "block" : "none";
-    return;
-  }
-
-  // ตอนอื่น: ถ้ายังไม่ปลดล็อก ให้ถามและหักเหรียญ
-  if (!isUnlocked) {
-    if (confirm("🔒 ตอนนี้ถูกล็อก ต้องใช้ 2 เหรียญเพื่ออ่านตอนนี้\nคุณต้องการใช้เหรียญเพื่อปลดล็อกหรือไม่?")) {
-      if (deductCoins(2)) {
-        localStorage.setItem("unlocked_" + id, true);
-        alert("✅ ปลดล็อกตอนสำเร็จ! ตอนนี้คุณสามารถอ่านตอนที่ 2 ได้แล้วค่ะ");
-        el.style.display = "block";
-      }
-    }
-    return;
-  }
-
-  // ถ้าปลดล็อกแล้ว แค่ toggle เปิด/ปิด
-  el.style.display = el.style.display === "none" ? "block" : "none";
+  // 📌 ฟังก์ชันสำหรับแปลง data-content เป็นย่อหน้า
+function renderEpisodeContent(block) {
+  const raw = block.dataset.content || "";
+  const paragraphs = raw.trim().split(/\n\s*\n|\n+/);
+  block.innerHTML = paragraphs.map(p => `<p style="text-indent: 2em; margin-bottom: 1em;">${p.trim()}</p>`).join("");
 }
+
+// 📌 แสดงเนื้อหาที่ควรแสดงตอนโหลด (เช่น summary หรือตอนฟรีที่เปิดทันที)
+document.addEventListener("DOMContentLoaded", function () {
+  const summary = document.querySelector(".summary");
+  if (summary) renderEpisodeContent(summary);
+});
+    
+ส่วนโค้ดนี้วางทับท๊อคกี้เลยใช่ไหม
+
 
 function unlockAllEpisodes() {
   if (confirm("ปลดล็อกทุกตอนต้องใช้ 6 เหรียญ ต้องการใช้เลยไหม?")) {
