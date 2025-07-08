@@ -406,7 +406,7 @@ h1 {
       <span onclick="appendEmoji(this)">😭</span>
       <span onclick="appendEmoji(this)">🔥</span>
     </div>
-    <button class="submit-button" onclick="alert('ความคิดเห็นของคุณถูกส่งแล้ว ขอบคุณค่ะ!')">ส่งความคิดเห็น</button>
+    <button class="submit-button" onclick="alertSubmit()" data-i18n="submitComment">ส่งความคิดเห็น</button>
   </div>  <div class="thank-you" data-i18n="thankYou">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยาย ด้วยรักจากใจ 💜</div>  
   </div> <div class="back-container">
     <a href="/coderak/" class="back-button" data-i18n="backToPenName">← ย้อนกลับไปหน้านามปากกา โค้ดรัก</a>
@@ -548,7 +548,8 @@ if (summary && summary.innerHTML.trim() === "") renderEpisodeContent(summary);
       commentTitle: "💬 แสดงความคิดเห็น",
       commentPlaceholder: "แสดงความคิดเห็นที่นี่...",
       thankYou: "💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยาย ด้วยรักจากใจ 💜",
-      backToPenName: "← ย้อนกลับไปหน้านามปากกา โค้ดรัก"
+      backToPenName: "← ย้อนกลับไปหน้านามปากกา โค้ดรัก",
+      submitComment: "ความคิดเห็นของคุณถูกส่งแล้ว ขอบคุณค่ะ!"
     },
     en: {
       unlockAll: "Unlock all episodes at once",
@@ -563,7 +564,8 @@ if (summary && summary.innerHTML.trim() === "") renderEpisodeContent(summary);
       commentTitle: "💬 Leave a Comment",
       commentPlaceholder: "Write your thoughts here...",
       thankYou: "💜 Thank you for supporting this novel. With love, always 💜",
-      backToPenName: "← Back to Codrak Pen Name"
+      backToPenName: "← Back to Codrak Pen Name",
+      submitComment: "Your comment has been submitted. Thank you!"
     },
     ch: {
       unlockAll: "一次解锁所有章节",
@@ -578,7 +580,8 @@ if (summary && summary.innerHTML.trim() === "") renderEpisodeContent(summary);
       commentTitle: "💬 发表评论",
       commentPlaceholder: "在此输入您的评论...",
       thankYou: "💜 感谢您的支持与关注，愿我们的小说温暖您心 💜",
-      backToPenName: "← 返回 CodeRak 签名页面"
+      backToPenName: "← 返回 CodeRak 签名页面",
+      submitComment: "您的评论已提交，谢谢! "
     },
     ru: {
       unlockAll: "Разблокировать все главы сразу",
@@ -593,7 +596,8 @@ if (summary && summary.innerHTML.trim() === "") renderEpisodeContent(summary);
       commentTitle: "💬 Оставить комментарий",
       commentPlaceholder: "Напишите свой комментарий здесь...",
       thankYou: "💜 Спасибо за вашу поддержку! Мы ценим каждого читателя 💜",
-      backToPenName: "← Назад к псевдониму CodeRak"
+      backToPenName: "← Назад к псевдониму CodeRak",
+      submitComment: "Ваш комментарий отправлен. Спасибо!"
     },
     jp: {
       unlockAll: "すべてのエピソードを一度に解除",
@@ -608,7 +612,8 @@ if (summary && summary.innerHTML.trim() === "") renderEpisodeContent(summary);
       commentTitle: "💬 コメントを残す",
       commentPlaceholder: "ここにコメントを書いてください...",
       thankYou: "💜 ご支援ありがとうございます。愛を込めて 💜",
-      backToPenName: "← コードラックのペンネームページに戻る"
+      backToPenName: "← コードラックのペンネームページに戻る",
+      submitComment: "コメントが送信されました。ありがとうございます!"
     },
     kr: {
       unlockAll: "모든 에피소드 한 번에 잠금 해제",
@@ -623,7 +628,8 @@ if (summary && summary.innerHTML.trim() === "") renderEpisodeContent(summary);
       commentTitle: "💬 댓글 남기기",
       commentPlaceholder: "여기에 댓글을 작성하세요...",
       thankYou: "💜 응원해주셔서 감사합니다. 사랑을 담아 💜",
-      backToPenName: "← 코드락 필명 페이지로 돌아가기"
+      backToPenName: "← 코드락 필명 페이지로 돌아가기",
+      submitComment: "댓글이 전송되었습니다. 감사합니다!"
     },
     vn: {
       unlockAll: "Mở khóa tất cả tập cùng lúc",
@@ -638,7 +644,8 @@ if (summary && summary.innerHTML.trim() === "") renderEpisodeContent(summary);
       commentTitle: "💬 Để lại bình luận",
       commentPlaceholder: "Viết bình luận của bạn tại đây...",
       thankYou: "💜 Cảm ơn bạn đã ủng hộ truyện! Yêu thương từ tận đáy lòng 💜",
-      backToPenName: "← Quay lại trang bút danh CodeRak"
+      backToPenName: "← Quay lại trang bút danh CodeRak",
+      submitComment: "Bình luận của bạn đã được gửi. Cảm ơn bạn!"
     }
   };
 
