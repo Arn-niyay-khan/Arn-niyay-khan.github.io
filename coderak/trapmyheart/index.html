@@ -772,14 +772,23 @@ và lần này có vẻ không phải trở về với ý tốt.
       confirmTextEl.innerHTML = langPack.confirmText.replace(/\n/g, "<br>");
     }
    
-    updateSummaryByLang(lang);
-    updateEpisodeContentByLang(lang);
-    localStorage.setItem("lang", lang);
-  }
 
+    function renderSummary() {
+  const summaryEl = document.getElementById("summary");
+  if (!summaryEl) return;
+
+  const lang = localStorage.getItem("lang") || "th";
+  const content = summaryEl.getAttribute(`data-content-${lang}`) || "";
+  const paragraphs = content.trim().split(/\n\s*\n|\n+/);
+  summaryEl.innerHTML = `
+    ${paragraphs.map(p => `<p>${p.trim()}</p>`).join("")}
+  `;
+}
+    
     document.addEventListener("DOMContentLoaded", function () {
   const savedLang = localStorage.getItem("lang") || "th";
   switchLang(savedLang);
+  renderSummary();
 });
 </script>
 
