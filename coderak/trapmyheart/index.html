@@ -268,8 +268,6 @@ h1 {
   }
 }
 
-    <button onclick="localStorage.clear(); alert('เคลียร์ localStorage แล้วค่ะ'); location.reload();" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: red; color: white; padding: 10px; border-radius: 8px;">🧹 ล้าง localStorage</button>
-    
   </style>
 </head>
 <body>
@@ -277,6 +275,7 @@ h1 {
 <div style="text-align: right; margin-bottom: 20px; font-size: 0.66rem; color: #6e3cab;">
     💰 เหรียญของคุณ: <span id="coin-count">0</span> เหรียญ
   </div>
+  <button onclick="localStorage.clear(); alert('เคลียร์ localStorage แล้วค่ะ'); location.reload();" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: red; color: white; padding: 10px; border-radius: 8px;">🧹 ล้าง localStorage</button>
   
   <div class="cover-summary-row">
   <img src="link-to-your-cover.jpg" alt="หน้าปกนิยาย" class="novel-cover">
@@ -287,7 +286,7 @@ h1 {
     <p>ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว...</p>
   </div>
 </div>
-  
+    
    <div class="action-section">
   <div class="action-box">
     <p>🔓 ปลดล็อกทุกตอนในครั้งเดียว</p>
@@ -298,7 +297,6 @@ h1 {
     <button class="unlock-button" onclick="buyPdfAll(19, 'link-to-your-pdf.pdf')">ซื้อ PDF ทั้งเรื่อง (19 เหรียญ)</button>
   </div>
 </div>
-
   <div class="episode">
   <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
   <div class="text-content" id="ep1" style="display: none;" data-content="
@@ -391,7 +389,7 @@ h1 {
 
     const isUnlocked = localStorage.getItem("unlocked_" + id) === "false" || localStorage.getItem("unlocked_all") === "true";
 
-    if (id === "ep2") {
+    if (id === "ep1") {
       if (el.innerHTML.trim() === "") renderEpisodeContent(el);
       el.style.display = el.style.display === "none" ? "block" : "none";
       return;
@@ -419,7 +417,7 @@ h1 {
     if (!el) return;
 
     if (deductCoins(2)) {
-      localStorage.setItem("unlocked_" + pendingUnlockId, "false");
+      localStorage.setItem("unlocked_" + pendingUnlockId, "true");
       alert("✅ ปลดล็อกตอนสำเร็จ! ตอนนี้คุณสามารถอ่านตอนนี้ได้แล้วค่ะ");
       renderEpisodeContent(el);
       el.style.display = "block";
