@@ -320,6 +320,19 @@ h1 {
 <div style="text-align: right; margin-bottom: 20px; font-size: 0.66rem; color: #6e3cab;">
     💰 เหรียญของคุณ: <span id="coin-count">0</span> เหรียญ
   </div>
+  <!-- 🔄 ปุ่มเปลี่ยนภาษา -->
+<div style="text-align: left; margin-top: -15px; margin-bottom: 10px;">
+  <label for="language-select" style="font-size: 0.8rem; color: #6e3cab;">🌐 เปลี่ยนภาษา:</label>
+  <select id="language-select" onchange="switchLang(this.value)" style="font-size: 0.8rem; padding: 4px 8px; border-radius: 6px; margin-left: 5px;">
+    <option value="th">ไทย</option>
+    <option value="en">English</option>
+    <option value="ch">中国人</option>
+    <option value="ru">русский язык</option>
+    <option value="jp">日本語</option>
+    <option value="kr">한국어</option>
+    <option value="vn">Tiếng Việt</option>
+  </select>
+</div>
   <button onclick="localStorage.clear(); alert('เคลียร์ localStorage แล้วค่ะ'); location.reload();" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: red; color: white; padding: 10px; border-radius: 8px;">🧹 ล้าง localStorage</button>
   
   <!-- กลุ่มบน: หน้าปก + ชื่อเรื่อง + เรื่องย่อ -->
@@ -519,6 +532,14 @@ h1 {
 
   updateCoinDisplay();
 });
+
+  function switchLang(lang) {
+    // ซ่อนทุก content ที่มี prefix id = content-
+    document.querySelectorAll('[id^="content-"]').forEach(el => el.style.display = 'none');
+
+    // แสดงเฉพาะภาษาที่เลือก
+    document.querySelectorAll(`[id^="content-${lang}"]`).forEach(el => el.style.display = 'block');
+  }
 </script>
 
 </body>
