@@ -64,22 +64,19 @@ h1 {
 
 .action-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
   gap: 20px;
   margin: 50px 0;
-  flex-wrap: wrap;
-}
-
-.action-box {
-  flex: 1;
-  min-width: 300px;
-  background-color: #f6e7ff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
   text-align: center;
 }
 
+.action-box {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+    
 .action-box p {
   font-size: 1.21rem;
   color: #6e3cab;
@@ -105,6 +102,12 @@ h1 {
 
 .episode-title:hover {
   background-color: #e4ccff;
+}
+    
+.episode {
+  display: block;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
 .unlock-button {
@@ -250,6 +253,9 @@ h1 {
   text-indent: 2em;
   margin-bottom: 1em;
   line-height: 1.7;
+  color: #5e437f;
+  font-size: 1rem;
+  text-align: justify;
 }
 
 /* ✅ Responsive สำหรับหน้าจอแคบ */
@@ -282,9 +288,9 @@ h1 {
   <div class="novel-info">
   <h2 class="novel-title">📘 กับดักหัวใจของนายตัวแสบ</h2>
   <div class="novel-summary">
-    <p>เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว</p>
-    <p>ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว...</p>
-  </div>
+  <p>เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว</p>
+  <p>ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว...</p>
+</div>
 </div>
     
    <div class="action-section">
