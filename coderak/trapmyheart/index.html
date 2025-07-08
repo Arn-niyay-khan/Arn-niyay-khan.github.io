@@ -318,11 +318,11 @@ h1 {
 <body>
   <a href="/" class="site-button">✨ Arn-niyay-khan ✨</a>
 <div style="text-align: right; margin-bottom: 20px; font-size: 0.66rem; color: #6e3cab;">
-    💰 เหรียญของคุณ: <span id="coin-count">0</span> เหรียญ
+    💰 <span data-i18n="coinLabel">เหรียญของคุณ: <span id="coin-count">0</span> เหรียญ
   </div>
   <!-- 🔄 ปุ่มเปลี่ยนภาษา -->
-<div style="text-align: left; margin-top: -15px; margin-bottom: 10px;">
-  <label for="language-select" style="font-size: 0.8rem; color: #6e3cab;">🌐 เปลี่ยนภาษา:</label>
+<div style="text-align: right; margin-top: -15px; margin-bottom: 10px;">
+  <label for="language-select" style="font-size: 0.8rem; color: #6e3cab;<"label for="language-select" data-i18n="languageLabel">🌐 เปลี่ยนภาษา:</label>
   <select id="language-select" onchange="switchLang(this.value)" style="font-size: 0.8rem; padding: 4px 8px; border-radius: 6px; margin-left: 5px;">
     <option value="th">ไทย</option>
     <option value="en">English</option>
@@ -353,12 +353,12 @@ h1 {
 <!-- กลุ่มล่าง: ปุ่มปลดล็อก + PDF -->
 <div class="action-section">
   <div class="action-box">
-    <p>🔓 ปลดล็อกทุกตอนในครั้งเดียว</p>
-    <button class="unlock-button" onclick="unlockAllEpisodes()">ปลดล็อกทุกตอน (4 เหรียญ)</button>
+    <p data-i18n="unlockAll">🔓 ปลดล็อกทุกตอนในครั้งเดียว</p>
+    <button class="unlock-button" onclick="unlockAllEpisodes()" data-i18n="unlockButton">ปลดล็อกทุกตอน (4 เหรียญ)</button>
   </div>
   <div class="action-box">
     <p>📘 ซื้อ PDF + ตอนพิเศษสุดฟินมากกว่า 1 ตอน</p>
-    <button class="unlock-button" onclick="buyPdfAll(19, 'link-to-your-pdf.pdf')">ซื้อ PDF ทั้งเรื่อง (19 เหรียญ)</button>
+    <button class="unlock-button" onclick="buyPdfAll(19, 'link-to-your-pdf.pdf')" data-i18n="buyPdfButton">ซื้อ PDF ทั้งเรื่อง (19 เหรียญ)</button>
   </div>
 </div>
   
@@ -392,24 +392,24 @@ h1 {
 </div> <!-- กล่องยืนยันการใช้เหรียญ -->
 <div id="confirmModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:9999;">
   <div style="background:#fff; max-width:400px; margin:15% auto; padding:30px; border-radius:12px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2); font-family:'Mitr', sans-serif;">
-    <p style="font-size:1.1rem; color:#6e3cab;">ตอนนี้ต้องใช้ 2 เหรียญ<br>คุณต้องการใช้เพื่ออ่านเนื้อหาต่อหรือไม่?</p>
+    <p style="font-size:1.1rem; color:#6e3cab;<p id="confirm-text" data-i18n="confirmText">ตอนนี้ต้องใช้ 2 เหรียญ<br>คุณต้องการใช้เพื่ออ่านเนื้อหาต่อหรือไม่?</p>
     <div style="margin-top:20px;">
-      <button onclick="cancelUnlock()" style="margin-right:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold;">ยกเลิก</button>
-      <button onclick="confirmUnlock()" style="padding:10px 20px; border:none; border-radius:30px; background:#a87ce6; color:#fff; font-weight:bold;">ตกลง</button>
+      <button onclick="cancelUnlock()" data-i18n="cancel style="margin-right:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold;">ยกเลิก</button>
+      <button onclick="confirmUnlock()" data-i18=confirm style="padding:10px 20px; border:none; border-radius:30px; background:#a87ce6; color:#fff; font-weight:bold;">ตกลง</button>
     </div>
   </div>
 </div>
   
 <div class="comment-box">
-    <h3>💬 แสดงความคิดเห็น</h3>
-    <textarea placeholder="แสดงความคิดเห็นที่นี่..." rows="4"></textarea>
+    <h3 data-i18n="commentTitle">💬 แสดงความคิดเห็น</h3>
+    <textarea placeholder="แสดงความคิดเห็นที่นี่..." data-i18n-placeholder="commentPlaceholder"></textarea> rows="4"></textarea>
     <div class="emoji-bar">
       <span onclick="appendEmoji(this)">😍</span>
       <span onclick="appendEmoji(this)">😭</span>
       <span onclick="appendEmoji(this)">🔥</span>
     </div>
     <button class="submit-button" onclick="alert('ความคิดเห็นของคุณถูกส่งแล้ว ขอบคุณค่ะ!')">ส่งความคิดเห็น</button>
-  </div>  <div class="thank-you">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยาย ด้วยรักจากใจ 💜</div>  
+  </div>  <div class="thank-you" data-i18n="thankYou">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยาย ด้วยรักจากใจ 💜</div>  
   </div> <div class="back-container">
     <a href="/coderak/" class="back-button">← ย้อนกลับไปหน้านามปากกา โค้ดรัก</a>
   </div>  <div class="footer">
@@ -533,12 +533,128 @@ h1 {
   updateCoinDisplay();
 });
 
-  function switchLang(lang) {
-    // ซ่อนทุก content ที่มี prefix id = content-
-    document.querySelectorAll('[id^="content-"]').forEach(el => el.style.display = 'none');
+  const translations = {
+    th: {
+      unlockAll: "ปลดล็อกทุกตอนในครั้งเดียว",
+      buyPdf: "ซื้อ PDF + ตอนพิเศษสุดฟินมากกว่า 1 ตอน",
+      unlockButton: "ปลดล็อกทุกตอน (4 เหรียญ)",
+      buyPdfButton: "ซื้อ PDF ทั้งเรื่อง (19 เหรียญ)",
+      coinLabel: "เหรียญของคุณ:",
+      languageLabel: "🌐 เปลี่ยนภาษา:",
+      confirmText: "ตอนนี้ต้องใช้ 2 เหรียญ\nคุณต้องการใช้เพื่ออ่านเนื้อหาต่อหรือไม่?",
+      cancel: "ยกเลิก",
+      confirm: "ตกลง",
+      commentTitle: "💬 แสดงความคิดเห็น",
+      commentPlaceholder: "แสดงความคิดเห็นที่นี่...",
+      thankYou: "💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยาย ด้วยรักจากใจ 💜"
+    },
+    en: {
+      unlockAll: "Unlock all episodes at once",
+      buyPdf: "Buy PDF + Extra Special Episodes",
+      unlockButton: "Unlock all (4 coins)",
+      buyPdfButton: "Buy full PDF (19 coins)",
+      coinLabel: "Your coins:",
+      languageLabel: "🌐 Language:",
+      confirmText: "This episode requires 2 coins.\nWould you like to unlock it?",
+      cancel: "Cancel",
+      confirm: "Confirm",
+      commentTitle: "💬 Leave a Comment",
+      commentPlaceholder: "Write your thoughts here...",
+      thankYou: "💜 Thank you for supporting this novel. With love, always 💜"
+    },
+    ch: {
+      unlockAll: "一次解锁所有章节",
+      buyPdf: "购买 PDF + 特别章节",
+      unlockButton: "全部解锁（4 个金币）",
+      buyPdfButton: "购买整本 PDF（19 个金币）",
+      coinLabel: "您的金币：",
+      languageLabel: "🌐 语言切换：",
+      confirmText: "本章节需消耗 2 个金币。\n您是否要解锁阅读？",
+      cancel: "取消",
+      confirm: "确认",
+      commentTitle: "💬 发表评论",
+      commentPlaceholder: "在此输入您的评论...",
+      thankYou: "💜 感谢您的支持与关注，愿我们的小说温暖您心 💜"
+    },
+    ru: {
+      unlockAll: "Разблокировать все главы сразу",
+      buyPdf: "Купить PDF + дополнительные главы",
+      unlockButton: "Разблокировать все (4 монеты)",
+      buyPdfButton: "Купить весь PDF (19 монет)",
+      coinLabel: "Ваши монеты:",
+      languageLabel: "🌐 Выбрать язык:",
+      confirmText: "Для этой главы нужно 2 монеты.\nРазблокировать сейчас?",
+      cancel: "Отмена",
+      confirm: "Подтвердить",
+      commentTitle: "💬 Оставить комментарий",
+      commentPlaceholder: "Напишите свой комментарий здесь...",
+      thankYou: "💜 Спасибо за вашу поддержку! Мы ценим каждого читателя 💜"
+    },
+    jp: {
+      unlockAll: "すべてのエピソードを一度に解除",
+      buyPdf: "PDF + 特別エピソードを購入",
+      unlockButton: "すべて解除（4 コイン）",
+      buyPdfButton: "PDF 全巻購入（19 コイン）",
+      coinLabel: "あなたのコイン：",
+      languageLabel: "🌐 言語を選択：",
+      confirmText: "このエピソードには 2 コインが必要です。\n解除しますか？",
+      cancel: "キャンセル",
+      confirm: "確認",
+      commentTitle: "💬 コメントを残す",
+      commentPlaceholder: "ここにコメントを書いてください...",
+      thankYou: "💜 ご支援ありがとうございます。愛を込めて 💜"
+    },
+    kr: {
+      unlockAll: "모든 에피소드 한 번에 잠금 해제",
+      buyPdf: "PDF + 스페셜 에피소드 구매",
+      unlockButton: "전체 잠금 해제 (4코인)",
+      buyPdfButton: "전체 PDF 구매 (19코인)",
+      coinLabel: "보유 코인:",
+      languageLabel: "🌐 언어 변경:",
+      confirmText: "이 에피소드를 열려면 2코인이 필요합니다.\n잠금 해제하시겠습니까?",
+      cancel: "취소",
+      confirm: "확인",
+      commentTitle: "💬 댓글 남기기",
+      commentPlaceholder: "여기에 댓글을 작성하세요...",
+      thankYou: "💜 응원해주셔서 감사합니다. 사랑을 담아 💜"
+    },
+    vn: {
+      unlockAll: "Mở khóa tất cả tập cùng lúc",
+      buyPdf: "Mua PDF + tập đặc biệt",
+      unlockButton: "Mở khóa tất cả (4 xu)",
+      buyPdfButton: "Mua toàn bộ PDF (19 xu)",
+      coinLabel: "Xu của bạn:",
+      languageLabel: "🌐 Chọn ngôn ngữ:",
+      confirmText: "Tập này cần 2 xu để mở khóa.\nBạn có muốn tiếp tục không?",
+      cancel: "Hủy",
+      confirm: "Xác nhận",
+      commentTitle: "💬 Để lại bình luận",
+      commentPlaceholder: "Viết bình luận của bạn tại đây...",
+      thankYou: "💜 Cảm ơn bạn đã ủng hộ truyện! Yêu thương từ tận đáy lòng 💜"
+    }
+  };
 
-    // แสดงเฉพาะภาษาที่เลือก
-    document.querySelectorAll(`[id^="content-${lang}"]`).forEach(el => el.style.display = 'block');
+  function switchLang(lang) {
+    const langPack = translations[lang];
+    if (!langPack) return;
+
+    // เปลี่ยนข้อความใน element ที่มี data-i18n
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if (langPack[key]) el.innerText = langPack[key];
+    });
+
+    // เปลี่ยน placeholder
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+      const key = el.getAttribute("data-i18n-placeholder");
+      if (langPack[key]) el.setAttribute("placeholder", langPack[key]);
+    });
+
+    // เปลี่ยนข้อความเฉพาะที่เป็น innerHTML เช่น ย่อหน้าใน confirm modal
+    const confirmTextEl = document.getElementById("confirm-text");
+    if (confirmTextEl && langPack.confirmText) {
+      confirmTextEl.innerHTML = langPack.confirmText.replace(/\n/g, "<br>");
+    }
   }
 </script>
 
