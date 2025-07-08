@@ -335,7 +335,7 @@ h1 {
     <img src="link-to-your-cover.jpg" alt="หน้าปกนิยาย" class="novel-cover">
     <div class="novel-info">
       <h2 class="novel-title">📘 กับดักหัวใจของนายตัวแสบ</h2>
-      <div class="summary" id="summary" style="display: block;"
+      <div class="summary" id="summary" style="display: block;">
   data-content-th="เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว
 
 ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว..."
@@ -767,7 +767,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const savedLang = localStorage.getItem("lang") || "th";
   switchLang(savedLang);
   renderSummary();
-});
 
   document.querySelectorAll(".summary").forEach(block => {
     if (block.innerHTML.trim() === "") renderEpisodeContent(block);
