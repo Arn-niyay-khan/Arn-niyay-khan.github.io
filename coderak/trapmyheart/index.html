@@ -283,26 +283,32 @@ h1 {
   </div>
   <button onclick="localStorage.clear(); alert('เคลียร์ localStorage แล้วค่ะ'); location.reload();" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: red; color: white; padding: 10px; border-radius: 8px;">🧹 ล้าง localStorage</button>
   
+  <!-- กลุ่มบน: หน้าปก + ชื่อเรื่อง + เรื่องย่อ -->
+<div class="cover-summary-section">
   <div class="cover-summary-row">
-  <img src="link-to-your-cover.jpg" alt="หน้าปกนิยาย" class="novel-cover">
-  <div class="novel-info">
-  <h2 class="novel-title">📘 กับดักหัวใจของนายตัวแสบ</h2>
-  <div class="novel-summary">
-  <p>เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว</p>
-  <p>ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว...</p>
+    <img src="link-to-your-cover.jpg" alt="หน้าปกนิยาย" class="novel-cover">
+    <div class="novel-info">
+      <h2 class="novel-title">📘 กับดักหัวใจของนายตัวแสบ</h2>
+      <div class="novel-summary">
+        <p>เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว</p>
+        <p>ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว...</p>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-    
-   <div class="action-section">
+
+<!-- กลุ่มล่าง: ปุ่มปลดล็อก + PDF -->
+<div class="action-section">
   <div class="action-box">
     <p>🔓 ปลดล็อกทุกตอนในครั้งเดียว</p>
     <button class="unlock-button" onclick="unlockAllEpisodes()">ปลดล็อกทุกตอน (4 เหรียญ)</button>
   </div>
-    <div class="action-box">
+  <div class="action-box">
     <p>📘 ซื้อ PDF + ตอนพิเศษสุดฟินมากกว่า 1 ตอน</p>
     <button class="unlock-button" onclick="buyPdfAll(19, 'link-to-your-pdf.pdf')">ซื้อ PDF ทั้งเรื่อง (19 เหรียญ)</button>
   </div>
 </div>
+  
   <div class="episode">
   <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
   <div class="text-content" id="ep1" style="display: none;" data-content="
