@@ -790,10 +790,17 @@ function switchLang(lang) {
   const langPack = translations[lang];
   if (!langPack) return;
 
+  // อัปเดตข้อความสำหรับองค์ประกอบที่มี data-i18n-placeholder
   document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
       const key = el.getAttribute("data-i18n-placeholder");
       if (langPack[key]) el.setAttribute("placeholder", langPack[key]);
-    });
+  });
+
+  // อัปเดตข้อความสำหรับองค์ประกอบที่มี data-i18n (เช่น ปุ่มและข้อความทั่วไป)
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (langPack[key]) el.textContent = langPack[key];
+  });
 
   const confirmTextEl = document.getElementById("confirm-text");
   if (confirmTextEl && langPack.confirmText) {
@@ -804,28 +811,6 @@ function switchLang(lang) {
   renderSummary();
   updateEpisodeContentByLang(lang);
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-  const savedLang = localStorage.getItem("lang") || "th";
-  switchLang(savedLang);
-  renderSummary();
-
-  document.querySelectorAll(".summary").forEach(block => {
-    if (block.innerHTML.trim() === "") renderEpisodeContent(block);
-  });
-
-  document.querySelectorAll(".text-content").forEach(block => {
-    if (block.innerHTML.trim() === "" && localStorage.getItem("unlocked_" + block.id) === "true") {
-      renderEpisodeContent(block);
-    }
-  });
-
-  if (!localStorage.getItem("user_coins")) {
-    setCoins(100);
-  }
-
-  updateCoinDisplay();
-});
 </script>
 
 </body>
