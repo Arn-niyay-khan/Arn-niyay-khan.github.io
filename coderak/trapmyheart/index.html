@@ -811,6 +811,9 @@ function switchLang(lang) {
   renderSummary();
   updateEpisodeContentByLang(lang);
 }
+    if (!localStorage.getItem("user_coins")) {
+    setCoins(100);
+    }
 </script>
 
 </body>
