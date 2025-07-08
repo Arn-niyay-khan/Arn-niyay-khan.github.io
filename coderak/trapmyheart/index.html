@@ -357,7 +357,7 @@ h1 {
     <button class="unlock-button" onclick="unlockAllEpisodes()" data-i18n="unlockButton">ปลดล็อกทุกตอน (4 เหรียญ)</button>
   </div>
   <div class="action-box">
-    <p>📘 ซื้อ PDF + ตอนพิเศษสุดฟินมากกว่า 1 ตอน</p>
+    <p data-i18n="buyPdfButton">📘 ซื้อ PDF + ตอนพิเศษสุดฟินมากกว่า 1 ตอน</p>
     <button class="unlock-button" onclick="buyPdfAll(19, 'link-to-your-pdf.pdf')" data-i18n="buyPdfButton">ซื้อ PDF ทั้งเรื่อง (19 เหรียญ)</button>
   </div>
 </div>
@@ -394,8 +394,8 @@ h1 {
   <div style="background:#fff; max-width:400px; margin:15% auto; padding:30px; border-radius:12px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2); font-family:'Mitr', sans-serif;">
     <p style="font-size:1.1rem; color:#6e3cab;<p id="confirm-text" data-i18n="confirmText">ตอนนี้ต้องใช้ 2 เหรียญ<br>คุณต้องการใช้เพื่ออ่านเนื้อหาต่อหรือไม่?</p>
     <div style="margin-top:20px;">
-      <button onclick="cancelUnlock()" data-i18n="cancel style="margin-right:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold;">ยกเลิก</button>
-      <button onclick="confirmUnlock()" data-i18=confirm style="padding:10px 20px; border:none; border-radius:30px; background:#a87ce6; color:#fff; font-weight:bold;">ตกลง</button>
+      <button onclick="cancelUnlock()" style="margin-right:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold; data-i18n="cancel">ยกเลิก</button>
+      <button onclick="confirmUnlock()" style="padding:10px 20px; border:none; border-radius:30px; background:#a87ce6; color:#fff; font-weight:bold; data-i18=confirm">ตกลง</button>
     </div>
   </div>
 </div>
