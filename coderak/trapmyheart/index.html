@@ -444,7 +444,6 @@ h1 {
   const raw = block.dataset.content || "";
   const paragraphs = raw.trim().split(/\n\s*\n|\n+/); // แยกย่อหน้า
   block.innerHTML = `
-    <div class="watermark">โค้ดรัก</div>
     ${paragraphs.map(p => `<p>${p.trim()}</p>`).join("")}
   `;
 }
