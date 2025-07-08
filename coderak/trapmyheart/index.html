@@ -285,10 +285,11 @@ h1 {
     <img src="link-to-your-cover.jpg" alt="หน้าปกนิยาย" class="novel-cover">
     <div class="novel-info">
       <h2 class="novel-title">📘 กับดักหัวใจของนายตัวแสบ</h2>
-      <div class="novel-summary">
-        <p>เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว</p>
-        <p>ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว...</p>
-      </div>
+      <div class="summary" data-content="
+เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว
+
+ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว...
+"></div>
     </div>
   </div>
 </div>
@@ -386,10 +387,12 @@ h1 {
   }
 
   function renderEpisodeContent(block) {
-    const raw = block.dataset.content || "";
-    const paragraphs = raw.trim().split(/\n\s*\n|\n+/);
-    block.innerHTML = paragraphs.map(p => `<p style="text-indent: 2em; margin-bottom: 1em;">${p.trim()}</p>`).join("");
-  }
+  const raw = block.dataset.content || "";
+  const paragraphs = raw.trim().split(/\n\s*\n|\n+/); // แยกย่อหน้าด้วย \n หรือ \n\n
+  block.innerHTML = paragraphs
+    .map(p => `<p class="text-content">${p.trim()}</p>`)
+    .join("");
+}
 
   function toggleEpisode(id) {
     const el = document.getElementById(id);
@@ -462,15 +465,16 @@ h1 {
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    const summary = document.querySelector(".summary");
-    if (summary) renderEpisodeContent(summary);
+  // แปลงเนื้อเรื่องย่อ ถ้ามี data-content
+  const summary = document.querySelector(".summary[data-content]");
+  if (summary) renderEpisodeContent(summary);
 
-    if (!localStorage.getItem("user_coins")) {
-      setCoins(100);
-    }
+  if (!localStorage.getItem("user_coins")) {
+    setCoins(100);
+  }
 
-    updateCoinDisplay();
-  });
+  updateCoinDisplay();
+});
 </script>
 
 </body>
