@@ -253,8 +253,7 @@ h1 {
   font-size: 1.85rem;
   text-align: justify;
 }
-
-/* ✅ Responsive สำหรับหน้าจอแคบ */
+    
 @media screen and (max-width: 600px) {
   .cover-summary-row {
     flex-direction: column;
@@ -270,7 +269,6 @@ h1 {
   }
 }
 
-  /* 💧 ลายน้ำด้านหลัง */
   .watermark {
     position: absolute;
     top: 50%;
@@ -283,15 +281,13 @@ h1 {
     white-space: nowrap;
   }
 
-  /* 🔒 ป้องกันการ copy */
-  * {
+ *  {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
+ }
 
-  /* ✨ จัดย่อหน้าและเว้นบรรทัด */
   .summary, .text-content {
     white-space: pre-wrap;
     text-align: justify;
@@ -319,9 +315,9 @@ h1 {
 <div style="text-align: right; margin-bottom: 40px; font-size: 0.89rem; color: #6e3cab;">
     💰 <span data-i18n="coinLabel">เหรียญของคุณ: <span id="coin-count">0</span> เหรียญ
   </div>
-  <!-- 🔄 ปุ่มเปลี่ยนภาษา -->
+  
 <div style="text-align: right; margin-top: -15px; margin-bottom: 10px;">
-  <label for="language-select" style="font-size: 0.99rem; color: #6e3cab;<"label for="language-select" data-i18n="languageLabel">🌐 เปลี่ยนภาษา:</label>
+  <label for="language-select" style="font-size: 0.99rem; color: #6e3cab;" data-i18n="languageLabel">🌐 เปลี่ยนภาษา:</label>
   <select id="language-select" onchange="switchLang(this.value)" style="font-size: 0.8rem; padding: 4px 8px; border-radius: 6px; margin-left: 5px;">
     <option value="th">ไทย</option>
     <option value="en">English</option>
@@ -334,20 +330,42 @@ h1 {
 </div>
   <button onclick="localStorage.clear(); alert('เคลียร์ localStorage แล้วค่ะ'); location.reload();" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: red; color: white; padding: 10px; border-radius: 8px;">🧹 ล้าง localStorage</button>
   
-  <!-- กลุ่มบน: หน้าปก + ชื่อเรื่อง + เรื่องย่อ -->
 <div class="cover-summary-section">
   <div class="cover-summary-row">
     <img src="link-to-your-cover.jpg" alt="หน้าปกนิยาย" class="novel-cover">
     <div class="novel-info">
       <h2 class="novel-title">📘 กับดักหัวใจของนายตัวแสบ</h2>
-      <div class="summary" id="summary" data-content="
-เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว
+      <div class="summary" id="summary"
+  data-content-th="เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว
 
-ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว..."></div>
+ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว..."
+  
+  data-content-en="When a mischievous student sets his sights on teasing a soft-hearted new teacher,
+
+Love in the school corridors isn’t all sweet and innocent..."
+
+  data-content-ch="当一个调皮的学生盯上了心软的新老师，
+
+校园里的爱情就不再只是甜蜜而已……"
+
+  data-content-ru="Когда озорной ученик решает досаждать добросердечному новому учителю,
+
+Любовь в школьных коридорах становится далеко не такой уж невинной…"
+
+  data-content-jp="いたずら好きな生徒が、心優しい新任教師をからかおうとしたとき、
+
+学園内の恋は、甘いだけでは終わらない…"
+
+  data-content-kr="장난꾸러기 학생이 마음이 여린 신입 교사를 괴롭히기로 결심했을 때,
+
+학교 안의 사랑은 더 이상 달콤하기만 한 것이 아니다…"
+
+  data-content-vn="Khi một học sinh tinh nghịch nhằm vào thầy giáo mới với trái tim yếu mềm,
+
+Tình yêu trong hành lang trường học không chỉ ngọt ngào đơn thuần nữa...">
   </div>
 </div>
 
-<!-- กลุ่มล่าง: ปุ่มปลดล็อก + PDF -->
 <div class="action-section">
   <div class="action-box">
     <p data-i18n="unlockAll">🔓 ปลดล็อกทุกตอนในครั้งเดียว</p>
@@ -361,7 +379,8 @@ h1 {
   
   <div class="episode">
   <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
-  <div class="text-content" id="ep1" style="display: none;" data-content="
+  <div class="text-content" id="ep1" style="display: none;"
+  data-content-th="
 นายจะมานั่งตรงนี้ไม่ได้!
 
 ทำไมล่ะครับครู... ผมนั่งใกล้ครูไม่ได้เหรอ?
@@ -372,7 +391,80 @@ h1 {
 เขากลับมาอีกครั้ง...
 หลังจากที่หายหน้าไปนานหลายปี
 และดูเหมือนว่าครั้งนี้จะไม่ได้มาดีอย่างที่คิด
-"></div>
+"
+  data-content-en="
+You can't sit here!
+
+Why not, teacher? Can’t I sit closer to you?
+
+The boy’s voice held a teasing challenge.
+The young teacher froze momentarily before regaining his composure.
+
+He had returned...
+After disappearing for years—
+and it didn’t seem like he came back with good intentions.
+"
+  data-content-ch="
+你不能坐在这里！
+
+为什么不可以，老师……我不能靠近你坐吗？
+
+那个男孩的话语中带着调皮和挑衅。
+年轻的老师愣了一下，随即恢复了镇定。
+
+他又回来了……
+在消失多年之后，
+这一次的归来似乎并不单纯。
+"
+  data-content-ru="
+Ты не можешь сидеть здесь!
+
+Почему, учитель?.. Разве я не могу сесть рядом?
+
+Голос мальчика звучал с挑挑衅 и насмешкой.
+Молодой учитель на мгновение замер, прежде чем вновь обрёл спокойствие.
+
+Он вернулся…
+После многих лет отсутствия,
+но, похоже, не с добрыми намерениями.
+"
+  data-content-jp="
+ここに座っちゃダメだ！
+
+どうしてですか先生…近くに座っちゃいけないんですか？
+
+その少年の声には、からかうような挑戦の色があった。
+若い教師は一瞬言葉を失い、すぐに冷静さを取り戻した。
+
+彼は戻ってきた…
+何年も姿を消していたのに、
+今回は何か企んでいるようだった。
+"
+  data-content-kr="
+여기 앉으면 안 돼!
+
+왜요, 선생님... 제가 선생님 가까이에 앉으면 안 되나요?
+
+소년의 목소리는 장난기와 도발로 가득 차 있었다.
+젊은 선생은 순간 멈칫했지만 곧 표정을 가다듬었다.
+
+그가 돌아왔다...
+몇 년 동안 사라졌다가,
+이번에는 뭔가 꿍꿍이가 있는 것 같았다.
+"
+  data-content-vn="
+Cậu không thể ngồi ở đây được!
+
+Tại sao vậy thầy... Em không được ngồi gần thầy sao?
+
+Giọng của cậu học sinh vang lên đầy tinh nghịch và thách thức.
+Thầy giáo trẻ khựng lại một chút rồi lấy lại vẻ bình tĩnh.
+
+Cậu ấy đã trở lại...
+Sau nhiều năm biến mất—
+và lần này có vẻ không phải trở về với ý tốt.
+"
+></div>
 </div>
 
   <div class="episode">
@@ -391,7 +483,7 @@ h1 {
   <div style="background:#fff; max-width:400px; margin:15% auto; padding:30px; border-radius:12px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2); font-family:'Mitr', sans-serif;">
     <p style="font-size:1.1rem; color:#6e3cab;<p id="confirm-text" data-i18n="confirmText">ตอนนี้ต้องใช้ 2 เหรียญ<br>คุณต้องการใช้เพื่ออ่านเนื้อหาต่อหรือไม่?</p>
     <div style="margin-top:20px;">
-      <button onclick="cancelUnlock()" style="margin-right:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold; data-i18n="cancel">ยกเลิก</button>
+      <button onclick="cancelUnlock()" style="margin-right:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold; data-i18n=cancel">ยกเลิก</button>
       <button onclick="confirmUnlock()" style="padding:10px 20px; border:none; border-radius:30px; background:#a87ce6; color:#fff; font-weight:bold; data-i18=confirm">ตกลง</button>
     </div>
   </div>
@@ -412,7 +504,6 @@ h1 {
   </div>  <div class="footer">
     © 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨
   </div> <script>
-  // ✅ ตั้งตัวแปร global
   let pendingUnlockId = null;
 
   function getCoins() {
@@ -451,7 +542,7 @@ h1 {
     const el = document.getElementById(id);
     if (!el) return;
 
-    const isUnlocked = localStorage.getItem("unlocked_" + id) === "false" || localStorage.getItem("unlocked_all") === "true";
+    const isUnlocked = localStorage.getItem("unlocked_" + id) === "true" || localStorage.getItem("unlocked_all") === "true";
 
     if (id === "ep1") {
       if (el.innerHTML.trim() === "") renderEpisodeContent(el);
@@ -493,7 +584,7 @@ h1 {
 
   function unlockAllEpisodes() {
     if (confirm("ปลดล็อกทุกตอนต้องใช้ 4 เหรียญ ต้องการใช้เลยไหม?")) {
-      if (deductCoins(6)) {
+      if (deductCoins(4)) {
         localStorage.setItem("unlocked_all", true);
         alert("✅ ปลดล็อกทุกตอนเรียบร้อยค่ะ!");
       }
@@ -647,28 +738,47 @@ if (summary && summary.innerHTML.trim() === "") renderEpisodeContent(summary);
     }
   };
 
+  function updateEpisodeContentByLang(lang) {
+  document.querySelectorAll(".text-content").forEach(block => {
+    const content = block.getAttribute(`data-content-${lang}`);
+    if (content) {
+      const paragraphs = content.trim().split(/\n\s*\n|\n+/);
+      block.innerHTML = `
+        <div class="watermark">โค้ดรัก</div>
+        ${paragraphs.map(p => `<p>${p.trim()}</p>`).join("")}
+      `;
+    }
+  });
+}
+    
   function switchLang(lang) {
     const langPack = translations[lang];
     if (!langPack) return;
 
-    // เปลี่ยนข้อความใน element ที่มี data-i18n
     document.querySelectorAll("[data-i18n]").forEach(el => {
       const key = el.getAttribute("data-i18n");
       if (langPack[key]) el.innerText = langPack[key];
     });
 
-    // เปลี่ยน placeholder
     document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
       const key = el.getAttribute("data-i18n-placeholder");
       if (langPack[key]) el.setAttribute("placeholder", langPack[key]);
     });
 
-    // เปลี่ยนข้อความเฉพาะที่เป็น innerHTML เช่น ย่อหน้าใน confirm modal
     const confirmTextEl = document.getElementById("confirm-text");
     if (confirmTextEl && langPack.confirmText) {
       confirmTextEl.innerHTML = langPack.confirmText.replace(/\n/g, "<br>");
     }
+   
+    updateSummaryByLang(lang);
+    updateEpisodeContentByLang(lang);
+    localStorage.setItem("lang", lang);
   }
+
+    document.addEventListener("DOMContentLoaded", function () {
+  const savedLang = localStorage.getItem("lang") || "th";
+  switchLang(savedLang);
+});
 </script>
 
 </body>
