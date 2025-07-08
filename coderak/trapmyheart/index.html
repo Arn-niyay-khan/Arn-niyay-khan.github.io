@@ -604,27 +604,6 @@ và lần này có vẻ không phải trở về với ý tốt.
     }
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-  document.addEventListener("DOMContentLoaded", function () {
-  const lang = localStorage.getItem("lang") || "th";
-
-  document.querySelectorAll(".summary").forEach(block => {
-    if (block.innerHTML.trim() === "") renderEpisodeContent(block);
-  });
-
-  document.querySelectorAll(".text-content").forEach(block => {
-    if (block.innerHTML.trim() === "" && localStorage.getItem("unlocked_" + block.id) === "true") {
-      renderEpisodeContent(block);
-    }
-  });
-
-  if (!localStorage.getItem("user_coins")) {
-    setCoins(100);
-  }
-
-  updateCoinDisplay();
-});
-
   const translations = {
     th: {
       unlockAll: "ปลดล็อกทุกตอนในครั้งเดียว",
@@ -739,6 +718,18 @@ và lần này có vẻ không phải trở về với ý tốt.
       submitComment: "Bình luận của bạn đã được gửi. Cảm ơn bạn!"
     }
   };
+    
+  function renderSummary() {
+  const summaryEl = document.getElementById("summary");
+  if (!summaryEl) return;
+
+  const lang = localStorage.getItem("lang") || "th";
+  const content = summaryEl.getAttribute(`data-content-${lang}`) || "";
+  const paragraphs = content.trim().split(/\n\s*\n|\n+/);
+  summaryEl.innerHTML = `
+    ${paragraphs.map(p => `<p>${p.trim()}</p>`).join("")}
+  `;
+}
 
   function updateEpisodeContentByLang(lang) {
   document.querySelectorAll(".text-content").forEach(block => {
@@ -751,44 +742,48 @@ và lần này có vẻ không phải trở về với ý tốt.
       `;
     }
   });
-}
+  }
     
-  function switchLang(lang) {
-    const langPack = translations[lang];
-    if (!langPack) return;
+function switchLang(lang) {
+  const langPack = translations[lang];
+  if (!langPack) return;
 
-    document.querySelectorAll("[data-i18n]").forEach(el => {
-      const key = el.getAttribute("data-i18n");
-      if (langPack[key]) el.innerText = langPack[key];
-    });
-
-    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
       const key = el.getAttribute("data-i18n-placeholder");
       if (langPack[key]) el.setAttribute("placeholder", langPack[key]);
     });
 
-    const confirmTextEl = document.getElementById("confirm-text");
-    if (confirmTextEl && langPack.confirmText) {
-      confirmTextEl.innerHTML = langPack.confirmText.replace(/\n/g, "<br>");
-    }
-   
+  const confirmTextEl = document.getElementById("confirm-text");
+  if (confirmTextEl && langPack.confirmText) {
+    confirmTextEl.innerHTML = langPack.confirmText.replace(/\n/g, "<br>");
+  }
 
-    function renderSummary() {
-  const summaryEl = document.getElementById("summary");
-  if (!summaryEl) return;
-
-  const lang = localStorage.getItem("lang") || "th";
-  const content = summaryEl.getAttribute(`data-content-${lang}`) || "";
-  const paragraphs = content.trim().split(/\n\s*\n|\n+/);
-  summaryEl.innerHTML = `
-    ${paragraphs.map(p => `<p>${p.trim()}</p>`).join("")}
-  `;
+  localStorage.setItem("lang", lang);
+  renderSummary();
+  updateEpisodeContentByLang(lang);
 }
-    
-    document.addEventListener("DOMContentLoaded", function () {
+
+document.addEventListener("DOMContentLoaded", function () {
   const savedLang = localStorage.getItem("lang") || "th";
   switchLang(savedLang);
   renderSummary();
+});
+
+  document.querySelectorAll(".summary").forEach(block => {
+    if (block.innerHTML.trim() === "") renderEpisodeContent(block);
+  });
+
+  document.querySelectorAll(".text-content").forEach(block => {
+    if (block.innerHTML.trim() === "" && localStorage.getItem("unlocked_" + block.id) === "true") {
+      renderEpisodeContent(block);
+    }
+  });
+
+  if (!localStorage.getItem("user_coins")) {
+    setCoins(100);
+  }
+
+  updateCoinDisplay();
 });
 </script>
 
