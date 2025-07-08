@@ -547,6 +547,7 @@ h1 {
       commentTitle: "💬 แสดงความคิดเห็น",
       commentPlaceholder: "แสดงความคิดเห็นที่นี่...",
       thankYou: "💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยาย ด้วยรักจากใจ 💜"
+      backToPenName: "← ย้อนกลับไปหน้านามปากกา โค้ดรัก"
     },
     en: {
       unlockAll: "Unlock all episodes at once",
@@ -561,6 +562,7 @@ h1 {
       commentTitle: "💬 Leave a Comment",
       commentPlaceholder: "Write your thoughts here...",
       thankYou: "💜 Thank you for supporting this novel. With love, always 💜"
+      backToPenName: "← Back to Codrak Pen Name"
     },
     ch: {
       unlockAll: "一次解锁所有章节",
@@ -575,6 +577,7 @@ h1 {
       commentTitle: "💬 发表评论",
       commentPlaceholder: "在此输入您的评论...",
       thankYou: "💜 感谢您的支持与关注，愿我们的小说温暖您心 💜"
+      backToPenName: "← 返回 CodeRak 签名页面"
     },
     ru: {
       unlockAll: "Разблокировать все главы сразу",
@@ -589,6 +592,7 @@ h1 {
       commentTitle: "💬 Оставить комментарий",
       commentPlaceholder: "Напишите свой комментарий здесь...",
       thankYou: "💜 Спасибо за вашу поддержку! Мы ценим каждого читателя 💜"
+      backToPenName: "← Назад к псевдониму CodeRak"
     },
     jp: {
       unlockAll: "すべてのエピソードを一度に解除",
@@ -603,6 +607,7 @@ h1 {
       commentTitle: "💬 コメントを残す",
       commentPlaceholder: "ここにコメントを書いてください...",
       thankYou: "💜 ご支援ありがとうございます。愛を込めて 💜"
+      backToPenName: "← コードラックのペンネームページに戻る"
     },
     kr: {
       unlockAll: "모든 에피소드 한 번에 잠금 해제",
@@ -617,6 +622,7 @@ h1 {
       commentTitle: "💬 댓글 남기기",
       commentPlaceholder: "여기에 댓글을 작성하세요...",
       thankYou: "💜 응원해주셔서 감사합니다. 사랑을 담아 💜"
+      backToPenName: "← 코드락 필명 페이지로 돌아가기"
     },
     vn: {
       unlockAll: "Mở khóa tất cả tập cùng lúc",
@@ -631,6 +637,7 @@ h1 {
       commentTitle: "💬 Để lại bình luận",
       commentPlaceholder: "Viết bình luận của bạn tại đây...",
       thankYou: "💜 Cảm ơn bạn đã ủng hộ truyện! Yêu thương từ tận đáy lòng 💜"
+      backToPenName: "← Quay lại trang bút danh CodeRak"
     }
   };
 
@@ -641,7 +648,7 @@ h1 {
     // เปลี่ยนข้อความใน element ที่มี data-i18n
     document.querySelectorAll("[data-i18n]").forEach(el => {
       const key = el.getAttribute("data-i18n");
-      if (langPack[key]) el.innerText = langPack[key];
+      if (langPack[key]) el.textContent = langPack[key];
     });
 
     // เปลี่ยน placeholder
