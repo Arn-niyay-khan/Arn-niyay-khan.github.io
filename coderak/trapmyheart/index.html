@@ -270,9 +270,53 @@ h1 {
   }
 }
 
+  <style>
+  /* 💧 ลายน้ำด้านหลัง */
+  .watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    font-size: 5rem;
+    color: rgba(200, 180, 255, 0.12);
+    pointer-events: none;
+    z-index: 0;
+    white-space: nowrap;
+  }
+
+  /* 🔒 ป้องกันการ copy */
+  body * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* ✨ จัดย่อหน้าและเว้นบรรทัด */
+  .summary, .text-content {
+    white-space: pre-wrap;
+    text-align: justify;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #5e437f;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.03);
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .summary p, .text-content p {
+    text-indent: 2.5em;
+    margin-bottom: 1em;
+  }
+
   </style>
 </head>
 <body>
+  <div class="watermark">โค้ดรัก</div>
   <a href="/" class="site-button">✨ Arn-niyay-khan ✨</a>
 <div style="text-align: right; margin-bottom: 20px; font-size: 0.66rem; color: #6e3cab;">
     💰 เหรียญของคุณ: <span id="coin-count">0</span> เหรียญ
@@ -388,10 +432,11 @@ h1 {
 
   function renderEpisodeContent(block) {
   const raw = block.dataset.content || "";
-  const paragraphs = raw.trim().split(/\n\s*\n|\n+/); // แยกย่อหน้าด้วย \n หรือ \n\n
-  block.innerHTML = paragraphs
-    .map(p => `<p class="text-content">${p.trim()}</p>`)
-    .join("");
+  const paragraphs = raw.trim().split(/\n\s*\n|\n+/); // แยกย่อหน้า
+  block.innerHTML = `
+    <div class="watermark">โค้ดรัก</div>
+    ${paragraphs.map(p => `<p>${p.trim()}</p>`).join("")}
+  `;
 }
 
   function toggleEpisode(id) {
