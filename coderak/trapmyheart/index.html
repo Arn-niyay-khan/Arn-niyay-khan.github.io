@@ -335,35 +335,29 @@ h1 {
     <img src="link-to-your-cover.jpg" alt="หน้าปกนิยาย" class="novel-cover">
     <div class="novel-info">
       <h2 class="novel-title">📘 กับดักหัวใจของนายตัวแสบ</h2>
-      <div class="summary" id="summary"
+      <div class="summary" id="summary" style="display: block;"
   data-content-th="เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว
 
 ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว..."
-  
   data-content-en="When a mischievous student sets his sights on teasing a soft-hearted new teacher,
 
 Love in the school corridors isn’t all sweet and innocent..."
-
   data-content-ch="当一个调皮的学生盯上了心软的新老师，
 
 校园里的爱情就不再只是甜蜜而已……"
-
   data-content-ru="Когда озорной ученик решает досаждать добросердечному новому учителю,
 
 Любовь в школьных коридорах становится далеко не такой уж невинной…"
-
   data-content-jp="いたずら好きな生徒が、心優しい新任教師をからかおうとしたとき、
 
 学園内の恋は、甘いだけでは終わらない…"
-
   data-content-kr="장난꾸러기 학생이 마음이 여린 신입 교사를 괴롭히기로 결심했을 때,
 
 학교 안의 사랑은 더 이상 달콤하기만 한 것이 아니다…"
-
   data-content-vn="Khi một học sinh tinh nghịch nhằm vào thầy giáo mới với trái tim yếu mềm,
 
 Tình yêu trong hành lang trường học không chỉ ngọt ngào đơn thuần nữa...">
-  </div>
+</div>
 </div>
 
 <div class="action-section">
@@ -531,9 +525,11 @@ và lần này có vẻ không phải trở về với ý tốt.
   }
 
   function renderEpisodeContent(block) {
-  const raw = block.dataset.content || "";
-  const paragraphs = raw.trim().split(/\n\s*\n|\n+/); // แยกย่อหน้า
+  const lang = localStorage.getItem("lang") || "th";
+  const content = block.getAttribute(`data-content-${lang}`) || "";
+  const paragraphs = content.trim().split(/\n\s*\n|\n+/);
   block.innerHTML = `
+    <div class="watermark">โค้ดรัก</div>
     ${paragraphs.map(p => `<p>${p.trim()}</p>`).join("")}
   `;
 }
@@ -609,15 +605,21 @@ và lần này có vẻ không phải trở về với ý tốt.
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-  // แปลงเนื้อเรื่องย่อ ถ้ามี data-content
-  const summary = document.querySelector(".summary[data-content]");
-  if (summary) renderEpisodeContent(summary);
+  document.addEventListener("DOMContentLoaded", function () {
+  const lang = localStorage.getItem("lang") || "th";
+
+  document.querySelectorAll(".summary").forEach(block => {
+    if (block.innerHTML.trim() === "") renderEpisodeContent(block);
+  });
+
+  document.querySelectorAll(".text-content").forEach(block => {
+    if (block.innerHTML.trim() === "" && localStorage.getItem("unlocked_" + block.id) === "true") {
+      renderEpisodeContent(block);
+    }
+  });
 
   if (!localStorage.getItem("user_coins")) {
     setCoins(100);
-    
-  const summary = document.querySelector(".summary[data-content]");
-if (summary && summary.innerHTML.trim() === "") renderEpisodeContent(summary);
   }
 
   updateCoinDisplay();
