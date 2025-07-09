@@ -580,17 +580,17 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
   <div style="background:#fff; max-width:400px; margin:15% auto; padding:30px; border-radius:12px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2); font-family:'Mitr', sans-serif;">
     <p id="confirm-text" style="font-size:1.1rem; color:#6e3cab;" data-i18n="confirmText">ตอนนี้ต้องใช้ 2 เหรียญ<br>คุณต้องการใช้เพื่ออ่านเนื้อหาต่อหรือไม่?</p>
     <div style="margin-top:20px;">
-      <button onclick="cancelUnlock()" style="margin-right:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold; data-i18n="cancel">ยกเลิก</button>
-      <button onclick="confirmUnlock()" style="padding:10px 20px; border:none; border-radius:30px; background:#a87ce6; color:#fff; font-weight:bold; data-i18n="confirm">ตกลง</button>
+      <button onclick="cancelUnlock()" style="margin-right:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold;" data-i18n="cancel">ยกเลิก</button>
+      <button onclick="confirmUnlock()" style="padding:10px 20px; border:none; border-radius:30px; background:#a87ce6; color:#fff; font-weight:bold;" data-i18n="confirm">ตกลง</button>
     </div>
   </div>
 </div>
 <div id="purchaseConfirmModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:9999;">
   <div style="background:#fff; max-width:400px; margin:15% auto; padding:30px; border-radius:12px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2); font-family:'Mitr', sans-serif;">
-    <p id="purchase-confirm-text" style="font-size:1.1rem; color:#6e3cab;" data-i18n="purchaseConfirmText"></p>
+    <p id="purchase-confirm-text" style="font-size:1.1rem; color:#6e3cab;"></p>
     <div style="margin-top:20px;">
-      <button onclick="cancelPurchase()" style="margin-right:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold; data-i18n="cancel">ยกเลิก</button>
-      <button onclick="confirmPurchase()" style="padding:10px 20px; border:none; border-radius:30px; background:#a87ce6; color:#fff; font-weight:bold; data-i18n="confirm">ตกลง</button>
+      <button onclick="cancelPurchase()" style="margin-right:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold;" data-i18n="cancel">ยกเลิก</button>
+      <button onclick="confirmPurchase()" style="padding:10px 20px; border:none; border-radius:30px; background:#a87ce6; color:#fff; font-weight:bold;" data-i18n="confirm">ตกลง</button>
     </div>
   </div>
 </div>
@@ -659,16 +659,17 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
 
     const isUnlocked = localStorage.getItem("unlocked_" + id) === "true" || localStorage.getItem("unlocked_all") === "true";
 
-    // ทำให้ ep1 และ ep2 เป็นตอนที่อ่านได้ฟรี
-    if (id === "ep1" || id === "ep2") {
+    // ทำให้ ep1 เป็นตอนที่อ่านได้ฟรี (แก้ไขจาก 'ep1' || 'ep2' เป็นแค่ 'ep1')
+    if (id === "ep1") {
       if (el.innerHTML.trim() === "") renderEpisodeContent(el);
       el.style.display = el.style.display === "none" ? "block" : "none";
       return;
     }
 
+    // ตอนอื่นๆ (รวมถึง ep2) จะถูกล็อกหากยังไม่ปลดล็อก
     if (!isUnlocked) {
       pendingUnlockId = id;
-      // อัปเดตข้อความใน confirmModal สำหรับการปลดล็อกตอน
+      // อัปเดตข้อความใน confirmModal สำหรับการปลดล็อกตอนเดี่ยว
       const lang = localStorage.getItem("lang") || "th";
       const confirmText = translations[lang].confirmText;
       document.getElementById("confirm-text").innerHTML = confirmText.replace(/\n/g, "<br>");
@@ -771,7 +772,7 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       unlockAll: "🔓 ปลดล็อกทุกตอนในครั้งเดียว",
       buyPdf: "📘 ซื้อ PDF + ตอนพิเศษสุดฟินมากกว่า 1 ตอน",
       unlockButton: "ปลดล็อกทุกตอน (4 เหรียญ)",
-      buyPdfButton: "ซื้อ PDF ทั้งเรื่องและตอนพิเศษมากกว่า 1 ตอน (12 เหรียญ)",
+      buyPdfButton: "ซื้อ PDF ทั้งเรื่องและตอนพิเศษ (12 เหรียญ)",
       coinLabel: "💰 เหรียญของคุณ: ",
       languageLabel: "🌐 เปลี่ยนภาษา:",
       confirmText: "ตอนนี้ต้องใช้ 2 เหรียญ<br>คุณต้องการใช้เพื่ออ่านเนื้อหาต่อหรือไม่?",
@@ -876,10 +877,6 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
     },
     jp: {
       siteButton: "✨ Arn-niyay-khan ✨",
-      unlockAll: "🔓 すべてのエピソードを一度に解除",
-      buyPdf: "📘 PDF + 特別エピソードを購入",
-      unlockButton: "すべて解除（4 コイン）",
-      buyPdfButton: "PDF 1 つ以上の特別エピソードを含む本全体を購入します。（12 コイン）",
       coinLabel: "💰 あなたのコイン：",
       languageLabel: "🌐 言語を選択：",
       confirmText: "このエピソードには 2 コインが必要です。\n解除しますか？",
@@ -903,10 +900,6 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
     },
     kr: {
       siteButton: "✨ Arn-niyay-khan ✨",
-      unlockAll: "🔓 모든 에피소드 한 번에 잠금 해제",
-      buyPdf: "📘 PDF + 스페셜 에피소드 구매",
-      unlockButton: "전체 잠금 해제 (4코인)",
-      buyPdfButton: "전체 PDF와 1개 이상의 특별 에피소드를 구매하세요. (12코인)",
       coinLabel: "💰 보유 코인:",
       languageLabel: "🌐 언어 변경:",
       confirmText: "이 에피소드를 열려면 2코인이 필요합니다.\n잠금 해제하시겠습니까?",
@@ -930,10 +923,6 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
     },
     vn: {
       siteButton: "✨ Arn-niyay-khan ✨",
-      unlockAll: "🔓 Mở khóa tất cả tập cùng lúc",
-      buyPdf: "Mua PDF + tập đặc biệt",
-      unlockButton: "Mở khóa tất cả (4 xu)",
-      buyPdfButton: "Mua bản PDF đầy đủ và hơn 1 tập đặc biệt. (12 xu)",
       coinLabel: "💰 Xu của bạn:",
       languageLabel: "🌐 Chọn ngôn ngữ:",
       confirmText: "Tập này cần 2 xu để mở khóa.\nBạn có muốn tiếp tục không?",
