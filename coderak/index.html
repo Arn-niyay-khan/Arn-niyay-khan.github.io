@@ -27,10 +27,10 @@
 
     .site-button {
       display: inline-block;
-      padding: 12px 28px; /* ปรับขนาด padding */
+      padding: 12px 28px; /* ปรับขนาด padding เท่ากับหน้านิยาย */
       background-color: #f6d8ff;
       color: #6d3fb0;
-      font-size: 1.35rem; /* ปรับขนาด font-size */
+      font-size: 1.35rem; /* ปรับขนาด font-size เท่ากับหน้านิยาย */
       font-weight: bold;
       border-radius: 999px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
@@ -135,13 +135,13 @@
 
     .back-button {
       display: inline-block;
-      padding: 12px 28px; /* ขนาด padding เท่ากับ site-button */
+      padding: 12px 28px; /* ขนาด padding เท่ากับหน้านิยาย */
       background: linear-gradient(135deg, #c79df4, #a57be7);
       color: #fff;
       text-decoration: none;
       border-radius: 30px;
       font-weight: bold;
-      font-size: 1.35rem; /* ขนาด font-size เท่ากับ site-button */
+      font-size: 1.35rem; /* ขนาด font-size เท่ากับหน้านิยาย */
       box-shadow: 0 4px 12px rgba(167, 125, 221, 0.4);
       transition: all 0.3s ease;
     }
@@ -159,7 +159,7 @@
     
     .footer {
       margin-top: 60px;
-      font-size: 1.32rem;
+      font-size: 1.25rem; /* ปรับขนาด font-size เท่ากับหน้านิยาย */
       color: #9a7fb5;
       text-align: center;
     }
@@ -328,7 +328,7 @@
         set2Novel1Title: "รักร้าย(นาย)เย็นชา",
         set2Novel2Title: "นายบำเรอของคิริน",
         set2Novel3Title: "เสน่หาเพียงนาย",
-        set2Novel4Title: "แค้นพิศวาส",
+        set2Novel1Title: "แค้นพิศวาส",
         set2Novel5Title: "จะรักให้ตาย เพื่อได้ใจคืน",
         backToHome: "← กลับหน้าแรก",
         footerText: "© 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨"
@@ -487,8 +487,8 @@
       document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
         if (langPack[key]) {
-          // หากเป็น label สำหรับเหรียญ, ต้องรวมค่าเหรียญเข้าไปด้วย
-          if (el.id === "coin-label") { // ใช้ id เพื่อระบุ label ของเหรียญ
+          // ส่วนพิเศษสำหรับ coinLabel เพื่อรักษา span ของจำนวนเหรียญ
+          if (key === "coinLabel") {
             el.innerHTML = langPack[key] + `<span id="coin-count">${getCoins()}</span>` + (lang === 'th' ? ' เหรียญ' : '');
           } else {
             el.textContent = langPack[key];
@@ -510,12 +510,12 @@
     document.addEventListener("DOMContentLoaded", function () {
       // ตรวจสอบและกำหนดเหรียญเริ่มต้นถ้ายังไม่มี
       if (!localStorage.getItem("user_coins")) {
-        setCoins(100); // กำหนดเหรียญเริ่มต้น 100
+        setCoins(100); // กำหนดเหรียญเริ่มต้น 100 เหรียญ
       }
 
       const savedLang = localStorage.getItem("lang") || "th";
       switchLang(savedLang); // Apply the saved language on load
-      updateCoinDisplay(); // อัปเดตการแสดงผลเหรียญครั้งแรก
+      // updateCoinDisplay(); // ไม่ต้องเรียกซ้ำ เพราะ switchLang เรียกแล้ว
     });
   </script>
 </body>
