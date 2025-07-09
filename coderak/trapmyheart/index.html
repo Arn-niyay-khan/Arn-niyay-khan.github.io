@@ -176,7 +176,7 @@
       cursor: pointer;
       color: #6e3cab;
       font-weight: bold;
-      font-size: 1.45rem;
+      font-size: 1.52rem; /* ปรับขนาดชื่อตอน (1.45rem * 1.05 = 1.5225rem) */
       background-color: #f6e7ff;
       padding: 12px 20px;
       border-radius: 12px;
@@ -318,7 +318,7 @@
     .text-content { /* .summary ถูกรวมเข้ากับ .text-content ใน CSS */
       white-space: pre-wrap;
       text-align: justify;
-      font-size: 1rem;
+      font-size: 1.1rem; /* ปรับขนาดเนื้อหาแต่ละตอน */
       line-height: 1.7;
       color: #5e437f;
       background: #ffffff;
@@ -360,6 +360,12 @@
       }
       .summary {
           font-size: 1rem; /* ปรับขนาดเรื่องย่อบนมือถือ */
+      }
+      .text-content { /* ปรับขนาดเนื้อหาแต่ละตอนบนมือถือ */
+        font-size: 1rem;
+      }
+      .episode-title { /* ปรับขนาดชื่อตอนบนมือถือ */
+        font-size: 1.45rem;
       }
       .back-button {
         width: 100%;
