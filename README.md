@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
@@ -513,10 +512,6 @@
     </li>
   </ul>
 
-  <div class="footer" data-i18n="footerText">
-    © 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨
-  </div>
-
   <div class="buy-coin-section">
     <h2 data-i18n="buyCoinsTitle">✨ เติมเหรียญเพื่ออ่านนิยาย ✨</h2>
     <div class="buy-coin-buttons-grid">
@@ -538,6 +533,9 @@
     <p style="font-size: 1rem; color: #5e437f;" data-i18n="exchangeRate">อัตรา: 1 บาท = 100 เหรียญ</p>
   </div>
 
+  <div class="footer" data-i18n="footerText">
+    © 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨
+  </div>
 
   <div class="contact-admin-section">
     <button id="contactAdminBtn" data-i18n="contactAdminButton">ติดต่อแอดมิน</button>
