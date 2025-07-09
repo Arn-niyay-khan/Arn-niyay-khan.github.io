@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
@@ -632,9 +631,6 @@
     </li>
   </ul>
 
-  <div class="footer" data-i18n="footerText">
-    © 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨
-  </div>
 
   <div class="buy-coin-section">
     <h2 data-i18n="buyCoinsTitle">✨ เติมเหรียญเพื่ออ่านนิยาย ✨</h2>
@@ -681,6 +677,11 @@
   </div>
 
 
+<div class="footer" data-i18n="footerText">
+    © 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨
+  </div>
+
+  
   <div class="contact-admin-section">
     <button id="contactAdminBtn" data-i18n="contactAdminButton">ติดต่อแอดมิน</button>
     <p class="response-time-message" data-i18n="responseTimeMessage">จะติดต่อกลับภายใน 24 ชั่วโมงหรือเร็วที่สุด</p>
