@@ -21,25 +21,64 @@
       max-width: 900px;
     }
 
+    /* === Header Controls === */
+    .header-controls { /* ใหม่: สำหรับรวม site-button, coin, language */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap; /* เพื่อให้ห่อข้อความลงบรรทัดใหม่ในหน้าจอเล็ก */
+      gap: 15px; /* เพิ่มช่องว่างระหว่างรายการ */
+    }
+
     .site-button {
       display: inline-block;
       padding: 12px 28px;
-      margin-bottom: 30px;
       background-color: #f6d8ff;
       color: #6d3fb0;
       text-align: center;
-      font-size: 1.35rem; /* ปรับขนาดฟอนต์ให้เข้ากับปุ่มอื่นๆ */
+      font-size: 1.35rem; /* ขนาดเท่าหน้านามปากกา */
       font-weight: bold;
       border-radius: 999px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
       text-decoration: none;
       transition: transform 0.3s ease, background-color 0.3s ease;
+      flex-shrink: 0;
     }
 
     .site-button:hover {
       background-color: #e8c2ff;
       transform: scale(1.05);
     }
+
+    .user-info { /* ใหม่: สำหรับรวม coin และ language */
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: flex-end; /* จัดให้ชิดขวา */
+    }
+
+    .coin-display {
+      font-size: 0.99rem;
+      color: #6e3cab;
+    }
+
+    .language-selector {
+      font-size: 0.99rem;
+      color: #6e3cab;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .language-selector select {
+      font-size: 0.8rem;
+      padding: 4px 8px;
+      border-radius: 6px;
+      margin-left: 5px;
+    }
+    /* === End Header Controls === */
     
     h1 {
       color: #7b4ca0;
@@ -48,21 +87,65 @@
       margin-bottom: 10px;
     }
 
-    .summary, .text-content {
-      white-space: pre-wrap;
-      text-indent: 4em;
-      text-align: justify;
-      font-size: 1.25rem;
-      line-height: 1.9;
-      color: #5e437f;
-      background: #ffffff;
-      padding: 20px;
+    /* === Cover and Summary Section === */
+    .cover-summary-section { /* ปรับปรุง: ใช้ flexbox จัดวางปกและข้อมูล */
+      display: flex;
+      align-items: center; /* จัดให้อยู่กึ่งกลางในแนวตั้ง */
+      justify-content: center; /* จัดกึ่งกลางในแนวนอน */
+      gap: 30px; /* ช่องว่างระหว่างปกกับข้อมูล */
+      margin-bottom: 30px;
+      text-align: left; /* ข้อความภายใน novel-info จะชิดซ้าย */
+      max-width: 900px; /* จำกัดความกว้างเหมือน content-wrapper */
+      margin-left: auto; /* จัดกึ่งกลาง */
+      margin-right: auto; /* จัดกึ่งกลาง */
+      padding: 20px; /* เพิ่ม padding */
+      background: #ffffff; /* พื้นหลังเพื่อให้กล่องดูเป็นระเบียบ */
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.03);
-      margin-bottom: 30px;
-      position: relative; /* สำหรับ watermark */
-      z-index: 1; /* สำหรับ watermark */
     }
+
+    .novel-cover {
+      width: 180px;
+      height: auto; /* ให้ความสูงปรับตามอัตราส่วน */
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0; /* ป้องกันการหดตัวของปก */
+    }
+
+    .novel-info {
+      flex: 1; /* ให้ส่วนข้อมูลขยายเต็มพื้นที่ที่เหลือ */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0; /* สำคัญสำหรับ flex item ที่มีข้อความยาวๆ */
+    }
+
+    .novel-title {
+      font-size: 1.45rem;
+      color: #6e3cab;
+      margin-bottom: 10px;
+      line-height: 1.3;
+      text-align: left; /* ชื่อเรื่องชิดซ้าย */
+    }
+
+    .summary { /* .novel-summary ถูกเปลี่ยนเป็น .summary */
+      white-space: pre-wrap; /* รักษาการขึ้นบรรทัดใหม่ */
+      text-indent: 2.5em; /* เยื้องบรรทัดแรก */
+      margin-bottom: 0; /* ไม่มี margin-bottom เพิ่มเติม */
+      line-height: 1.7;
+      color: #5e437f;
+      font-size: 1.25rem; /* ขนาดฟอนต์ตามหน้านิยาย */
+      text-align: justify;
+      background: none; /* ลบพื้นหลังและ shadow ที่ซ้ำซ้อน */
+      padding: 0; /* ลบ padding ที่ซ้ำซ้อน */
+      box-shadow: none; /* ลบ box-shadow ที่ซ้ำซ้อน */
+      border-radius: 0; /* ลบ border-radius ที่ซ้ำซ้อน */
+    }
+    .summary p { /* เพื่อให้การย่อหน้าทำงานถูกต้อง */
+        text-indent: 2.5em;
+        margin-bottom: 1em;
+    }
+    /* === End Cover and Summary Section === */
 
     .action-section {
       display: flex;
@@ -208,66 +291,9 @@
 
     .footer {
       margin-top: 60px;
-      font-size: 1.25rem; /* ปรับขนาด font-size ให้เท่ากับหน้านามปากกา */
+      font-size: 1.25rem; /* ปรับขนาด font-size */
       color: #9a7fb5;
       text-align: center;
-    }
-
-    .cover-summary-section {
-      margin-bottom: 30px;
-      display: flex; /* เพิ่ม display: flex */
-      align-items: center; /* จัดให้อยู่กึ่งกลางในแนวตั้ง */
-      gap: 30px; /* เพิ่มช่องว่างระหว่างปกกับข้อมูล */
-    }
-
-    .novel-cover {
-      width: 180px;
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      flex-shrink: 0;
-    }
-
-    .novel-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-width: 0;
-    }
-
-    .novel-title {
-      font-size: 1.45rem;
-      color: #6e3cab;
-      margin-bottom: 10px;
-      line-height: 1.3;
-      text-align: left; /* จัดให้ชิดซ้าย */
-    }
-
-    .novel-summary p {
-      text-indent: 2em;
-      margin-bottom: 1em;
-      line-height: 1.7;
-      color: #5e437f;
-      font-size: 1.25rem;
-      text-align: justify;
-    }
-        
-    @media screen and (max-width: 600px) {
-      .cover-summary-section { /* แก้ไขตรงนี้ */
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .novel-title {
-        font-size: 1.45rem;
-        text-align: center; /* จัดให้อยู่ตรงกลางบนมือถือ */
-      }
-
-      .novel-summary {
-        font-size: 1.25rem;
-      }
     }
 
     .watermark {
@@ -289,7 +315,7 @@
       user-select: none;
     }
 
-    .summary, .text-content {
+    .text-content { /* .summary ถูกรวมเข้ากับ .text-content ใน CSS */
       white-space: pre-wrap;
       text-align: justify;
       font-size: 1rem;
@@ -308,64 +334,102 @@
       text-indent: 2.5em;
       margin-bottom: 1em;
     }
+
+    /* Media query สำหรับหน้าจอขนาดเล็ก */
+    @media screen and (max-width: 600px) {
+      .header-controls {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .user-info {
+        width: 100%;
+        justify-content: flex-start;
+      }
+      .site-button {
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .cover-summary-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px; /* ลด padding บนมือถือ */
+      }
+      .novel-title {
+        text-align: center; /* จัดกึ่งกลางชื่อเรื่องบนมือถือ */
+        margin-top: 20px; /* เพิ่มระยะห่างระหว่างปกกับชื่อเรื่องบนมือถือ */
+      }
+      .summary {
+          font-size: 1rem; /* ปรับขนาดเรื่องย่อบนมือถือ */
+      }
+      .back-button {
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
   </style>
 </head>
 <body>
-  <a href="/" class="site-button" data-i18n="siteButton">✨ Arn-niyay-khan ✨</a>
-<div style="text-align: right; margin-bottom: 40px; font-size: 0.89rem; color: #6e3cab;">
-    💰 <span data-i18n="coinLabel">เหรียญของคุณ: <span id="coin-count">0</span> เหรียญ
+  <div class="header-controls">
+    <a href="/" class="site-button" data-i18n="siteButton">✨ Arn-niyay-khan ✨</a>
+    <div class="user-info">
+      <div class="coin-display" data-i18n="coinLabel">
+        💰 เหรียญของคุณ: <span id="coin-count">0</span> เหรียญ
+      </div>
+      <div class="language-selector">
+        <label for="language-select" data-i18n="languageLabel">🌐 เปลี่ยนภาษา:</label>
+        <select id="language-select" onchange="switchLang(this.value)">
+          <option value="th">ไทย</option>
+          <option value="en">English</option>
+          <option value="ch">中国人</option>
+          <option value="ru">русский язык</option>
+          <option value="jp">日本語</option>
+          <option value="kr">한국어</option>
+          <option value="vn">Tiếng Việt</option>
+        </select>
+      </div>
+    </div>
   </div>
   
-<div style="text-align: right; margin-top: -15px; margin-bottom: 10px;">
-  <label for="language-select" style="font-size: 0.99rem; color: #6e3cab;" data-i18n="languageLabel">🌐 เปลี่ยนภาษา:</label>
-  <select id="language-select" onchange="switchLang(this.value)" style="font-size: 0.8rem; padding: 4px 8px; border-radius: 6px; margin-left: 5px;">
-    <option value="th">ไทย</option>
-    <option value="en">English</option>
-    <option value="ch">中国人</option>
-    <option value="ru">русский язык</option>
-    <option value="jp">日本語</option>
-    <option value="kr">한국어</option>
-    <option value="vn">Tiếng Việt</option>
-  </select>
-</div>
   <button onclick="localStorage.clear(); alert('เคลียร์ localStorage แล้วค่ะ'); location.reload();" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: red; color: white; padding: 10px; border-radius: 8px;">🧹 ล้าง localStorage</button>
   
-<div class="cover-summary-section">
-  <div class="cover-summary-row">
+  <div class="cover-summary-section">
     <img src="link-to-your-cover.jpg" alt="หน้าปกนิยาย" class="novel-cover">
     <div class="novel-info">
       <h2 class="novel-title" data-i18n="novelTitle">📘 กับดักหัวใจของนายตัวแสบ</h2>
-      <div class="summary" id="summary" style="display: block;"
-  data-content-th="เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว
+      <div class="summary" id="summary" data-i18n-content-type="summary"
+        data-content-th="เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว
 
 ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว..."
-  data-content-en="When a mischievous student sets his sights on teasing a soft-hearted new teacher,
+        data-content-en="When a mischievous student sets his sights on teasing a soft-hearted new teacher,
 
 Love in the school corridors isn’t all sweet and innocent..."
-  data-content-ch="当一个调皮的学生盯上了心软的新老师，
+        data-content-ch="当一个调皮的学生盯上了心软的新老师，
 
 校园里的爱情就不再只是甜蜜而已……"
-  data-content-ru="Когда озорной ученик решает досаждать добросердечному новому учителю,
+        data-content-ru="Когда озорной ученик решает досаждать добросердечному новому учителю,
 
 Любовь в школьных коридорах становится далеко не такой уж невинной…"
-  data-content-jp="いたずら好きな生徒が、心優しい新任教師をからかおうとしたとき、
+        data-content-jp="いたずら好きな生徒が、心優しい新任教師をからかおうとしたとき、
 
 学園内の恋は、甘いだけでは終わらない…"
-  data-content-kr="장난꾸러기 학생이 마음이 여린 신입 교사를 괴롭히기로 결심했을 때,
+        data-content-kr="장난꾸러기 학생이 마음이 여린 신입 교사를 괴롭히기로 결심했을 때,
 
 학교 안의 사랑은 더 이상 달콤하기만 한 것이 아니다…"
-  data-content-vn="Khi một học sinh tinh nghịch nhằm vào thầy giáo mới với trái tim yếu mềm,
+        data-content-vn="Khi một học sinh tinh nghịch nhằm vào thầy giáo mới với trái tim yếu mềm,
 
 Tình yêu trong hành lang trường học không chỉ ngọt ngào đơn thuần nữa..." 
       ></div>
-    </div> </div> </div> <div class="action-section">
+    </div>
+  </div>
+
+<div class="action-section">
   <div class="action-box">
     <p data-i18n="unlockAll">🔓 ปลดล็อกทุกตอนในครั้งเดียว</p>
-    <button class="unlock-button" onclick="unlockAllEpisodes()" data-i18n="unlockButton">ปลดล็อกทุกตอน (4 เหรียญ)</button>
+    <button class="unlock-button" onclick="confirmPurchaseAll('unlockAll')" data-i18n="unlockButton">ปลดล็อกทุกตอน (4 เหรียญ)</button>
   </div>
   <div class="action-box">
     <p data-i18n="buyPdfButton">📘 ซื้อ PDF + ตอนพิเศษสุดฟินมากกว่า 1 ตอน</p>
-    <button class="unlock-button" onclick="buyPdfAll(19, 'link-to-your-pdf.pdf')" data-i18n="buyPdfButton">ซื้อ PDF ทั้งเรื่องและตอนพิเศษมากกว่า 1 ตอน (12 เหรียญ)</button>
+    <button class="unlock-button" onclick="confirmPurchaseAll('buyPdf')" data-i18n="buyPdfButton">ซื้อ PDF ทั้งเรื่องและตอนพิเศษมากกว่า 1 ตอน (12 เหรียญ)</button>
   </div>
 </div>
   
@@ -512,12 +576,21 @@ Thầy giáo trẻ ngồi lặng lẽ nhìn ra ngoài, không phải vì không 
 Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
 "></div>
 </div>
-</div> <div id="confirmModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:9999;">
+<div id="confirmModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:9999;">
   <div style="background:#fff; max-width:400px; margin:15% auto; padding:30px; border-radius:12px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2); font-family:'Mitr', sans-serif;">
     <p id="confirm-text" style="font-size:1.1rem; color:#6e3cab;" data-i18n="confirmText">ตอนนี้ต้องใช้ 2 เหรียญ<br>คุณต้องการใช้เพื่ออ่านเนื้อหาต่อหรือไม่?</p>
     <div style="margin-top:20px;">
-      <button onclick="cancelUnlock()" style="margin-right:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold; data-i18n=cancel">ยกเลิก</button>
-      <button onclick="confirmUnlock()" style="padding:10px 20px; border:none; border-radius:30px; background:#a87ce6; color:#fff; font-weight:bold; data-i18=confirm">ตกลง</button>
+      <button onclick="cancelUnlock()" style="margin-right:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold; data-i18n="cancel">ยกเลิก</button>
+      <button onclick="confirmUnlock()" style="padding:10px 20px; border:none; border-radius:30px; background:#a87ce6; color:#fff; font-weight:bold; data-i18n="confirm">ตกลง</button>
+    </div>
+  </div>
+</div>
+<div id="purchaseConfirmModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:9999;">
+  <div style="background:#fff; max-width:400px; margin:15% auto; padding:30px; border-radius:12px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2); font-family:'Mitr', sans-serif;">
+    <p id="purchase-confirm-text" style="font-size:1.1rem; color:#6e3cab;" data-i18n="purchaseConfirmText"></p>
+    <div style="margin-top:20px;">
+      <button onclick="cancelPurchase()" style="margin-right:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold; data-i18n="cancel">ยกเลิก</button>
+      <button onclick="confirmPurchase()" style="padding:10px 20px; border:none; border-radius:30px; background:#a87ce6; color:#fff; font-weight:bold; data-i18n="confirm">ตกลง</button>
     </div>
   </div>
 </div>
@@ -542,7 +615,9 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
 
 <script>
   let pendingUnlockId = null;
+  let pendingPurchaseType = null; // เพิ่มตัวแปรสำหรับประเภทการซื้อ (unlockAll หรือ buyPdf)
 
+  // ฟังก์ชันสำหรับจัดการเหรียญ
   function getCoins() {
     return parseInt(localStorage.getItem("user_coins") || "0");
   }
@@ -555,7 +630,7 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
   function deductCoins(amount) {
     const current = getCoins();
     if (current < amount) {
-      alert(`เหรียญไม่พอค่ะ เหลือ ${current} เหรียญ ต้องใช้ ${amount} เหรียญ`);
+      alert(`${translations[localStorage.getItem("lang") || "th"].coinNotEnough1} ${current} ${translations[localStorage.getItem("lang") || "th"].coinNotEnough2} ${amount} ${translations[localStorage.getItem("lang") || "th"].coinNotEnough3}`);
       return false;
     }
     setCoins(current - amount);
@@ -567,6 +642,7 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
     if (coinEl) coinEl.textContent = getCoins();
   }
 
+  // ฟังก์ชัน render content
   function renderEpisodeContent(block) {
     const lang = localStorage.getItem("lang") || "th";
     const content = block.getAttribute(`data-content-${lang}`) || "";
@@ -592,6 +668,10 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
 
     if (!isUnlocked) {
       pendingUnlockId = id;
+      // อัปเดตข้อความใน confirmModal สำหรับการปลดล็อกตอน
+      const lang = localStorage.getItem("lang") || "th";
+      const confirmText = translations[lang].confirmText;
+      document.getElementById("confirm-text").innerHTML = confirmText.replace(/\n/g, "<br>");
       document.getElementById("confirmModal").style.display = "block";
       return;
     }
@@ -611,9 +691,9 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
     const el = document.getElementById(pendingUnlockId);
     if (!el) return;
 
-    if (deductCoins(2)) {
+    if (deductCoins(2)) { // หัก 2 เหรียญสำหรับการปลดล็อกตอน
       localStorage.setItem("unlocked_" + pendingUnlockId, "true");
-      alert("✅ ปลดล็อกตอนสำเร็จ! ตอนนี้คุณสามารถอ่านตอนนี้ได้แล้วค่ะ");
+      alert(translations[localStorage.getItem("lang") || "th"].episodeUnlockSuccess);
       renderEpisodeContent(el);
       el.style.display = "block";
     }
@@ -622,23 +702,60 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
     pendingUnlockId = null;
   }
 
-  function unlockAllEpisodes() {
-    if (confirm("ปลดล็อกทุกตอนต้องใช้ 4 เหรียญ ต้องการใช้เลยไหม?")) {
-      if (deductCoins(4)) {
-        localStorage.setItem("unlocked_all", true);
-        alert("✅ ปลดล็อกทุกตอนเรียบร้อยค่ะ!");
-      }
+  // ฟังก์ชันใหม่สำหรับแสดง Pop-up ยืนยันการซื้อทั้งหมด / PDF
+  function confirmPurchaseAll(type) {
+    let cost = 0;
+    let messageKey = '';
+    let pdfLink = '';
+
+    if (type === 'unlockAll') {
+      cost = 4;
+      messageKey = 'confirmUnlockAllText';
+    } else if (type === 'buyPdf') {
+      cost = 12;
+      messageKey = 'confirmBuyPdfText';
+      pdfLink = 'link-to-your-pdf.pdf'; // ต้องระบุลิงก์ PDF ที่นี่
+    } else {
+      return;
     }
+
+    pendingPurchaseType = { type: type, cost: cost, link: pdfLink };
+
+    const lang = localStorage.getItem("lang") || "th";
+    const confirmTextEl = document.getElementById("purchase-confirm-text");
+    confirmTextEl.innerHTML = (translations[lang][messageKey] || '').replace('{{cost}}', cost).replace(/\n/g, "<br>");
+    
+    document.getElementById("purchaseConfirmModal").style.display = "block";
   }
 
-  function buyPdfAll(cost, link) {
-    if (confirm(`ซื้อเรื่องอ่าน PDF + ตอนพิเศษ ใช้ 12 เหรียญ ต้องการซื้อไหม?`)) {
-      if (deductCoins(cost)) {
-        alert("✅ ขอบคุณที่สนับสนุนค่ะ! ระบบจะพาไปดาวน์โหลด PDF");
-        window.location.href = link;
+  // ฟังก์ชันยกเลิก Pop-up การซื้อทั้งหมด / PDF
+  function cancelPurchase() {
+    document.getElementById("purchaseConfirmModal").style.display = "none";
+    pendingPurchaseType = null;
+  }
+
+  // ฟังก์ชันยืนยันการซื้อทั้งหมด / PDF
+  function confirmPurchase() {
+    if (!pendingPurchaseType) return;
+
+    const { type, cost, link } = pendingPurchaseType;
+
+    if (deductCoins(cost)) {
+      if (type === 'unlockAll') {
+        localStorage.setItem("unlocked_all", true);
+        alert(translations[localStorage.getItem("lang") || "th"].unlockAllSuccess);
+      } else if (type === 'buyPdf') {
+        alert(translations[localStorage.getItem("lang") || "th"].buyPdfSuccess);
+        if (link) {
+          window.location.href = link;
+        }
       }
     }
+
+    document.getElementById("purchaseConfirmModal").style.display = "none";
+    pendingPurchaseType = null;
   }
+
 
   function appendEmoji(el) {
     const textarea = document.querySelector(".comment-box textarea");
@@ -650,13 +767,16 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
 
   const translations = {
     th: {
-      unlockAll: "ปลดล็อกทุกตอนในครั้งเดียว",
-      buyPdf: "ซื้อ PDF + ตอนพิเศษสุดฟินมากกว่า 1 ตอน",
+      siteButton: "✨ Arn-niyay-khan ✨",
+      unlockAll: "🔓 ปลดล็อกทุกตอนในครั้งเดียว",
+      buyPdf: "📘 ซื้อ PDF + ตอนพิเศษสุดฟินมากกว่า 1 ตอน",
       unlockButton: "ปลดล็อกทุกตอน (4 เหรียญ)",
-      buyPdfButton: "ซื้อ PDF ทั้งเรื่องและตอนพิเศษ (12 เหรียญ)",
-      coinLabel: "เหรียญของคุณ: ",
+      buyPdfButton: "ซื้อ PDF ทั้งเรื่องและตอนพิเศษมากกว่า 1 ตอน (12 เหรียญ)",
+      coinLabel: "💰 เหรียญของคุณ: ",
       languageLabel: "🌐 เปลี่ยนภาษา:",
       confirmText: "ตอนนี้ต้องใช้ 2 เหรียญ<br>คุณต้องการใช้เพื่ออ่านเนื้อหาต่อหรือไม่?",
+      confirmUnlockAllText: "ปลดล็อกทุกตอนต้องใช้ {{cost}} เหรียญ<br>คุณต้องการปลดล็อกเลยหรือไม่?",
+      confirmBuyPdfText: "ซื้อ PDF ทั้งเรื่องและตอนพิเศษต้องใช้ {{cost}} เหรียญ<br>คุณต้องการซื้อเลยหรือไม่?",
       cancel: "ยกเลิก",
       confirm: "ตกลง",
       commentTitle: "💬 แสดงความคิดเห็น",
@@ -665,16 +785,25 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       backToPenName: "← ย้อนกลับไปหน้านามปากกา โค้ดรัก",
       submitComment: "ความคิดเห็นของคุณถูกส่งแล้ว ขอบคุณค่ะ!",
       novelTitle: "กับดักหัวใจของนายตัวแสบ",
-      footerText: "© 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨" // เพิ่ม footerText
+      footerText: "© 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨",
+      episodeUnlockSuccess: "✅ ปลดล็อกตอนสำเร็จ! ตอนนี้คุณสามารถอ่านตอนนี้ได้แล้วค่ะ",
+      unlockAllSuccess: "✅ ปลดล็อกทุกตอนเรียบร้อยค่ะ!",
+      buyPdfSuccess: "✅ ขอบคุณที่สนับสนุนค่ะ! ระบบจะพาไปดาวน์โหลด PDF",
+      coinNotEnough1: "เหรียญไม่พอค่ะ เหลือ",
+      coinNotEnough2: "เหรียญ ต้องใช้",
+      coinNotEnough3: "เหรียญ"
     },
     en: {
-      unlockAll: "Unlock all episodes at once",
-      buyPdf: "Buy PDF + Extra Special Episodes",
+      siteButton: "✨ Arn-niyay-khan ✨",
+      unlockAll: "🔓 Unlock all episodes at once",
+      buyPdf: "📘 Buy PDF + Extra Special Episodes",
       unlockButton: "Unlock all (4 coins)",
       buyPdfButton: "Buy full PDF and special Episodes (12 coins)",
       coinLabel: "💰 Your coins: ",
       languageLabel: "🌐 Language:",
       confirmText: "This episode requires 2 coins.\nWould you like to unlock it?",
+      confirmUnlockAllText: "Unlocking all episodes costs {{cost}} coins.\nDo you want to proceed?",
+      confirmBuyPdfText: "Buying the full PDF and special episodes costs {{cost}} coins.\nDo you want to proceed?",
       cancel: "Cancel",
       confirm: "Confirm",
       commentTitle: "💬 Leave a Comment",
@@ -683,16 +812,25 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       backToPenName: "← Back to Codrak Pen Name",
       submitComment: "Your comment has been submitted. Thank you!",
       novelTitle: "The Mischievous Student's Heart Trap",
-      footerText: "© 2025 Arn-niyay-khan | Diverse Pen Names, Diverse Authors ✨" // เพิ่ม footerText
+      footerText: "© 2025 Arn-niyay-khan | Diverse Pen Names, Diverse Authors ✨",
+      episodeUnlockSuccess: "✅ Episode unlocked successfully! You can now read this episode.",
+      unlockAllSuccess: "✅ All episodes unlocked!",
+      buyPdfSuccess: "✅ Thank you for your support! You will be redirected to download the PDF.",
+      coinNotEnough1: "Not enough coins. You have",
+      coinNotEnough2: "coins. You need",
+      coinNotEnough3: "coins."
     },
     ch: {
-      unlockAll: "一次解锁所有章节",
-      buyPdf: "购买 PDF + 特别章节",
+      siteButton: "✨ Arn-niyay-khan ✨",
+      unlockAll: "🔓 一次解锁所有章节",
+      buyPdf: "📘 购买 PDF + 特别章节",
       unlockButton: "全部解锁（4 个金币）",
       buyPdfButton: "购买完整的 PDF 和 1 集以上的特别剧集。（12 个金币）",
       coinLabel: "💰 您的金币：",
       languageLabel: "🌐 语言切换：",
       confirmText: "本章节需消耗 2 个金币。\n您是否要解锁阅读？",
+      confirmUnlockAllText: "解锁所有章节需要 {{cost}} 个金币。\n您是否要继续？",
+      confirmBuyPdfText: "购买完整 PDF 和特别章节需要 {{cost}} 个金币。\n您是否要继续？",
       cancel: "取消",
       confirm: "确认",
       commentTitle: "💬 发表评论",
@@ -701,16 +839,25 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       backToPenName: "← 返回 CodeRak 签名页面",
       submitComment: "您的评论已提交，谢谢! ",
       novelTitle: "小恶魔的心陷阱",
-      footerText: "© 2025 Arn-niyay-khan | 多样笔名，多样作者 ✨" // เพิ่ม footerText
+      footerText: "© 2025 Arn-niyay-khan | 多样笔名，多样作者 ✨",
+      episodeUnlockSuccess: "✅ 章节解锁成功！您现在可以阅读本章节了。",
+      unlockAllSuccess: "✅ 所有章节已解锁！",
+      buyPdfSuccess: "✅ 感谢您的支持！您将被重定向下载 PDF。",
+      coinNotEnough1: "金币不足。您还剩",
+      coinNotEnough2: "金币，需要",
+      coinNotEnough3: "金币。"
     },
     ru: {
-      unlockAll: "Разблокировать все главы сразу",
-      buyPdf: "Купить PDF + дополнительные главы",
+      siteButton: "✨ Arn-niyay-khan ✨",
+      unlockAll: "🔓 Разблокировать все главы сразу",
+      buyPdf: "📘 Купить PDF + дополнительные главы",
       unlockButton: "Разблокировать все (4 монеты)",
       buyPdfButton: "Купить все PDF-файлы и более 1 специального эпизода. (12 монет)",
       coinLabel: "💰 Ваши монеты:",
       languageLabel: "🌐 Выбрать язык:",
       confirmText: "Для этой главы нужно 2 монеты.\nРазблокировать сейчас?",
+      confirmUnlockAllText: "Разблокировка всех глав стоит {{cost}} монет.\nВы хотите продолжить?",
+      confirmBuyPdfText: "Покупка полного PDF и специальных глав стоит {{cost}} монет.\nВы хотите продолжить?",
       cancel: "Отмена",
       confirm: "Подтвердить",
       commentTitle: "💬 Оставить комментарий",
@@ -719,16 +866,25 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       backToPenName: "← Назад к псевдониму CodeRak",
       submitComment: "Ваш комментарий отправлен. Спасибо!",
       novelTitle: "Сердечная ловушка озорного ученика",
-      footerText: "© 2025 Arn-niyay-khan | Разнообразные псевдонимы, разнообразные авторы ✨" // เพิ่ม footerText
+      footerText: "© 2025 Arn-niyay-khan | Разнообразные псевдонимы, разнообразные авторы ✨",
+      episodeUnlockSuccess: "✅ Глава успешно разблокирована! Теперь вы можете прочитать эту главу.",
+      unlockAllSuccess: "✅ Все главы разблокированы!",
+      buyPdfSuccess: "✅ Спасибо за вашу поддержку! Вы будете перенаправлены для загрузки PDF.",
+      coinNotEnough1: "Недостаточно монет. У вас осталось",
+      coinNotEnough2: "монет. Вам нужно",
+      coinNotEnough3: "монет."
     },
     jp: {
-      unlockAll: "すべてのエピソードを一度に解除",
-      buyPdf: "PDF + 特別エピソードを購入",
+      siteButton: "✨ Arn-niyay-khan ✨",
+      unlockAll: "🔓 すべてのエピソードを一度に解除",
+      buyPdf: "📘 PDF + 特別エピソードを購入",
       unlockButton: "すべて解除（4 コイン）",
       buyPdfButton: "PDF 1 つ以上の特別エピソードを含む本全体を購入します。（12 コイン）",
       coinLabel: "💰 あなたのコイン：",
       languageLabel: "🌐 言語を選択：",
       confirmText: "このエピソードには 2 コインが必要です。\n解除しますか？",
+      confirmUnlockAllText: "すべてのエピソードのロックを解除するには {{cost}} コインが必要です。\n続行しますか？",
+      confirmBuyPdfText: "PDF 全巻と特別エピソードの購入には {{cost}} コインが必要です。\n続行しますか？",
       cancel: "キャンセル",
       confirm: "確認",
       commentTitle: "💬 コメントを残す",
@@ -737,16 +893,25 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       backToPenName: "← コードラックのペンネームページに戻る",
       submitComment: "コメントが送信されました。ありがとうございます!",
       novelTitle: "いたずらっ子の心の罠",
-      footerText: "© 2025 Arn-niyay-khan | 多様なペンネーム、多様な作家 ✨" // เพิ่ม footerText
+      footerText: "© 2025 Arn-niyay-khan | 多様なペンネーム、多様な作家 ✨",
+      episodeUnlockSuccess: "✅ エピソードのロックが解除されました！これでこのエピソードを読むことができます。",
+      unlockAllSuccess: "✅ 全てのエピソードがロック解除されました！",
+      buyPdfSuccess: "✅ ご支援ありがとうございます！PDFダウンロードページにリダイレクトされます。",
+      coinNotEnough1: "コインが足りません。残り",
+      coinNotEnough2: "コインです。必要なコインは",
+      coinNotEnough3: "コインです。"
     },
     kr: {
-      unlockAll: "모든 에피소드 한 번에 잠금 해제",
-      buyPdf: "PDF + 스페셜 에피소드 구매",
+      siteButton: "✨ Arn-niyay-khan ✨",
+      unlockAll: "🔓 모든 에피소드 한 번에 잠금 해제",
+      buyPdf: "📘 PDF + 스페셜 에피소드 구매",
       unlockButton: "전체 잠금 해제 (4코인)",
       buyPdfButton: "전체 PDF와 1개 이상의 특별 에피소드를 구매하세요. (12코인)",
       coinLabel: "💰 보유 코인:",
       languageLabel: "🌐 언어 변경:",
       confirmText: "이 에피소드를 열려면 2코인이 필요합니다.\n잠금 해제하시겠습니까?",
+      confirmUnlockAllText: "모든 에피소드를 잠금 해제하려면 {{cost}} 코인이 필요합니다.\n진행하시겠습니까?",
+      confirmBuyPdfText: "전체 PDF 및 특별 에피소드를 구매하려면 {{cost}} 코인이 필요합니다.\n진행하시겠습니까?",
       cancel: "취소",
       confirm: "확인",
       commentTitle: "💬 댓글 남기기",
@@ -755,16 +920,25 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       backToPenName: "← 코드락 필명 페이지로 돌아가기",
       submitComment: "댓글이 전송되었습니다. 감사합니다!",
       novelTitle: "개구쟁이 학생의 함정",
-      footerText: "© 2025 Arn-niyay-khan | 다양한 필명, 다양한 작가 ✨" // เพิ่ม footerText
+      footerText: "© 2025 Arn-niyay-khan | 다양한 필명, 다양한 작가 ✨",
+      episodeUnlockSuccess: "✅ 에피소드가 성공적으로 잠금 해제되었습니다! 이제 이 에피소드를 읽을 수 있습니다.",
+      unlockAllSuccess: "✅ 모든 에피소드가 잠금 해제되었습니다!",
+      buyPdfSuccess: "✅ 지원해주셔서 감사합니다! PDF 다운로드 페이지로 이동됩니다.",
+      coinNotEnough1: "코인이 부족합니다. 현재",
+      coinNotEnough2: "코인 있습니다. 필요한 코인은",
+      coinNotEnough3: "코인입니다."
     },
     vn: {
-      unlockAll: "Mở khóa tất cả tập cùng lúc",
+      siteButton: "✨ Arn-niyay-khan ✨",
+      unlockAll: "🔓 Mở khóa tất cả tập cùng lúc",
       buyPdf: "Mua PDF + tập đặc biệt",
       unlockButton: "Mở khóa tất cả (4 xu)",
       buyPdfButton: "Mua bản PDF đầy đủ và hơn 1 tập đặc biệt. (12 xu)",
       coinLabel: "💰 Xu của bạn:",
       languageLabel: "🌐 Chọn ngôn ngữ:",
       confirmText: "Tập này cần 2 xu để mở khóa.\nBạn có muốn tiếp tục không?",
+      confirmUnlockAllText: "Mở khóa tất cả các tập cần {{cost}} xu.\nBạn có muốn tiếp tục không?",
+      confirmBuyPdfText: "Mua toàn bộ PDF và các tập đặc biệt cần {{cost}} xu.\nBạn có muốn tiếp tục không?",
       cancel: "Hủy",
       confirm: "Xác nhận",
       commentTitle: "💬 Để lại bình luận",
@@ -773,7 +947,13 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       backToPenName: "← Quay lại trang bút danh CodeRak",
       submitComment: "Bình luận của bạn đã được gửi. Cảm ơn bạn!",
       novelTitle: "Cái bẫy trái tim của cậu học trò tinh nghịch",
-      footerText: "© 2025 Arn-niyay-khan | Bút danh đa dạng, tác giả đa dạng ✨" // เพิ่ม footerText
+      footerText: "© 2025 Arn-niyay-khan | Bút danh đa dạng, tác giả đa dạng ✨",
+      episodeUnlockSuccess: "✅ Tập đã được mở khóa thành công! Bây giờ bạn có thể đọc tập này.",
+      unlockAllSuccess: "✅ Tất cả các tập đã được mở khóa!",
+      buyPdfSuccess: "✅ Cảm ơn bạn đã ủng hộ! Bạn sẽ được chuyển hướng để tải xuống PDF.",
+      coinNotEnough1: "Không đủ xu. Bạn còn",
+      coinNotEnough2: "xu. Bạn cần",
+      coinNotEnough3: "xu."
     }
   };
     
@@ -825,10 +1005,21 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       }
     });
 
+    // อัปเดตข้อความใน confirmModal (สำหรับปลดล็อกตอนเดี่ยว)
     const confirmTextEl = document.getElementById("confirm-text");
     if (confirmTextEl && langPack.confirmText) {
       confirmTextEl.innerHTML = langPack.confirmText.replace(/\n/g, "<br>");
     }
+
+    // อัปเดตข้อความใน purchaseConfirmModal (สำหรับซื้อทั้งหมด / PDF)
+    const purchaseConfirmTextEl = document.getElementById("purchase-confirm-text");
+    if (purchaseConfirmTextEl && pendingPurchaseType) { // ถ้ามี Pop-up ซื้อค้างอยู่
+        const type = pendingPurchaseType.type;
+        const cost = pendingPurchaseType.cost;
+        const messageKey = type === 'unlockAll' ? 'confirmUnlockAllText' : 'confirmBuyPdfText';
+        purchaseConfirmTextEl.innerHTML = (langPack[messageKey] || '').replace('{{cost}}', cost).replace(/\n/g, "<br>");
+    }
+
 
     localStorage.setItem("lang", lang);
     renderSummary(); // ต้องเรียก renderSummary() ที่นี่เพื่อให้เรื่องย่อเปลี่ยนภาษา
