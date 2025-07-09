@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
@@ -242,6 +243,42 @@
         width: 100%; /* ให้ข้อความพรีวิวอยู่บรรทัดใหม่ */
     }
     /* === End Buy Coins Section Styles === */
+
+    /* === Contact Admin Section Styles === */
+    .contact-admin-section { /* คอนเทนเนอร์สำหรับปุ่มติดต่อแอดมิน */
+        text-align: center;
+        margin-top: 60px; /* ระยะห่างจากส่วนด้านบน */
+        padding-top: 20px; /* เพิ่ม padding ด้านบน */
+        border-top: 1px solid #e0c8ff; /* เส้นแบ่ง */
+    }
+
+    #contactAdminBtn {
+        background-color: #7b4ca0; /* สีม่วงเข้ม */
+        color: white;
+        padding: 15px 25px; /* ขนาดปุ่มใหญ่ขึ้น */
+        border: none;
+        border-radius: 30px; /* มุมโค้งมนมากขึ้น */
+        cursor: pointer;
+        font-size: 1.15rem; /* ขนาดตัวอักษรใหญ่ขึ้น */
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        display: block; /* ทำให้ปุ่มเป็นบล็อก */
+        margin: 0 auto 10px auto; /* จัดกึ่งกลางและมีระยะห่างด้านล่าง */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    #contactAdminBtn:hover {
+        background-color: #613b82; /* สีเข้มขึ้นเมื่อวางเมาส์ */
+        transform: scale(1.03);
+    }
+
+    .response-time-message {
+        font-size: 1rem; /* ขนาดตัวอักษร */
+        color: #5e437f; /* สีข้อความ */
+        margin-top: 5px;
+    }
+    /* === End Contact Admin Section Styles === */
+
 
     /* === Modal Styles (เหมือนหน้านิยาย) === */
     .modal-overlay {
@@ -502,6 +539,12 @@
   </div>
 
 
+  <div class="contact-admin-section">
+    <button id="contactAdminBtn" data-i18n="contactAdminButton">ติดต่อแอดมิน</button>
+    <p class="response-time-message" data-i18n="responseTimeMessage">จะติดต่อกลับภายใน 24 ชั่วโมงหรือเร็วที่สุด</p>
+  </div>
+
+
   <div id="paymentModal" class="modal-overlay">
     <div class="modal-content">
       <h3 id="paymentTitle" data-i18n="paymentTitle"></h3>
@@ -516,7 +559,7 @@
         ⬇️ ดาวน์โหลด QR Code
       </button>
       
-      <p style="font-size: 1rem; color: #6e3cab; margin-top: 20px;" data-i18n="internationalPaymentInfo">สำหรับลูกค้าต่างชาติ: ติดต่อสอบถามช่องทางชำระเงินที่สะดวก</p>
+      <p id="internationalPaymentInfo" style="font-size: 1rem; color: #6e3cab; margin-top: 20px;" data-i18n="internationalPaymentInfo">สำหรับลูกค้าต่างชาติ: ติดต่อสอบถามช่องทางชำระเงินที่สะดวก</p>
 
       <button onclick="showPaymentForm()" class="btn-confirm" data-i18n="iPaidButton">
         ✅ ฉันสแกน/โอนแล้ว
@@ -615,6 +658,7 @@
         buyPrice500: "500 บาท",
         buyPrice1000: "1,000 บาท",
         customAmountLabel: "หรือระบุจำนวนเงินเอง:",
+        customAmountPlaceholder: "ใส่จำนวนเงิน (บาท)",
         customBuyButton: "ซื้อเหรียญ",
         coinPreviewText: "คุณจะได้รับ 0 เหรียญ",
         exchangeRate: `อัตรา: 1 บาท = ${EXCHANGE_RATE} เหรียญ`,
@@ -633,7 +677,11 @@
         paymentSuccessAlert: "การแจ้งโอนของคุณถูกส่งแล้วค่ะ! กรุณารอทีมงานตรวจสอบสักครู่ แล้วเหรียญจะถูกเพิ่มให้โดยเร็วค่ะ",
         paymentFailedAlert: "เกิดข้อผิดพลาดในการส่งข้อมูลการโอนเงิน กรุณาลองใหม่อีกครั้ง หรือติดต่อทีมงานค่ะ",
         secondsLeft: "วินาที",
-        timeExpired: "หมดเวลา"
+        timeExpired: "หมดเวลา",
+        contactAdminButton: "ติดต่อแอดมิน",
+        responseTimeMessage: "จะติดต่อกลับภายใน 24 ชั่วโมงหรือเร็วที่สุด",
+        adminEmailSubject: "สอบถามข้อมูลจากเว็บไซต์",
+        adminEmailBody: "สวัสดีครับ/ค่ะ,\n\nฉันต้องการสอบถามเกี่ยวกับ..."
       },
       en: {
         pageTitle: "Pen Name Collection | Arn-niyay-khan",
@@ -689,7 +737,11 @@
         paymentSuccessAlert: "Your transfer notification has been sent! Please wait for our team to verify, and coins will be added shortly.",
         paymentFailedAlert: "An error occurred while sending transfer data. Please try again or contact support.",
         secondsLeft: "seconds",
-        timeExpired: "Time Expired"
+        timeExpired: "Time Expired",
+        contactAdminButton: "Contact Admin",
+        responseTimeMessage: "Will reply within 24 hours or as soon as possible",
+        adminEmailSubject: "Inquiry from Website",
+        adminEmailBody: "Hello,\n\nI would like to inquire about..."
       },
       ch: {
         pageTitle: "笔名合集 | Arn-niyay-khan",
@@ -893,10 +945,10 @@
         coinPreviewText: "0 코인을 받게 됩니다",
         exchangeRate: `환율: 1 바트 = ${EXCHANGE_RATE} 코인`,
         paymentTitle: "{{coins}} 코인 결제",
-        paymentInstructions: "1분 이내에 QR 코드를 스캔하거나 {{price}} 바트를 이체해주세요.",
-        qrDownloadPrompt: "스캔을 위해 QR 코드를 다운로드하려면 버튼을 클릭하세요.",
+        paymentInstructions: "1분 이내에 QR 코드를 스캔하거나 {{price}} 바트를 이체해주세요。",
+        qrDownloadPrompt: "스캔을 위해 QR 코드를 다운로드하려면 버튼을 클릭하세요。",
         downloadQr: "⬇️ QR 코드 다운로드",
-        internationalPaymentInfo: "해외 고객: 편리한 결제 방법에 대해 문의해주세요.",
+        internationalPaymentInfo: "해외 고객: 편리한 결제 방법에 대해 문의해주세요。",
         iPaidButton: "✅ 스캔/이체 완료",
         confirmPaymentFormTitle: "이체 알림",
         transferNameLabel: "이체자 이름:",
@@ -904,8 +956,8 @@
         transferSlipLabel: "이체 영수증/증명서 첨부:",
         submitPaymentButton: "데이터 제출",
         cancel: "취소",
-        paymentSuccessAlert: "이체 알림이 전송되었습니다! 팀 확인 후 코인이 곧 추가됩니다.",
-        paymentFailedAlert: "이체 데이터 전송 중 오류가 발생했습니다. 다시 시도하거나 고객 지원에 문의하세요."
+        paymentSuccessAlert: "이체 알림이 전송되었습니다! 팀 확인 후 코인이 곧 추가됩니다。",
+        paymentFailedAlert: "이체 데이터 전송 중 오류가 발생했습니다. 다시 시도하거나 고객 지원에 문의하세요。"
       },
       vn: {
         pageTitle: "Bộ sưu tập bút danh | Arn-niyay-khan",
@@ -958,8 +1010,7 @@
         transferSlipLabel: "Đính kèm biên lai/bằng chứng chuyển khoản:",
         submitPaymentButton: "Gửi dữ liệu",
         cancel: "Hủy",
-        paymentSuccessAlert: "Thông báo chuyển khoản của bạn đã được gửi! Vui lòng chờ đội ngũ của chúng tôi xác minh, xu sẽ được thêm vào sớm nhất.",
-        paymentFailedAlert: "Đã xảy ra lỗi khi gửi dữ liệu chuyển khoản. Vui lòng thử lại hoặc liên hệ hỗ trợ."
+        paymentSuccessAlert: "Thông báo chuyển khoản của bạn đã được gửi! Vui lòng chờ đội ngũ của chúng tôi xác minh, xu sẽ được thêm vào sớm nhất."
       }
     };
     
@@ -978,228 +1029,17 @@
           } else if (el.tagName === 'TITLE') { // จัดการ title tag
             document.title = langPack[key];
           } 
-          else {
-            el.textContent = langPack[key];
-          }
-        }
-      });
-
-      // ส่วนสำหรับข้อความ intro-text ที่ต้องมีการ Render ย่อหน้า
-      const introTextEl = document.getElementById("introText");
-      if (introTextEl && langPack.mainIntro) {
-          const content = langPack.mainIntro;
-          const paragraphs = content.trim().split(/\n\s*\n|\n+/);
-          introTextEl.innerHTML = paragraphs.map(p => `<p>${p.trim()}</p>`).join("");
-      }
-
-      // อัปเดตข้อความใน Pop-up การชำระเงิน (กรณีเปิดอยู่)
-      const paymentTitleEl = document.getElementById("paymentTitle");
-      if (paymentTitleEl && pendingCoinsToBuy > 0) {
-        paymentTitleEl.textContent = translations[lang].paymentTitle.replace('{{coins}}', pendingCoinsToBuy);
-      }
-      const paymentInstructionsEl = document.getElementById("paymentInstructions");
-      if (paymentInstructionsEl && pendingPriceToPay > 0) {
-        paymentInstructionsEl.innerHTML = (translations[lang].paymentInstructions || '')
-            .replace('{{price}}', pendingPriceToPay)
-            .replace(/\n/g, "<br>");
-      }
-      const qrDownloadPromptEl = document.getElementById("qrDownloadPrompt");
-      if (qrDownloadPromptEl) qrDownloadPromptEl.textContent = langPack.qrDownloadPrompt;
-
-      const internationalPaymentInfoEl = document.getElementById("internationalPaymentInfo");
-      if (internationalPaymentInfoEl) internationalPaymentInfoEl.textContent = langPack.internationalPaymentInfo;
-
-
-      // Update the selected language in the dropdown
-      const langSelect = document.getElementById("language-select");
-      if (langSelect) {
-        langSelect.value = lang;
-      }
-      
-      localStorage.setItem("lang", lang);
-      updateCoinDisplay(); // อัปเดตการแสดงผลเหรียญหลังจากเปลี่ยนภาษา
-    }
-
-    // ฟังก์ชันเริ่มกระบวนการซื้อเหรียญ
-    function startBuyCoins(priceInBaht) {
-        pendingPriceToPay = priceInBaht;
-        pendingCoinsToBuy = priceInBaht * EXCHANGE_RATE; // คำนวณเหรียญจากราคาและอัตราแลกเปลี่ยน
-
-        const lang = localStorage.getItem("lang") || "th";
-        const paymentTitleEl = document.getElementById("paymentTitle");
-        const paymentInstructionsEl = document.getElementById("paymentInstructions");
-        const qrCodeImageEl = document.getElementById("qrCodeImage");
-        const countdownEl = document.getElementById("countdown");
-
-
-        // อัปเดตข้อความ Pop-up
-        paymentTitleEl.textContent = translations[lang].paymentTitle.replace('{{coins}}', pendingCoinsToBuy);
-        paymentInstructionsEl.innerHTML = (translations[lang].paymentInstructions || '')
-            .replace('{{price}}', pendingPriceToPay)
-            .replace(/\n/g, "<br>");
-
-        // *** สำคัญ: สร้าง QR Code จริงที่นี่ ***
-        // สำหรับการสาธิต ผมจะใช้ placeholder image
-        // หากต้องการสร้าง QR Code สำหรับ PromptPay/Standard Thai QR ให้ใช้ API หรือเครื่องมือภายนอก
-        const qrData = `PromptPay_Account_ID|${pendingPriceToPay}.00|Ref1|Ref2`; // ข้อมูลที่จะเข้ารหัสใน QR
-        // ตัวอย่างการสร้าง QR code URL จาก API บางตัว (ต้องติดตั้งไลบรารี่/API จริง)
-        // qrCodeImageEl.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrData)}`;
-        
-        // สำหรับตอนนี้ ใช้ placeholder image ไปก่อน
-        qrCodeImageEl.src = `https://via.placeholder.com/200x200?text=Scan+to+Pay+${pendingPriceToPay}+THB`; 
-        qrCodeImageEl.alt = `QR Code for ${pendingPriceToPay} THB`;
-
-        // ตั้งค่า URL สำหรับดาวน์โหลด QR Code
-        document.getElementById("downloadQrButton").onclick = () => {
-            const a = document.createElement('a');
-            a.href = qrCodeImageEl.src;
-            a.download = `QR_Code_${pendingPriceToPay}THB_${pendingCoinsToBuy}Coins.png`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        };
-
-        document.getElementById("paymentModal").style.display = "block";
-        startCountdown();
-    }
-
-    // ฟังก์ชันเริ่มนับถอยหลัง
-    function startCountdown() {
-        let timeLeft = PAYMENT_TIMEOUT_SECONDS;
-        const countdownEl = document.getElementById("countdown");
-        countdownEl.textContent = `${timeLeft} ${translations[localStorage.getItem("lang") || "th"].secondsLeft}`;
-
-        clearInterval(countdownInterval); // เคลียร์ interval เก่าก่อนเริ่มใหม่
-        countdownInterval = setInterval(() => {
-            timeLeft--;
-            countdownEl.textContent = `${timeLeft} ${translations[localStorage.getItem("lang") || "th"].secondsLeft}`;
-
-            if (timeLeft <= 0) {
-                clearInterval(countdownInterval);
-                countdownEl.textContent = translations[localStorage.getItem("lang") || "th"].timeExpired;
-                // อาจจะปิด Pop-up หรือเปลี่ยนสถานะ
-            }
-        }, 1000);
-    }
-
-    // ฟังก์ชันยกเลิก Pop-up การชำระเงิน
-    function cancelPayment() {
-        clearInterval(countdownInterval);
-        document.getElementById("paymentModal").style.display = "none";
-        pendingCoinsToBuy = 0;
-        pendingPriceToPay = 0;
-    }
-
-    // ฟังก์ชันแสดงฟอร์มแจ้งโอน
-    function showPaymentForm() {
-        clearInterval(countdownInterval); // หยุดนับถอยหลัง
-        document.getElementById("paymentModal").style.display = "none"; // ซ่อน Pop-up ชำระเงิน
-        document.getElementById("paymentFormModal").style.display = "block"; // แสดง Pop-up ฟอร์มแจ้งโอน
-
-        // กำหนดวันเวลาปัจจุบันในฟอร์ม (ตามเขตเวลาของผู้ใช้)
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = (now.getMonth() + 1).toString().padStart(2, '0');
-        const day = now.getDate().toString().padStart(2, '0');
-        const hours = now.getHours().toString().padStart(2, '0');
-        const minutes = now.getMinutes().toString().padStart(2, '0');
-        document.getElementById("transferDateTime").value = `${year}-${month}-${day}T${hours}:${minutes}`;
-    }
-
-    // ฟังก์ชันยกเลิกฟอร์มแจ้งโอน
-    function cancelPaymentForm() {
-        document.getElementById("paymentFormModal").style.display = "none";
-        pendingCoinsToBuy = 0;
-        pendingPriceToPay = 0;
-    }
-
-    // ฟังก์ชันส่งข้อมูลฟอร์มไปยัง Google Sheet
-    async function submitPaymentData(event) {
-        event.preventDefault(); // ป้องกันการโหลดหน้าใหม่
-
-        const form = event.target;
-        const formData = new FormData(form);
-        
-        const transferName = formData.get('transferName');
-        const transferDateTime = formData.get('transferDateTime');
-        const transferSlip = formData.get('transferSlip'); // File object
-
-        // อ่านไฟล์เป็น Base64 (สำหรับการส่งไป Apps Script)
-        let slipBase64 = '';
-        if (transferSlip && transferSlip.size > 0) {
-            const reader = new FileReader();
-            reader.readAsDataURL(transferSlip);
-            await new Promise(resolve => {
-                reader.onload = () => {
-                    slipBase64 = reader.result.split(',')[1]; // เอาเฉพาะส่วน Base64
-                    resolve();
-                };
-                reader.onerror = error => {
-                    console.error("Error reading file:", error);
-                    alert(translations[localStorage.getItem("lang") || "th"].paymentFailedAlert);
-                    reject(error); // Reject the promise on error
-                };
-            });
-        }
-
-        const dataToSend = {
-            action: "addPayment",
-            coins: pendingCoinsToBuy,
-            price: pendingPriceToPay,
-            transferName: transferName,
-            transferDateTime: transferDateTime,
-            slipData: slipBase64, // Base64 string of the file
-            slipFileName: transferSlip ? transferSlip.name : '',
-            userId: localStorage.getItem("user_id") || 'Guest_' + Date.now() // เพิ่ม User ID (ถ้ามี)
-        };
-
-        try {
-            const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams(dataToSend),
-            });
-
-            const result = await response.json();
-            
-            if (result.status === 'success') {
-                alert(translations[localStorage.getItem("lang") || "th"].paymentSuccessAlert);
-                cancelPaymentForm(); // ปิดฟอร์มหลังจากส่งสำเร็จ
-            } else {
-                alert(`${translations[localStorage.getItem("lang") || "th"].paymentFailedAlert}: ${result.message || ''}`);
-            }
-        } catch (error) {
-            console.error('Error submitting payment:', error);
-            alert(translations[localStorage.getItem("lang") || "th"].paymentFailedAlert);
-        }
-    }
-
-
-    // ฟังก์ชันสำหรับเปลี่ยนภาษา
-    function switchLang(lang) {
-      const langPack = translations[lang];
-      if (!langPack) return;
-
-      // อัปเดตข้อความสำหรับองค์ประกอบที่มี data-i18n
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        if (langPack[key]) {
-          // ส่วนพิเศษสำหรับ coinLabel เพื่อรักษา span ของจำนวนเหรียญ
-          if (key === "coinLabel") {
-            el.innerHTML = langPack[key] + `<span id="coin-count">${getCoins()}</span>` + (lang === 'th' ? ' เหรียญ' : '');
-          } else if (el.tagName === 'TITLE') { // จัดการ title tag
-            document.title = langPack[key];
-          } 
           else if (key.startsWith('buyPrice')) { // อัปเดตข้อความบนปุ่มซื้อเหรียญตามราคา
             const price = parseInt(el.dataset.price);
             const coins = price * EXCHANGE_RATE;
-            el.textContent = `${langPack[key].replace(' บาท', '')} (${coins} ${translations[lang].coinLabel.trim().split(':')[0]} )`;
+            let displayPrice = price.toLocaleString(); // ใช้ toLocaleString เพื่อใส่คอมม่าสำหรับตัวเลขเยอะๆ
             if (lang === 'th') {
-              el.textContent = `${price} บาท (${coins} เหรียญ)`;
+              el.textContent = `${displayPrice} บาท (${coins} เหรียญ)`;
             } else {
-              el.textContent = `${price} ${translations[lang].currencyUnit || 'THB'} (${coins} ${translations[lang].coinLabel.trim().split(':')[0]})`;
+              // ดึงหน่วยเงินและคำว่า "Coins" จาก langPack
+              const currencyUnit = langPack.currencyUnit || 'THB';
+              const coinWord = langPack.coinLabel.split(':')[0].trim(); // เช่น "Your coins" -> "Your coins"
+              el.textContent = `${displayPrice} ${currencyUnit} (${coins} ${coinWord})`;
             }
           }
           else if (key === 'exchangeRate') { // อัปเดตข้อความอัตราแลกเปลี่ยน
@@ -1233,13 +1073,15 @@
 
       // อัปเดตข้อความใน Pop-up การชำระเงิน (กรณีเปิดอยู่)
       const paymentTitleEl = document.getElementById("paymentTitle");
-      if (paymentTitleEl && pendingCoinsToBuy > 0) {
-        paymentTitleEl.textContent = translations[lang].paymentTitle.replace('{{coins}}', pendingCoinsToBuy);
+      if (paymentTitleEl && paymentTitleEl.dataset.originalCoins) { // ตรวจสอบจาก data-set ที่เก็บค่าเดิม
+        const originalCoins = paymentTitleEl.dataset.originalCoins;
+        paymentTitleEl.textContent = translations[lang].paymentTitle.replace('{{coins}}', originalCoins);
       }
       const paymentInstructionsEl = document.getElementById("paymentInstructions");
-      if (paymentInstructionsEl && pendingPriceToPay > 0) {
+      if (paymentInstructionsEl && paymentInstructionsEl.dataset.originalPrice) { // ตรวจสอบจาก data-set ที่เก็บค่าเดิม
+        const originalPrice = paymentInstructionsEl.dataset.originalPrice;
         paymentInstructionsEl.innerHTML = (translations[lang].paymentInstructions || '')
-            .replace('{{price}}', pendingPriceToPay)
+            .replace('{{price}}', originalPrice)
             .replace(/\n/g, "<br>");
       }
       const qrDownloadPromptEl = document.getElementById("qrDownloadPrompt");
@@ -1249,20 +1091,11 @@
       if (internationalPaymentInfoEl) internationalPaymentInfoEl.textContent = langPack.internationalPaymentInfo;
 
       const countdownEl = document.getElementById("countdown");
-      if (countdownEl && countdownInterval) { // อัปเดตข้อความจับเวลา
-        const timeLeft = parseInt(countdownEl.textContent.split(' ')[0]); // ดึงเลขวินาทีปัจจุบัน
+      if (countdownEl) { // อัปเดตข้อความจับเวลา
+        const timeLeftMatch = countdownEl.textContent.match(/(\d+)/); // ดึงเลขวินาทีปัจจุบัน
+        const timeLeft = timeLeftMatch ? parseInt(timeLeftMatch[1]) : PAYMENT_TIMEOUT_SECONDS; // ใช้ค่าเริ่มต้นถ้าดึงไม่ได้
         countdownEl.textContent = `${timeLeft} ${translations[lang].secondsLeft}`;
       }
-
-
-      // Update the selected language in the dropdown
-      const langSelect = document.getElementById("language-select");
-      if (langSelect) {
-        langSelect.value = lang;
-      }
-      
-      localStorage.setItem("lang", lang);
-      updateCoinDisplay(); // อัปเดตการแสดงผลเหรียญหลังจากเปลี่ยนภาษา
     }
 
     // ฟังก์ชันเริ่มกระบวนการซื้อเหรียญ
@@ -1284,10 +1117,6 @@
             .replace(/\n/g, "<br>");
 
         // *** สำคัญ: สร้าง QR Code จริงที่นี่ ***
-        // นี่คือตัวอย่าง URL QR Code ที่คุณสามารถสร้างได้จาก PromptPay API (ถ้ามี)
-        // หรือสร้างเป็น QR Code แบบคงที่สำหรับบัญชีของคุณ
-        // ถ้าเป็น PromptPay: 'https://promptpay.io/' + รหัสพร้อมเพย์ + '/' + price
-        // ถ้าเป็นบัญชีธนาคาร: ต้องสร้าง QR Code จากแอปธนาคารของคุณเอง แล้วใช้รูปนั้น
         // สำหรับการสาธิต ผมจะใช้ placeholder image
         // หากต้องการสร้าง QR Code สำหรับ PromptPay/Standard Thai QR ให้ใช้ API หรือเครื่องมือภายนอก
         const qrData = `PromptPay_Account_ID|${pendingPriceToPay}.00|Ref1|Ref2`; // ข้อมูลที่จะเข้ารหัสใน QR
@@ -1378,7 +1207,7 @@
         if (transferSlip && transferSlip.size > 0) {
             const reader = new FileReader();
             reader.readAsDataURL(transferSlip);
-            await new Promise(resolve => {
+            await new Promise((resolve, reject) => {
                 reader.onload = () => {
                     slipBase64 = reader.result.split(',')[1]; // เอาเฉพาะส่วน Base64
                     resolve();
@@ -1485,6 +1314,17 @@
       // อัปเดตพรีวิวเหรียญเริ่มต้น
       const initialAmount = parseInt(customAmountInput.value) || 0;
       coinPreview.textContent = translations[savedLang].coinPreviewText.replace('0', initialAmount * EXCHANGE_RATE);
+
+      // Event Listener สำหรับปุ่มติดต่อแอดมิน
+      document.getElementById('contactAdminBtn').addEventListener('click', function() {
+          const lang = localStorage.getItem("lang") || "th";
+          const adminEmail = 'cherry.writer62@gmail.com'; // อีเมลแอดมิน
+          const subject = translations[lang].adminEmailSubject; // หัวข้ออีเมล
+          const body = translations[lang].adminEmailBody; // เนื้อหาอีเมล
+
+          const mailtoLink = `mailto:${adminEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.location.href = mailtoLink;
+      });
     });
   </script>
 </body>
