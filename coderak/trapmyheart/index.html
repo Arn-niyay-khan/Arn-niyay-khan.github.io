@@ -571,7 +571,7 @@ What had happened in the past… still echoed within his heart.
   data-content-vn="
 Tiếng mưa lách tách rơi trên ô cửa sổ lớp học vắng lặng.
 
-Thầy giáo trẻ ngồi lặng lẽ nhìn ra ngoài, không phải vì không có việc gì làm mà vì có điều gì đó trong lòng vẫn chưa nguôi ngoai.
+Thầy giáo trẻ ngồi lặng lẽ nhìn ra ngoài, không phải vì không có việc gì làm mà vì có điều gì đó trong lòng vẫn chưa nguôi.
 
 Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
 "></div>
@@ -603,7 +603,7 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       <span onclick="appendEmoji(this)">😭</span>
       <span onclick="appendEmoji(this)">🔥</span>
     </div>
-    <button class="submit-button" onclick="alertSubmit()" data-i18n="submitComment">ส่งความคิดเห็น</button>
+    <button class="submit-button" onclick="alertSubmit()" data-i18n="submitCommentButton">ส่งความคิดเห็นของคุณตรงนี้ค่ะ</button>
   </div>  
   <div class="thank-you" data-i18n="thankYou">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยาย ด้วยรักจากใจ 💜</div>  
   <div class="back-container">
@@ -766,6 +766,11 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
     }
   }
 
+  // ฟังก์ชัน alertSubmit ถูกเรียกเมื่อกดปุ่มส่งความคิดเห็น
+  function alertSubmit() {
+    alert(translations[localStorage.getItem("lang") || "th"].submitCommentSuccess);
+  }
+
   const translations = {
     th: {
       siteButton: "✨ Arn-niyay-khan ✨",
@@ -784,7 +789,8 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       commentPlaceholder: "แสดงความคิดเห็นที่นี่...",
       thankYou: "💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยาย ด้วยรักจากใจ 💜",
       backToPenName: "← ย้อนกลับไปหน้านามปากกา โค้ดรัก",
-      submitComment: "ความคิดเห็นของคุณถูกส่งแล้ว ขอบคุณค่ะ!",
+      submitCommentButton: "ส่งความคิดเห็นของคุณตรงนี้ค่ะ", // เปลี่ยนข้อความของปุ่ม
+      submitCommentSuccess: "ความคิดเห็นของคุณถูกส่งแล้ว ขอบคุณค่ะ!", // ข้อความแจ้งเตือนเมื่อส่งสำเร็จ
       novelTitle: "กับดักหัวใจของนายตัวแสบ",
       footerText: "© 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨",
       episodeUnlockSuccess: "✅ ปลดล็อกตอนสำเร็จ! ตอนนี้คุณสามารถอ่านตอนนี้ได้แล้วค่ะ",
@@ -811,7 +817,8 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       commentPlaceholder: "Write your thoughts here...",
       thankYou: "💜 Thank you for supporting this novel. With love, always 💜",
       backToPenName: "← Back to Codrak Pen Name",
-      submitComment: "Your comment has been submitted. Thank you!",
+      submitCommentButton: "Submit your comment here", // เปลี่ยนข้อความของปุ่ม
+      submitCommentSuccess: "Your comment has been submitted. Thank you!", // ข้อความแจ้งเตือนเมื่อส่งสำเร็จ
       novelTitle: "The Mischievous Student's Heart Trap",
       footerText: "© 2025 Arn-niyay-khan | Diverse Pen Names, Diverse Authors ✨",
       episodeUnlockSuccess: "✅ Episode unlocked successfully! You can now read this episode.",
@@ -838,7 +845,8 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       commentPlaceholder: "在此输入您的评论...",
       thankYou: "💜 感谢您的支持与关注，愿我们的小说温暖您心 💜",
       backToPenName: "← 返回 CodeRak 签名页面",
-      submitComment: "您的评论已提交，谢谢! ",
+      submitCommentButton: "在此提交您的评论", // เปลี่ยนข้อความของปุ่ม
+      submitCommentSuccess: "您的评论已提交，谢谢! ", // ข้อความแจ้งเตือนเมื่อส่งสำเร็จ
       novelTitle: "小恶魔的心陷阱",
       footerText: "© 2025 Arn-niyay-khan | 多样笔名，多样作者 ✨",
       episodeUnlockSuccess: "✅ 章节解锁成功！您现在可以阅读本章节了。",
@@ -865,7 +873,8 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       commentPlaceholder: "Напишите свой комментарий здесь...",
       thankYou: "💜 Спасибо за вашу поддержку! Мы ценим каждого читателя 💜",
       backToPenName: "← Назад к псевдониму CodeRak",
-      submitComment: "Ваш комментарий отправлен. Спасибо!",
+      submitCommentButton: "Отправить ваш комментарий здесь", // เปลี่ยนข้อความของปุ่ม
+      submitCommentSuccess: "Ваш комментарий отправлен. Спасибо!", // ข้อความแจ้งเตือนเมื่อส่งสำเร็จ
       novelTitle: "Сердечная ловушка озорного ученика",
       footerText: "© 2025 Arn-niyay-khan | Разнообразные псевдонимы, разнообразные авторы ✨",
       episodeUnlockSuccess: "✅ Глава успешно разблокирована! Теперь вы можете прочитать эту главу.",
@@ -888,7 +897,8 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       commentPlaceholder: "ここにコメントを書いてください...",
       thankYou: "💜 ご支援ありがとうございます。愛を込めて 💜",
       backToPenName: "← コードラックのペンネームページに戻る",
-      submitComment: "コメントが送信されました。ありがとうございます!",
+      submitCommentButton: "ここにコメントを送信", // เปลี่ยนข้อความของปุ่ม
+      submitCommentSuccess: "コメントが送信されました。ありがとうございます!", // ข้อความแจ้งเตือนเมื่อส่งสำเร็จ
       novelTitle: "いたずらっ子の心の罠",
       footerText: "© 2025 Arn-niyay-khan | 多様なペンネーム、多様な作家 ✨",
       episodeUnlockSuccess: "✅ エピソードのロックが解除されました！これでこのエピソードを読むことができます。",
@@ -911,7 +921,8 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       commentPlaceholder: "여기에 댓글을 작성하세요...",
       thankYou: "💜 응원해주셔서 감사합니다. 사랑을 담아 💜",
       backToPenName: "← 코드락 필명 페이지로 돌아가기",
-      submitComment: "댓글이 전송되었습니다. 감사합니다!",
+      submitCommentButton: "여기에 댓글을 제출하세요", // เปลี่ยนข้อความของปุ่ม
+      submitCommentSuccess: "댓글이 전송되었습니다. 감사합니다!", // ข้อความแจ้งเตือนเมื่อส่งสำเร็จ
       novelTitle: "개구쟁이 학생의 함정",
       footerText: "© 2025 Arn-niyay-khan | 다양한 필명, 다양한 작가 ✨",
       episodeUnlockSuccess: "✅ 에피소드가 성공적으로 잠금 해제되었습니다! 이제 이 에피소드를 읽을 수 있습니다.",
@@ -934,7 +945,8 @@ Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
       commentPlaceholder: "Viết bình luận của bạn tại đây...",
       thankYou: "💜 Cảm ơn bạn đã ủng hộ truyện! Yêu thương từ tận đáy lòng 💜",
       backToPenName: "← Quay lại trang bút danh CodeRak",
-      submitComment: "Bình luận của bạn đã được gửi. Cảm ơn bạn!",
+      submitCommentButton: "Gửi bình luận của bạn tại đây", // เปลี่ยนข้อความของปุ่ม
+      submitCommentSuccess: "Bình luận của bạn đã được gửi. Cảm ơn bạn!", // ข้อความแจ้งเตือนเมื่อส่งสำเร็จ
       novelTitle: "Cái bẫy trái tim của cậu học trò tinh nghịch",
       footerText: "© 2025 Arn-niyay-khan | Bút danh đa dạng, tác giả đa dạng ✨",
       episodeUnlockSuccess: "✅ Tập đã được mở khóa thành công! Bây giờ bạn có thể đọc tập này.",
