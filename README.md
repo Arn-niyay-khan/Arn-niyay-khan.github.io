@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
@@ -15,18 +16,15 @@
       user-select: none;
     }
 
-    /* === Header Controls (เหมือนหน้านามปากกา) === */
+    /* === Header Controls === */
     .header-controls {
       display: flex;
       justify-content: flex-end; /* จัดให้ชิดขวา */
       align-items: center;
-      margin-bottom: 30px; /* ลด margin-bottom จากเดิม 30px ให้เป็น 20px */
+      margin-bottom: 30px; 
       flex-wrap: wrap;
       gap: 15px;
     }
-
-    /* ลบ .site-button ออกจาก header controls */
-    /* .site-button ที่เป็นลิงก์ไปยังหน้าหลักจะไม่ถูกแสดงใน header อีกต่อไป */
 
     .user-info { /* สำหรับรวม coin และ language */
       display: flex;
@@ -167,6 +165,172 @@
       cursor: pointer;
     }
 
+    /* === Buy Coins Section Styles === */
+    .buy-coin-section {
+        margin-top: 60px;
+        text-align: center;
+    }
+    .buy-coin-section h2 {
+        color: #7b4ca0;
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+    .buy-coin-buttons-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        max-width: 600px;
+        margin: 0 auto 20px auto; /* ลด margin-bottom เพื่อให้ custom amount อยู่ใกล้ */
+    }
+    .buy-coin-button {
+        padding: 12px 25px;
+        background-color: #a87ce6;
+        color: #fff;
+        border: none;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+        flex: 1 1 auto; /* ให้ปุ่มปรับขนาดได้ */
+        min-width: 120px; /* กำหนดขั้นต่ำ */
+        box-sizing: border-box;
+    }
+    .buy-coin-button:hover {
+        background-color: #8f63d2;
+        transform: scale(1.03);
+    }
+    .custom-amount {
+        margin-top: 20px;
+        font-size: 1rem;
+        color: #5e437f;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    .custom-amount label {
+        flex-shrink: 0;
+    }
+    .custom-amount input[type="number"] {
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: 'Mitr', sans-serif;
+        font-size: 1rem;
+        width: 100px; /* กำหนดความกว้างเริ่มต้น */
+        text-align: center;
+    }
+    .custom-amount button {
+        padding: 8px 15px;
+        background-color: #5cb85c;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    .custom-amount button:hover {
+        background-color: #4cae4c;
+    }
+    #coinPreview {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #7b4ca0;
+        width: 100%; /* ให้ข้อความพรีวิวอยู่บรรทัดใหม่ */
+    }
+    /* === End Buy Coins Section Styles === */
+
+    /* === Modal Styles (เหมือนหน้านิยาย) === */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.6); /* ทึบกว่าเดิมเล็กน้อย */
+        z-index: 9998; /* ให้อยู่ใต้ Pop-up หลัก */
+    }
+    .modal-content {
+        background:#fff;
+        max-width:500px;
+        margin:5% auto; /* ปรับ margin ให้สูงขึ้นเล็กน้อย */
+        padding:30px;
+        border-radius:12px;
+        text-align:center;
+        box-shadow:0 6px 20px rgba(0,0,0,0.3); /* เพิ่มเงาให้ชัดขึ้น */
+        font-family:'Mitr', sans-serif;
+        position: relative; /* สำหรับปุ่มปิด */
+        z-index: 9999;
+    }
+    .modal-content h3 {
+        color:#6e3cab;
+        margin-bottom: 20px;
+        font-size: 1.5rem; /* ขนาดหัวข้อ Pop-up */
+    }
+    .modal-content p {
+        font-size:1.1rem;
+        color:#5e437f;
+        margin-bottom:15px;
+        line-height: 1.5;
+    }
+    .modal-content button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 30px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+        font-size: 1rem; /* ขนาดปุ่มใน Pop-up */
+    }
+    .modal-content button:hover {
+        transform: scale(1.05);
+    }
+    .modal-content .btn-cancel {
+        background:#ccc;
+        color:#333;
+    }
+    .modal-content .btn-confirm {
+        background:#a87ce6;
+        color:#fff;
+    }
+    .modal-content #downloadQrButton {
+        background-color: #5cb85c;
+        color: white;
+    }
+    .modal-content #downloadQrButton:hover {
+        background-color: #4cae4c;
+    }
+    .modal-content #iPaidButton {
+        background-color: #0275d8;
+        color: white;
+    }
+    .modal-content #iPaidButton:hover {
+        background-color: #0264b3;
+    }
+    .modal-content #countdown {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #d9534f;
+        margin-bottom: 20px;
+    }
+    .modal-content #qrCodeImage {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .modal-content #transferSlip {
+        margin-top: 5px;
+    }
+
+    /* === End Modal Styles === */
+
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.03); }
@@ -177,7 +341,7 @@
       50% { transform: translateY(-6px); }
     }
 
-    /* Media query สำหรับหน้าจอขนาดเล็ก (เหมือนหน้านามปากกา) */
+    /* Media query สำหรับหน้าจอขนาดเล็ก */
     @media screen and (max-width: 600px) {
       .header-controls {
         flex-direction: column;
@@ -186,10 +350,6 @@
       .user-info {
         width: 100%;
         justify-content: flex-start;
-      }
-      .site-button { /* หากนำ site-button กลับมาใช้ */
-        width: 100%;
-        box-sizing: border-box;
       }
       h1 {
           font-size: 1.8rem;
@@ -206,6 +366,31 @@
       li {
           width: 100%;
           box-sizing: border-box;
+      }
+      /* Buy Coin Section on mobile */
+      .buy-coin-buttons-grid button,
+      .custom-amount input[type="number"],
+      .custom-amount button {
+          width: 100%;
+          box-sizing: border-box;
+          margin-bottom: 10px; /* เพิ่มระยะห่างระหว่างปุ่ม */
+      }
+      .custom-amount {
+          flex-direction: column;
+          align-items: center;
+      }
+      .custom-amount label {
+          margin-bottom: 5px;
+      }
+      .modal-content {
+          margin: 10% auto; /* ปรับ margin บนมือถือ */
+          padding: 20px;
+      }
+      .modal-content h3 {
+          font-size: 1.3rem;
+      }
+      .modal-content p {
+          font-size: 1rem;
       }
     }
   </style>
@@ -249,7 +434,7 @@
     data-content-jp="Arn-niyay-khan の世界へようこそ。ここでは、多様なペンネームとユニークなジャンルのコレクションがあなたを待っています。
     
     ロマンチックな物語、激しいドラマ、超現実的なファンタジー、またはスパイシーなエロチカがお好みでも、私たちはあらゆる好みを提供し、無限の想像力に浸ることができます。"
-    data-content-kr="Arn-niyay-khan의 세계에 오신 것을 환영합니다. 이곳에서는 다양한 필명과 독특한 장르의 컬렉션이 여러분을 기다립니다.
+    data-content-kr="Arn-niyay-khan의 세계에 오신 것을 환영합니다. 이곳에서는 다양한 필명과 독특한 장르의 컬렉션이 여러분을 기다립니다。
     
     로맨틱하고 강렬한 드라마, 초현실적인 판타지, 또는 매운 에로티카를 좋아하든, 우리는 여러분이 탐험하고 무한한 상상력에 몰입할 수 있는 모든 취향을 제공합니다."
     data-content-vn="Chào mừng đến với thế giới của Arn-niyay-khan, nơi tập hợp một bộ sưu tập đa dạng các bút danh và thể loại độc đáo.
@@ -296,49 +481,53 @@
     © 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨
   </div>
 
-  <div style="margin-top: 60px; text-align: center;">
-    <h2 style="color: #7b4ca0; font-size: 1.8rem; margin-bottom: 25px;" data-i18n="buyCoinsTitle">✨ เติมเหรียญเพื่ออ่านนิยาย ✨</h2>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 600px; margin: 0 auto 40px auto;">
-      <button class="buy-coin-button" data-coins="10" data-price="5" data-i18n="buyCoin10">10 เหรียญ (5 บาท)</button>
-      <button class="buy-coin-button" data-coins="20" data-price="10" data-i18n="buyCoin20">20 เหรียญ (10 บาท)</button>
-      <button class="buy-coin-button" data-coins="30" data-price="15" data-i18n="buyCoin30">30 เหรียญ (15 บาท)</button>
-      <button class="buy-coin-button" data-coins="40" data-price="20" data-i18n="buyCoin40">40 เหรียญ (20 บาท)</button>
-      <button class="buy-coin-button" data-coins="50" data-price="25" data-i18n="buyCoin50">50 เหรียญ (25 บาท)</button>
-      <button class="buy-coin-button" data-coins="60" data-price="30" data-i18n="buyCoin60">60 เหรียญ (30 บาท)</button>
-      <button class="buy-coin-button" data-coins="70" data-price="35" data-i18n="buyCoin70">70 เหรียญ (35 บาท)</button>
-      <button class="buy-coin-button" data-coins="80" data-price="40" data-i18n="buyCoin80">80 เหรียญ (40 บาท)</button>
-      <button class="buy-coin-button" data-coins="90" data-price="45" data-i18n="buyCoin90">90 เหรียญ (45 บาท)</button>
-      <button class="buy-coin-button" data-coins="100" data-price="50" data-i18n="buyCoin100">100 เหรียญ (50 บาท)</button>
+  <div class="buy-coin-section">
+    <h2 data-i18n="buyCoinsTitle">✨ เติมเหรียญเพื่ออ่านนิยาย ✨</h2>
+    <div class="buy-coin-buttons-grid">
+      <button class="buy-coin-button" data-price="5" data-i18n="buyPrice5">5 บาท</button>
+      <button class="buy-coin-button" data-price="10" data-i18n="buyPrice10">10 บาท</button>
+      <button class="buy-coin-button" data-price="20" data-i18n="buyPrice20">20 บาท</button>
+      <button class="buy-coin-button" data-price="50" data-i18n="buyPrice50">50 บาท</button>
+      <button class="buy-coin-button" data-price="100" data-i18n="buyPrice100">100 บาท</button>
+      <button class="buy-coin-button" data-price="200" data-i18n="buyPrice200">200 บาท</button>
+      <button class="buy-coin-button" data-price="500" data-i18n="buyPrice500">500 บาท</button>
+      <button class="buy-coin-button" data-price="1000" data-i18n="buyPrice1000">1,000 บาท</button>
     </div>
-    <p style="font-size: 1rem; color: #5e437f;" data-i18n="exchangeRate">อัตรา: 1 บาท = 2 เหรียญ</p>
+    <div class="custom-amount">
+        <label for="customAmount" data-i18n="customAmountLabel">หรือระบุจำนวนเงินเอง:</label>
+        <input type="number" id="customAmount" min="1" max="1000" placeholder="ใส่จำนวนเงิน (บาท)">
+        <button id="btnCustomBuy" data-i18n="customBuyButton">ซื้อเหรียญ</button>
+        <p id="coinPreview" data-i18n="coinPreviewText">คุณจะได้รับ 0 เหรียญ</p>
+    </div>
+    <p style="font-size: 1rem; color: #5e437f;" data-i18n="exchangeRate">อัตรา: 1 บาท = 100 เหรียญ</p>
   </div>
 
 
-  <div id="paymentModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:9999;">
-    <div style="background:#fff; max-width:500px; margin:5% auto; padding:30px; border-radius:12px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2); font-family:'Mitr', sans-serif;">
-      <h3 style="color:#6e3cab; margin-bottom: 20px;" data-i18n="paymentTitle"></h3>
-      <p style="font-size:1.1rem; color:#5e437f; margin-bottom:15px;" data-i18n="paymentInstructions"></p>
+  <div id="paymentModal" class="modal-overlay">
+    <div class="modal-content">
+      <h3 id="paymentTitle" data-i18n="paymentTitle"></h3>
+      <p id="paymentInstructions" data-i18n="paymentInstructions"></p>
       
       <div id="countdown" style="font-size: 1.2rem; font-weight: bold; color: #d9534f; margin-bottom: 20px;"></div>
       
       <img id="qrCodeImage" src="placeholder_qr.png" alt="QR Code" style="width: 200px; height: 200px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 20px;">
       <p style="font-size: 0.9rem; color: #888; margin-bottom: 20px;" data-i18n="qrDownloadPrompt"></p>
 
-      <button id="downloadQrButton" style="padding: 10px 20px; background-color: #5cb85c; color: white; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; margin-bottom: 15px;" data-i18n="downloadQr">
+      <button id="downloadQrButton" class="btn-confirm" data-i18n="downloadQr">
         ⬇️ ดาวน์โหลด QR Code
       </button>
       
-      <p style="font-size: 1rem; color: #6e3cab;" data-i18n="internationalPaymentInfo">สำหรับลูกค้าต่างชาติ: ติดต่อสอบถามช่องทางชำระเงินที่สะดวก</p>
+      <p style="font-size: 1rem; color: #6e3cab; margin-top: 20px;" data-i18n="internationalPaymentInfo">สำหรับลูกค้าต่างชาติ: ติดต่อสอบถามช่องทางชำระเงินที่สะดวก</p>
 
-      <button onclick="showPaymentForm()" style="padding: 10px 20px; background-color: #0275d8; color: white; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 20px;" data-i18n="iPaidButton">
+      <button onclick="showPaymentForm()" class="btn-confirm" data-i18n="iPaidButton">
         ✅ ฉันสแกน/โอนแล้ว
       </button>
-      <button onclick="cancelPayment()" style="margin-left:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold;" data-i18n="cancel">ยกเลิก</button>
+      <button onclick="cancelPayment()" class="btn-cancel" data-i18n="cancel">ยกเลิก</button>
     </div>
   </div>
 
-  <div id="paymentFormModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:9999;">
-    <div style="background:#fff; max-width:500px; margin:5% auto; padding:30px; border-radius:12px; text-align:left; box-shadow:0 4px 12px rgba(0,0,0,0.2); font-family:'Mitr', sans-serif;">
+  <div id="paymentFormModal" class="modal-overlay">
+    <div class="modal-content">
       <h3 style="color:#6e3cab; text-align:center; margin-bottom: 20px;" data-i18n="confirmPaymentFormTitle">แจ้งโอนเหรียญ</h3>
       <form id="submitPaymentForm" onsubmit="submitPaymentData(event)">
         <div style="margin-bottom: 15px;">
@@ -354,8 +543,8 @@
           <input type="file" id="transferSlip" name="transferSlip" accept="image/*,.pdf" style="width: 100%;" required>
         </div>
         <div style="text-align: center; margin-top: 20px;">
-          <button type="submit" style="padding: 10px 20px; background-color: #a87ce6; color: white; border: none; border-radius: 30px; font-weight: bold; cursor: pointer;" data-i18n="submitPaymentButton">ส่งข้อมูล</button>
-          <button type="button" onclick="cancelPaymentForm()" style="margin-left:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold;" data-i18n="cancel">ยกเลิก</button>
+          <button type="submit" class="btn-confirm" data-i18n="submitPaymentButton">ส่งข้อมูล</button>
+          <button type="button" onclick="cancelPaymentForm()" class="btn-cancel" data-i18n="cancel">ยกเลิก</button>
         </div>
       </form>
     </div>
@@ -367,6 +556,8 @@
     let pendingPriceToPay = 0;
     let countdownInterval;
     const PAYMENT_TIMEOUT_SECONDS = 60; // 1 นาที
+    const EXCHANGE_RATE = 100; // 1 บาท = 100 เหรียญ
+    const MAX_BUY_AMOUNT_THB = 1000; // ซื้อได้สูงสุด 1,000 บาท
 
     // URL ของ Google Apps Script Web App (เมื่อคุณ Deploy แล้ว)
     // *** สำคัญ: ต้องเปลี่ยน URL นี้เป็นของคุณเองหลังจาก Deploy Google Apps Script ***
@@ -416,17 +607,18 @@
         nichchabenTag: "ยูริ",
         footerText: "© 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨",
         buyCoinsTitle: "✨ เติมเหรียญเพื่ออ่านนิยาย ✨",
-        buyCoin10: "10 เหรียญ (5 บาท)",
-        buyCoin20: "20 เหรียญ (10 บาท)",
-        buyCoin30: "30 เหรียญ (15 บาท)",
-        buyCoin40: "40 เหรียญ (20 บาท)",
-        buyCoin50: "50 เหรียญ (25 บาท)",
-        buyCoin60: "60 เหรียญ (30 บาท)",
-        buyCoin70: "70 เหรียญ (35 บาท)",
-        buyCoin80: "80 เหรียญ (40 บาท)",
-        buyCoin90: "90 เหรียญ (45 บาท)",
-        buyCoin100: "100 เหรียญ (50 บาท)",
-        exchangeRate: "อัตรา: 1 บาท = 2 เหรียญ",
+        buyPrice5: "5 บาท",
+        buyPrice10: "10 บาท",
+        buyPrice20: "20 บาท",
+        buyPrice50: "50 บาท",
+        buyPrice100: "100 บาท",
+        buyPrice200: "200 บาท",
+        buyPrice500: "500 บาท",
+        buyPrice1000: "1,000 บาท",
+        customAmountLabel: "หรือระบุจำนวนเงินเอง:",
+        customBuyButton: "ซื้อเหรียญ",
+        coinPreviewText: "คุณจะได้รับ 0 เหรียญ",
+        exchangeRate: `อัตรา: 1 บาท = ${EXCHANGE_RATE} เหรียญ`,
         paymentTitle: "ชำระเงินเพื่อซื้อ {{coins}} เหรียญ",
         paymentInstructions: "กรุณาสแกน QR Code หรือโอนเงินจำนวน {{price}} บาท ภายใน 1 นาที",
         qrDownloadPrompt: "กดปุ่มเพื่อดาวน์โหลด QR Code สำหรับการสแกนจ่าย",
@@ -440,7 +632,9 @@
         submitPaymentButton: "ส่งข้อมูล",
         cancel: "ยกเลิก",
         paymentSuccessAlert: "การแจ้งโอนของคุณถูกส่งแล้วค่ะ! กรุณารอทีมงานตรวจสอบสักครู่ แล้วเหรียญจะถูกเพิ่มให้โดยเร็วค่ะ",
-        paymentFailedAlert: "เกิดข้อผิดพลาดในการส่งข้อมูลการโอนเงิน กรุณาลองใหม่อีกครั้ง หรือติดต่อทีมงานค่ะ"
+        paymentFailedAlert: "เกิดข้อผิดพลาดในการส่งข้อมูลการโอนเงิน กรุณาลองใหม่อีกครั้ง หรือติดต่อทีมงานค่ะ",
+        secondsLeft: "วินาที",
+        timeExpired: "หมดเวลา"
       },
       en: {
         pageTitle: "Pen Name Collection | Arn-niyay-khan",
@@ -469,17 +663,18 @@
         nichchabenTag: "Yuri",
         footerText: "© 2025 Arn-niyay-khan | Diverse Pen Names, Diverse Authors ✨",
         buyCoinsTitle: "✨ Top Up Coins to Read Novels ✨",
-        buyCoin10: "10 Coins (5 THB)",
-        buyCoin20: "20 Coins (10 THB)",
-        buyCoin30: "30 Coins (15 THB)",
-        buyCoin40: "40 Coins (20 THB)",
-        buyCoin50: "50 Coins (25 THB)",
-        buyCoin60: "60 Coins (30 THB)",
-        buyCoin70: "70 Coins (35 THB)",
-        buyCoin80: "80 Coins (40 THB)",
-        buyCoin90: "90 Coins (45 THB)",
-        buyCoin100: "100 Coins (50 THB)",
-        exchangeRate: "Rate: 1 THB = 2 Coins",
+        buyPrice5: "5 THB",
+        buyPrice10: "10 THB",
+        buyPrice20: "20 THB",
+        buyPrice50: "50 THB",
+        buyPrice100: "100 THB",
+        buyPrice200: "200 THB",
+        buyPrice500: "500 THB",
+        buyPrice1000: "1,000 THB",
+        customAmountLabel: "Or enter custom amount:",
+        customBuyButton: "Buy Coins",
+        coinPreviewText: "You will get 0 Coins",
+        exchangeRate: `Rate: 1 THB = ${EXCHANGE_RATE} Coins`,
         paymentTitle: "Pay for {{coins}} Coins",
         paymentInstructions: "Please scan the QR Code or transfer {{price}} THB within 1 minute.",
         qrDownloadPrompt: "Click the button to download the QR Code for scanning.",
@@ -493,7 +688,9 @@
         submitPaymentButton: "Submit Data",
         cancel: "Cancel",
         paymentSuccessAlert: "Your transfer notification has been sent! Please wait for our team to verify, and coins will be added shortly.",
-        paymentFailedAlert: "An error occurred while sending transfer data. Please try again or contact support."
+        paymentFailedAlert: "An error occurred while sending transfer data. Please try again or contact support.",
+        secondsLeft: "seconds",
+        timeExpired: "Time Expired"
       },
       ch: {
         pageTitle: "笔名合集 | Arn-niyay-khan",
@@ -522,17 +719,18 @@
         nichchabenTag: "百合",
         footerText: "© 2025 Arn-niyay-khan | 多样笔名，多样作者 ✨",
         buyCoinsTitle: "✨ 充值金币阅读小说 ✨",
-        buyCoin10: "10 金币 (5 泰铢)",
-        buyCoin20: "20 金币 (10 泰铢)",
-        buyCoin30: "30 金币 (15 泰铢)",
-        buyCoin40: "40 金币 (20 泰铢)",
-        buyCoin50: "50 金币 (25 泰铢)",
-        buyCoin60: "60 金币 (30 泰铢)",
-        buyCoin70: "70 金币 (35 泰铢)",
-        buyCoin80: "80 金币 (40 泰铢)",
-        buyCoin90: "90 金币 (45 泰铢)",
-        buyCoin100: "100 金币 (50 泰铢)",
-        exchangeRate: "汇率：1 泰铢 = 2 金币",
+        buyPrice5: "5 泰铢",
+        buyPrice10: "10 泰铢",
+        buyPrice20: "20 泰铢",
+        buyPrice50: "50 泰铢",
+        buyPrice100: "100 泰铢",
+        buyPrice200: "200 泰铢",
+        buyPrice500: "500 泰铢",
+        buyPrice1000: "1,000 泰铢",
+        customAmountLabel: "或输入自定义金额：",
+        customBuyButton: "购买金币",
+        coinPreviewText: "您将获得 0 金币",
+        exchangeRate: `汇率：1 泰铢 = ${EXCHANGE_RATE} 金币`,
         paymentTitle: "支付购买 {{coins}} 金币",
         paymentInstructions: "请在 1 分钟内扫描二维码或转账 {{price}} 泰铢。",
         qrDownloadPrompt: "点击按钮下载二维码进行扫描。",
@@ -575,17 +773,18 @@
         nichchabenTag: "Юри",
         footerText: "© 2025 Arn-niyay-khan | Разнообразные псевдонимы, разнообразные авторы ✨",
         buyCoinsTitle: "✨ Пополнить монеты для чтения романов ✨",
-        buyCoin10: "10 Монет (5 бат)",
-        buyCoin20: "20 Монет (10 бат)",
-        buyCoin30: "30 Монет (15 бат)",
-        buyCoin40: "40 Монет (20 бат)",
-        buyCoin50: "50 Монет (25 бат)",
-        buyCoin60: "60 Монет (30 бат)",
-        buyCoin70: "70 Монет (35 бат)",
-        buyCoin80: "80 Монет (40 бат)",
-        buyCoin90: "90 Монет (45 бат)",
-        buyCoin100: "100 Монет (50 бат)",
-        exchangeRate: "Курс: 1 бат = 2 монеты",
+        buyPrice5: "5 бат",
+        buyPrice10: "10 бат",
+        buyPrice20: "20 бат",
+        buyPrice50: "50 бат",
+        buyPrice100: "100 бат",
+        buyPrice200: "200 бат",
+        buyPrice500: "500 бат",
+        buyPrice1000: "1000 бат",
+        customAmountLabel: "Или введите свою сумму:",
+        customBuyButton: "Купить монеты",
+        coinPreviewText: "Вы получите 0 монет",
+        exchangeRate: `Курс: 1 бат = ${EXCHANGE_RATE} монет`,
         paymentTitle: "Оплатите {{coins}} монет",
         paymentInstructions: "Пожалуйста, отсканируйте QR-код или переведите {{price}} бат в течение 1 минуты.",
         qrDownloadPrompt: "Нажмите кнопку, чтобы скачать QR-код для сканирования.",
@@ -628,17 +827,18 @@
         nichchabenTag: "百合",
         footerText: "© 2025 Arn-niyay-khan | 多様なペンネーム、多様な作家 ✨",
         buyCoinsTitle: "✨ 小説を読むためのコインをチャージ ✨",
-        buyCoin10: "10 コイン (5 バーツ)",
-        buyCoin20: "20 コイン (10 バーツ)",
-        buyCoin30: "30 コイン (15 バーツ)",
-        buyCoin40: "40 コイン (20 バーツ)",
-        buyCoin50: "50 コイン (25 バーツ)",
-        buyCoin60: "60 コイン (30 バーツ)",
-        buyCoin70: "70 コイン (35 バーツ)",
-        buyCoin80: "80 コイン (40 バーツ)",
-        buyCoin90: "90 コイン (45 バーツ)",
-        buyCoin100: "100 コイン (50 バーツ)",
-        exchangeRate: "レート：1 バーツ = 2 コイン",
+        buyPrice5: "5 バーツ",
+        buyPrice10: "10 バーツ",
+        buyPrice20: "20 バーツ",
+        buyPrice50: "50 バーツ",
+        buyPrice100: "100 バーツ",
+        buyPrice200: "200 バーツ",
+        buyPrice500: "500 バーツ",
+        buyPrice1000: "1,000 バーツ",
+        customAmountLabel: "またはカスタム金額を入力してください：",
+        customBuyButton: "コインを購入",
+        coinPreviewText: "0 コインを獲得します",
+        exchangeRate: `レート：1 バーツ = ${EXCHANGE_RATE} コイン`,
         paymentTitle: "{{coins}} コインの支払い",
         paymentInstructions: "1分以内にQRコードをスキャンするか、{{price}} バーツを送金してください。",
         qrDownloadPrompt: "ボタンをクリックしてQRコードをダウンロードし、スキャンしてください。",
@@ -681,17 +881,18 @@
         nichchabenTag: "유리",
         footerText: "© 2025 Arn-niyay-khan | 다양한 필명, 다양한 작가 ✨",
         buyCoinsTitle: "✨ 소설을 읽기 위한 코인 충전 ✨",
-        buyCoin10: "10 코인 (5 바트)",
-        buyCoin20: "20 코인 (10 바트)",
-        buyCoin30: "30 코인 (15 바트)",
-        buyCoin40: "40 코인 (20 바트)",
-        buyCoin50: "50 코인 (25 바트)",
-        buyCoin60: "60 코인 (30 바트)",
-        buyCoin70: "70 코인 (35 바트)",
-        buyCoin80: "80 코인 (40 바트)",
-        buyCoin90: "90 코인 (45 바트)",
-        buyCoin100: "100 코인 (50 바트)",
-        exchangeRate: "환율: 1 바트 = 2 코인",
+        buyPrice5: "5 바트",
+        buyPrice10: "10 바트",
+        buyPrice20: "20 바트",
+        buyPrice50: "50 바트",
+        buyPrice100: "100 바트",
+        buyPrice200: "200 바트",
+        buyPrice500: "500 바트",
+        buyPrice1000: "1,000 바트",
+        customAmountLabel: "또는 사용자 지정 금액 입력:",
+        customBuyButton: "코인 구매",
+        coinPreviewText: "0 코인을 받게 됩니다",
+        exchangeRate: `환율: 1 바트 = ${EXCHANGE_RATE} 코인`,
         paymentTitle: "{{coins}} 코인 결제",
         paymentInstructions: "1분 이내에 QR 코드를 스캔하거나 {{price}} 바트를 이체해주세요.",
         qrDownloadPrompt: "스캔을 위해 QR 코드를 다운로드하려면 버튼을 클릭하세요.",
@@ -734,17 +935,18 @@
         nichchabenTag: "Yuri",
         footerText: "© 2025 Arn-niyay-khan | Bút danh đa dạng, tác giả đa dạng ✨",
         buyCoinsTitle: "✨ Nạp xu để đọc tiểu thuyết ✨",
-        buyCoin10: "10 Xu (5 Baht)",
-        buyCoin20: "20 Xu (10 Baht)",
-        buyCoin30: "30 Xu (15 Baht)",
-        buyCoin40: "40 Xu (20 Baht)",
-        buyCoin50: "50 Xu (25 Baht)",
-        buyCoin60: "60 Xu (30 Baht)",
-        buyCoin70: "70 Xu (35 Baht)",
-        buyCoin80: "80 Xu (40 Baht)",
-        buyCoin90: "90 Xu (45 Baht)",
-        buyCoin100: "100 Xu (50 Baht)",
-        exchangeRate: "Tỷ giá: 1 Baht = 2 Xu",
+        buyPrice5: "5 Baht",
+        buyPrice10: "10 Baht",
+        buyPrice20: "20 Baht",
+        buyPrice50: "50 Baht",
+        buyPrice100: "100 Baht",
+        buyPrice200: "200 Baht",
+        buyPrice500: "500 Baht",
+        buyPrice1000: "1,000 Baht",
+        customAmountLabel: "Hoặc nhập số tiền tùy chỉnh:",
+        customBuyButton: "Mua xu",
+        coinPreviewText: "Bạn sẽ nhận được 0 Xu",
+        exchangeRate: `Tỷ giá: 1 Baht = ${EXCHANGE_RATE} Xu`,
         paymentTitle: "Thanh toán để mua {{coins}} Xu",
         paymentInstructions: "Vui lòng quét mã QR hoặc chuyển khoản {{price}} Baht trong vòng 1 phút.",
         qrDownloadPrompt: "Nhấp nút để tải mã QR về và quét thanh toán.",
@@ -791,6 +993,24 @@
           introTextEl.innerHTML = paragraphs.map(p => `<p>${p.trim()}</p>`).join("");
       }
 
+      // อัปเดตข้อความใน Pop-up การชำระเงิน (กรณีเปิดอยู่)
+      const paymentTitleEl = document.getElementById("paymentTitle");
+      if (paymentTitleEl && pendingCoinsToBuy > 0) {
+        paymentTitleEl.textContent = translations[lang].paymentTitle.replace('{{coins}}', pendingCoinsToBuy);
+      }
+      const paymentInstructionsEl = document.getElementById("paymentInstructions");
+      if (paymentInstructionsEl && pendingPriceToPay > 0) {
+        paymentInstructionsEl.innerHTML = (translations[lang].paymentInstructions || '')
+            .replace('{{price}}', pendingPriceToPay)
+            .replace(/\n/g, "<br>");
+      }
+      const qrDownloadPromptEl = document.getElementById("qrDownloadPrompt");
+      if (qrDownloadPromptEl) qrDownloadPromptEl.textContent = langPack.qrDownloadPrompt;
+
+      const internationalPaymentInfoEl = document.getElementById("internationalPaymentInfo");
+      if (internationalPaymentInfoEl) internationalPaymentInfoEl.textContent = langPack.internationalPaymentInfo;
+
+
       // Update the selected language in the dropdown
       const langSelect = document.getElementById("language-select");
       if (langSelect) {
@@ -802,41 +1022,39 @@
     }
 
     // ฟังก์ชันเริ่มกระบวนการซื้อเหรียญ
-    function startBuyCoins(coins, price) {
-        pendingCoinsToBuy = coins;
-        pendingPriceToPay = price;
+    function startBuyCoins(priceInBaht) {
+        pendingPriceToPay = priceInBaht;
+        pendingCoinsToBuy = priceInBaht * EXCHANGE_RATE; // คำนวณเหรียญจากราคาและอัตราแลกเปลี่ยน
 
         const lang = localStorage.getItem("lang") || "th";
         const paymentTitleEl = document.getElementById("paymentTitle");
         const paymentInstructionsEl = document.getElementById("paymentInstructions");
         const qrCodeImageEl = document.getElementById("qrCodeImage");
+        const countdownEl = document.getElementById("countdown");
+
 
         // อัปเดตข้อความ Pop-up
-        paymentTitleEl.textContent = translations[lang].paymentTitle.replace('{{coins}}', coins);
+        paymentTitleEl.textContent = translations[lang].paymentTitle.replace('{{coins}}', pendingCoinsToBuy);
         paymentInstructionsEl.innerHTML = (translations[lang].paymentInstructions || '')
-            .replace('{{price}}', price)
+            .replace('{{price}}', pendingPriceToPay)
             .replace(/\n/g, "<br>");
 
         // *** สำคัญ: สร้าง QR Code จริงที่นี่ ***
-        // นี่คือตัวอย่าง URL QR Code ที่คุณสามารถสร้างได้จาก PromptPay API (ถ้ามี)
-        // หรือสร้างเป็น QR Code แบบคงที่สำหรับบัญชีของคุณ
-        // ถ้าเป็น PromptPay: 'https://promptpay.io/' + รหัสพร้อมเพย์ + '/' + price
-        // ถ้าเป็นบัญชีธนาคาร: ต้องสร้าง QR Code จากแอปธนาคารของคุณเอง แล้วใช้รูปนั้น
         // สำหรับการสาธิต ผมจะใช้ placeholder image
         // หากต้องการสร้าง QR Code สำหรับ PromptPay/Standard Thai QR ให้ใช้ API หรือเครื่องมือภายนอก
-        const qrData = `PAYMENT_INFO_FOR_${price}_THB`; // ข้อมูลที่จะเข้ารหัสใน QR
+        const qrData = `PromptPay_Account_ID|${pendingPriceToPay}.00|Ref1|Ref2`; // ข้อมูลที่จะเข้ารหัสใน QR
         // ตัวอย่างการสร้าง QR code URL จาก API บางตัว (ต้องติดตั้งไลบรารี่/API จริง)
         // qrCodeImageEl.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrData)}`;
         
         // สำหรับตอนนี้ ใช้ placeholder image ไปก่อน
-        qrCodeImageEl.src = `https://via.placeholder.com/200x200?text=Scan+to+Pay+${price}+THB`; 
-        qrCodeImageEl.alt = `QR Code for ${price} THB`;
+        qrCodeImageEl.src = `https://via.placeholder.com/200x200?text=Scan+to+Pay+${pendingPriceToPay}+THB`; 
+        qrCodeImageEl.alt = `QR Code for ${pendingPriceToPay} THB`;
 
         // ตั้งค่า URL สำหรับดาวน์โหลด QR Code
         document.getElementById("downloadQrButton").onclick = () => {
             const a = document.createElement('a');
             a.href = qrCodeImageEl.src;
-            a.download = `QR_Code_${price}THB_${coins}Coins.png`;
+            a.download = `QR_Code_${pendingPriceToPay}THB_${pendingCoinsToBuy}Coins.png`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -850,8 +1068,9 @@
     function startCountdown() {
         let timeLeft = PAYMENT_TIMEOUT_SECONDS;
         const countdownEl = document.getElementById("countdown");
-        countdownEl.textContent = `${timeLeft} ${translations[localStorage.getItem("lang") || "th"].secondsLeft}`; // แปล "secondsLeft"
+        countdownEl.textContent = `${timeLeft} ${translations[localStorage.getItem("lang") || "th"].secondsLeft}`;
 
+        clearInterval(countdownInterval); // เคลียร์ interval เก่าก่อนเริ่มใหม่
         countdownInterval = setInterval(() => {
             timeLeft--;
             countdownEl.textContent = `${timeLeft} ${translations[localStorage.getItem("lang") || "th"].secondsLeft}`;
@@ -913,8 +1132,13 @@
             reader.readAsDataURL(transferSlip);
             await new Promise(resolve => {
                 reader.onload = () => {
-                    slipBase64 = reader.result;
+                    slipBase64 = reader.result.split(',')[1]; // เอาเฉพาะส่วน Base64
                     resolve();
+                };
+                reader.onerror = error => {
+                    console.error("Error reading file:", error);
+                    alert(translations[localStorage.getItem("lang") || "th"].paymentFailedAlert);
+                    reject(error); // Reject the promise on error
                 };
             });
         }
@@ -926,7 +1150,8 @@
             transferName: transferName,
             transferDateTime: transferDateTime,
             slipData: slipBase64, // Base64 string of the file
-            slipFileName: transferSlip ? transferSlip.name : ''
+            slipFileName: transferSlip ? transferSlip.name : '',
+            userId: localStorage.getItem("user_id") || 'Guest_' + Date.now() // เพิ่ม User ID (ถ้ามี)
         };
 
         try {
@@ -953,7 +1178,7 @@
     }
 
 
-    // ฟังก์ชันสำหรับเปลี่ยนภาษา (เหมือนหน้านามปากกา)
+    // ฟังก์ชันสำหรับเปลี่ยนภาษา
     function switchLang(lang) {
       const langPack = translations[lang];
       if (!langPack) return;
@@ -968,11 +1193,36 @@
           } else if (el.tagName === 'TITLE') { // จัดการ title tag
             document.title = langPack[key];
           } 
+          else if (key.startsWith('buyPrice')) { // อัปเดตข้อความบนปุ่มซื้อเหรียญตามราคา
+            const price = parseInt(el.dataset.price);
+            const coins = price * EXCHANGE_RATE;
+            el.textContent = `${langPack[key].replace(' บาท', '')} (${coins} ${translations[lang].coinLabel.trim().split(':')[0]} )`;
+            if (lang === 'th') {
+              el.textContent = `${price} บาท (${coins} เหรียญ)`;
+            } else {
+              el.textContent = `${price} ${translations[lang].currencyUnit || 'THB'} (${coins} ${translations[lang].coinLabel.trim().split(':')[0]})`;
+            }
+          }
+          else if (key === 'exchangeRate') { // อัปเดตข้อความอัตราแลกเปลี่ยน
+            el.textContent = langPack[key].replace(`${EXCHANGE_RATE}`, EXCHANGE_RATE);
+          }
+          else if (key === 'coinPreviewText') { // อัปเดตข้อความพรีวิวเหรียญ
+            const customAmountInput = document.getElementById('customAmount');
+            const amountInBaht = parseInt(customAmountInput.value) || 0;
+            const coins = amountInBaht * EXCHANGE_RATE;
+            el.textContent = langPack[key].replace('0', coins);
+          }
           else {
             el.textContent = langPack[key];
           }
         }
       });
+
+      // อัปเดต Placeholder ของ customAmountInput
+      const customAmountInput = document.getElementById('customAmount');
+      if (customAmountInput) {
+          customAmountInput.placeholder = langPack.customAmountPlaceholder || 'ใส่จำนวนเงิน (บาท)';
+      }
 
       // ส่วนสำหรับข้อความ intro-text ที่ต้องมีการ Render ย่อหน้า
       const introTextEl = document.getElementById("introText");
@@ -993,6 +1243,17 @@
             .replace('{{price}}', pendingPriceToPay)
             .replace(/\n/g, "<br>");
       }
+      const qrDownloadPromptEl = document.getElementById("qrDownloadPrompt");
+      if (qrDownloadPromptEl) qrDownloadPromptEl.textContent = langPack.qrDownloadPrompt;
+
+      const internationalPaymentInfoEl = document.getElementById("internationalPaymentInfo");
+      if (internationalPaymentInfoEl) internationalPaymentInfoEl.textContent = langPack.internationalPaymentInfo;
+
+      const countdownEl = document.getElementById("countdown");
+      if (countdownEl && countdownInterval) { // อัปเดตข้อความจับเวลา
+        const timeLeft = parseInt(countdownEl.textContent.split(' ')[0]); // ดึงเลขวินาทีปัจจุบัน
+        countdownEl.textContent = `${timeLeft} ${translations[lang].secondsLeft}`;
+      }
 
 
       // Update the selected language in the dropdown
@@ -1005,11 +1266,177 @@
       updateCoinDisplay(); // อัปเดตการแสดงผลเหรียญหลังจากเปลี่ยนภาษา
     }
 
+    // ฟังก์ชันเริ่มกระบวนการซื้อเหรียญ
+    function startBuyCoins(priceInBaht) {
+        pendingPriceToPay = priceInBaht;
+        pendingCoinsToBuy = priceInBaht * EXCHANGE_RATE; // คำนวณเหรียญจากราคาและอัตราแลกเปลี่ยน
+
+        const lang = localStorage.getItem("lang") || "th";
+        const paymentTitleEl = document.getElementById("paymentTitle");
+        const paymentInstructionsEl = document.getElementById("paymentInstructions");
+        const qrCodeImageEl = document.getElementById("qrCodeImage");
+        const countdownEl = document.getElementById("countdown");
+
+
+        // อัปเดตข้อความ Pop-up
+        paymentTitleEl.textContent = translations[lang].paymentTitle.replace('{{coins}}', pendingCoinsToBuy);
+        paymentInstructionsEl.innerHTML = (translations[lang].paymentInstructions || '')
+            .replace('{{price}}', pendingPriceToPay)
+            .replace(/\n/g, "<br>");
+
+        // *** สำคัญ: สร้าง QR Code จริงที่นี่ ***
+        // นี่คือตัวอย่าง URL QR Code ที่คุณสามารถสร้างได้จาก PromptPay API (ถ้ามี)
+        // หรือสร้างเป็น QR Code แบบคงที่สำหรับบัญชีของคุณ
+        // ถ้าเป็น PromptPay: 'https://promptpay.io/' + รหัสพร้อมเพย์ + '/' + price
+        // ถ้าเป็นบัญชีธนาคาร: ต้องสร้าง QR Code จากแอปธนาคารของคุณเอง แล้วใช้รูปนั้น
+        // สำหรับการสาธิต ผมจะใช้ placeholder image
+        // หากต้องการสร้าง QR Code สำหรับ PromptPay/Standard Thai QR ให้ใช้ API หรือเครื่องมือภายนอก
+        const qrData = `PromptPay_Account_ID|${pendingPriceToPay}.00|Ref1|Ref2`; // ข้อมูลที่จะเข้ารหัสใน QR
+        // ตัวอย่างการสร้าง QR code URL จาก API บางตัว (ต้องติดตั้งไลบรารี่/API จริง)
+        // qrCodeImageEl.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrData)}`;
+        
+        // สำหรับตอนนี้ ใช้ placeholder image ไปก่อน
+        qrCodeImageEl.src = `https://via.placeholder.com/200x200?text=Scan+to+Pay+${pendingPriceToPay}+THB`; 
+        qrCodeImageEl.alt = `QR Code for ${pendingPriceToPay} THB`;
+
+        // ตั้งค่า URL สำหรับดาวน์โหลด QR Code
+        document.getElementById("downloadQrButton").onclick = () => {
+            const a = document.createElement('a');
+            a.href = qrCodeImageEl.src;
+            a.download = `QR_Code_${pendingPriceToPay}THB_${pendingCoinsToBuy}Coins.png`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        };
+
+        document.getElementById("paymentModal").style.display = "block";
+        startCountdown();
+    }
+
+    // ฟังก์ชันเริ่มนับถอยหลัง
+    function startCountdown() {
+        let timeLeft = PAYMENT_TIMEOUT_SECONDS;
+        const countdownEl = document.getElementById("countdown");
+        countdownEl.textContent = `${timeLeft} ${translations[localStorage.getItem("lang") || "th"].secondsLeft}`;
+
+        clearInterval(countdownInterval); // เคลียร์ interval เก่าก่อนเริ่มใหม่
+        countdownInterval = setInterval(() => {
+            timeLeft--;
+            countdownEl.textContent = `${timeLeft} ${translations[localStorage.getItem("lang") || "th"].secondsLeft}`;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                countdownEl.textContent = translations[localStorage.getItem("lang") || "th"].timeExpired;
+                // อาจจะปิด Pop-up หรือเปลี่ยนสถานะ
+            }
+        }, 1000);
+    }
+
+    // ฟังก์ชันยกเลิก Pop-up การชำระเงิน
+    function cancelPayment() {
+        clearInterval(countdownInterval);
+        document.getElementById("paymentModal").style.display = "none";
+        pendingCoinsToBuy = 0;
+        pendingPriceToPay = 0;
+    }
+
+    // ฟังก์ชันแสดงฟอร์มแจ้งโอน
+    function showPaymentForm() {
+        clearInterval(countdownInterval); // หยุดนับถอยหลัง
+        document.getElementById("paymentModal").style.display = "none"; // ซ่อน Pop-up ชำระเงิน
+        document.getElementById("paymentFormModal").style.display = "block"; // แสดง Pop-up ฟอร์มแจ้งโอน
+
+        // กำหนดวันเวลาปัจจุบันในฟอร์ม (ตามเขตเวลาของผู้ใช้)
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = (now.getMonth() + 1).toString().padStart(2, '0');
+        const day = now.getDate().toString().padStart(2, '0');
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        document.getElementById("transferDateTime").value = `${year}-${month}-${day}T${hours}:${minutes}`;
+    }
+
+    // ฟังก์ชันยกเลิกฟอร์มแจ้งโอน
+    function cancelPaymentForm() {
+        document.getElementById("paymentFormModal").style.display = "none";
+        pendingCoinsToBuy = 0;
+        pendingPriceToPay = 0;
+    }
+
+    // ฟังก์ชันส่งข้อมูลฟอร์มไปยัง Google Sheet
+    async function submitPaymentData(event) {
+        event.preventDefault(); // ป้องกันการโหลดหน้าใหม่
+
+        const form = event.target;
+        const formData = new FormData(form);
+        
+        const transferName = formData.get('transferName');
+        const transferDateTime = formData.get('transferDateTime');
+        const transferSlip = formData.get('transferSlip'); // File object
+
+        // อ่านไฟล์เป็น Base64 (สำหรับการส่งไป Apps Script)
+        let slipBase64 = '';
+        if (transferSlip && transferSlip.size > 0) {
+            const reader = new FileReader();
+            reader.readAsDataURL(transferSlip);
+            await new Promise(resolve => {
+                reader.onload = () => {
+                    slipBase64 = reader.result.split(',')[1]; // เอาเฉพาะส่วน Base64
+                    resolve();
+                };
+                reader.onerror = error => {
+                    console.error("Error reading file:", error);
+                    alert(translations[localStorage.getItem("lang") || "th"].paymentFailedAlert);
+                    reject(error); // Reject the promise on error
+                };
+            });
+        }
+
+        const dataToSend = {
+            action: "addPayment",
+            coins: pendingCoinsToBuy,
+            price: pendingPriceToPay,
+            transferName: transferName,
+            transferDateTime: transferDateTime,
+            slipData: slipBase64, // Base64 string of the file
+            slipFileName: transferSlip ? transferSlip.name : '',
+            userId: localStorage.getItem("user_id") || 'Guest_' + Date.now() // เพิ่ม User ID (ถ้ามี)
+        };
+
+        try {
+            const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(dataToSend),
+            });
+
+            const result = await response.json();
+            
+            if (result.status === 'success') {
+                alert(translations[localStorage.getItem("lang") || "th"].paymentSuccessAlert);
+                cancelPaymentForm(); // ปิดฟอร์มหลังจากส่งสำเร็จ
+            } else {
+                alert(`${translations[localStorage.getItem("lang") || "th"].paymentFailedAlert}: ${result.message || ''}`);
+            }
+        } catch (error) {
+            console.error('Error submitting payment:', error);
+            alert(translations[localStorage.getItem("lang") || "th"].paymentFailedAlert);
+        }
+    }
+
+
     // เมื่อ DOM โหลดเสร็จ
     document.addEventListener("DOMContentLoaded", function () {
       // ตรวจสอบและกำหนดเหรียญเริ่มต้นถ้ายังไม่มี
       if (!localStorage.getItem("user_coins")) {
         setCoins(100); // กำหนดเหรียญเริ่มต้น 100
+      }
+      
+      // ตั้งค่า User ID หากยังไม่มี (สำหรับส่งให้ Google Apps Script)
+      if (!localStorage.getItem("user_id")) {
+          localStorage.setItem("user_id", 'user_' + Date.now());
       }
 
       const savedLang = localStorage.getItem("lang") || "th";
@@ -1018,11 +1445,47 @@
       // เพิ่ม Event Listeners ให้กับปุ่มซื้อเหรียญ
       document.querySelectorAll(".buy-coin-button").forEach(button => {
         button.addEventListener("click", () => {
-          const coins = parseInt(button.dataset.coins);
-          const price = parseInt(button.dataset.price);
-          startBuyCoins(coins, price);
+          const price = parseInt(button.dataset.price); // ดึงราคาจาก data-price
+          startBuyCoins(price); // เรียกฟังก์ชันซื้อเหรียญด้วยราคา
         });
       });
+
+      // Event Listener สำหรับช่องกรอกจำนวนเงินเอง
+      const customAmountInput = document.getElementById('customAmount');
+      const coinPreview = document.getElementById('coinPreview');
+      const btnCustomBuy = document.getElementById('btnCustomBuy');
+
+      customAmountInput.addEventListener('input', function() {
+          let amountInBaht = parseInt(this.value);
+          if (isNaN(amountInBaht) || amountInBaht < 1) {
+              amountInBaht = 0;
+          }
+          if (amountInBaht > MAX_BUY_AMOUNT_THB) {
+              amountInBaht = MAX_BUY_AMOUNT_THB;
+              this.value = MAX_BUY_AMOUNT_THB; // ตั้งค่าให้ไม่เกิน maxAmount
+          }
+          const coins = amountInBaht * EXCHANGE_RATE;
+          // อัปเดตข้อความพรีวิวเหรียญ
+          const lang = localStorage.getItem("lang") || "th";
+          const langPack = translations[lang];
+          coinPreview.textContent = langPack.coinPreviewText.replace('0', coins);
+      });
+
+      btnCustomBuy.addEventListener('click', function() {
+          const amountInBaht = parseInt(customAmountInput.value);
+          if (isNaN(amountInBaht) || amountInBaht < 1) {
+              alert(translations[localStorage.getItem("lang") || "th"].enterValidAmount || 'กรุณาระบุจำนวนเงินที่ถูกต้อง');
+              return;
+          }
+          if (amountInBaht > MAX_BUY_AMOUNT_THB) {
+              alert(`${translations[localStorage.getItem("lang") || "th"].maxBuyAmountExceeded1} ${MAX_BUY_AMOUNT_THB} ${translations[localStorage.getItem("lang") || "th"].maxBuyAmountExceeded2}`);
+              return;
+          }
+          startBuyCoins(amountInBaht);
+      });
+      // อัปเดตพรีวิวเหรียญเริ่มต้น
+      const initialAmount = parseInt(customAmountInput.value) || 0;
+      coinPreview.textContent = translations[savedLang].coinPreviewText.replace('0', initialAmount * EXCHANGE_RATE);
     });
   </script>
 </body>
