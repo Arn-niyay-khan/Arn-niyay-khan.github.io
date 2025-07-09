@@ -528,7 +528,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       // ตรวจสอบและกำหนดเหรียญเริ่มต้นถ้ายังไม่มี
       if (!localStorage.getItem("user_coins")) {
-        setCoins(100); // กำหนดเหรียญเริ่มต้น 100 เหรียญ
+        setCoins(100);
       }
 
       const savedLang = localStorage.getItem("lang") || "th";
