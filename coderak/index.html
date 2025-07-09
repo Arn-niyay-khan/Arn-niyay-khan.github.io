@@ -156,6 +156,15 @@
       text-align: center;
       margin-top: 50px;
     }
+
+    .thank-you { /* เพิ่ม style สำหรับข้อความขอบคุณ */
+      text-align: center;
+      font-size: 1.25rem;
+      margin-top: 60px;
+      margin-bottom: 10px;
+      color: #5e407f;
+      font-style: italic;
+    }
     
     .footer {
       margin-top: 60px;
@@ -281,6 +290,8 @@
     </div>
   </div>
 
+  <div class="thank-you" data-i18n="thankYou">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยาย ด้วยรักจากใจ 💜</div>
+
 <div class="back-container">
   <a href="../index.html" class="back-button" data-i18n="backToHome">
     ← กลับหน้าแรก
@@ -328,8 +339,9 @@
         set2Novel1Title: "รักร้าย(นาย)เย็นชา",
         set2Novel2Title: "นายบำเรอของคิริน",
         set2Novel3Title: "เสน่หาเพียงนาย",
-        set2Novel1Title: "แค้นพิศวาส",
+        set2Novel4Title: "แค้นพิศวาส",
         set2Novel5Title: "จะรักให้ตาย เพื่อได้ใจคืน",
+        thankYou: "💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยาย ด้วยรักจากใจ 💜", // เพิ่มคำแปล
         backToHome: "← กลับหน้าแรก",
         footerText: "© 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨"
       },
@@ -354,6 +366,7 @@
         set2Novel3Title: "Infatuation with Only You",
         set2Novel4Title: "Vengeful Obsession",
         set2Novel5Title: "Love Until Death to Win Your Heart Back",
+        thankYou: "💜 Thank you for supporting this novel. With love, always 💜", // เพิ่มคำแปล
         backToHome: "← Back to Home",
         footerText: "© 2025 Arn-niyay-khan | Diverse Pen Names, Diverse Authors ✨"
       },
@@ -378,6 +391,7 @@
         set2Novel3Title: "只爱上你",
         set2Novel4Title: "复仇的迷恋",
         set2Novel5Title: "爱到死才能赢回你的心",
+        thankYou: "💜 感谢您的支持与关注，愿我们的小说温暖您心 💜", // เพิ่มคำแปล
         backToHome: "← 返回首页",
         footerText: "© 2025 Arn-niyay-khan | 多样笔名，多样作者 ✨"
       },
@@ -402,6 +416,7 @@
         set2Novel3Title: "Влюбленность только в тебя",
         set2Novel4Title: "Мстительная одержимость",
         set2Novel5Title: "Люби до смерти, чтобы вернуть свое сердце",
+        thankYou: "💜 Спасибо за вашу поддержку! Мы ценим каждого читателя 💜", // เพิ่มคำแปล
         backToHome: "← Вернуться на главную",
         footerText: "© 2025 Arn-niyay-khan | Разнообразные псевдонимы, разнообразные авторы ✨"
       },
@@ -426,6 +441,7 @@
         set2Novel3Title: "あなただけの恋",
         set2Novel4Title: "復讐の執着",
         set2Novel5Title: "死ぬまで愛して、心を取り戻す",
+        thankYou: "💜 ご支援ありがとうございます。愛を込めて 💜", // เพิ่มคำแปล
         backToHome: "← ホームに戻る",
         footerText: "© 2025 Arn-niyay-khan | 多様なペンネーム、多様な作家 ✨"
       },
@@ -450,6 +466,7 @@
         set2Novel3Title: "오직 당신만을 위한 매혹",
         set2Novel4Title: "복수심에 불타는 집착",
         set2Novel5Title: "죽을 때까지 사랑하여 마음을 되찾다",
+        thankYou: "💜 응원해주셔서 감사합니다. 사랑을 담아 💜", // เพิ่มคำแปล
         backToHome: "← 홈으로 돌아가기",
         footerText: "© 2025 Arn-niyay-khan | 다양한 필명, 다양한 작가 ✨"
       },
@@ -474,6 +491,7 @@
         set2Novel3Title: "Sự quyến rũ chỉ dành cho bạn",
         set2Novel4Title: "Ám ảnh báo thù",
         set2Novel5Title: "Yêu đến chết để giành lại trái tim bạn",
+        thankYou: "💜 Cảm ơn bạn đã ủng hộ truyện! Yêu thương từ tận đáy lòng 💜", // เพิ่มคำแปล
         backToHome: "← Quay lại trang chủ",
         footerText: "© 2025 Arn-niyay-khan | Bút danh đa dạng, tác giả đa dạng ✨"
       }
@@ -515,7 +533,6 @@
 
       const savedLang = localStorage.getItem("lang") || "th";
       switchLang(savedLang); // Apply the saved language on load
-      // updateCoinDisplay(); // ไม่ต้องเรียกซ้ำ เพราะ switchLang เรียกแล้ว
     });
   </script>
 </body>
