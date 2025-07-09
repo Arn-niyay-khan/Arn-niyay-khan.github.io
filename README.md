@@ -89,7 +89,14 @@
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+      white-space: pre-wrap; /* เพิ่ม: เพื่อให้รองรับ \n ใน data-i18n และสร้างย่อหน้า */
+      text-align: justify; /* เพิ่ม: จัด justify เหมือนเนื้อนิยาย */
     }
+    .intro-text p { /* เพิ่ม: สำหรับย่อหน้าแรกอัตโนมัติ */
+        text-indent: 2.5em; /* เยื้องบรรทัดแรก */
+        margin-bottom: 1em;
+    }
+
 
     ul {
       list-style: none;
@@ -230,11 +237,29 @@
   </div>
 
   <h1 data-i18n="mainTitle">🌟 รวมนามปากกาในเครือ Arn-niyay-khan 🌟</h1>
-  <p class="intro-text" data-i18n="mainIntro">
-    ยินดีต้อนรับสู่โลกของ Arn-niyay-khan ที่รวบรวมหลากหลายนามปากกาและแนวเรื่องไม่ซ้ำใคร 
+  <p class="intro-text" id="introText" data-i18n-content-type="intro"
+    data-content-th="ยินดีต้อนรับสู่โลกของ Arn-niyay-khan ที่รวบรวมหลากหลายนามปากกาและแนวเรื่องไม่ซ้ำใคร 
     ไม่ว่าคุณจะชื่นชอบเรื่องราวรักโรแมนติก ดราม่าเข้มข้น แฟนตาซีเหนือจริง หรืออีโรติกจัดจ้าน 
-    เรามีทุกรสชาติให้คุณได้ค้นหาและดื่มด่ำไปกับจินตนาการที่ไร้ขีดจำกัด
-  </p>
+    เรามีทุกรสชาติให้คุณได้ค้นหาและดื่มด่ำไปกับจินตนาการที่ไร้ขีดจำกัด"
+    data-content-en="Welcome to the world of Arn-niyay-khan, where a diverse collection of pen names and unique genres awaits. 
+    Whether you love romantic, intense drama, surreal fantasy, or spicy erotica, 
+    we have every flavor for you to explore and immerse yourself in boundless imagination."
+    data-content-ch="欢迎来到 Arn-niyay-khan 的世界，这里汇集了各种独特的笔名和风格迥异的故事。
+    无论您喜欢浪漫、扣人心弦的戏剧、超现实的奇幻，还是火辣的色情文学，
+    我们都能满足您的所有品味，让您沉浸在无限的想象中。"
+    data-content-ru="Добро пожаловать в мир Arn-niyay-khan, где собрана разнообразная коллекция псевдонимов и уникальных жанров.
+    Любите ли вы романтику, напряженную драму, сюрреалистическое фэнтези или пикантную эротику,
+    у нас есть всё, чтобы вы могли исследовать и погрузиться в безграничное воображение."
+    data-content-jp="Arn-niyay-khan の世界へようこそ。ここでは、多様なペンネームとユニークなジャンルのコレクションがあなたを待っています。
+    ロマンチックな物語、激しいドラマ、超現実的なファンタジー、またはスパイシーなエロチカがお好みでも、
+    私たちはあらゆる好みを提供し、無限の想像力に浸ることができます。"
+    data-content-kr="Arn-niyay-khan의 세계에 오신 것을 환영합니다. 이곳에서는 다양한 필명과 독특한 장르의 컬렉션이 여러분을 기다립니다.
+    로맨틱하고 강렬한 드라마, 초현실적인 판타지, 또는 매운 에로티카를 좋아하든,
+    우리는 여러분이 탐험하고 무한한 상상력에 몰입할 수 있는 모든 취향을 제공합니다."
+    data-content-vn="Chào mừng đến với thế giới của Arn-niyay-khan, nơi tập hợp một bộ sưu tập đa dạng các bút danh và thể loại độc đáo.
+    Dù bạn yêu thích những câu chuyện lãng mạn, kịch tính, giả tưởng siêu thực, hay erotic nóng bỏng,
+    chúng tôi đều có mọi hương vị để bạn khám phá và đắm chìm trong trí tưởng tượng vô hạn."
+  ></p>
 
   <ul>
     <li data-i18n-genre="drama_bl">
@@ -247,17 +272,17 @@
       <div class="desc" data-i18n="lippoDesc">นิยายวายแนวอีโรติกจัดหนัก รักเร่าร้อน NC++ 🔥🛏</div>
       <div class="tag" data-i18n="lippoTag">วาย NC จัดเต็ม</div>
     </li>
-    <li data-i18n-genre="supernatural_bl">
+    <li data-i18n-genre="welawadee_bl">
       <a href="welawadee/" data-i18n="welawadeeTitle">🌙 เวฬาวดี</a>
       <div class="desc" data-i18n="welawadeeDesc">วาย omegaverse, ท้องได้, เหนือธรรมชาติ ✨🌌</div>
       <div class="tag" data-i18n="welawadeeTag">วายเหนือธรรมชาติ</div>
     </li>
-    <li data-i18n-genre="erotic_straight">
+    <li data-i18n-genre="erotic_mf">
       <a href="wealthy/" data-i18n="wealthyTitle">💄 WEALTHY</a>
       <div class="desc" data-i18n="wealthyDesc">นิยายชายหญิงอีโรติกเข้มข้น รักรสแซ่บ NC++ 🍷</div>
       <div class="tag" data-i18n="wealthyTag">อีโรติกผู้ใหญ่</div>
     </li>
-    <li data-i18n-genre="feelgood_straight">
+    <li data-i18n-genre="feelgood_mf">
       <a href="bellwarin/" data-i18n="bellwarinTitle">🌼 เบลวรินท์</a>
       <div class="desc" data-i18n="bellwarinDesc">ชายหญิงรักสดใส ฟีลกู๊ด นุ่มนวลหัวใจ ☀️🧁</div>
       <div class="tag" data-i18n="bellwarinTag">ฟีลกู๊ดชายหญิง</div>
@@ -297,7 +322,7 @@
         coinLabel: "💰 เหรียญของคุณ: ",
         languageLabel: "🌐 เปลี่ยนภาษา:",
         mainTitle: "🌟 รวมนามปากกาในเครือ Arn-niyay-khan 🌟",
-        mainIntro: "ยินดีต้อนรับสู่โลกของ Arn-niyay-khan ที่รวบรวมหลากหลายนามปากกาและแนวเรื่องไม่ซ้ำใคร ไม่ว่าคุณจะชื่นชอบเรื่องราวรักโรแมนติก ดราม่าเข้มข้น แฟนตาซีเหนือจริง หรืออีโรติกจัดจ้าน เรามีทุกรสชาติให้คุณได้ค้นหาและดื่มด่ำไปกับจินตนาการที่ไร้ขีดจำกัด",
+        mainIntro: "ยินดีต้อนรับสู่โลกของ Arn-niyay-khan ที่รวบรวมหลากหลายนามปากกาและแนวเรื่องไม่ซ้ำใคร\n\nไม่ว่าคุณจะชื่นชอบเรื่องราวรักโรแมนติก ดราม่าเข้มข้น แฟนตาซีเหนือจริง หรืออีโรติกจัดจ้าน เรามีทุกรสชาติให้คุณได้ค้นหาและดื่มด่ำไปกับจินตนาการที่ไร้ขีดจำกัด",
         coderakTitle: "📘 โค้ดรัก",
         coderakDesc: "นิยายวายแนวโรแมนติก ดราม่า บีบหัวใจ 💔",
         coderakTag: "วายดราม่า",
@@ -324,7 +349,7 @@
         coinLabel: "💰 Your coins: ",
         languageLabel: "🌐 Language:",
         mainTitle: "🌟 Pen Name Collection by Arn-niyay-khan 🌟",
-        mainIntro: "Welcome to the world of Arn-niyay-khan, where a diverse collection of pen names and unique genres awaits. Whether you love romantic, intense drama, surreal fantasy, or spicy erotica, we have every flavor for you to explore and immerse yourself in boundless imagination.",
+        mainIntro: "Welcome to the world of Arn-niyay-khan, where a diverse collection of pen names and unique genres awaits.\n\nWhether you love romantic, intense drama, surreal fantasy, or spicy erotica, we have every flavor for you to explore and immerse yourself in boundless imagination.",
         coderakTitle: "📘 Codrak",
         coderakDesc: "BL novels: romantic, dramatic, heartwarming 💔",
         coderakTag: "BL Drama",
@@ -351,7 +376,7 @@
         coinLabel: "💰 您的金币：",
         languageLabel: "🌐 语言切换：",
         mainTitle: "🌟 Arn-niyay-khan 笔名合集 🌟",
-        mainIntro: "欢迎来到 Arn-niyay-khan 的世界，这里汇集了各种独特的笔名和风格迥异的故事。无论您喜欢浪漫、扣人心弦的戏剧、超现实的奇幻，还是火辣的色情文学，我们都能满足您的所有品味，让您沉浸在无限的想象中。",
+        mainIntro: "欢迎来到 Arn-niyay-khan 的世界，这里汇集了各种独特的笔名和风格迥异的故事。\n\n无论您喜欢浪漫、扣人心弦的戏剧、超现实的奇幻，还是火辣的色情文学，我们都能满足您的所有品味，让您沉浸在无限的想象中。",
         coderakTitle: "📘 โค้ดรัก (Codrak)",
         coderakDesc: "耽美小说：浪漫、狗血、揪心💔",
         coderakTag: "耽美戏剧",
@@ -378,7 +403,7 @@
         coinLabel: "💰 Ваши монеты:",
         languageLabel: "🌐 Выбрать язык:",
         mainTitle: "🌟 Коллекция псевдонимов Arn-niyay-khan 🌟",
-        mainIntro: "Добро пожаловать в мир Arn-niyay-khan, где собрана разнообразная коллекция псевдонимов и уникальных жанров. Любите ли вы романтику, напряженную драму, сюрреалистическое фэнтези или пикантную эротику, у нас есть всё, чтобы вы могли исследовать и погрузиться в безграничное воображение.",
+        mainIntro: "Добро пожаловать в мир Arn-niyay-khan, где собрана разнообразная коллекция псевдонимов и уникальных жанров.\n\nЛюбите ли вы романтику, напряженную драму, сюрреалистическое фэнтези или пикантную эротику, у нас есть всё, чтобы вы могли исследовать и погрузиться в безграничное воображение.",
         coderakTitle: "📘 Кодрак",
         coderakDesc: "BL романы: романтические, драматические, душераздирающие 💔",
         coderakTag: "BL Драма",
@@ -405,7 +430,7 @@
         coinLabel: "💰 あなたのコイン：",
         languageLabel: "🌐 言語を選択：",
         mainTitle: "🌟 Arn-niyay-khan ペンネームコレクション 🌟",
-        mainIntro: "Arn-niyay-khan の世界へようこそ。ここでは、多様なペンネームとユニークなジャンルのコレクションがあなたを待っています。ロマンチックな物語、激しいドラマ、超現実的なファンタジー、またはスパイシーなエロチカがお好みでも、私たちはあらゆる好みを提供し、無限の想像力に浸ることができます。",
+        mainIntro: "Arn-niyay-khan の世界へようこそ。ここでは、多様なペンネームとユニークなジャンルのコレクションがあなたを待っています。\n\nロマンチックな物語、激しいドラマ、超現実的なファンタジー、またはスパイシーなエロチカがお好みでも、私たちはあらゆる好みを提供し、無限の想像力に浸ることができます。",
         coderakTitle: "📘 コードラック",
         coderakDesc: "BL小説：ロマンチック、ドラマチック、胸が締め付けられるような物語 💔",
         coderakTag: "BLドラマ",
@@ -432,7 +457,7 @@
         coinLabel: "💰 보유 코인:",
         languageLabel: "🌐 언어 변경:",
         mainTitle: "🌟 Arn-niyay-khan 필명 컬렉션 🌟",
-        mainIntro: "Arn-niyay-khan의 세계에 오신 것을 환영합니다. 이곳에서는 다양한 필명과 독특한 장르의 컬렉션이 여러분을 기다립니다. 로맨틱하고 강렬한 드라마, 초현실적인 판타지, 또는 매운 에로티카를 좋아하든, 우리는 여러분이 탐험하고 무한한 상상력에 몰입할 수 있는 모든 취향을 제공합니다.",
+        mainIntro: "Arn-niyay-khan의 세계에 오신 것을 환영합니다. 이곳에서는 다양한 필명과 독특한 장르의 컬렉션이 여러분을 기다립니다.\n\n로맨틱하고 강렬한 드라마, 초현실적인 판타지, 또는 매운 에로티카를 좋아하든, 우리는 여러분이 탐험하고 무한한 상상력에 몰입할 수 있는 모든 취향을 제공합니다.",
         coderakTitle: "📘 코드락",
         coderakDesc: "BL 소설: 로맨틱, 드라마틱, 가슴 저미는 이야기 💔",
         coderakTag: "BL 드라마",
@@ -459,7 +484,7 @@
         coinLabel: "💰 Xu của bạn:",
         languageLabel: "🌐 Chọn ngôn ngữ:",
         mainTitle: "🌟 Bộ sưu tập bút danh Arn-niyay-khan 🌟",
-        mainIntro: "Chào mừng đến với thế giới của Arn-niyay-khan, nơi tập hợp một bộ sưu tập đa dạng các bút danh và thể loại độc đáo. Dù bạn yêu thích những câu chuyện lãng mạn, kịch tính, giả tưởng siêu thực, hay erotic nóng bỏng, chúng tôi đều có mọi hương vị để bạn khám phá và đắm chìm trong trí tưởng tượng vô hạn.",
+        mainIntro: "Chào mừng đến với thế giới của Arn-niyay-khan, nơi tập hợp một bộ sưu tập đa dạng các bút danh và thể loại độc đáo.\n\nDù bạn yêu thích những câu chuyện lãng mạn, kịch tính, giả tưởng siêu thực, hay erotic nóng bỏng, chúng tôi đều có mọi hương vị để bạn khám phá và đắm chìm trong trí tưởng tượng vô hạn.",
         coderakTitle: "📘 Codrak",
         coderakDesc: "Tiểu thuyết BL: lãng mạn, kịch tính, cảm động 💔",
         coderakTag: "BL Drama",
@@ -467,7 +492,7 @@
         lippoDesc: "Tiểu thuyết BL erotic nặng đô, tình yêu cuồng nhiệt NC++ 🔥🛏",
         lippoTag: "BL Erotica",
         welawadeeTitle: "🌙 Welawadee",
-        welawadeeDesc: "BL omegaverse, có thể mang thai, siêu nhiên ✨🌌",
+        welawadeeDesc: "Tiểu thuyết BL omegaverse, có thể mang thai, siêu nhiên ✨🌌",
         welawadeeTag: "BL Siêu nhiên",
         wealthyTitle: "💄 WEALTHY",
         wealthyDesc: "Tiểu thuyết erotic nam nữ gay cấn, tình yêu nóng bỏng NC++ 🍷",
@@ -502,6 +527,15 @@
           }
         }
       });
+
+      // ส่วนสำหรับข้อความ intro-text ที่ต้องมีการ Render ย่อหน้า
+      const introTextEl = document.getElementById("introText");
+      if (introTextEl && langPack.mainIntro) {
+          const content = langPack.mainIntro;
+          const paragraphs = content.trim().split(/\n\s*\n|\n+/);
+          introTextEl.innerHTML = paragraphs.map(p => `<p>${p.trim()}</p>`).join("");
+      }
+
 
       // Update the selected language in the dropdown
       const langSelect = document.getElementById("language-select");
