@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
@@ -164,10 +165,12 @@
       cursor: pointer;
     }
 
-    /* === Buy Coins Section Styles === */
+    /* === Buy Coins Section Styles (Local) === */
     .buy-coin-section {
         margin-top: 60px;
         text-align: center;
+        padding-bottom: 30px; /* เพิ่ม padding ด้านล่าง */
+        border-bottom: 1px solid #e0c8ff; /* เส้นแบ่ง */
     }
     .buy-coin-section h2 {
         color: #7b4ca0;
@@ -180,7 +183,7 @@
         justify-content: center;
         gap: 15px;
         max-width: 600px;
-        margin: 0 auto 20px auto; /* ลด margin-bottom เพื่อให้ custom amount อยู่ใกล้ */
+        margin: 0 auto 20px auto;
     }
     .buy-coin-button {
         padding: 12px 25px;
@@ -192,8 +195,8 @@
         font-weight: bold;
         cursor: pointer;
         transition: background 0.3s ease, transform 0.3s ease;
-        flex: 1 1 auto; /* ให้ปุ่มปรับขนาดได้ */
-        min-width: 120px; /* กำหนดขั้นต่ำ */
+        flex: 1 1 auto;
+        min-width: 120px;
         box-sizing: border-box;
     }
     .buy-coin-button:hover {
@@ -219,7 +222,7 @@
         border-radius: 8px;
         font-family: 'Mitr', sans-serif;
         font-size: 1rem;
-        width: 100px; /* กำหนดความกว้างเริ่มต้น */
+        width: 100px;
         text-align: center;
     }
     .custom-amount button {
@@ -239,47 +242,149 @@
         margin-top: 10px;
         font-weight: bold;
         color: #7b4ca0;
-        width: 100%; /* ให้ข้อความพรีวิวอยู่บรรทัดใหม่ */
+        width: 100%;
     }
-    /* === End Buy Coins Section Styles === */
+    /* === End Buy Coins Section Styles (Local) === */
+
+    /* === Interfan Coin Section Styles (ใหม่) === */
+    .interfan-coin-section {
+        margin-top: 60px;
+        text-align: center;
+        padding-top: 30px; /* เพิ่ม padding ด้านบน */
+        border-top: 1px solid #e0c8ff; /* เส้นแบ่งจากส่วนบน */
+        background: #fdf5ff; /* พื้นหลังเพื่อให้ดูแยกกลุ่ม */
+        border-radius: 16px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* เพิ่มเงา */
+        max-width: 800px; /* จำกัดความกว้าง */
+        margin-left: auto;
+        margin-right: auto;
+        padding: 40px; /* padding ภายใน */
+    }
+    .interfan-coin-section h2 {
+        color: #7b4ca0;
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+    .interfan-payment-info {
+        font-size: 1.1rem;
+        color: #5e437f;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+    .interfan-button-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    .interfan-buy-btn {
+        background-color: #e6a87c; /* สีส้มอมม่วง */
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+        flex: 1 1 auto;
+        min-width: 140px;
+        box-sizing: border-box;
+    }
+    .interfan-buy-btn:hover {
+        background-color: #cc916d;
+        transform: scale(1.03);
+    }
+    .interfan-redeem-section { /* ส่วนสำหรับใส่รหัสยืนยัน */
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 1px dashed #d89fe5; /* เส้นประ */
+    }
+    .interfan-redeem-section h3 {
+        color: #7b4ca0;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    .interfan-redeem-input-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+        flex-wrap: wrap; /* ให้ input/button ลงบรรทัดใหม่บนมือถือ */
+    }
+    input#redeemCode {
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: 'Mitr', sans-serif;
+        font-size: 1rem;
+        width: 200px; /* กำหนดความกว้างเริ่มต้น */
+        max-width: 70%; /* ไม่ให้ใหญ่เกินไป */
+        box-sizing: border-box;
+    }
+    button#redeemButton {
+        background-color: #22c55e; /* สีเขียว */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+    button#redeemButton:hover {
+        background-color: #16a34a;
+        transform: scale(1.03);
+    }
+    #redeemMessage {
+        margin-top: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #6b21a8; /* สีม่วง */
+    }
+    /* === End Interfan Coin Section Styles === */
+
 
     /* === Contact Admin Section Styles === */
-    .contact-admin-section { /* คอนเทนเนอร์สำหรับปุ่มติดต่อแอดมิน */
+    .contact-admin-section {
         text-align: center;
-        margin-top: 60px; /* ระยะห่างจากส่วนด้านบน */
-        padding-top: 20px; /* เพิ่ม padding ด้านบน */
-        border-top: 1px solid #e0c8ff; /* เส้นแบ่ง */
+        margin-top: 60px;
+        padding-top: 20px;
+        border-top: 1px solid #e0c8ff;
     }
 
     #contactAdminBtn {
-        background-color: #7b4ca0; /* สีม่วงเข้ม */
+        background-color: #7b4ca0;
         color: white;
-        padding: 15px 25px; /* ขนาดปุ่มใหญ่ขึ้น */
+        padding: 15px 25px;
         border: none;
-        border-radius: 30px; /* มุมโค้งมนมากขึ้น */
+        border-radius: 30px;
         cursor: pointer;
-        font-size: 1.15rem; /* ขนาดตัวอักษรใหญ่ขึ้น */
+        font-size: 1.15rem;
         font-weight: bold;
         transition: background-color 0.3s ease, transform 0.3s ease;
-        display: block; /* ทำให้ปุ่มเป็นบล็อก */
-        margin: 0 auto 10px auto; /* จัดกึ่งกลางและมีระยะห่างด้านล่าง */
+        display: block;
+        margin: 0 auto 10px auto;
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     #contactAdminBtn:hover {
-        background-color: #613b82; /* สีเข้มขึ้นเมื่อวางเมาส์ */
+        background-color: #613b82;
         transform: scale(1.03);
     }
 
     .response-time-message {
-        font-size: 1rem; /* ขนาดตัวอักษร */
-        color: #5e437f; /* สีข้อความ */
+        font-size: 1rem;
+        color: #5e437f;
         margin-top: 5px;
     }
     /* === End Contact Admin Section Styles === */
 
 
-    /* === Modal Styles (เหมือนหน้านิยาย) === */
+    /* === Modal Styles === */
     .modal-overlay {
         display: none;
         position: fixed;
@@ -287,25 +392,25 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0,0,0,0.6); /* ทึบกว่าเดิมเล็กน้อย */
-        z-index: 9998; /* ให้อยู่ใต้ Pop-up หลัก */
+        background-color: rgba(0,0,0,0.6);
+        z-index: 9998;
     }
     .modal-content {
         background:#fff;
         max-width:500px;
-        margin:5% auto; /* ปรับ margin ให้สูงขึ้นเล็กน้อย */
+        margin:5% auto;
         padding:30px;
         border-radius:12px;
         text-align:center;
-        box-shadow:0 6px 20px rgba(0,0,0,0.3); /* เพิ่มเงาให้ชัดขึ้น */
+        box-shadow:0 6px 20px rgba(0,0,0,0.3);
         font-family:'Mitr', sans-serif;
-        position: relative; /* สำหรับปุ่มปิด */
+        position: relative;
         z-index: 9999;
     }
     .modal-content h3 {
         color:#6e3cab;
         margin-bottom: 20px;
-        font-size: 1.5rem; /* ขนาดหัวข้อ Pop-up */
+        font-size: 1.5rem;
     }
     .modal-content p {
         font-size:1.1rem;
@@ -320,7 +425,7 @@
         font-weight: bold;
         cursor: pointer;
         transition: background 0.3s ease, transform 0.2s ease;
-        font-size: 1rem; /* ขนาดปุ่มใน Pop-up */
+        font-size: 1rem;
     }
     .modal-content button:hover {
         transform: scale(1.05);
@@ -408,7 +513,7 @@
       .custom-amount button {
           width: 100%;
           box-sizing: border-box;
-          margin-bottom: 10px; /* เพิ่มระยะห่างระหว่างปุ่ม */
+          margin-bottom: 10px;
       }
       .custom-amount {
           flex-direction: column;
@@ -418,7 +523,7 @@
           margin-bottom: 5px;
       }
       .modal-content {
-          margin: 10% auto; /* ปรับ margin บนมือถือ */
+          margin: 10% auto;
           padding: 20px;
       }
       .modal-content h3 {
@@ -426,6 +531,21 @@
       }
       .modal-content p {
           font-size: 1rem;
+      }
+      /* Interfan Coin Section on mobile */
+      .interfan-buy-btn,
+      .interfan-redeem-input-group button,
+      input#redeemCode {
+          width: 100%;
+          box-sizing: border-box;
+          margin-bottom: 10px; /* เพิ่มระยะห่าง */
+      }
+      .interfan-redeem-input-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      #redeemMessage {
+        text-align: center;
       }
     }
   </style>
@@ -471,7 +591,7 @@
     ロマンチックな物語、激しいドラマ、超現実的なファンタジー、またはスパイシーなエロチカがお好みでも、私たちはあらゆる好みを提供し、無限の想像力に浸ることができます。"
     data-content-kr="Arn-niyay-khan의 세계에 오신 것을 환영합니다. 이곳에서는 다양한 필명과 독특한 장르의 컬렉션이 여러분을 기다립니다。
     
-    로맨틱하고 강렬한 드라마, 초현실적인 판타지, 또는 매운 에로티카를 좋아하든, 우리는 여러분이 탐험하고 무한한 상상력에 몰입할 수 있는 모든 취향을 제공합니다."
+    로맨틱하고 강렬한 드라마, 초현실적인 판타지, 또는 매운 에로티카를 좋아하든, 우리는 여러분이 탐험하고 무한한 상상력에 몰입할 수 있는 모든 취향을 제공합니다。"
     data-content-vn="Chào mừng đến với thế giới của Arn-niyay-khan, nơi tập hợp một bộ sưu tập đa dạng các bút danh và thể loại độc đáo.
     
     Dù bạn yêu thích những câu chuyện lãng mạn, kịch tính, giả tưởng siêu thực, hay erotic nóng bỏng, chúng tôi đều có mọi hương vị để bạn khám phá và đắm chìm trong trí tưởng tượng vô hạn."
@@ -512,6 +632,10 @@
     </li>
   </ul>
 
+  <div class="footer" data-i18n="footerText">
+    © 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨
+  </div>
+
   <div class="buy-coin-section">
     <h2 data-i18n="buyCoinsTitle">✨ เติมเหรียญเพื่ออ่านนิยาย ✨</h2>
     <div class="buy-coin-buttons-grid">
@@ -526,16 +650,36 @@
     </div>
     <div class="custom-amount">
         <label for="customAmount" data-i18n="customAmountLabel">หรือระบุจำนวนเงินเอง:</label>
-        <input type="number" id="customAmount" min="1" max="1000" placeholder="ใส่จำนวนเงิน (บาท)">
+        <input type="number" id="customAmount" min="1" max="1000" data-i18n-placeholder="customAmountPlaceholder">
         <button id="btnCustomBuy" data-i18n="customBuyButton">ซื้อเหรียญ</button>
         <p id="coinPreview" data-i18n="coinPreviewText">คุณจะได้รับ 0 เหรียญ</p>
     </div>
     <p style="font-size: 1rem; color: #5e437f;" data-i18n="exchangeRate">อัตรา: 1 บาท = 100 เหรียญ</p>
   </div>
 
-  <div class="footer" data-i18n="footerText">
-    © 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨
+  <div class="interfan-coin-section">
+    <h2 data-i18n="interfanBuyCoinsTitle">✨ เติมเหรียญสำหรับแฟนต่างชาติ (Interfan) ✨</h2>
+    <p class="interfan-payment-info" data-i18n="interfanPaymentMethod">💵 ชำระผ่านบัตรเครดิตหรือ PayPal บน Gumroad</p>
+    <p class="interfan-payment-info" data-i18n="interfanExchangeRate">⭐ 1 USD ≈ 3,400 เหรียญ (1 บาท = 100 เหรียญ)</p>
+    
+    <div class="interfan-button-grid">
+      <button class="interfan-buy-btn" data-usd="0.99" data-coins="1000" data-i18n="buyUSD1000Coins">ซื้อ 1,000 เหรียญ - $0.99</button>
+      <button class="interfan-buy-btn" data-usd="1.99" data-coins="5000" data-i18n="buyUSD5000Coins">ซื้อ 5,000 เหรียญ - $1.99</button>
+      <button class="interfan-buy-btn" data-usd="2.99" data-coins="10000" data-i18n="buyUSD10000Coins">ซื้อ 10,000 เหรียญ - $2.99</button>
+      <button class="interfan-buy-btn" data-usd="9.99" data-coins="50000" data-i18n="buyUSD50000Coins">ซื้อ 50,000 เหรียญ - $9.99</button>
+      <button class="interfan-buy-btn" data-usd="19.99" data-coins="100000" data-i18n="buyUSD100000Coins">ซื้อ 100,000 เหรียญ - $19.99</button>
+    </div>
+
+    <div class="interfan-redeem-section">
+      <h3 data-i18n="redeemTitle">✨ ใส่รหัสยืนยันที่ได้รับจาก Gumroad เพื่อรับเหรียญ ✨</h3>
+      <div class="interfan-redeem-input-group">
+        <input type="text" id="redeemCode" data-i18n-placeholder="redeemCodePlaceholder">
+        <button id="redeemButton" onclick="redeemCode()" data-i18n="redeemButton">ยืนยันรับเหรียญ</button>
+      </div>
+      <p id="redeemMessage" data-i18n="redeemMessageText"></p>
+    </div>
   </div>
+
 
   <div class="contact-admin-section">
     <button id="contactAdminBtn" data-i18n="contactAdminButton">ติดต่อแอดมิน</button>
@@ -598,6 +742,9 @@
     const PAYMENT_TIMEOUT_SECONDS = 60; // 1 นาที
     const EXCHANGE_RATE = 100; // 1 บาท = 100 เหรียญ
     const MAX_BUY_AMOUNT_THB = 1000; // ซื้อได้สูงสุด 1,000 บาท
+    const USD_TO_COINS_RATE = 3400; // 1 USD = 3,400 เหรียญ (สำหรับ Interfan)
+    const USD_TO_THB_APPROX = 35; // ประมาณ 1 USD = 35 บาท (สำหรับคำนวณในใจเท่านั้น)
+
 
     // URL ของ Google Apps Script Web App (เมื่อคุณ Deploy แล้ว)
     // *** สำคัญ: ต้องเปลี่ยน URL นี้เป็นของคุณเองหลังจาก Deploy Google Apps Script ***
@@ -679,7 +826,25 @@
         contactAdminButton: "ติดต่อแอดมิน",
         responseTimeMessage: "จะติดต่อกลับภายใน 24 ชั่วโมงหรือเร็วที่สุด",
         adminEmailSubject: "สอบถามข้อมูลจากเว็บไซต์",
-        adminEmailBody: "สวัสดีครับ/ค่ะ,\n\nฉันต้องการสอบถามเกี่ยวกับ..."
+        adminEmailBody: "สวัสดีครับ/ค่ะ,\n\nฉันต้องการสอบถามเกี่ยวกับ...",
+
+        // Interfan translations
+        interfanBuyCoinsTitle: "✨ เติมเหรียญสำหรับแฟนต่างชาติ (Interfan) ✨",
+        interfanPaymentMethod: "💵 ชำระผ่านบัตรเครดิตหรือ PayPal บน Gumroad",
+        interfanExchangeRate: `⭐ 1 USD ≈ ${USD_TO_COINS_RATE} เหรียญ (1 บาท = ${EXCHANGE_RATE} เหรียญ)`,
+        buyUSD1000Coins: "ซื้อ 1,000 เหรียญ - $0.99",
+        buyUSD5000Coins: "ซื้อ 5,000 เหรียญ - $1.99",
+        buyUSD10000Coins: "ซื้อ 10,000 เหรียญ - $2.99",
+        buyUSD50000Coins: "ซื้อ 50,000 เหรียญ - $9.99",
+        buyUSD100000Coins: "ซื้อ 100,000 เหรียญ - $19.99",
+        redeemTitle: "✨ ใส่รหัสยืนยันที่ได้รับจาก Gumroad เพื่อรับเหรียญ ✨",
+        redeemCodePlaceholder: "กรอกรหัสที่นี่...",
+        redeemButton: "ยืนยันรับเหรียญ",
+        redeemMessageText: "กรุณากรอกรหัสก่อนค่ะ", // ข้อความเริ่มต้น / เมื่อไม่มีรหัส
+        redeemSuccess: "✅ ยืนยันสำเร็จ! คุณได้รับ {{coins}} เหรียญ",
+        redeemInvalid: "❌ รหัสไม่ถูกต้อง หรือใช้ไปแล้วค่ะ",
+        alreadyRedeemed: "❌ รหัสนี้ถูกใช้ไปแล้วค่ะ",
+        loadingText: "กำลังตรวจสอบรหัส..."
       },
       en: {
         pageTitle: "Pen Name Collection | Arn-niyay-khan",
@@ -717,6 +882,7 @@
         buyPrice500: "500 THB",
         buyPrice1000: "1,000 THB",
         customAmountLabel: "Or enter custom amount:",
+        customAmountPlaceholder: "Enter amount (THB)",
         customBuyButton: "Buy Coins",
         coinPreviewText: "You will get 0 Coins",
         exchangeRate: `Rate: 1 THB = ${EXCHANGE_RATE} Coins`,
@@ -739,7 +905,25 @@
         contactAdminButton: "Contact Admin",
         responseTimeMessage: "Will reply within 24 hours or as soon as possible",
         adminEmailSubject: "Inquiry from Website",
-        adminEmailBody: "Hello,\n\nI would like to inquire about..."
+        adminEmailBody: "Hello,\n\nI would like to inquire about...",
+
+        // Interfan translations
+        interfanBuyCoinsTitle: "✨ Top Up Coins for Interfans ✨",
+        interfanPaymentMethod: "💵 Pay via Credit Card or PayPal on Gumroad",
+        interfanExchangeRate: `⭐ 1 USD ≈ ${USD_TO_COINS_RATE} Coins (1 THB = ${EXCHANGE_RATE} Coins)`,
+        buyUSD1000Coins: "Buy 1,000 Coins - $0.99",
+        buyUSD5000Coins: "Buy 5,000 Coins - $1.99",
+        buyUSD10000Coins: "Buy 10,000 Coins - $2.99",
+        buyUSD50000Coins: "Buy 50,000 Coins - $9.99",
+        buyUSD100000Coins: "Buy 100,000 Coins - $19.99",
+        redeemTitle: "✨ Enter the confirmation code from Gumroad to receive coins ✨",
+        redeemCodePlaceholder: "Enter code here...",
+        redeemButton: "Confirm Redemption",
+        redeemMessageText: "Please enter the code.",
+        redeemSuccess: "✅ Redemption successful! You received {{coins}} coins",
+        redeemInvalid: "❌ Invalid code or already used.",
+        alreadyRedeemed: "❌ This code has already been used.",
+        loadingText: "Checking code..."
       },
       ch: {
         pageTitle: "笔名合集 | Arn-niyay-khan",
@@ -777,6 +961,7 @@
         buyPrice500: "500 泰铢",
         buyPrice1000: "1,000 泰铢",
         customAmountLabel: "或输入自定义金额：",
+        customAmountPlaceholder: "输入金额 (泰铢)",
         customBuyButton: "购买金币",
         coinPreviewText: "您将获得 0 金币",
         exchangeRate: `汇率：1 泰铢 = ${EXCHANGE_RATE} 金币`,
@@ -793,7 +978,31 @@
         submitPaymentButton: "提交数据",
         cancel: "取消",
         paymentSuccessAlert: "您的转账通知已发送！请等待我们团队验证，金币将尽快添加。",
-        paymentFailedAlert: "发送转账数据时发生错误。请重试或联系客服。"
+        paymentFailedAlert: "发送转账数据时发生错误。请重试或联系客服。",
+        secondsLeft: "秒",
+        timeExpired: "时间到",
+        contactAdminButton: "联系管理员",
+        responseTimeMessage: "将在24小时内或尽快回复",
+        adminEmailSubject: "网站咨询",
+        adminEmailBody: "您好，\n\n我希望咨询关于...",
+
+        // Interfan translations
+        interfanBuyCoinsTitle: "✨ 为国际粉丝充值金币 ✨",
+        interfanPaymentMethod: "💵 通过 Gumroad 使用信用卡或 PayPal 支付",
+        interfanExchangeRate: `⭐ 1 美元 ≈ ${USD_TO_COINS_RATE} 金币 (1 泰铢 = ${EXCHANGE_RATE} 金币)`,
+        buyUSD1000Coins: "购买 1,000 金币 - $0.99",
+        buyUSD5000Coins: "购买 5,000 金币 - $1.99",
+        buyUSD10000Coins: "购买 10,000 金币 - $2.99",
+        buyUSD50000Coins: "购买 50,000 金币 - $9.99",
+        buyUSD100000Coins: "购买 100,000 金币 - $19.99",
+        redeemTitle: "✨ 输入从 Gumroad 获得的确认码以领取金币 ✨",
+        redeemCodePlaceholder: "在此输入代码...",
+        redeemButton: "确认领取",
+        redeemMessageText: "请输入代码。",
+        redeemSuccess: "✅ 领取成功！您已获得 {{coins}} 金币",
+        redeemInvalid: "❌ 代码无效或已使用。",
+        alreadyRedeemed: "❌ 此代码已使用。",
+        loadingText: "正在检查代码..."
       },
       ru: {
         pageTitle: "Коллекция псевдонимов | Arn-niyay-khan",
@@ -847,7 +1056,31 @@
         submitPaymentButton: "Отправить данные",
         cancel: "Отмена",
         paymentSuccessAlert: "Ваше уведомление о переводе отправлено! Пожалуйста, подождите, пока наша команда проверит, и монеты будут добавлены в ближайшее время.",
-        paymentFailedAlert: "Произошла ошибка при отправке данных перевода. Пожалуйста, попробуйте еще раз или свяжитесь со службой поддержки."
+        paymentFailedAlert: "Произошла ошибка при отправке данных перевода. Пожалуйста, попробуйте еще раз или свяжитесь со службой поддержки.",
+        secondsLeft: "секунд",
+        timeExpired: "Время истекло",
+        contactAdminButton: "Связаться с администратором",
+        responseTimeMessage: "Ответим в течение 24 часов или как можно скорее",
+        adminEmailSubject: "Запрос с веб-сайта",
+        adminEmailBody: "Здравствуйте,\n\nЯ хотел(а) бы узнать о...",
+
+        // Interfan translations
+        interfanBuyCoinsTitle: "✨ Пополнить монеты для иностранных фанатов ✨",
+        interfanPaymentMethod: "💵 Оплатить через кредитную карту или PayPal на Gumroad",
+        interfanExchangeRate: `⭐ 1 USD ≈ ${USD_TO_COINS_RATE} монет (1 бат = ${EXCHANGE_RATE} монет)`,
+        buyUSD1000Coins: "Купить 1000 монет - $0.99",
+        buyUSD5000Coins: "Купить 5000 монет - $1.99",
+        buyUSD10000Coins: "Купить 10000 монет - $2.99",
+        buyUSD50000Coins: "Купить 50000 монет - $9.99",
+        buyUSD100000Coins: "Купить 100000 монет - $19.99",
+        redeemTitle: "✨ Введите код подтверждения, полученный от Gumroad, чтобы получить монеты ✨",
+        redeemCodePlaceholder: "Введите код здесь...",
+        redeemButton: "Подтвердить получение",
+        redeemMessageText: "Пожалуйста, введите код.",
+        redeemSuccess: "✅ Успешно! Вы получили {{coins}} монет",
+        redeemInvalid: "❌ Неверный код или уже использован.",
+        alreadyRedeemed: "❌ Этот код уже был использован.",
+        loadingText: "Проверка кода..."
       },
       jp: {
         pageTitle: "ペンネームコレクション | Arn-niyay-khan",
@@ -901,7 +1134,13 @@
         submitPaymentButton: "データを送信",
         cancel: "キャンセル",
         paymentSuccessAlert: "送金通知が送信されました！チームが確認するまでしばらくお待ちください。コインはすぐにチャージされます。",
-        paymentFailedAlert: "送金データの送信中にエラーが発生しました。もう一度お試しいただくか、サポートにお問い合わせください。"
+        paymentFailedAlert: "送金データの送信中にエラーが発生しました。もう一度お試しいただくか、サポートにお問い合わせください。",
+        secondsLeft: "秒",
+        timeExpired: "時間切れ",
+        contactAdminButton: "管理者へ連絡",
+        responseTimeMessage: "24時間以内またはできるだけ早く返信します",
+        adminEmailSubject: "ウェブサイトからのお問い合わせ",
+        adminEmailBody: "こんにちは、\n\n～についてお問い合わせしたいのですが…"
       },
       kr: {
         pageTitle: "필명 컬렉션 | Arn-niyay-khan",
@@ -952,10 +1191,17 @@
         transferNameLabel: "이체자 이름:",
         transferDateTimeLabel: "이체 날짜-시간:",
         transferSlipLabel: "이체 영수증/증명서 첨부:",
+        transferSlipPlaceholder: "첨부파일 (이미지 또는 PDF)",
         submitPaymentButton: "데이터 제출",
         cancel: "취소",
         paymentSuccessAlert: "이체 알림이 전송되었습니다! 팀 확인 후 코인이 곧 추가됩니다。",
-        paymentFailedAlert: "이체 데이터 전송 중 오류가 발생했습니다. 다시 시도하거나 고객 지원에 문의하세요。"
+        paymentFailedAlert: "이체 데이터 전송 중 오류가 발생했습니다. 다시 시도하거나 고객 지원에 문의하세요。",
+        secondsLeft: "초",
+        timeExpired: "시간 초과",
+        contactAdminButton: "관리자에게 문의",
+        responseTimeMessage: "24시간 이내 또는 가능한 한 빨리 답변드리겠습니다。",
+        adminEmailSubject: "웹사이트 문의",
+        adminEmailBody: "안녕하세요,\n\n~에 대해 문의하고 싶습니다。"
       },
       vn: {
         pageTitle: "Bộ sưu tập bút danh | Arn-niyay-khan",
@@ -1006,6 +1252,7 @@
         transferNameLabel: "Tên người chuyển khoản:",
         transferDateTimeLabel: "Ngày-giờ chuyển khoản:",
         transferSlipLabel: "Đính kèm biên lai/bằng chứng chuyển khoản:",
+        transferSlipPlaceholder: "Đính kèm biên lai (hình ảnh hoặc PDF)",
         submitPaymentButton: "Gửi dữ liệu",
         cancel: "Hủy",
         paymentSuccessAlert: "Thông báo chuyển khoản của bạn đã được gửi! Vui lòng chờ đội ngũ của chúng tôi xác minh, xu sẽ được thêm vào sớm nhất."
@@ -1036,7 +1283,7 @@
             } else {
               // ดึงหน่วยเงินและคำว่า "Coins" จาก langPack
               const currencyUnit = langPack.currencyUnit || 'THB';
-              const coinWord = langPack.coinLabel.split(':')[0].trim(); // เช่น "Your coins" -> "Your coins"
+              const coinWord = langPack.coinLabel.split(':')[0].trim();
               el.textContent = `${displayPrice} ${currencyUnit} (${coins} ${coinWord})`;
             }
           }
@@ -1049,6 +1296,19 @@
             const coins = amountInBaht * EXCHANGE_RATE;
             el.textContent = langPack[key].replace('0', coins);
           }
+          else if (key.startsWith('buyUSD')) { // อัปเดตข้อความบนปุ่มซื้อ USD
+            const usdPrice = parseFloat(el.dataset.usd).toFixed(2);
+            const coins = parseInt(el.dataset.coins);
+            el.textContent = langPack[key].replace(`$${usdPrice}`, `$${usdPrice}`);
+            // Note: สำหรับข้อความนี้ ขึ้นอยู่กับว่าคุณต้องการให้มันแสดงแบบตายตัวตาม data-i18n หรือคำนวณใหม่
+            // ในที่นี้คือจะใช้ข้อความที่กำหนดไว้ใน translations.js
+          }
+          else if (key === 'interfanExchangeRate') { // อัปเดตข้อความอัตราแลกเปลี่ยน Interfan
+            el.textContent = langPack[key].replace(`${USD_TO_COINS_RATE}`, USD_TO_COINS_RATE).replace(`${EXCHANGE_RATE}`, EXCHANGE_RATE);
+          }
+          else if (key === 'redeemCodePlaceholder') { // อัปเดต placeholder
+              el.placeholder = langPack[key];
+          }
           else {
             el.textContent = langPack[key];
           }
@@ -1060,6 +1320,13 @@
       if (customAmountInput) {
           customAmountInput.placeholder = langPack.customAmountPlaceholder || 'ใส่จำนวนเงิน (บาท)';
       }
+      
+      // อัปเดต placeholder ของ redeemCode (เนื่องจาก data-i18n-placeholder ไม่ได้อยู่ใน loop หลัก)
+      const redeemCodeInput = document.getElementById('redeemCode');
+      if (redeemCodeInput) {
+          redeemCodeInput.placeholder = langPack.redeemCodePlaceholder || 'กรอกรหัสที่นี่...';
+      }
+
 
       // ส่วนสำหรับข้อความ intro-text ที่ต้องมีการ Render ย่อหน้า
       const introTextEl = document.getElementById("introText");
@@ -1094,12 +1361,23 @@
         const timeLeft = timeLeftMatch ? parseInt(timeLeftMatch[1]) : PAYMENT_TIMEOUT_SECONDS; // ใช้ค่าเริ่มต้นถ้าดึงไม่ได้
         countdownEl.textContent = `${timeLeft} ${translations[lang].secondsLeft}`;
       }
+      
+      // อัปเดตข้อความ redeemMessageText
+      const redeemMessageEl = document.getElementById('redeemMessage');
+      if (redeemMessageEl) {
+        // ใช้ข้อความเริ่มต้นเมื่อโหลดหน้า
+        if (redeemMessageEl.dataset.originalMessage) { // ถ้ามีข้อความเดิมที่บันทึกไว้
+            redeemMessageEl.textContent = langPack[redeemMessageEl.dataset.originalMessage];
+        } else { // ตั้งค่าเริ่มต้น
+             redeemMessageEl.textContent = langPack.redeemMessageText;
+        }
+      }
     }
 
-    // ฟังก์ชันเริ่มกระบวนการซื้อเหรียญ
+    // ฟังก์ชันเริ่มกระบวนการซื้อเหรียญ (สำหรับคนไทย)
     function startBuyCoins(priceInBaht) {
         pendingPriceToPay = priceInBaht;
-        pendingCoinsToBuy = priceInBaht * EXCHANGE_RATE; // คำนวณเหรียญจากราคาและอัตราแลกเปลี่ยน
+        pendingCoinsToBuy = priceInBaht * EXCHANGE_RATE;
 
         const lang = localStorage.getItem("lang") || "th";
         const paymentTitleEl = document.getElementById("paymentTitle");
@@ -1107,25 +1385,17 @@
         const qrCodeImageEl = document.getElementById("qrCodeImage");
         const countdownEl = document.getElementById("countdown");
 
+        paymentTitleEl.dataset.originalCoins = pendingCoinsToBuy;
+        paymentInstructionsEl.dataset.originalPrice = pendingPriceToPay;
 
-        // อัปเดตข้อความ Pop-up
         paymentTitleEl.textContent = translations[lang].paymentTitle.replace('{{coins}}', pendingCoinsToBuy);
         paymentInstructionsEl.innerHTML = (translations[lang].paymentInstructions || '')
             .replace('{{price}}', pendingPriceToPay)
             .replace(/\n/g, "<br>");
 
-        // *** สำคัญ: สร้าง QR Code จริงที่นี่ ***
-        // สำหรับการสาธิต ผมจะใช้ placeholder image
-        // หากต้องการสร้าง QR Code สำหรับ PromptPay/Standard Thai QR ให้ใช้ API หรือเครื่องมือภายนอก
-        const qrData = `PromptPay_Account_ID|${pendingPriceToPay}.00|Ref1|Ref2`; // ข้อมูลที่จะเข้ารหัสใน QR
-        // ตัวอย่างการสร้าง QR code URL จาก API บางตัว (ต้องติดตั้งไลบรารี่/API จริง)
-        // qrCodeImageEl.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrData)}`;
-        
-        // สำหรับตอนนี้ ใช้ placeholder image ไปก่อน
         qrCodeImageEl.src = `https://via.placeholder.com/200x200?text=Scan+to+Pay+${pendingPriceToPay}+THB`; 
         qrCodeImageEl.alt = `QR Code for ${pendingPriceToPay} THB`;
 
-        // ตั้งค่า URL สำหรับดาวน์โหลด QR Code
         document.getElementById("downloadQrButton").onclick = () => {
             const a = document.createElement('a');
             a.href = qrCodeImageEl.src;
@@ -1145,7 +1415,7 @@
         const countdownEl = document.getElementById("countdown");
         countdownEl.textContent = `${timeLeft} ${translations[localStorage.getItem("lang") || "th"].secondsLeft}`;
 
-        clearInterval(countdownInterval); // เคลียร์ interval เก่าก่อนเริ่มใหม่
+        clearInterval(countdownInterval);
         countdownInterval = setInterval(() => {
             timeLeft--;
             countdownEl.textContent = `${timeLeft} ${translations[localStorage.getItem("lang") || "th"].secondsLeft}`;
@@ -1153,7 +1423,6 @@
             if (timeLeft <= 0) {
                 clearInterval(countdownInterval);
                 countdownEl.textContent = translations[localStorage.getItem("lang") || "th"].timeExpired;
-                // อาจจะปิด Pop-up หรือเปลี่ยนสถานะ
             }
         }, 1000);
     }
@@ -1168,11 +1437,10 @@
 
     // ฟังก์ชันแสดงฟอร์มแจ้งโอน
     function showPaymentForm() {
-        clearInterval(countdownInterval); // หยุดนับถอยหลัง
-        document.getElementById("paymentModal").style.display = "none"; // ซ่อน Pop-up ชำระเงิน
-        document.getElementById("paymentFormModal").style.display = "block"; // แสดง Pop-up ฟอร์มแจ้งโอน
+        clearInterval(countdownInterval);
+        document.getElementById("paymentModal").style.display = "none";
+        document.getElementById("paymentFormModal").style.display = "block";
 
-        // กำหนดวันเวลาปัจจุบันในฟอร์ม (ตามเขตเวลาของผู้ใช้)
         const now = new Date();
         const year = now.getFullYear();
         const month = (now.getMonth() + 1).toString().padStart(2, '0');
@@ -1191,29 +1459,28 @@
 
     // ฟังก์ชันส่งข้อมูลฟอร์มไปยัง Google Sheet
     async function submitPaymentData(event) {
-        event.preventDefault(); // ป้องกันการโหลดหน้าใหม่
+        event.preventDefault();
 
         const form = event.target;
         const formData = new FormData(form);
         
         const transferName = formData.get('transferName');
         const transferDateTime = formData.get('transferDateTime');
-        const transferSlip = formData.get('transferSlip'); // File object
+        const transferSlip = formData.get('transferSlip');
 
-        // อ่านไฟล์เป็น Base64 (สำหรับการส่งไป Apps Script)
         let slipBase64 = '';
         if (transferSlip && transferSlip.size > 0) {
             const reader = new FileReader();
             reader.readAsDataURL(transferSlip);
             await new Promise((resolve, reject) => {
                 reader.onload = () => {
-                    slipBase64 = reader.result.split(',')[1]; // เอาเฉพาะส่วน Base64
+                    slipBase64 = reader.result.split(',')[1];
                     resolve();
                 };
                 reader.onerror = error => {
                     console.error("Error reading file:", error);
                     alert(translations[localStorage.getItem("lang") || "th"].paymentFailedAlert);
-                    reject(error); // Reject the promise on error
+                    reject(error);
                 };
             });
         }
@@ -1224,9 +1491,9 @@
             price: pendingPriceToPay,
             transferName: transferName,
             transferDateTime: transferDateTime,
-            slipData: slipBase64, // Base64 string of the file
+            slipData: slipBase64,
             slipFileName: transferSlip ? transferSlip.name : '',
-            userId: localStorage.getItem("user_id") || 'Guest_' + Date.now() // เพิ่ม User ID (ถ้ามี)
+            userId: localStorage.getItem("user_id") || 'Guest_' + Date.now()
         };
 
         try {
@@ -1242,7 +1509,7 @@
             
             if (result.status === 'success') {
                 alert(translations[localStorage.getItem("lang") || "th"].paymentSuccessAlert);
-                cancelPaymentForm(); // ปิดฟอร์มหลังจากส่งสำเร็จ
+                cancelPaymentForm();
             } else {
                 alert(`${translations[localStorage.getItem("lang") || "th"].paymentFailedAlert}: ${result.message || ''}`);
             }
@@ -1252,12 +1519,63 @@
         }
     }
 
+    // ฟังก์ชันสำหรับแลกโค้ด (ใหม่สำหรับ Interfan)
+    function redeemCode() {
+        const codeInput = document.getElementById("redeemCode");
+        const code = codeInput.value.trim();
+        const messageEl = document.getElementById("redeemMessage");
+        const lang = localStorage.getItem("lang") || "th";
+
+        messageEl.textContent = translations[lang].loadingText; // แสดงสถานะกำลังตรวจสอบ
+
+        if (!code) {
+            messageEl.textContent = translations[lang].redeemMessageText; // "กรุณากรอกรหัสก่อนค่ะ"
+            return;
+        }
+
+        // Mockup ตัวอย่าง - ระบบจริงต้องเชื่อม backend/Google Apps Script
+        // เพื่อตรวจสอบรหัสกับ Gumroad และสถานะการใช้งาน
+        const mockValidCodes = {
+            "GUMROAD-ABCDE": { coins: 1000, used: false }, // รหัสตัวอย่าง
+            "GUMROAD-FGHIJ": { coins: 5000, used: true },  // รหัสที่ใช้ไปแล้ว
+            "GUMROAD-KLMNO": { coins: 10000, used: false }
+        };
+
+        // ตรวจสอบกับ Local Storage ว่ารหัสเคยถูกใช้โดยผู้ใช้คนนี้หรือไม่
+        const redeemedCodes = JSON.parse(localStorage.getItem('redeemed_codes') || '{}');
+
+        if (redeemedCodes[code]) {
+            messageEl.textContent = translations[lang].alreadyRedeemed; // "รหัสนี้ถูกใช้ไปแล้วค่ะ"
+            return;
+        }
+
+        // จำลองการตรวจสอบกับ Mockup Codes
+        if (mockValidCodes[code] && !mockValidCodes[code].used) {
+            const coinsToAdd = mockValidCodes[code].coins;
+            
+            // อัปเดตเหรียญใน Local Storage
+            setCoins(getCoins() + coinsToAdd);
+
+            // บันทึกว่ารหัสนี้ถูกใช้ไปแล้วโดยผู้ใช้คนนี้
+            redeemedCodes[code] = true;
+            localStorage.setItem('redeemed_codes', JSON.stringify(redeemedCodes));
+
+            messageEl.textContent = translations[lang].redeemSuccess.replace('{{coins}}', coinsToAdd);
+            codeInput.value = ''; // ล้างช่องรหัส
+            // ในระบบจริง: อาจต้องส่งข้อมูลการแลกรับไป Backend/Google Sheet ด้วย
+            // เพื่อให้นักเขียนรู้ว่ารหัสนี้ถูกแลกแล้ว
+            // ตัวอย่าง: submitRedeemData(code, coinsToAdd);
+        } else {
+            messageEl.textContent = translations[lang].redeemInvalid; // "รหัสไม่ถูกต้อง หรือใช้ไปแล้วค่ะ"
+        }
+    }
+
 
     // เมื่อ DOM โหลดเสร็จ
     document.addEventListener("DOMContentLoaded", function () {
       // ตรวจสอบและกำหนดเหรียญเริ่มต้นถ้ายังไม่มี
       if (!localStorage.getItem("user_coins")) {
-        setCoins(100); // กำหนดเหรียญเริ่มต้น 100
+        setCoins(100);
       }
       
       // ตั้งค่า User ID หากยังไม่มี (สำหรับส่งให้ Google Apps Script)
@@ -1268,15 +1586,15 @@
       const savedLang = localStorage.getItem("lang") || "th";
       switchLang(savedLang); // Apply the saved language on load
 
-      // เพิ่ม Event Listeners ให้กับปุ่มซื้อเหรียญ
+      // เพิ่ม Event Listeners ให้กับปุ่มซื้อเหรียญ (คนไทย)
       document.querySelectorAll(".buy-coin-button").forEach(button => {
         button.addEventListener("click", () => {
-          const price = parseInt(button.dataset.price); // ดึงราคาจาก data-price
-          startBuyCoins(price); // เรียกฟังก์ชันซื้อเหรียญด้วยราคา
+          const price = parseInt(button.dataset.price);
+          startBuyCoins(price);
         });
       });
 
-      // Event Listener สำหรับช่องกรอกจำนวนเงินเอง
+      // Event Listener สำหรับช่องกรอกจำนวนเงินเอง (คนไทย)
       const customAmountInput = document.getElementById('customAmount');
       const coinPreview = document.getElementById('coinPreview');
       const btnCustomBuy = document.getElementById('btnCustomBuy');
@@ -1288,10 +1606,9 @@
           }
           if (amountInBaht > MAX_BUY_AMOUNT_THB) {
               amountInBaht = MAX_BUY_AMOUNT_THB;
-              this.value = MAX_BUY_AMOUNT_THB; // ตั้งค่าให้ไม่เกิน maxAmount
+              this.value = MAX_BUY_AMOUNT_THB;
           }
           const coins = amountInBaht * EXCHANGE_RATE;
-          // อัปเดตข้อความพรีวิวเหรียญ
           const lang = localStorage.getItem("lang") || "th";
           const langPack = translations[lang];
           coinPreview.textContent = langPack.coinPreviewText.replace('0', coins);
@@ -1309,20 +1626,32 @@
           }
           startBuyCoins(amountInBaht);
       });
-      // อัปเดตพรีวิวเหรียญเริ่มต้น
       const initialAmount = parseInt(customAmountInput.value) || 0;
       coinPreview.textContent = translations[savedLang].coinPreviewText.replace('0', initialAmount * EXCHANGE_RATE);
 
       // Event Listener สำหรับปุ่มติดต่อแอดมิน
       document.getElementById('contactAdminBtn').addEventListener('click', function() {
           const lang = localStorage.getItem("lang") || "th";
-          const adminEmail = 'cherry.writer62@gmail.com'; // อีเมลแอดมิน
-          const subject = translations[lang].adminEmailSubject; // หัวข้ออีเมล
-          const body = translations[lang].adminEmailBody; // เนื้อหาอีเมล
+          const adminEmail = 'cherry.writer62@gmail.com';
+          const subject = translations[lang].adminEmailSubject;
+          const body = translations[lang].adminEmailBody;
 
           const mailtoLink = `mailto:${adminEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
           window.location.href = mailtoLink;
       });
+
+      // Event Listener สำหรับปุ่มซื้อเหรียญ (Interfan)
+      document.querySelectorAll(".interfan-buy-btn").forEach(button => {
+        button.addEventListener("click", () => {
+          const usdPrice = parseFloat(button.dataset.usd);
+          const coins = parseInt(button.dataset.coins);
+          // ในระบบจริง คุณจะต้องเปลี่ยนเส้นทางไปยัง Gumroad ด้วยลิงก์สินค้าที่ถูกต้อง
+          alert(`Redirecting to Gumroad to buy ${coins} coins for $${usdPrice}. \n(This is a placeholder action)`);
+          // ตัวอย่าง: window.open(`https://your-gumroad-link.com/l/${button.dataset.gumroadProductId}`, '_blank');
+        });
+      });
+
+      // Event Listener สำหรับปุ่มแลกเหรียญ (Interfan) อยู่ใน redeemCode() แล้ว
     });
   </script>
 </body>
