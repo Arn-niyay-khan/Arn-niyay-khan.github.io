@@ -745,7 +745,13 @@
       <button class="buy-coin-button" data-price="1000" data-coins="100000" data-i18n="buyPrice1000">1,000 บาท (100,000 เหรียญ)</button>
     </div>
     <div class="custom-amount">
-    
+    <div class="custom-amount">
+        <label for="customAmount" data-i18n="customAmountLabel">หรือระบุจำนวนเงินเอง:</label>
+        <input type="number" id="customAmount" min="1" max="1000" data-i18n-placeholder="customAmountPlaceholder">
+        <button id="btnCustomBuy" data-i18n="customBuyButton" style="display:none;">ซื้อเหรียญ</button>
+        <p id="coinPreview" data-i18n="coinPreviewText">คุณจะได้รับ 0 เหรียญ</p>
+    </div>
+  </div>
 
   <div class="interfan-coin-section">
     <h2 data-i18n="interfanBuyCoinsTitle">✨ เติมเหรียญสำหรับแฟนต่างชาติ (Interfan) ✨</h2>
