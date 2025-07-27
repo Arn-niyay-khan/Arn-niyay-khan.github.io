@@ -1,1289 +1,553 @@
 <html lang="th">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <title>กับดักหัวใจของนายตัวแสบ | โค้ดรัก</title>
-
+  <title>โค้ดรัก | Arn-niyay-khan</title>
   <link href="https://fonts.googleapis.com/css2?family=Mitr&display=swap" rel="stylesheet">
-
   <style>
-
     body {
-
       background: linear-gradient(145deg, #fdf5ff, #f0f8ff);
-
       font-family: 'Mitr', sans-serif;
-
       color: #432d5d;
-
       padding: 40px;
-
       max-width: 1024px;
-
       margin: auto;
-
       text-align: center;
-
-      user-select: none;
-
+      user-select: none; /* เพิ่ม user-select เพื่อป้องกันการเลือกข้อความ */
     }
 
-    .content-wrapper {
-
-      text-align: left;
-
-      margin: 0 auto;
-
-      max-width: 900px;
-
-    }
-
-
-
-    /* === Header Controls === */
-
-    .header-controls { /* ใหม่: สำหรับรวม site-button, coin, language */
-
+    .header-controls {
       display: flex;
-
       justify-content: space-between;
-
       align-items: center;
-
       margin-bottom: 30px;
-
-      flex-wrap: wrap; /* เพื่อให้ห่อข้อความลงบรรทัดใหม่ในหน้าจอเล็ก */
-
+      flex-wrap: wrap; /* ให้ห่อข้อความลงบรรทัดใหม่ในหน้าจอเล็ก */
       gap: 15px; /* เพิ่มช่องว่างระหว่างรายการ */
-
     }
-
-
 
     .site-button {
-
       display: inline-block;
-
-      padding: 12px 28px;
-
+      padding: 12px 28px; /* ปรับขนาด padding เท่ากับหน้านิยาย */
       background-color: #f6d8ff;
-
       color: #6d3fb0;
-
-      text-align: center;
-
-      font-size: 1.35rem; /* ขนาดเท่าหน้านามปากกา */
-
+      font-size: 1.35rem; /* ปรับขนาด font-size เท่ากับหน้านิยาย */
       font-weight: bold;
-
       border-radius: 999px;
-
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-
       text-decoration: none;
-
       transition: transform 0.3s ease, background-color 0.3s ease;
-
       flex-shrink: 0;
-
     }
-
-
 
     .site-button:hover {
-
       background-color: #e8c2ff;
-
       transform: scale(1.05);
-
     }
 
-
-
-    .user-info { /* ใหม่: สำหรับรวม coin และ language */
-
+    .user-info {
       display: flex;
-
       align-items: center;
-
       gap: 15px;
-
       flex-wrap: wrap;
-
       justify-content: flex-end; /* จัดให้ชิดขวา */
-
     }
-
-
 
     .coin-display {
-
       font-size: 0.99rem;
-
       color: #6e3cab;
-
     }
-
-
 
     .language-selector {
-
       font-size: 0.99rem;
-
       color: #6e3cab;
-
       display: flex;
-
       align-items: center;
-
       gap: 5px;
-
     }
-
-
 
     .language-selector select {
-
       font-size: 0.8rem;
-
       padding: 4px 8px;
-
       border-radius: 6px;
-
       margin-left: 5px;
-
     }
-
-    /* === End Header Controls === */
-
     
-
-    h1 {
-
+    h1 { /* ปรับขนาดนามปากกาหลัก */
+      font-size: 1.8rem; /* ลดขนาดลงเล็กน้อย */
       color: #7b4ca0;
-
-      text-align: left;
-
-      font-size: 1.45rem;
-
       margin-bottom: 10px;
-
+      animation: pulse 3s ease-in-out infinite;
     }
 
-
-
-    /* === Cover and Summary Section === */
-
-    .cover-summary-section { /* ปรับปรุง: ใช้ flexbox จัดวางปกและข้อมูล */
-
-      display: flex;
-
-      align-items: center; /* จัดให้อยู่กึ่งกลางในแนวตั้ง */
-
-      justify-content: center; /* จัดกึ่งกลางในแนวนอน */
-
-      gap: 30px; /* ช่องว่างระหว่างปกกับข้อมูล */
-
-      margin-bottom: 30px;
-
-      text-align: left; /* ข้อความภายใน novel-info จะชิดซ้าย */
-
-      max-width: 900px; /* จำกัดความกว้างเหมือน content-wrapper */
-
-      margin-left: auto; /* จัดกึ่งกลาง */
-
-      margin-right: auto; /* จัดกึ่งกลาง */
-
-      padding: 20px; /* เพิ่ม padding */
-
-      background: #ffffff; /* พื้นหลังเพื่อให้กล่องดูเป็นระเบียบ */
-
-      border-radius: 12px;
-
-      box-shadow: 0 0 10px rgba(0,0,0,0.03);
-
+    p { /* ปรับขนาดคำโปรยใต้นามปากกา */
+      color: #6e5b84;
+      font-size: 1rem; /* ลดขนาดลงเล็กน้อย */
+      margin-bottom: 40px;
     }
 
-
-
-    .novel-cover {
-
-      width: 180px;
-
-      height: auto; /* ให้ความสูงปรับตามอัตราส่วน */
-
-      border-radius: 12px;
-
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-      flex-shrink: 0; /* ป้องกันการหดตัวของปก */
-
+    .section-title { /* ปรับขนาดหัวข้อ Part เช่น "🔥 นิยายยาว" */
+      font-size: 1.7rem; /* ใหญ่กว่าเดิมเล็กน้อย (จาก 1.6rem) */
+      color: #5d3a8a;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #d4b3ff;
+      padding-bottom: 5px;
     }
 
-
-
-    .novel-info {
-
-      flex: 1; /* ให้ส่วนข้อมูลขยายเต็มพื้นที่ที่เหลือ */
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: center;
-
-      min-width: 0; /* สำคัญสำหรับ flex item ที่มีข้อความยาวๆ */
-
-    }
-
-
-
-    .novel-title {
-
-      font-size: 1.45rem;
-
-      color: #6e3cab;
-
-      margin-bottom: 10px;
-
-      line-height: 1.3;
-
-      text-align: left; /* ชื่อเรื่องชิดซ้าย */
-
-    }
-
-
-
-    .summary { /* .novel-summary ถูกเปลี่ยนเป็น .summary */
-
-      white-space: pre-wrap; /* รักษาการขึ้นบรรทัดใหม่ */
-
-      text-indent: 2.5em; /* เยื้องบรรทัดแรก */
-
-      margin-bottom: 0; /* ไม่มี margin-bottom เพิ่มเติม */
-
-      line-height: 1.7;
-
-      color: #5e437f;
-
-      font-size: 1.25rem; /* ขนาดฟอนต์ตามหน้านิยาย */
-
-      text-align: justify;
-
-      background: none; /* ลบพื้นหลังและ shadow ที่ซ้ำซ้อน */
-
-      padding: 0; /* ลบ padding ที่ซ้ำซ้อน */
-
-      box-shadow: none; /* ลบ box-shadow ที่ซ้ำซ้อน */
-
-      border-radius: 0; /* ลบ border-radius ที่ซ้ำซ้อน */
-
-    }
-
-    .summary p { /* เพื่อให้การย่อหน้าทำงานถูกต้อง */
-
-        text-indent: 2.5em;
-
-        margin-bottom: 1em;
-
-    }
-
-    /* === End Cover and Summary Section === */
-
-
-
-    .action-section {
-
-      display: flex;
-
-      justify-content: center;
-
-      align-items: stretch;
-
-      flex-wrap: wrap;
-
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
       gap: 20px;
-
-      margin: 50px 0;
-
-      text-align: center;
-
     }
 
-
-
-    .action-box {
-
-      flex: 1 1 300px;
-
-      max-width: 400px;
-
-    }
-
-        
-
-    .action-box p {
-
-      font-size: 1.61rem;
-
-      color: #6e3cab;
-
-      margin-bottom: 10px;
-
-    }
-
-        
-
-    .episode {
-
-      margin-bottom: 30px;
-
-    }
-
-
-
-    .episode-title {
-
-      cursor: pointer;
-
-      color: #6e3cab;
-
-      font-weight: bold;
-
-      font-size: 1.52rem; /* ปรับขนาดชื่อตอน (1.45rem * 1.05 = 1.5225rem) */
-
-      background-color: #f6e7ff;
-
-      padding: 12px 20px;
-
-      border-radius: 12px;
-
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-
-      transition: background 0.3s ease;
-
-      text-align: left;
-
-    }
-
-
-
-    .episode-title:hover {
-
-      background-color: #e4ccff;
-
-    }
-
-        
-
-    .unlock-button {
-
-      padding: 10px 20px;
-
-      background: linear-gradient(135deg, #b68df5, #925fdd);
-
-      color: #fff;
-
-      border: none;
-
-      border-radius: 30px;
-
-      font-weight: bold;
-
-      font-size: 0.85rem;
-
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-
-      cursor: pointer;
-
-      transition: transform 0.3s ease, background 0.3s ease;
-
-    }
-
-
-
-    .unlock-button:hover {
-
-      background: linear-gradient(135deg, #925fdd, #b68df5);
-
-      transform: scale(1.05);
-
-    }
-
-
-
-    .thank-you {
-
-      text-align: center;
-
-      font-size: 1.25rem;
-
-      margin-top: 60px;
-
-      margin-bottom: 10px;
-
-      color: #5e407f;
-
-      font-style: italic;
-
-    }
-
-
-
-    .comment-box {
-
-      margin-top: 40px;
-
-      background: #f5f0ff;
-
-      padding: 20px;
-
-      border-radius: 16px;
-
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-
-    }
-
-
-
-    .comment-box textarea {
-
-      width: 100%;
-
-      font-family: 'Mitr', sans-serif;
-
-      font-size: 1.25rem;
-
+    .book {
+      background-color: #fff7ff;
+      border-radius: 14px;
       padding: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
 
-      border: 1px solid #ccc;
+    .book:hover {
+      transform: scale(1.03);
+    }
 
+    .book img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
       border-radius: 10px;
-
-      resize: vertical;
-
     }
 
-
-
-    .emoji-bar {
-
+    .book-title { /* ปรับขนาดชื่อเรื่องนิยายแต่ละเรื่อง */
       margin-top: 10px;
-
+      font-size: 1.1rem; /* ใหญ่ขึ้นเล็กน้อย (จาก 1rem) */
+      font-weight: bold;
+      color: #6b3fa0;
     }
 
-
-
-    .emoji-bar span {
-
-      cursor: pointer;
-
-      font-size: 1.25rem;
-
-      margin-right: 10px;
-
-      transition: transform 0.2s ease;
-
+    .book-desc { /* ปรับขนาดคำโปรยนิยายแต่ละเรื่อง */
+      font-size: 1rem; /* ใหญ่ขึ้น (จาก 0.9rem) */
+      color: #6e5b84;
+      margin-top: 4px;
     }
-
-
-
-    .emoji-bar span:hover {
-
-      transform: scale(1.3);
-
-    }
-
-
-
-    .submit-button {
-
-      margin-top: 15px;
-
-      padding: 10px 20px;
-
-      background-color: #a87ce6;
-
-      color: #fff;
-
-      border: none;
-
-      border-radius: 30px;
-
-      font-size: 1.25rem;
-
-      cursor: pointer;
-
-      transition: background 0.3s ease;
-
-    }
-
-
-
-    .submit-button:hover {
-
-      background-color: #8f63d2;
-
-    }
-
-
 
     .back-button {
-
       display: inline-block;
-
-      padding: 12px 28px; /* ขนาด padding */
-
+      padding: 12px 28px; /* ขนาด padding เท่ากับหน้านิยาย */
       background: linear-gradient(135deg, #c79df4, #a57be7);
-
       color: #fff;
-
       text-decoration: none;
-
       border-radius: 30px;
-
       font-weight: bold;
-
-      font-size: 1.35rem; /* ขนาด font-size */
-
+      font-size: 1.35rem; /* ขนาด font-size เท่ากับหน้านิยาย */
       box-shadow: 0 4px 12px rgba(167, 125, 221, 0.4);
-
       transition: all 0.3s ease;
-
-      margin-top: 30px;
-
     }
-
-
 
     .back-button:hover {
-
-      background: linear-gradient(135deg, #a577e7, #c79df4);
-
+      background: linear-gradient(135deg, #a57be7, #c79df4);
       box-shadow: 0 6px 16px rgba(135, 95, 190, 0.5);
-
       transform: scale(1.05);
-
     }
-
-
 
     .back-container {
-
       text-align: center;
-
+      margin-top: 50px;
     }
 
-
-
-    .footer {
-
+    .thank-you { /* เพิ่ม style สำหรับข้อความขอบคุณ */
+      text-align: center;
+      font-size: 1.25rem;
       margin-top: 60px;
-
-      font-size: 1.25rem; /* ปรับขนาด font-size */
-
+      margin-bottom: 10px;
+      color: #5e407f;
+      font-style: italic;
+    }
+    
+    .footer {
+      margin-top: 60px;
+      font-size: 1.25rem; /* ปรับขนาด font-size เท่ากับหน้านิยาย */
       color: #9a7fb5;
-
       text-align: center;
-
     }
 
-
-
-    .watermark {
-
-      position: absolute;
-
-      top: 50%;
-
-      left: 50%;
-
-      transform: translate(-50%, -50%) rotate(-30deg);
-
-      font-size: 15rem;
-
-      color: rgba(200, 180, 255, 0.12);
-
-      pointer-events: none;
-
-      z-index: 0;
-
-      white-space: nowrap;
-
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
     }
-
-
-
-    * {
-
-      -webkit-user-select: none;
-
-      -moz-user-select: none;
-
-      -ms-user-select: none;
-
-      user-select: none;
-
-    }
-
-
-
-    .text-content { /* .summary ถูกรวมเข้ากับ .text-content ใน CSS */
-
-      white-space: pre-wrap;
-
-      text-align: justify;
-
-      font-size: 1.1rem; /* ปรับขนาดเนื้อหาแต่ละตอน */
-
-      line-height: 1.7;
-
-      color: #5e437f;
-
-      background: #ffffff;
-
-      padding: 20px;
-
-      border-radius: 12px;
-
-      box-shadow: 0 0 10px rgba(0,0,0,0.03);
-
-      margin-bottom: 30px;
-
-      position: relative;
-
-      z-index: 1;
-
-    }
-
-
-
-    .summary p, .text-content p {
-
-      text-indent: 2.5em;
-
-      margin-bottom: 1em;
-
-    }
-
-
 
     /* Media query สำหรับหน้าจอขนาดเล็ก */
-
     @media screen and (max-width: 600px) {
-
       .header-controls {
-
-        flex-direction: column;
-
-        align-items: flex-start;
-
+        flex-direction: column; /* เรียงจากบนลงล่าง */
+        align-items: flex-start; /* จัดชิดซ้าย */
       }
-
       .user-info {
-
         width: 100%;
-
-        justify-content: flex-start;
-
+        justify-content: flex-start; /* จัดชิดซ้าย */
       }
-
-      .site-button {
-
-        width: 100%;
-
-        box-sizing: border-box;
-
+      .site-button, .back-button {
+        width: 100%; /* ให้ปุ่มเต็มความกว้าง */
+        box-sizing: border-box; /* รวม padding ในความกว้าง */
       }
-
-      .cover-summary-section {
-
-        flex-direction: column;
-
-        text-align: center;
-
-        padding: 15px; /* ลด padding บนมือถือ */
-
+      h1 { /* ปรับขนาดนามปากกาหลักบนมือถือ */
+          font-size: 1.5rem;
       }
-
-      .novel-title {
-
-        text-align: center; /* จัดกึ่งกลางชื่อเรื่องบนมือถือ */
-
-        margin-top: 20px; /* เพิ่มระยะห่างระหว่างปกกับชื่อเรื่องบนมือถือ */
-
+      p { /* ปรับขนาดคำโปรยใต้นามปากกาบนมือถือ */
+          font-size: 0.95rem;
       }
-
-      .summary {
-
-          font-size: 1rem; /* ปรับขนาดเรื่องย่อบนมือถือ */
-
+      .section-title { /* ปรับขนาดหัวข้อ Part บนมือถือ */
+          font-size: 1.4rem;
       }
-
-      .text-content { /* ปรับขนาดเนื้อหาแต่ละตอนบนมือถือ */
-
-        font-size: 1rem;
-
+      .book-title { /* ปรับขนาดชื่อเรื่องนิยายแต่ละเรื่องบนมือถือ */
+          font-size: 1rem;
       }
-
-      .episode-title { /* ปรับขนาดชื่อตอนบนมือถือ */
-
-        font-size: 1.45rem;
-
+      .book-desc { /* ปรับขนาดคำโปรยนิยายแต่ละเรื่องบนมือถือ */
+          font-size: 0.9rem;
       }
-
-      .back-button {
-
-        width: 100%;
-
-        box-sizing: border-box;
-
-      }
-
     }
-
   </style>
-
 </head>
-
 <body>
 
   <div class="header-controls">
-
     <a href="/" class="site-button" data-i18n="siteButton">✨ Arn-niyay-khan ✨</a>
-
     <div class="user-info">
-
       <div class="coin-display" data-i18n="coinLabel">
-
         💰 เหรียญของคุณ: <span id="coin-count">0</span> เหรียญ
-
       </div>
-
       <div class="language-selector">
-
         <label for="language-select" data-i18n="languageLabel">🌐 เปลี่ยนภาษา:</label>
-
         <select id="language-select" onchange="switchLang(this.value)">
-
           <option value="th">ไทย</option>
-
           <option value="en">English</option>
-
           <option value="ch">中国人</option>
-
           <option value="ru">русский язык</option>
-
           <option value="jp">日本語</option>
-
           <option value="kr">한국어</option>
-
           <option value="vn">Tiếng Việt</option>
-
         </select>
-
       </div>
-
     </div>
-
   </div>
 
+  <h1 data-i18n="penNameTitle">📚 นามปากกา: โค้ดรัก</h1>
+  <p data-i18n="penNameDescription">นิยายวายแนวโรแมนติก ดราม่า บีบหัวใจ 💔</p>
+
+  <div class="section-title" data-i18n="longNovelsTitle">🔥 นิยายยาว</div>
+  <div class="book-grid">
+    <div class="book">
+      <a href="trapmyheart/index.html">
+        <img src="img/long1.jpg" alt="กับดักหัวใจของนายตัวแสบ">
+        <div class="book-title" data-i18n="novel1Title">กับดักหัวใจของนายตัวแสบ</div>
+      </a>
+      <div class="book-desc" data-i18n="comingSoon">คำโปรยจะมาใส่ภายหลังค่ะ</div>
+    </div>
+  </div>
+
+  <div class="section-title" data-i18n="series1Title">📖 ชุดที่ 1</div>
+  <div class="book-grid">
+    <div class="book">
+      <img src="img/set1-1.jpg" alt="ครูคนใหม่...ผมขอรักเหอะ">
+      <div class="book-title" data-i18n="set1Novel1Title">ครูคนใหม่...ผมขอรักเหอะ</div>
+      <div class="book-desc" data-i18n="comingSoon">คำโปรยจะมาใส่ภายหลังค่ะ</div>
+    </div>
+    <div class="book">
+      <img src="img/set1-2.jpg" alt="พ่อเลี้ยงพิศวาสร้าย">
+      <div class="book-title" data-i18n="set1Novel2Title">พ่อเลี้ยงพิศวาสร้าย</div>
+      <div class="book-desc" data-i18n="comingSoon">คำโปรยจะมาใส่ภายหลังค่ะ</div>
+    </div>
+    <div class="book">
+      <img src="img/set1-3.jpg" alt="CEO คู่คลั่งรัก">
+      <div class="book-title" data-i18n="set1Novel3Title">CEO คู่คลั่งรัก</div>
+      <div class="book-desc" data-i18n="comingSoon">คำโปรยจะมาใส่ภายหลังค่ะ</div>
+    </div>
+    <div class="book">
+      <img src="img/set1-4.jpg" alt="แอบรักนักเรียนจะได้มั้ย">
+      <div class="book-title" data-i18n="set1Novel4Title">แอบรักนักเรียนจะได้มั้ย</div>
+      <div class="book-desc" data-i18n="comingSoon">คำโปรยจะมาใส่ภายหลังค่ะ</div>
+    </div>
+    <div class="book">
+      <img src="img/set1-5.jpg" alt="คลั่งรัก พ่อเลี้ยงมาดนิ่ง">
+      <div class="book-title" data-i18n="set1Novel5Title">คลั่งรัก พ่อเลี้ยงมาดนิ่ง</div>
+      <div class="book-desc" data-i18n="comingSoon">คำโปรยจะมาใส่ภายหลังค่ะ</div>
+    </div>
+  </div>
+
+  <div class="section-title" data-i18n="series2Title">📖 ชุดที่ 2</div>
+  <div class="book-grid">
+    <div class="book">
+      <img src="img/set2-1.jpg" alt="รักร้าย(นาย)เย็นชา">
+      <div class="book-title" data-i18n="set2Novel1Title">รักร้าย(นาย)เย็นชา</div>
+      <div class="book-desc" data-i18n="comingSoon">คำโปรยจะมาใส่ภายหลังค่ะ</div>
+    </div>
+    <div class="book">
+      <img src="img/set2-2.jpg" alt="นายบำเรอของคิริน">
+      <div class="book-title" data-i18n="set2Novel2Title">นายบำเรอของคิริน</div>
+      <div class="book-desc" data-i18n="comingSoon">คำโปรยจะมาใส่ภายหลังค่ะ</div>
+    </div>
+    <div class="book">
+      <img src="img/set2-3.jpg" alt="เสน่หาเพียงนาย">
+      <div class="book-title" data-i18n="set2Novel3Title">เสน่หาเพียงนาย</div>
+      <div class="book-desc" data-i18n="comingSoon">คำโปรยจะมาใส่ภายหลังค่ะ</div>
+    </div>
+    <div class="book">
+      <img src="img/set2-4.jpg" alt="แค้นพิศวาส">
+      <div class="book-title" data-i18n="set2Novel4Title">แค้นพิศวาส</div>
+      <div class="book-desc" data-i18n="comingSoon">คำโปรยจะมาใส่ภายหลังค่ะ</div>
+    </div>
+    <div class="book">
+      <img src="img/set2-5.jpg" alt="จะรักให้ตาย เพื่อได้ใจคืน">
+      <div class="book-title" data-i18n="set2Novel5Title">จะรักให้ตาย เพื่อได้ใจคืน</div>
+      <div class="book-desc" data-i18n="comingSoon">คำโปรยจะมาใส่ภายหลังค่ะ</div>
+    </div>
+  </div>
+
+  <div class="thank-you" data-i18n="thankYou">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยาย ด้วยรักจากใจ 💜</div>
+
+<div class="back-container">
+  <a href="../index.html" class="back-button" data-i18n="backToHome">
+    ← กลับหน้าแรก
+  </a>
+</div>
   
-
-  <button onclick="localStorage.clear(); alert('เคลียร์ localStorage แล้วค่ะ'); location.reload();" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: red; color: white; padding: 10px; border-radius: 8px;">🧹 ล้าง localStorage</button>
-
-  
-
-  <div class="cover-summary-section">
-
-    <img src="link-to-your-cover.jpg" alt="หน้าปกนิยาย" class="novel-cover">
-
-    <div class="novel-info">
-
-      <h2 class="novel-title" data-i18n="novelTitle">📘 กับดักหัวใจของนายตัวแสบ</h2>
-
-      <div class="summary" id="summary" data-i18n-content-type="summary"
-
-        data-content-th="เมื่อนักเรียนตัวแสบจ้องจะป่วนครูหน้าใหม่หัวใจอ่อนไหว
-
-
-
-ความรักในรั้วโรงเรียนจึงไม่ได้หวานอย่างเดียว..."
-
-        data-content-en="When a mischievous student sets his sights on teasing a soft-hearted new teacher,
-
-
-
-Love in the school corridors isn’t all sweet and innocent..."
-
-        data-content-ch="当一个调皮的学生盯上了心软的新老师，
-
-
-
-校园里的爱情就不再只是甜蜜而已……"
-
-        data-content-ru="Когда озорной ученик решает досаждать добросердечному новому учителю,
-
-
-
-Любовь в школьных коридорах становится далеко не такой уж невинной…"
-
-        data-content-jp="いたずら好きな生徒が、心優しい新任教師をからかおうとしたとき、
-
-
-
-学園内の恋は、甘いだけでは終わらない…"
-
-        data-content-kr="장난꾸러기 학생이 마음이 여린 신입 교사를 괴롭히기로 결심했을 때,
-
-
-
-학교 안의 사랑은 더 이상 달콤하기만 한 것이 아니다…"
-
-        data-content-vn="Khi một học sinh tinh nghịch nhằm vào thầy giáo mới với trái tim yếu mềm,
-
-
-
-Tình yêu trong hành lang trường học không chỉ ngọt ngào đơn thuần nữa..." 
-
-      ></div>
-
-    </div>
-
-  </div>
-
-
-
-<div class="action-section">
-
-  <div class="action-box">
-
-    <p data-i18n="unlockAll">🔓 ปลดล็อกทุกตอนในครั้งเดียว</p>
-
-    <button class="unlock-button" onclick="confirmPurchaseAll('unlockAll')" data-i18n="unlockButton">ปลดล็อกทุกตอน (4 เหรียญ)</button>
-
-  </div>
-
-  <div class="action-box">
-
-    <p data-i18n="buyPdfButton">📘 ซื้อ PDF + ตอนพิเศษสุดฟินมากกว่า 1 ตอน</p>
-
-    <button class="unlock-button" onclick="confirmPurchaseAll('buyPdf')" data-i18n="buyPdfButton">ซื้อ PDF ทั้งเรื่องและตอนพิเศษมากกว่า 1 ตอน (12 เหรียญ)</button>
-
-  </div>
-
-</div>
-
-  
-
-  <div class="episode">
-
-  <div class="episode-title" onclick="toggleEpisode('ep1')">📖 ตอนที่ 1: พบกันที่โรงเรียน</div>
-
-  <div class="text-content" id="ep1" style="display: none;"
-
-  data-content-th="
-
-นายจะมานั่งตรงนี้ไม่ได้!
-
-
-
-ทำไมล่ะครับครู... ผมนั่งใกล้ครูไม่ได้เหรอ?
-
-
-
-เสียงของเด็กชายคนนั้นแฝงไว้ด้วยแววขบขันและกล้าท้าทาย
-
-ครูหนุ่มนิ่งอึ้งไปชั่วครู่ ก่อนจะพยายามเก็บสีหน้าให้เรียบเฉย
-
-
-
-เขากลับมาอีกครั้ง...
-
-หลังจากที่หายหน้าไปนานหลายปี
-
-และดูเหมือนว่าครั้งนี้จะไม่ได้มาดีอย่างที่คิด
-
-"
-
-  data-content-en="
-
-You can't sit here!
-
-
-
-Why not, teacher? Can’t I sit closer to you?
-
-
-
-The boy’s voice held a teasing challenge.
-
-The young teacher froze momentarily before regaining his composure.
-
-
-
-He had returned...
-
-After disappearing for years—
-
-and it didn’t seem like he came back with good intentions.
-
-"
-
-  data-content-ch="
-
-你不能坐在这里！
-
-
-
-为什么不可以，老师……我不能靠近你坐吗？
-
-
-
-那个男孩的话语中带着调皮和挑衅。
-
-年轻的老师愣了一下，随即恢复了镇定。
-
-
-
-他又回来了……
-
-在消失多年之后，
-
-这一次的归来似乎并不单纯。
-
-"
-
-  data-content-ru="
-
-Ты не можешь сидеть здесь!
-
-
-
-Почему, учитель?.. Разве я не могу сесть рядом?
-
-
-
-Голос мальчика звучал с挑挑衅 и насмешкой.
-
-Молодой учитель на мгновение замер, прежде чем вновь обрёл спокойствие.
-
-
-
-Он вернулся…
-
-После многих лет отсутствия,
-
-но, похоже, не с добрыми намерениями.
-
-"
-
-  data-content-jp="
-
-ここに座っちゃダメだ！
-
-
-
-どうしてですか先生…近くに座っちゃいけないんですか？
-
-
-
-その少年の声には、からかうような挑戦の色があった。
-
-若い教師は一瞬言葉を失い、すぐに冷静さを取り戻した。
-
-
-
-彼は戻ってきた…
-
-何年も姿を消していたのに、
-
-今回は何か企んでいるようだった。
-
-"
-
-  data-content-kr="
-
-여기 앉으면 안 돼!
-
-
-
-왜요, 선생님... 제가 선생님 가까이에 앉으면 안 되나요?
-
-
-
-소년의 목소리는 장난기와 도발로 가득 차 있었다.
-
-젊은 선생은 순간 멈칫했지만 곧 표정을 가다듬었다.
-
-
-
-그가 돌아왔다...
-
-몇 년 동안 사라졌다가,
-
-이번에는 뭔가 꿍꿍이가 있는 것 같았다.
-
-"
-
-  data-content-vn="
-
-Cậu không thể ngồi ở đây được!
-
-
-
-Tại sao vậy thầy... Em không được ngồi gần thầy sao?
-
-
-
-Giọng của cậu học sinh vang lên đầy tinh nghịch và thách thức.
-
-Thầy giáo trẻ khựng lại một chút rồi lấy lại vẻ bình tĩnh.
-
-
-
-Cậu ấy đã trở lại...
-
-Sau nhiều năm biến mất—
-
-và lần này có vẻ không phải trở về với ý tốt.
-
-"
-
-></div>
-
-</div>
-
-
-
-  <div class="episode">
-
-  <div class="episode-title" onclick="toggleEpisode('ep2')">🔒 ตอนที่ 2: รอยแผลในใจ</div>
-
-  <div class="text-content" id="ep2" style="display: none;"
-
-  data-content-th="
-
-เสียงฝนตกกระทบหน้าต่างห้องเรียนที่เงียบสงัด
-
-
-
-ครูหนุ่มนั่งเหม่อมองออกไปนอกหน้าต่าง ไม่ใช่เพราะไม่มีอะไรทำ แต่เพราะบางอย่างในใจยังคงรบกวนไม่หาย
-
-
-
-สิ่งที่เกิดขึ้นในอดีต... ยังฝังลึกอยู่ในหัวใจ
-
-"
-
-  data-content-en="
-
-Rain tapped gently against the silent classroom windows.
-
-
-
-The young teacher stared blankly outside—not from idleness, but because something deep inside still troubled him.
-
-
-
-What had happened in the past… still echoed within his heart.
-
-"
-
-  data-content-jp="
-
-静かな教室の窓に雨がぽつぽつと当たっていた。
-
-
-
-若い教師はぼんやりと外を見つめていた。それは暇だからではなく、心の奥に何かが引っかかっていたからだ。
-
-
-
-過去に起きた出来事は…いまだ心に深く刻まれていた。
-
-"
-
-  data-content-kr="
-
-조용한 교실 창문에 빗소리가 부드럽게 울려 퍼졌다.
-
-
-
-젊은 교사는 창밖을 멍하니 바라보았다. 할 일이 없어서가 아니라, 마음속 무언가가 여전히 그를 괴롭히고 있었기 때문이다.
-
-
-
-과거의 일들은… 아직도 그의 가슴 속에 깊이 남아 있었다.
-
-"
-
-  data-content-ch="
-
-细雨轻轻敲打着安静的教室窗户。
-
-
-
-年轻的老师茫然地望向窗外，并不是因为无事可做，而是内心深处仍有未解的心结。
-
-
-
-过去发生的事情……仍深深埋藏在他的心中。
-
-"
-
-  data-content-ru="
-
-Мелкий дождь тихо стучал по окнам тихого класса.
-
-
-
-Молодой учитель задумчиво смотрел в окно — не от скуки, а потому что что-то тревожило его душу.
-
-
-
-То, что произошло в прошлом… до сих пор оставалось в его сердце.
-
-"
-
-  data-content-vn="
-
-Tiếng mưa lách tách rơi trên ô cửa sổ lớp học vắng lặng.
-
-
-
-Thầy giáo trẻ ngồi lặng lẽ nhìn ra ngoài, không phải vì không có việc gì làm mà vì có điều gì đó trong lòng vẫn chưa nguôi.
-
-
-
-Chuyện đã xảy ra trong quá khứ… vẫn còn in hằm sâu trong tim.
-
-"></div>
-
-</div>
-
-<div id="confirmModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:9999;">
-
-  <div style="background:#fff; max-width:400px; margin:15% auto; padding:30px; border-radius:12px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2); font-family:'Mitr', sans-serif;">
-
-    <p id="confirm-text" style="font-size:1.1rem; color:#6e3cab;" data-i18n="confirmText">ตอนนี้ต้องใช้ 2 เหรียญ<br>คุณต้องการใช้เพื่ออ่านเนื้อหาต่อหรือไม่?</p>
-
-    <div style="margin-top:20px;">
-
-      <button onclick="cancelUnlock()" style="margin-right:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold;" data-i18n="cancel">ยกเลิก</button>
-
-      <button onclick="confirmUnlock()" style="padding:10px 20px; border:none; border-radius:30px; background:#a87ce6; color:#fff; font-weight:bold;" data-i18n="confirm">ตกลง</button>
-
-    </div>
-
-  </div>
-
-</div>
-
-<div id="purchaseConfirmModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); z-index:9999;">
-
-  <div style="background:#fff; max-width:400px; margin:15% auto; padding:30px; border-radius:12px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2); font-family:'Mitr', sans-serif;">
-
-    <p id="purchase-confirm-text" style="font-size:1.1rem; color:#6e3cab;"></p>
-
-    <div style="margin-top:20px;">
-
-      <button onclick="cancelPurchase()" style="margin-right:10px; padding:10px 20px; border:none; border-radius:30px; background:#ccc; color:#333; font-weight:bold;" data-i18n="cancel">ยกเลิก</button>
-
-      <button onclick="confirmPurchase()" style="padding:10px 20px; border:none; border-radius:30px; background:#a87ce6; color:#fff; font-weight:bold;" data-i18n="confirm">ตกลง</button>
-
-    </div>
-
-  </div>
-
-</div>
-
-  
-
-<div class="comment-box">
-
-    <h3 data-i18n="commentTitle">💬 แสดงความคิดเห็น</h3>
-
-    <textarea rows="4" placeholder="แสดงความคิดเห็นที่นี่..." data-i18n-placeholder="commentPlaceholder"></textarea>
-
-    <div class="emoji-bar">
-
-      <span onclick="appendEmoji(this)">😍</span>
-
-      <span onclick="appendEmoji(this)">😭</span>
-
-      <span onclick="appendEmoji(this)">🔥</span>
-
-    </div>
-
-    <button class="submit-button" onclick="alertSubmit()" data-i18n="submitCommentButton">ส่งความคิดเห็นของคุณตรงนี้ค่ะ</button>
-
-  </div>  
-
-  <div class="thank-you" data-i18n="thankYou">💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยาย ด้วยรักจากใจ 💜</div>  
-
-  <div class="back-container">
-
-    <a href="/coderak/" class="back-button" data-i18n="backToPenName">← ย้อนกลับไปหน้านามปากกา โค้ดรัก</a>
-
-  </div>  
-
   <div class="footer" data-i18n="footerText">
-
     © 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨
+  </div>
 
-  </div> 
-
-
-
-<script>
-
-  let pendingUnlockId = null;
-
-  let pendingPurchaseType = null; // เพิ่มตัวแปรสำหรับประเภทการซื้อ (unlockAll หรือ buyPdf)
-
-
-
-  // ฟังก์ชันสำหรับจัดการเหรียญ
-
-  function getCoins() {
-
-    return parseInt(localStorage.getItem("user_coins") || "0");
-
-  }
-
-
-
-  function setCoins(value) {
-
-    localStorage.setItem("user_coins", value);
-
-    updateCoinDisplay();
-
-  }
-
-
-
-  function deductCoins(amount) {
-
-    const current = getCoins();
-
-    if (current < amount) {
-
-      alert(`${translations[localStorage.getItem("lang") || "th"].coinNotEnough1} ${current} ${translations[localStorage.getItem("lang") || "th"].coinNotEnough2} ${amount} ${translations[localStorage.getItem("lang") || "th"].coinNotEnough3}`);
-
-      return false;
-
+  <script>
+    // ฟังก์ชันสำหรับจัดการเหรียญ
+    function getCoins() {
+      return parseInt(localStorage.getItem("user_coins") || "0");
     }
 
-    setCoins(current - amount);
+    function setCoins(value) {
+      localStorage.setItem("user_coins", value);
+      updateCoinDisplay();
+    }
 
-    return true;
+    function updateCoinDisplay() {
+      const coinEl = document.getElementById("coin-count");
+      if (coinEl) coinEl.textContent = getCoins();
+    }
 
-  }
+    // Object สำหรับคำแปล
+    const translations = {
+      th: {
+        siteButton: "✨ Arn-niyay-khan ✨",
+        coinLabel: "💰 เหรียญของคุณ: ",
+        languageLabel: "🌐 เปลี่ยนภาษา:",
+        penNameTitle: "📚 นามปากกา: โค้ดรัก",
+        penNameDescription: "นิยายวายแนวโรแมนติก ดราม่า บีบหัวใจ 💔",
+        longNovelsTitle: "🔥 นิยายยาว",
+        novel1Title: "กับดักหัวใจของนายตัวแสบ",
+        comingSoon: "คำโปรยจะมาใส่ภายหลังค่ะ",
+        series1Title: "📖 ชุดที่ 1",
+        set1Novel1Title: "ครูคนใหม่...ผมขอรักเหอะ",
+        set1Novel2Title: "พ่อเลี้ยงพิศวาสร้าย",
+        set1Novel3Title: "CEO คู่คลั่งรัก",
+        set1Novel4Title: "แอบรักนักเรียนจะได้มั้ย",
+        set1Novel5Title: "คลั่งรัก พ่อเลี้ยงมาดนิ่ง",
+        series2Title: "📖 ชุดที่ 2",
+        set2Novel1Title: "รักร้าย(นาย)เย็นชา",
+        set2Novel2Title: "นายบำเรอของคิริน",
+        set2Novel3Title: "เสน่หาเพียงนาย",
+        set2Novel4Title: "แค้นพิศวาส",
+        set2Novel5Title: "จะรักให้ตาย เพื่อได้ใจคืน",
+        thankYou: "💜 ขอบคุณที่เข้ามาอุดหนุนและติดตามนิยาย ด้วยรักจากใจ 💜", // เพิ่มคำแปล
+        backToHome: "← กลับหน้าแรก",
+        footerText: "© 2025 Arn-niyay-khan | พอร์ตนามปากกาหลากรส นักเขียนหลากแนว ✨"
+      },
+      en: {
+        siteButton: "✨ Arn-niyay-khan ✨",
+        coinLabel: "💰 Your coins: ",
+        languageLabel: "🌐 Language:",
+        penNameTitle: "📚 Pen Name: Codrak",
+        penNameDescription: "BL novels: romantic, dramatic, heartwarming 💔",
+        longNovelsTitle: "🔥 Long Novels",
+        novel1Title: "The Mischievous Student's Heart Trap",
+        comingSoon: "Synopsis coming soon.",
+        series1Title: "📖 Series 1",
+        set1Novel1Title: "My New Teacher...Can I Love You?",
+        set1Novel2Title: "Evil Stepfather's Obsession",
+        set1Novel3Title: "Crazy Loving CEOs",
+        set1Novel4Title: "Can I Secretly Love a Student?",
+        set1Novel5Title: "Obsessed with the Calm Stepfather",
+        series2Title: "📖 Series 2",
+        set2Novel1Title: "Evil Love (Mr.) Cold-Hearted",
+        set2Novel2Title: "Kirrin's Concubine",
+        set2Novel3Title: "Infatuation with Only You",
+        set2Novel4Title: "Vengeful Obsession",
+        set2Novel5Title: "Love Until Death to Win Your Heart Back",
+        thankYou: "💜 Thank you for supporting this novel. With love, always 💜", // เพิ่มคำแปล
+        backToHome: "← Back to Home",
+        footerText: "© 2025 Arn-niyay-khan | Diverse Pen Names, Diverse Authors ✨"
+      },
+      ch: {
+        siteButton: "✨ Arn-niyay-khan ✨",
+        coinLabel: "💰 您的金币：",
+        languageLabel: "🌐 语言切换：",
+        penNameTitle: "📚 笔名：โค้ดรัก (Codrak)",
+        penNameDescription: "耽美小说：浪漫、狗血、揪心💔",
+        longNovelsTitle: "🔥 长篇小说",
+        novel1Title: "小恶魔的心陷阱",
+        comingSoon: "简介即将推出",
+        series1Title: "📖 系列 1",
+        set1Novel1Title: "新来的老师……我能爱你吗？",
+        set1Novel2Title: "邪恶的继父迷恋",
+        set1Novel3Title: "疯狂的爱着CEO",
+        set1Novel4Title: "我能偷偷爱上学生吗？",
+        set1Novel5Title: "痴迷于冷静的继父",
+        series2Title: "📖 系列 2",
+        set2Novel1Title: "邪恶之爱（先生）冷酷",
+        set2Novel2Title: "麒麟的男仆",
+        set2Novel3Title: "只爱上你",
+        set2Novel4Title: "复仇的迷恋",
+        set2Novel5Title: "爱到死才能赢回你的心",
+        thankYou: "💜 感谢您的支持与关注，愿我们的小说温暖您心 💜", // เพิ่มคำแปล
+        backToHome: "← 返回首页",
+        footerText: "© 2025 Arn-niyay-khan | 多样笔名，多样作者 ✨"
+      },
+      ru: {
+        siteButton: "✨ Arn-niyay-khan ✨",
+        coinLabel: "💰 Ваши монеты:",
+        languageLabel: "🌐 Выбрать язык:",
+        penNameTitle: "📚 Псевдоним: Кодрак",
+        penNameDescription: "BL романы: романтические, драматические, душераздирающие 💔",
+        longNovelsTitle: "🔥 Длинные романы",
+        novel1Title: "Сердечная ловушка озорного ученика",
+        comingSoon: "Аннотация скоро появится.",
+        series1Title: "📖 Серия 1",
+        set1Novel1Title: "Новый учитель… могу я тебя любить?",
+        set1Novel2Title: "Одержимость Злого Отчима",
+        set1Novel3Title: "Сумасшедшие влюбленные генеральные директора",
+        set1Novel4Title: "Могу ли я тайно любить студента?",
+        set1Novel5Title: "Одержим спокойным отчимом",
+        series2Title: "📖 Серия 2",
+        set2Novel1Title: "Злая любовь (Мистер) Бессердечный",
+        set2Novel2Title: "Наложник Кирилла",
+        set2Novel3Title: "Влюбленность только в тебя",
+        set2Novel4Title: "Мстительная одержимость",
+        set2Novel5Title: "Люби до смерти, чтобы вернуть свое сердце",
+        thankYou: "💜 Спасибо за вашу поддержку! Мы ценим каждого читателя 💜", // เพิ่มคำแปล
+        backToHome: "← Вернуться на главную",
+        footerText: "© 2025 Arn-niyay-khan | Разнообразные псевдонимы, разнообразные авторы ✨"
+      },
+      jp: {
+        siteButton: "✨ Arn-niyay-khan ✨",
+        coinLabel: "💰 あなたのコイン：",
+        languageLabel: "🌐 言語を選択：",
+        penNameTitle: "📚 ペンネーム: コードラック",
+        penNameDescription: "BL小説：ロマンチック、ドラマチック、胸が締め付けられるような物語 💔",
+        longNovelsTitle: "🔥 長編小説",
+        novel1Title: "いたずらっ子の心の罠",
+        comingSoon: "あらすじは近日公開。",
+        series1Title: "📖 シリーズ1",
+        set1Novel1Title: "新しい先生…愛してもいいですか？",
+        set1Novel2Title: "邪悪な義父の執着",
+        set1Novel3Title: "熱狂的な愛のCEOたち",
+        set1Novel4Title: "生徒を密かに愛してもいいですか？",
+        set1Novel5Title: "冷静な義父への執着",
+        series2Title: "📖 シリーズ2",
+        set2Novel1Title: "悪しき愛（氏）冷酷",
+        set2Novel2Title: "キリンの愛人",
+        set2Novel3Title: "あなただけの恋",
+        set2Novel4Title: "復讐の執着",
+        set2Novel5Title: "死ぬまで愛して、心を取り戻す",
+        thankYou: "💜 ご支援ありがとうございます。愛を込めて 💜", // เพิ่มคำแปล
+        backToHome: "← ホームに戻る",
+        footerText: "© 2025 Arn-niyay-khan | 多様なペンネーム、多様な作家 ✨"
+      },
+      kr: {
+        siteButton: "✨ Arn-niyay-khan ✨",
+        coinLabel: "💰 보유 코인:",
+        languageLabel: "🌐 언어 변경:",
+        penNameTitle: "📚 필명: 코드락",
+        penNameDescription: "BL 소설: 로맨틱, 드라마틱, 가슴 저미는 이야기 💔",
+        longNovelsTitle: "🔥 장편 소설",
+        novel1Title: "개구쟁이 학생의 함정",
+        comingSoon: "줄거리 곧 공개 예정.",
+        series1Title: "📖 시리즈 1",
+        set1Novel1Title: "새로운 선생님... 사랑해도 될까요?",
+        set1Novel2Title: "악독한 계부의 집착",
+        set1Novel3Title: "미친 사랑의 CEO들",
+        set1Novel4Title: "학생을 몰래 사랑해도 될까요?",
+        set1Novel5Title: "차분한 계부에 대한 집착",
+        series2Title: "📖 시리즈 2",
+        set2Novel1Title: "악한 사랑 (님) 냉정함",
+        set2Novel2Title: "기린의 첩",
+        set2Novel3Title: "오직 당신만을 위한 매혹",
+        set2Novel4Title: "복수심에 불타는 집착",
+        set2Novel5Title: "죽을 때까지 사랑하여 마음을 되찾다",
+        thankYou: "💜 응원해주셔서 감사합니다. 사랑을 담아 💜", // เพิ่มคำแปล
+        backToHome: "← 홈으로 돌아가기",
+        footerText: "© 2025 Arn-niyay-khan | 다양한 필명, 다양한 작가 ✨"
+      },
+      vn: {
+        siteButton: "✨ Arn-niyay-khan ✨",
+        coinLabel: "💰 Xu của bạn:",
+        languageLabel: "🌐 Chọn ngôn ngữ:",
+        penNameTitle: "📚 Bút danh: Codrak",
+        penNameDescription: "Tiểu thuyết BL: lãng mạn, kịch tính, cảm động 💔",
+        longNovelsTitle: "🔥 Tiểu thuyết dài",
+        novel1Title: "Cái bẫy trái tim của cậu học trò tinh nghịch",
+        comingSoon: "Tóm tắt sắp ra mắt.",
+        series1Title: "📖 Tập 1",
+        set1Novel1Title: "Thầy giáo mới... Em có thể yêu thầy không?",
+        set1Novel2Title: "Sự ám ảnh của cha dượng độc ác",
+        set1Novel3Title: "CEO cuồng yêu",
+        set1Novel4Title: "Em có thể thầm yêu một học sinh không?",
+        set1Novel5Title: "Ám ảnh với cha dượng điềm tĩnh",
+        series2Title: "📖 Tập 2",
+        set2Novel1Title: "Tình yêu tàn bạo (Anh) Lạnh lùng",
+        set2Novel2Title: "Vợ lẽ của Kirin",
+        set2Novel3Title: "Sự quyến rũ chỉ dành cho bạn",
+        set2Novel4Title: "Ám ảnh báo thù",
+        set2Novel5Title: "Yêu đến chết để giành lại trái tim bạn",
+        thankYou: "💜 Cảm ơn bạn đã ủng hộ truyện! Yêu thương từ tận đáy lòng 💜", // เพิ่มคำแปล
+        backToHome: "← Quay lại trang chủ",
+        footerText: "© 2025 Arn-niyay-khan | Bút danh đa dạng, tác giả đa dạng ✨"
+      }
+    };
+    
+    // ฟังก์ชันสำหรับเปลี่ยนภาษา
+    function switchLang(lang) {
+      const langPack = translations[lang];
+      if (!langPack) return;
 
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (langPack[key]) {
+          // ส่วนพิเศษสำหรับ coinLabel เพื่อรักษา span ของจำนวนเหรียญ
+          if (key === "coinLabel") {
+            el.innerHTML = langPack[key] + `<span id="coin-count">${getCoins()}</span>` + (lang === 'th' ? ' เหรียญ' : '');
+          } else {
+            el.textContent = langPack[key];
+          }
+        }
+      });
 
+      // Update the selected language in the dropdown
+      const langSelect = document.getElementById("language-select");
+      if (langSelect) {
+        langSelect.value = lang;
+      }
+      
+      localStorage.setItem("lang", lang);
+      updateCoinDisplay(); // อัปเดตการแสดงผลเหรียญหลังจากเปลี่ยนภาษา
+    }
 
-  
+    // เมื่อ DOM โหลดเสร็จ
+    document.addEventListener("DOMContentLoaded", function () {
+      // ตรวจสอบและกำหนดเหรียญเริ่มต้นถ้ายังไม่มี
+      if (!localStorage.getItem("user_coins")) {
+        setCoins(100);
+      }
+
+      const savedLang = localStorage.getItem("lang") || "th";
+      switchLang(savedLang); // Apply the saved language on load
+    });
+  </script>
+</body>
+</html>
